@@ -1,0 +1,3 @@
+[
+  { "caption": "LSP: Setup JSON server", "command": "lsp_json_setup" }
+]
