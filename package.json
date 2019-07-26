@@ -1,0 +1,22 @@
+{
+  "name": "lsp-json",
+  "version": "0.0.1",
+  "description": "JSON support for Sublime LSP",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sublimelsp/LSP-json.git"
+  },
+  "author": "Предраг Николић",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sublimelsp/LSP-json/issues"
+  },
+  "homepage": "https://github.com/sublimelsp/LSP-json#readme",
+  "dependencies": {
+    "vscode-json-languageserver-bin": "^1.0.1"
+  }
+}
