@@ -28,6 +28,8 @@ def plugin_loaded():
                 ]
             }
         )
+        sublime.message_dialog('LSP-json\n\nRestart sublime after the server has been installed successfully.')
+
 
 
 def is_node_installed():
