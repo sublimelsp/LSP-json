@@ -5,7 +5,7 @@ import threading
 import subprocess
 
 from LSP.plugin.core.handlers import LanguageHandler
-from LSP.plugin.core.settings import ClientConfig, LanguageConfig
+from LSP.plugin.core.settings import ClientConfig, LanguageConfig, read_client_config
 from .schemas import schemas
 
 package_path = os.path.dirname(__file__)
@@ -13,10 +13,11 @@ server_path = os.path.join(package_path, 'node_modules', 'vscode-json-languagese
 
 
 def plugin_loaded():
-    print('LSP-json: Server {}.'.format('installed' if os.path.isfile(server_path) else 'is not installed' ))
+    is_server_installed = os.path.isfile(server_path)
+    print('LSP-json: Server {}.'.format('installed' if is_server_installed else 'is not installed' ))
 
     # install the node_modules if not installed
-    if not os.path.isdir(os.path.join(package_path, 'node_modules')):
+    if not is_server_installed:
         # this will be called only when the plugin gets:
         # - installed for the first time,
         # - or when updated on package control
@@ -71,36 +72,30 @@ class LspJSONPlugin(LanguageHandler):
 
     @property
     def config(self) -> ClientConfig:
-        return ClientConfig(
-            name='lsp-json',
-            binary_args=[
+        settings = sublime.load_settings("LSP-json.sublime-settings")
+        client_configuration = settings.get('client')
+        default_configuration = {
+            "command": [
                 'node',
                 server_path,
                 '--stdio'
             ],
-            tcp_port=None,
-            enabled=True,
-            init_options=dict(),
-            settings={
-                "json": {
-                    "format": {
-                        "enable": True
-                    },
-                    "schemas": schemas
+            "languages": [
+                {
+                    "languageId": "json",
+                    "scopes": ["source.json"],
+                    "syntaxes": ["Packages/JavaScript/JSON.sublime-syntax"]
+                },
+                {
+                    "languageId": "jsonc",
+                    "scopes": ["source.json.sublime.settings"],
+                    "syntaxes": ["Packages/PackageDev/Package/Sublime Text Settings/Sublime Text Settings.sublime-syntax"]
                 }
-            },
-            env=dict(),
-            languages=[
-                LanguageConfig(
-                    'json',
-                    ['source.json', 'source.json.sublime.settings'],
-                    [
-                        'Packages/JavaScript/JSON.sublime-syntax',
-                        'Packages/PackageDev/Package/Sublime Text Settings/Sublime Text Settings.sublime-syntax'
-                    ]
-                )
             ]
-        )
+        }
+        default_configuration.update(client_configuration)
+        default_configuration['settings']['json']['schemas'] = schemas
+        return read_client_config('lsp-json', default_configuration)
 
     def on_start(self, window) -> bool:
         if not is_node_installed():

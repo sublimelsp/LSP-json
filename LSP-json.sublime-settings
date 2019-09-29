@@ -1,0 +1,25 @@
+{
+	"client" : {
+		"enabled": true,
+		"languages": [
+			{
+				"languageId": "json",
+				"scopes": ["source.json"],
+				"syntaxes": ["Packages/JavaScript/JSON.sublime-syntax"]
+			},
+			{
+				"languageId": "jsonc",
+				"scopes": ["source.json.sublime.settings"],
+				"syntaxes": ["Packages/PackageDev/Package/Sublime Text Settings/Sublime Text Settings.sublime-syntax"]
+			}
+		],
+		"initializationOptions": {},
+		"settings": {
+			"json": {
+				"format": {
+					"enable": true
+				}
+			}
+		}
+	}
+}
