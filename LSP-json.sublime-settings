@@ -11,7 +11,9 @@
 				]
 			}
 		],
-		"initializationOptions": {},
+		"initializationOptions": {
+			"provideFormatter": true
+		},
 		"settings": {
 			"json": {
 				"format": {

@@ -9,7 +9,7 @@ from LSP.plugin.core.settings import ClientConfig, LanguageConfig, read_client_c
 from .schemas import schemas
 
 package_path = os.path.dirname(__file__)
-server_path = os.path.join(package_path, 'node_modules', 'vscode-json-languageserver-bin', 'jsonServerMain.js')
+server_path = os.path.join(package_path, 'node_modules', 'vscode-json-languageserver', 'bin', 'vscode-json-languageserver')
 
 
 def plugin_loaded():
