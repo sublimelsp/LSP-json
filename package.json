@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/sublimelsp/LSP-json#readme",
   "dependencies": {
-    "vscode-json-languageserver": "=1.2.1"
+    "vscode-json-languageserver": "=1.2.2"
   }
 }
