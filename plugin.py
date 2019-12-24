@@ -91,8 +91,14 @@ class LspJSONPlugin(LanguageHandler):
                 },
                 {
                     "languageId": "jsonc",
-                    "scopes": ["source.json.sublime.settings"],
-                    "syntaxes": ["Packages/PackageDev/Package/Sublime Text Settings/Sublime Text Settings.sublime-syntax"]
+                    "scopes": [
+                        "source.json.sublime.settings",
+                        "source.json.sublime.keymap"
+                    ],
+                    "syntaxes": [
+                        "Packages/PackageDev/Package/Sublime Text Settings/Sublime Text Settings.sublime-syntax",
+                        "Packages/PackageDev/Package/Sublime Text Keymap/Sublime Text Keymap.sublime-syntax"
+                    ]
                 }
             ]
         }
