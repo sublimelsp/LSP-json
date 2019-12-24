@@ -88,6 +88,11 @@ class LspJSONPlugin(LanguageHandler):
                         "Packages/JavaScript/JSON.sublime-syntax",
                         "Packages/JSON/JSON.sublime-syntax"
                     ]
+                },
+                {
+                    "languageId": "jsonc",
+                    "scopes": ["source.json.sublime.settings"],
+                    "syntaxes": ["Packages/PackageDev/Package/Sublime Text Settings/Sublime Text Settings.sublime-syntax"]
                 }
             ]
         }
