@@ -3,6 +3,7 @@ import os
 import sublime
 import threading
 import subprocess
+import json
 
 from LSP.plugin.core.handlers import LanguageHandler
 from LSP.plugin.core.settings import ClientConfig, LanguageConfig, read_client_config
@@ -12,7 +13,36 @@ package_path = os.path.dirname(__file__)
 server_path = os.path.join(package_path, 'node_modules', 'vscode-json-languageserver', 'bin', 'vscode-json-languageserver')
 
 
+def get_plugin_schemas():
+    plugin_schemas = []
+    added_schemas = []
+
+    for schema in sublime.find_resources("*.schema.json"):
+        schema_content = sublime.load_resource(schema)
+        schema_file_name = os.path.basename(schema)
+
+        # Associate a `LSP-json.schema.json` file to `LSP-json.sublime-settings`
+        settings_file_name = schema_file_name.replace(".schema.json", ".sublime-settings")
+        try:
+            if schema_file_name in added_schemas:
+                continue
+
+            added_schemas.append(schema_file_name)
+            plugin_schemas.append({
+                "name": schema_file_name,
+                "fileMatch": [
+                    settings_file_name
+                ],
+                "schema": json.loads(schema_content)
+            })
+        except Exception as e:
+            pass
+
+    return plugin_schemas
+
+
 def plugin_loaded():
+    get_plugin_schemas()
     is_server_installed = os.path.isfile(server_path)
     print('LSP-json: Server {}.'.format('installed' if is_server_installed else 'is not installed' ))
 
@@ -74,6 +104,12 @@ class LspJSONPlugin(LanguageHandler):
     def config(self) -> ClientConfig:
         settings = sublime.load_settings("LSP-json.sublime-settings")
         client_configuration = settings.get('client')
+
+        all_schemas = []
+        plugin_schemas = get_plugin_schemas()
+        all_schemas.extend(plugin_schemas)
+        all_schemas.extend(schemas)
+
         default_configuration = {
             "command": [
                 'node',
@@ -91,19 +127,15 @@ class LspJSONPlugin(LanguageHandler):
                 },
                 {
                     "languageId": "jsonc",
-                    "scopes": [
-                        "source.json.sublime.settings",
-                        "source.json.sublime.keymap"
-                    ],
+                    "scopes": ["source.jsonc"],
                     "syntaxes": [
-                        "Packages/PackageDev/Package/Sublime Text Settings/Sublime Text Settings.sublime-syntax",
-                        "Packages/PackageDev/Package/Sublime Text Keymap/Sublime Text Keymap.sublime-syntax"
+                        "Packages/LSP-json/syntax/JSONC.sublime-syntax"
                     ]
                 }
             ]
         }
         default_configuration.update(client_configuration)
-        default_configuration['settings']['json']['schemas'] = schemas
+        default_configuration['settings']['json']['schemas'] = all_schemas
         return read_client_config('lsp-json', default_configuration)
 
     def on_start(self, window) -> bool:

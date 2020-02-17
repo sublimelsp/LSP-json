@@ -1,0 +1,58 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://example.com/product.schema.json",
+    "title": "LSP-json settings",
+    "description": "Configure the LSP-json settings",
+    "type": "object",
+    "definitions": {
+        "language": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "languageId": {
+                    "type": "string",
+                    "description": "See a list of available languages Ids in https://code.visualstudio.com/docs/languages/identifiers#_known-language-identifiers"
+                },
+                "scopes": {
+                    "description": "Array of scopes that will trigger the activation of the language server. Open `Tools/Developer/Show scope name` menu to get the scope name.",
+                    "type": "array",
+                    "items": {
+                        "description": "Open `Tools/Developer/Show scope name` menu to get the scope name",
+                        "type": "string"
+                    }
+                },
+                "syntaxes": {
+                    "description": "Array of sublime-syntaxt strings. Run `view.settings().get('syntax')` in sublime console to get the syntax.",
+                    "type": "array",
+                    "items": {
+                        "description": "Run `view.settings().get('syntax')` in sublime console to get the syntax.",
+                        "type": "string"
+                    }
+                }
+            },
+            "required": ["languageId", "scopes", "syntaxes"]
+        }
+    },
+    "properties": {
+        "client": {
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                },
+                "languages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/language"
+                    }
+                },
+                "initializationOptions": {
+                    "type": "object"
+                },
+                "settings": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
