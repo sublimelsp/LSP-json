@@ -1,0 +1,10 @@
+[
+    {
+        "caption": "Preferences: LSP-json Settings",
+        "command": "edit_settings",
+        "args": {
+            "base_file": "${packages}/LSP-json/LSP-json.sublime-settings",
+            "default": "// Settings in here override those in \"LSP-json/LSP-json.sublime-settings\",\n\n{\n\t$0\n}\n",
+        },
+    },
+]
