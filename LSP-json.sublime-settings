@@ -1,24 +1,21 @@
 {
-	"client" : {
-		"enabled": true,
-		"languages": [
-			{
-				"languageId": "json",
-				"scopes": ["source.json"],
-				"syntaxes": [
-					"Packages/JavaScript/JSON.sublime-syntax",
-					"Packages/JSON/JSON.sublime-syntax"
-				]
-			}
-		],
-		"initializationOptions": {
-			"provideFormatter": true
-		},
-		"settings": {
-			"json": {
-				"format": {
-					"enable": true
-				}
+	"languages": [
+		{
+			"languageId": "json",
+			"scopes": ["source.json"],
+			"syntaxes": [
+				"Packages/JavaScript/JSON.sublime-syntax",
+				"Packages/JSON/JSON.sublime-syntax"
+			],
+		}
+	],
+	"initializationOptions": {
+		"provideFormatter": true
+	},
+	"settings": {
+		"json": {
+			"format": {
+				"enable": true
 			}
 		}
 	}
