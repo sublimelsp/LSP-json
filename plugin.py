@@ -51,26 +51,6 @@ class LspJSONPlugin(LanguageHandler):
         default_configuration = {
             'enabled': True,
             'command': ['node', server.binary_path, '--stdio'],
-            'languages': [
-                {
-                    'languageId': 'json',
-                    'scopes': ['source.json'],
-                    'syntaxes': [
-                        'Packages/JavaScript/JSON.sublime-syntax',
-                        'Packages/JSON/JSON.sublime-syntax'
-                    ]
-                }
-            ],
-            'initializationOptions': {
-                'provideFormatter': True
-            },
-            'settings': {
-                'json': {
-                    'format': {
-                        'enable': True
-                    }
-                }
-            }
         }
 
         default_configuration.update(configuration)
