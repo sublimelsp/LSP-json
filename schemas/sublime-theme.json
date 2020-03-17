@@ -1,0 +1,7 @@
+{
+  "$id": "sublime://sublime-theme",
+  "title": "Sublime Text Theme",
+  "allowComments": true,
+  "allowTrailingCommas": true,
+  "type": "array"
+}

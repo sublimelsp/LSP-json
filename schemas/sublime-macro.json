@@ -1,0 +1,7 @@
+{
+  "$id": "sublime://sublime-macro",
+  "title": "Sublime Text Macro",
+  "allowComments": true,
+  "allowTrailingCommas": true,
+  "type": "array"
+}

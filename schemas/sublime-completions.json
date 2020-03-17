@@ -1,0 +1,7 @@
+{
+  "$id": "sublime://sublime-completions",
+  "title": "Sublime Text Completions",
+  "allowComments": true,
+  "allowTrailingCommas": true,
+  "type": "object"
+}

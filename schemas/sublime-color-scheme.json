@@ -1,0 +1,7 @@
+{
+  "$id": "sublime://sublime-color-scheme",
+  "title": "Sublime Text Color Scheme",
+  "allowComments": true,
+  "allowTrailingCommas": true,
+  "type": "object"
+}

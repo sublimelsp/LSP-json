@@ -1,0 +1,7 @@
+{
+  "$id": "sublime://sublime-settings",
+  "title": "Sublime Text Settings",
+  "allowComments": true,
+  "allowTrailingCommas": true,
+  "type": "object"
+}

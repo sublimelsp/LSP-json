@@ -1,0 +1,7 @@
+{
+  "$id": "sublime://sublime-commands",
+  "title": "Sublime Text Commands",
+  "allowComments": true,
+  "allowTrailingCommas": true,
+  "type": "array"
+}
