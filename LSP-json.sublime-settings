@@ -5,7 +5,19 @@
 			"scopes": ["source.json"],
 			"syntaxes": [
 				"Packages/JavaScript/JSON.sublime-syntax",
-				"Packages/JSON/JSON.sublime-syntax"
+				"Packages/JSON/JSON.sublime-syntax",
+				"Packages/PackageDev/Package/Sublime Text Build System/Sublime Text Build System.sublime-syntax",
+				"Packages/PackageDev/Package/Sublime Text Color Scheme/Sublime Text Color Scheme.sublime-syntax",
+				"Packages/PackageDev/Package/Sublime Text Commands/Sublime Text Commands.sublime-syntax",
+				"Packages/PackageDev/Package/Sublime Text Completions/Sublime Text Completions.sublime-syntax",
+				"Packages/PackageDev/Package/Sublime Text Keymap/Sublime Text Keymap.sublime-syntax",
+				"Packages/PackageDev/Package/Sublime Text Macro/Sublime Text Macro.sublime-syntax",
+				"Packages/PackageDev/Package/Sublime Text Menu/Sublime Text Menu.sublime-syntax",
+				"Packages/PackageDev/Package/Sublime Text Mousemap/Sublime Text Mousemap.sublime-syntax",
+				"Packages/PackageDev/Package/Sublime Text Project/Sublime Text Project.sublime-syntax",
+				"Packages/PackageDev/Package/Sublime Text Settings/Sublime Text Settings.sublime-syntax",
+				"Packages/PackageDev/Package/Sublime Text Syntax Definition/Sublime Text Syntax Definition.sublime-syntax",
+				"Packages/PackageDev/Package/Sublime Text Theme/Sublime Text Theme.sublime-syntax",
 			],
 		}
 	],

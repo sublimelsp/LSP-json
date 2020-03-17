@@ -1,0 +1,7 @@
+{
+  "$id": "sublime://sublime-build",
+  "title": "Sublime Text Build System",
+  "allowComments": true,
+  "allowTrailingCommas": true,
+  "type": "object"
+}

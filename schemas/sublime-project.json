@@ -1,0 +1,7 @@
+{
+  "$id": "sublime://sublime-project",
+  "title": "Sublime Text Project",
+  "allowComments": true,
+  "allowTrailingCommas": true,
+  "type": "object"
+}

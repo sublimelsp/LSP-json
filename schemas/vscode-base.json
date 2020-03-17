@@ -1,0 +1,6 @@
+{
+  "id": "vscode://schemas/base",
+  "allowComments": true,
+  "allowTrailingCommas": true,
+  "type": "object"
+}

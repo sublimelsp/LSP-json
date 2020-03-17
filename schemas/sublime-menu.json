@@ -1,0 +1,7 @@
+{
+  "$id": "sublime://sublime-menu",
+  "title": "Sublime Text Menu",
+  "allowComments": true,
+  "allowTrailingCommas": true,
+  "type": "array"
+}

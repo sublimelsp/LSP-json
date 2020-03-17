@@ -1,0 +1,7 @@
+{
+  "$id": "sublime://sublime-mousemap",
+  "title": "Sublime Text Mousemap",
+  "allowComments": true,
+  "allowTrailingCommas": true,
+  "type": "array"
+}

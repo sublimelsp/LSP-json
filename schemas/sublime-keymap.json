@@ -1,0 +1,128 @@
+{
+  "$id": "sublime://sublime-keymap",
+  "title": "Sublime Text Keymap",
+  "allowComments": true,
+  "allowTrailingCommas": true,
+  "type": "array",
+  "definitions": {
+    "keysSchema": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "contextSchema": {
+      "type": "array",
+      "items": {
+        "required": [
+          "key"
+        ],
+        "type": "object",
+        "properties": {
+          "key": {
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "Condition that must evaluate to true for the key binding to be active",
+                "enum": [
+                  "auto_complete_visible",
+                  "eol_selector",
+                  "following_text",
+                  "has_next_field",
+                  "has_prev_field",
+                  "is_recording_macro",
+                  "last_command",
+                  "last_modifying_command",
+                  "num_selections",
+                  "popup_visible",
+                  "preceding_text",
+                  "read_only",
+                  "selection_empty",
+                  "selector",
+                  "text",
+                  "panel",
+                  "panel_visible",
+                  "panel_has_focus",
+                  "overlay_visible"
+                ],
+                "enumDescriptions": [
+                  "If the auto complete dropdown is visible",
+                  "A selector to match the scope name at the end of the current line",
+                  "The text after the selection",
+                  "If the selection is a field in a snippet where a subsequent field exists",
+                  "If the selection is a field in a snippet where a previous field exists",
+                  "If the user is currently recording a macro",
+                  "The name of the last command that was run",
+                  "The name of the last command run that modified a buffer",
+                  "The number of selection in the current buffer",
+                  "If a popup is currently being displayed",
+                  "The text before the selection",
+                  "If the buffer is marked read only",
+                  "If the current selection does not contain any characters",
+                  "A selector to match the scope name of the selection",
+                  "The text of the selection",
+                  "The name of the current panel",
+                  "If a panel is visible",
+                  "If a panel is visible and has focus",
+                  "If the quick panel is visible"
+                ]
+              },
+              {
+                "type": "string",
+                "description": "Condition that must evaluate to true for the key binding to be active"
+              }
+            ]
+          },
+          "operator": {
+            "type": "string"
+          },
+          "operand": {
+            "oneOf": [
+              { "type": "string" },
+              { "type": "boolean" }
+            ]
+          },
+          "match_all": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "items": {
+    "required": [
+      "keys",
+      "command"
+    ],
+    "type": "object",
+    "defaultSnippets": [
+      {
+        "body": {
+          "keys": "$1",
+          "command": "$2",
+          "context": "$3"
+        }
+      }
+    ],
+    "properties": {
+      "keys": {
+        "$ref": "#/definitions/keysSchema",
+        "description": "Array of single or multiple keys"
+      },
+      "command": {
+        "type": "string",
+        "description": "Name of the command to execute"
+      },
+      "context": {
+        "$ref": "#/definitions/contextSchema",
+        "description": "Context in which key is allowed to execute."
+      },
+      "args": {
+        "description": "Arguments to pass to the command to execute.",
+        "type": "object"
+      }
+    },
+    "additionalProperties": false
+  }
+}

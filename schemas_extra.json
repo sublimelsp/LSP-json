@@ -1,0 +1,58 @@
+[
+  {
+    "fileMatch": ["*.sublime-build"],
+    "url": "sublime://schemas/sublime-build"
+  },
+  {
+    "fileMatch": ["*.sublime-color-scheme", "*.hidden-color-scheme"],
+    "url": "sublime://schemas/sublime-color-scheme"
+  },
+  {
+    "fileMatch": ["*.sublime-commands"],
+    "url": "sublime://schemas/sublime-commands"
+  },
+  {
+    "fileMatch": ["*.sublime-keymap"],
+    "url": "sublime://schemas/sublime-keymap"
+  },
+  {
+    "fileMatch": ["*.sublime-macro"],
+    "url": "sublime://schemas/sublime-macro"
+  },
+  {
+    "fileMatch": ["*.sublime-menu"],
+    "url": "sublime://schemas/sublime-menu"
+  },
+  {
+    "fileMatch": ["*.sublime-mousemap"],
+    "url": "sublime://schemas/sublime-mousemap"
+  },
+  {
+    "fileMatch": ["*.sublime-project"],
+    "url": "sublime://schemas/sublime-project"
+  },
+  {
+    "fileMatch": ["*.sublime-settings"],
+    "url": "sublime://schemas/sublime-settings"
+  },
+  {
+    "fileMatch": ["*.sublime-theme", "*.hidden-theme"],
+    "url": "sublime://schemas/sublime-theme"
+  },
+  {
+    "fileMatch": ["/.vscode/*.json"],
+    "url": "sublime://schemas/vscode-base"
+  },
+  {
+    "fileMatch": ["/package.json"],
+    "url": "sublime://schemas/package-json-eslint"
+  },
+  {
+    "fileMatch": ["tsconfig.json", "tsconfig.*.json", "tsconfig-*.json"],
+    "url": "sublime://schemas/tsconfig"
+  },
+  {
+    "fileMatch": ["jsconfig.json", "jsconfig.*.json"],
+    "url": "sublime://schemas/jsconfig"
+  }
+]
