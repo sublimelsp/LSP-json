@@ -22,13 +22,19 @@
 		}
 	],
 	"initializationOptions": {
-		"provideFormatter": true
+		"customCapabilities": {
+			"rangeFormatting": {
+				"editLimit": 1000
+			}
+		},
+		"provideFormatter": true,
 	},
 	"settings": {
 		"json": {
 			"format": {
 				"enable": true
-			}
+			},
+			"resultLimit": 5000,
 		}
 	}
 }
