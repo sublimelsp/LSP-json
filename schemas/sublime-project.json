@@ -1,7 +1,87 @@
 {
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "sublime://sublime-project",
   "title": "Sublime Text Project",
   "allowComments": true,
   "allowTrailingCommas": true,
-  "type": "object"
+  "type": "object",
+  "properties": {
+    "folders": {
+      "markdownDescription": "List of folders added to the project",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "additionalProperties": false,
+          "path": {
+            "markdownDescription": "A path of a project folder.",
+            "type": "string"
+          },
+          "name": {
+            "markdownDescription": "A string used in place of the folder name in the side bar.",
+            "type": "string"
+          },
+          "file_include_patterns": {
+            "markdownDescription": "A list of filenames to include from the folder. Anything not matching these patterns will be excluded. This is checked before `file_exclude_patterns`.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "file_exclude_patterns": {
+            "markdownDescription": "A list of strings for filenames to exclude from the folder. This is added to the global setting of the same name. This is checked after `file_include_patterns`.",
+            "type": "array",
+            "items": {"type": "string", "examples": ["Hello", "World"]}
+          },
+          "folder_include_patterns": {
+            "markdownDescription": "A list of strings for subfolder paths to include from the folder. Anything not matching these patterns will be excluded. This is checked before `folder_exclude_patterns`.",
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "folder_exclude_patterns": {
+            "markdownDescription": "A list of strings for subfolder paths to exclude from the folder. This is added to the global setting of the same name. This is checked after `folder_include_patterns`.",
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "binary_file_patterns": {
+            "markdownDescription": "A list of strings for filenames to treat as binary files, and thus ignored in _Goto Anything_ or _Find in Files_.",
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "index_include_patterns": {
+            "markdownDescription": "A list of strings for full file paths to index in the folder. This is added to the global setting of the same name. Anything not matching these patterns will be excluded from the index. This is checked before `index_exclude_patterns`.",
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "index_exclude_patterns": {
+            "markdownDescription": "A list of strings for file full paths to index in the folder. This is added to the global setting of the same name. This is checked after `index_include_patterns`.",
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "follow_symlinks": {
+            "markdownDescription": "If symlinks should be followed when building the folder tree.",
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "settings": {
+      "type": "object"
+    },
+    "build_systems": {
+      "type": "array",
+      "items": {
+        "allOf": [
+          {"$ref": "sublime://sublime-build"},
+          { "properties": {
+              "name": {
+                "type": "string"
+              }
+            },
+            "required": ["name"]
+          }
+        ]
+      }
+    }
+  }
 }

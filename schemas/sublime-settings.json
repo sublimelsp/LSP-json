@@ -1,7 +1,853 @@
 {
+  "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "sublime://sublime-settings",
   "title": "Sublime Text Settings",
   "allowComments": true,
   "allowTrailingCommas": true,
-  "type": "object"
+  "type": "object",
+  "properties": {
+    "color_scheme": {
+      "markdownDescription": "Sets the colors used within the text area.",
+      "type": "string",
+      "pattern": "^.+\\.(sublime-color-scheme|tmTheme)$",
+      "default": "Monokai.sublime-color-scheme"
+    },
+    "font_face": {
+      "markdownDescription": "Font face of the text area.\n`font_face` is overridden in the platform specific settings file, for example, \"Preferences (Linux).sublime-settings\".\n Because of this, setting it here will have no effect: you must set it in your User File Preferences.",
+      "type": "string",
+      "default": ""
+    },
+    "font_size": {
+      "markdownDescription": "Point size of the font used in the text area.\n`font_size` is overridden in the platform specific settings file, for example, \"Preferences (Linux).sublime-settings\".\n Because of this, setting it here will have no effect: you must set it in your User File Preferences.",
+      "type": "integer",
+      "default": 10
+    },
+    "font_options": {
+      "markdownDescription": "Options for text font.",
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "no_bold",
+          "no_italic",
+          "no_antialias",
+          "gray_antialias",
+          "no_liga",
+          "no_clig",
+          "no_calt",
+          "dlig",
+          "ss01",
+          "ss02",
+          "ss03",
+          "ss04",
+          "ss05",
+          "ss06",
+          "ss07",
+          "ss08",
+          "ss09",
+          "ss10",
+          "directwrite",
+          "gdi",
+          "dwrite_cleartype_classic",
+          "dwrite_cleartype_natural",
+          "subpixel_antialias",
+          "no_round"
+        ],
+        "markdownEnumDescriptions": [
+          "Disable bold text.",
+          "Disable italic text.",
+          "Disable antialiasing.",
+          "Use grayscale antialiasing instead of subpixel.",
+          "Disable standard ligatures (OpenType liga feature).",
+          "Disable contextual ligatures (OpenType clig feature).",
+          "Disable contextual alternatives (OpenType calt feature).",
+          "Enable discretionary ligatures (OpenType dlig feature).",
+          "Enable OpenType stylistic set 1.",
+          "Enable OpenType stylistic set 2.",
+          "Enable OpenType stylistic set 3.",
+          "Enable OpenType stylistic set 4.",
+          "Enable OpenType stylistic set 5.",
+          "Enable OpenType stylistic set 6.",
+          "Enable OpenType stylistic set 7.",
+          "Enable OpenType stylistic set 8.",
+          "Enable OpenType stylistic set 9.",
+          "Enable OpenType stylistic set 10.",
+          "Use DirectWrite for font rendering (default, Windows only!).",
+          "Use GDI for font rendering (Windows only!).",
+          "Only applicable to `directwrite` mode, should render fonts similar to traditional GDI (Windows only!).",
+          "Only applicable to `directwrite` mode, should render fonts similar to ClearType \"natural quality\" GDI (Windows only!).",
+          "Force ClearType antialiasing when disabled at system level (Windows only!).",
+          "Don't round glyph widths for monospace fonts when `font_size` is small (Mac only!)."
+        ]
+      },
+      "default": []
+    },
+    "theme_font_options": {
+      "markdownDescription": "Options for theme text font.",
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "no_antialias",
+          "gray_antialias",
+          "no_liga",
+          "no_clig",
+          "no_calt",
+          "dlig",
+          "ss01",
+          "ss02",
+          "ss03",
+          "ss04",
+          "ss05",
+          "ss06",
+          "ss07",
+          "ss08",
+          "ss09",
+          "ss10",
+          "directwrite",
+          "gdi",
+          "dwrite_cleartype_classic",
+          "dwrite_cleartype_natural",
+          "subpixel_antialias",
+          "no_round"
+        ],
+        "markdownEnumDescriptions": [
+          "Disable antialiasing.",
+          "Use grayscale antialiasing instead of subpixel.",
+          "Disable standard ligatures (OpenType liga feature).",
+          "Disable contextual ligatures (OpenType clig feature).",
+          "Disable contextual alternatives (OpenType calt feature).",
+          "Enable discretionary ligatures (OpenType dlig feature).",
+          "Enable OpenType stylistic set 1.",
+          "Enable OpenType stylistic set 2.",
+          "Enable OpenType stylistic set 3.",
+          "Enable OpenType stylistic set 4.",
+          "Enable OpenType stylistic set 5.",
+          "Enable OpenType stylistic set 6.",
+          "Enable OpenType stylistic set 7.",
+          "Enable OpenType stylistic set 8.",
+          "Enable OpenType stylistic set 9.",
+          "Enable OpenType stylistic set 10.",
+          "Use DirectWrite for font rendering (default, Windows only!).",
+          "Use GDI for font rendering (Windows only!).",
+          "Only applicable to `directwrite` mode, should render fonts similar to traditional GDI (Windows only!).",
+          "Only applicable to `directwrite` mode, should render fonts similar to ClearType \"natural quality\" GDI (Windows only!).",
+          "Force ClearType antialiasing when disabled at system level (Windows only!).",
+          "Don't round glyph widths for monospace fonts when `font_size` is small (Mac only!)."
+        ]
+      },
+      "default": []
+    },
+    "word_separators": {
+      "markdownDescription": "Characters that are considered to separate words.",
+      "type": "string",
+      "default": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?"
+    },
+    "line_numbers": {
+      "markdownDescription": "Set to `false` to prevent line numbers being drawn in the gutter.",
+      "type": "boolean",
+      "default": true
+    },
+    "gutter": {
+      "markdownDescription": "Set to `false` to hide the gutter altogether.",
+      "type": "boolean",
+      "default": true
+    },
+    "margin": {
+      "markdownDescription": "Spacing between the gutter and the text.",
+      "type": "integer",
+      "default": 4
+    },
+    "fold_buttons": {
+      "markdownDescription": "Fold buttons are the triangles shown in the gutter to fold regions of text.",
+      "type": "boolean",
+      "default": true
+    },
+    "fade_fold_buttons": {
+      "markdownDescription": "Hides the fold buttons unless the mouse is over the gutter.",
+      "type": "boolean",
+      "default": true
+    },
+    "mini_diff": {
+      "markdownDescription": "Indicate modified lines in the gutter.",
+      "enum": [true, false, "auto"],
+      "markdownEnumDescriptions": [
+        "Enable modified line indicators on all files.",
+        "Disable modified line indicators.",
+        "Enable modified line indicators on tracked files within Git."
+      ],
+      "default": "auto"
+    },
+    "rulers": {
+      "markdownDescription": "Columns in which to display vertical rulers.",
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "integer"},
+      "default": []
+    },
+    "spell_check": {
+      "markdownDescription": "Set to true to turn spell checking on by default.",
+      "type": "boolean",
+      "default": false
+    },
+    "tab_size": {
+      "markdownDescription": "The number of spaces a tab is considered equal to.",
+      "type": "integer",
+      "default": 4
+    },
+    "translate_tabs_to_spaces": {
+      "markdownDescription": "Set to true to insert spaces when tab is pressed.",
+      "type": "boolean",
+      "default": false
+    },
+    "use_tab_stops": {
+      "markdownDescription": "If `translate_tabs_to_spaces` is true, use_tab_stops will make tab and backspace insert/delete up to the next tabstop.",
+      "type": "boolean",
+      "default": true
+    },
+    "detect_indentation": {
+      "markdownDescription": "Set to `false` to disable detection of tabs vs. spaces on load.",
+      "type": "boolean",
+      "default": true
+    },
+    "auto_indent": {
+      "markdownDescription": "Calculates indentation automatically when pressing enter.",
+      "type": "boolean",
+      "default": true
+    },
+    "smart_indent": {
+      "markdownDescription": "Makes auto indent a little smarter, e.g., by indenting the next line after an if statement in C. Requires `auto_indent` to be enabled.",
+      "type": "boolean",
+      "default": true
+    },
+    "indent_to_bracket": {
+      "markdownDescription": "Adds whitespace up to the first open bracket when indenting. Requires `auto_indent` to be enabled.",
+      "type": "boolean",
+      "default": false
+    },
+    "trim_automatic_white_space": {
+      "markdownDescription": "Trims white space added by `auto_indent` when moving the caret off the line.",
+      "type": "boolean",
+      "default": true
+    },
+    "word_wrap": {
+      "markdownDescription": "Disables horizontal scrolling if enabled.",
+      "enum": [true, false, "auto"],
+      "markdownEnumDescriptions": [
+        "Enable word wrap.",
+        "Disable word wrap.",
+        "Enable word wrap for source code and disable it otherwise."
+      ],
+      "default": "auto"
+    },
+    "wrap_width": {
+      "markdownDescription": "Set to a value other than `0` to force wrapping at that column rather than the window width.",
+      "type": "integer",
+      "default": 0
+    },
+    "indent_subsequent_lines": {
+      "markdownDescription": "Set to `false` to prevent word wrapped lines from being indented to the same level",
+      "type": "boolean",
+      "default": true
+    },
+    "draw_centered": {
+      "markdownDescription": "Draws text centered in the window rather than left aligned.",
+      "type": "boolean",
+      "default": false
+    },
+    "auto_match_enabled": {
+      "markdownDescription": "Controls auto pairing of quotes, brackets etc.",
+      "type": "boolean",
+      "default": true
+    },
+    "auto_close_tags": {
+      "markdownDescription": "Automatically close HTML and XML tags when `</` is entered.",
+      "type": "boolean",
+      "default": true
+    },
+    "dictionary": {
+      "markdownDescription": "Word list to use for spell checking.",
+      "type": "string",
+      "default": "Packages/Language - English/en_US.dic"
+    },
+    "spelling_selector": {
+      "markdownDescription": "Sets which scopes are checked for spelling errors.",
+      "type": "string",
+      "default": "markup.raw, source string.quoted - punctuation - meta.preprocessor.include, source comment - source comment.block.preprocessor, -(source, constant, keyword, storage, support, variable, markup.underline.link, meta.tag)"
+    },
+    "draw_minimap_border": {
+      "markdownDescription": "Set to `true` to draw a border around the visible rectangle on the minimap. The color of the border will be determined by the \"minimapBorder\" key in the color scheme",
+      "type": "boolean",
+      "default": false
+    },
+    "always_show_minimap_viewport": {
+      "markdownDescription": "Always visualise the viewport on the minimap, as opposed to only showing it on mouse over.",
+      "type": "boolean",
+      "default": false
+    },
+    "highlight_line": {
+      "markdownDescription": "If enabled, will highlight any line with a caret.",
+      "type": "boolean",
+      "default": false
+    },
+    "highlight_gutter": {
+      "markdownDescription": "If enabled, will highlight the gutter for any line with a caret.",
+      "type": "boolean",
+      "default": true
+    },
+    "highlight_line_number": {
+      "markdownDescription": "If enabled, will highlight the line number in the gutter for any line with a caret depending on the color scheme.",
+      "type": "boolean",
+      "default": true
+    },
+    "caret_style": {
+      "markdownDescription": "The caret style.\nPrevious versions of Sublime Text used \"smooth\" by default.",
+      "enum": [
+        "smooth",
+        "phase",
+        "blink",
+        "solid"
+      ],
+      "default": "solid"
+    },
+    "caret_extra_top": {
+      "markdownDescription": "Controls the size of the caret",
+      "type": "integer",
+      "default": 4
+    },
+    "caret_extra_bottom": {
+      "markdownDescription": "Controls the size of the caret",
+      "type": "integer",
+      "default": 4
+    },
+    "caret_extra_width": {
+      "markdownDescription": "Controls the size of the caret",
+      "type": "integer",
+      "default": 1
+    },
+    "block_caret": {
+      "markdownDescription": "When enabled, the caret will be drawn as a rectangle, using the width of the current character.",
+      "type": "boolean",
+      "default": false
+    },
+    "match_brackets": {
+      "markdownDescription": "Set to `false` to disable underlining the brackets surrounding the caret.",
+      "type": "boolean",
+      "default": true
+    },
+    "match_brackets_content": {
+      "markdownDescription": "Set to `false` if you'd rather only highlight the brackets when the caret is next to one.",
+      "type": "boolean",
+      "default": true
+    },
+    "match_brackets_square": {
+      "markdownDescription": "Set to `false` to not highlight square brackets. This only takes effect if `match_brackets` is `true`.",
+      "type": "boolean",
+      "default": true
+    },
+    "match_brackets_braces": {
+      "markdownDescription": "Set to `false` to not highlight curly brackets. This only takes effect if `match_brackets` is `true`.",
+      "type": "boolean",
+      "default": true
+    },
+    "match_brackets_angle": {
+      "markdownDescription": "Set to `false` to not highlight angle brackets. This only takes effect if `match_brackets` is `true`.",
+      "type": "boolean",
+      "default": true
+    },
+    "match_tags": {
+      "markdownDescription": "Enables visualization of the matching tag in HTML and XML.",
+      "type": "boolean",
+      "default": true
+    },
+    "match_selection": {
+      "markdownDescription": "Highlights other occurrences of the currently selected text.",
+      "type": "boolean",
+      "default": true
+    },
+    "line_padding_top": {
+      "markdownDescription": "Additional spacing at the top of each line, in pixels.",
+      "type": "integer",
+      "default": 0
+    },
+    "line_padding_bottom": {
+      "markdownDescription": "Additional spacing at the bottom of each line, in pixels.",
+      "type": "integer",
+      "default": 0
+    },
+    "scroll_past_end": {
+      "markdownDescription": "Set to `false` to disable scrolling past the end of the buffer.\nOn Mac, this value is overridden in the platform specific settings, so you'll need to place this line in your user settings to override it.",
+      "type": "boolean",
+      "default": true
+    },
+    "move_to_limit_on_up_down": {
+      "markdownDescription": "This controls what happens when pressing up or down when on the first or last line.\nOn Mac, this value is overridden in the platform specific settings, so you'll need to place this line in your user settings to override it.",
+      "type": "boolean",
+      "default": false
+    },
+    "mouse_wheel_switches_tabs": {
+      "markdownDescription": "Linux only.",
+      "type": "boolean",
+      "default": true
+    },
+    "draw_white_space": {
+      "markdownDescription": "Controls when white space is drawn. Any of the valid options may be combined.\nFor example [\"selection\", \"trailing\", \"isolated\"] will draw whitespace at the end of any lines and under the selection.",
+      "oneOf": [
+        {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "selection",
+              "leading",
+              "enclosed",
+              "trailing",
+              "isolated",
+              "all"
+            ]
+          },
+          "default": ["selection"]
+        },
+        {
+          "type": "string",
+          "enum": ["all"]
+        }
+      ]
+    },
+    "draw_unicode_white_space": {
+      "markdownDescription": "Controls how non-ascii white space is drawn.\n- \"none\": Draw unicode white space verbatim, eg. hiding zero-width spaces.\n- \"punctuation\": Draw codepoints of unicode white space defined as punctuation. This includes NBSP, but excludes the CJK Ideographic Space.\n- \"all\": Draw codepoints of all non-ascii space characters.",
+      "type": "string",
+      "default": "punctuation"
+    },
+    "draw_indent_guides": {
+      "markdownDescription": "Set to `false` to turn off the indentation guides.\nThe color and width of the indent guides may be customized by editing the corresponding .tmTheme file, and specifying the colors \"guide\", \"activeGuide\" and \"stackGuide\".",
+      "type": "boolean",
+      "default": true
+    },
+    "indent_guide_options": {
+      "markdownDescription": "Controls how the indent guides are drawn, valid options are \"draw_normal\" and \"draw_active\". `draw_active` will draw the indent guides containing the caret in a different color.",
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "draw_normal",
+          "draw_active"
+        ]
+      },
+      "default": ["draw_normal"]
+    },
+    "trim_trailing_white_space_on_save": {
+      "markdownDescription": "Set to `true` to enable removing trailing white space on save.",
+      "type": "boolean",
+      "default": false
+    },
+    "trim_only_modified_white_space": {
+      "markdownDescription": "Only trim whitespace on save for the parts of a file that have been modified by you. If there is trailing whitespace in other parts of the file they are left alone.",
+      "type": "boolean",
+      "default": true
+    },
+    "ensure_newline_at_eof_on_save": {
+      "markdownDescription": "Set to `true` to ensure the last line of the file ends in a newline character when saving.",
+      "type": "boolean",
+      "default": false
+    },
+    "save_on_focus_lost": {
+      "markdownDescription": "Set to `true` to automatically save files when switching to a different file or application.",
+      "type": "boolean",
+      "default": false
+    },
+    "fallback_encoding": {
+      "markdownDescription": "The encoding to use when the encoding can't be determined automatically. ASCII, UTF-8 and UTF-16 encodings will be automatically detected.",
+      "type": "string",
+      "examples": ["ASCII", "UTF-8", "UTF-16"]
+    },
+    "default_encoding": {
+      "markdownDescription": "Encoding used when saving new files, and files opened with an undefined encoding (e.g., plain ascii files). If a file is opened with a specific encoding (either detected or given explicitly), this setting will be ignored, and the file will be saved with the encoding it was opened with.",
+      "type": "string",
+      "examples": ["ASCII", "UTF-8", "UTF-16"],
+      "default": "UTF-8"
+    },
+    "enable_hexadecimal_encoding": {
+      "markdownDescription": "Files containing null bytes are opened as hexadecimal by default.",
+      "type": "boolean",
+      "default": true
+    },
+    "default_line_ending": {
+      "markdownDescription": "Determines what character(s) are used to terminate each line in new files.\nValid values are \"system\" (whatever the OS uses), \"windows\" (CRLF) and \"unix\" (LF only).",
+      "enum": ["system", "windows", "unix"],
+      "default": "system"
+    },
+    "show_definitions": {
+      "markdownDescription": "When enabled, hovering over a word will show a popup listing all possible locations for the definition symbol. Requires index_files.",
+      "type": "boolean",
+      "default": true
+    },
+    "tab_completion": {
+      "markdownDescription": "When enabled, pressing tab will insert the best matching completion.\nWhen disabled, tab will only trigger snippets or insert a tab. Shift+tab can be used to insert an explicit tab when tab_completion is enabled.",
+      "type": "boolean",
+      "default": true
+    },
+    "auto_complete": {
+      "markdownDescription": "Enable auto complete to be triggered automatically when typing.",
+      "type": "boolean",
+      "default": true
+    },
+    "auto_complete_size_limit": {
+      "markdownDescription": "The maximum file size where auto complete will be automatically triggered.",
+      "type": "integer",
+      "default": 4194304
+    },
+    "auto_complete_delay": {
+      "markdownDescription": "The delay, in ms, before the auto complete window is shown after typing.",
+      "type": "integer",
+      "default": 50
+    },
+    "auto_complete_selector": {
+      "markdownDescription": "Controls what scopes auto complete will be triggered in.",
+      "type": "string",
+      "default": "meta.tag - punctuation.definition.tag.begin, source - comment - string.quoted.double.block - string.quoted.single.block - string.unquoted.heredoc"
+    },
+    "auto_complete_triggers": {
+      "markdownDescription": "Additional situations to trigger auto complete.",
+      "uniqueItems": true,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "selector": {"type": "string"},
+          "characters": {"type": "string"}
+        },
+        "required": ["selector"]
+      },
+      "default": [
+        {"selector": "text.html", "characters": "<"},
+        {"selector": "punctuation.accessor"}
+      ]
+    },
+    "auto_complete_commit_on_tab": {
+      "markdownDescription": "By default, auto complete will commit the current completion on enter. This setting can be used to make it complete on tab instead. Completing on tab is generally a superior option, as it removes ambiguity between committing the completion and inserting a newline.",
+      "type": "boolean",
+      "default": false
+    },
+    "auto_complete_with_fields": {
+      "markdownDescription": "Controls if auto complete is shown when snippet fields are active. Only relevant if `auto_complete_commit_on_tab` is `true`.",
+      "type": "boolean",
+      "default": false
+    },
+    "auto_complete_cycle": {
+      "markdownDescription": "Controls what happens when pressing the up key while the first item in the auto complete window is selected: if false, the window is hidden, otherwise the last item in the window is selected. Likewise for the down key when the last item is selected.",
+      "type": "boolean",
+      "default": false
+    },
+    "auto_complete_use_index": {
+      "markdownDescription": "Auto complete will used indexed data to provide completions from other files when this is enabled.",
+      "type": "boolean",
+      "default": true
+    },
+    "auto_complete_preserve_order": {
+      "markdownDescription": "Controls how the auto complete results are reordered when typing:\n- \"none\" will fully reorder the results according to how well the completion matches the typed text.\n- \"some\" will partially reorder the results, taking into account how well the completion matches whats typed, and likelihood of the completion.\n- \"strict\" will never reorder the results.",
+      "enum": ["none", "some", "strict"],
+      "default": "some"
+    },
+    "auto_complete_trailing_symbols": {
+      "markdownDescription": "Add trailing symbols (e.g., '.', '()') if the auto complete engine thinks they're likely enough.",
+      "type": "boolean",
+      "default": true
+    },
+    "auto_complete_trailing_spaces": {
+      "markdownDescription": "Add a space after completions if the auto complete engine thinks they're likely enough.",
+      "type": "boolean",
+      "default": true
+    },
+    "auto_complete_include_snippets": {
+      "markdownDescription": "Snippets will not be included in the auto complete when this is `false`. They can still be triggered by typing their tab trigger in, and pressing tab when auto complete is not showing.",
+      "type": "boolean",
+      "default": true
+    },
+    "auto_complete_include_snippets_when_typing": {
+      "markdownDescription": "When this is set to false, snippets won't be present in the auto complete dialog when typing, instead they'll only be shown in the auto complete dialog when it's explicitly triggered.",
+      "type": "boolean",
+      "default": true
+    },
+    "ignored_snippets": {
+      "markdownDescription": "A list of wildcard patterns specifying which snippet files to ignore. For example, to ignore all the default C++ snippets, set this to `[\"C++/*\"]`",
+      "examples": [["C++/*"]],
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "auto_hide_menu": {
+      "markdownDescription": "Hides menu automatically when typing. Moving the mouse will show it again.",
+      "type": "boolean",
+      "default": false
+    },
+    "auto_hide_tabs": {
+      "markdownDescription": "Hides tabs automatically when typing. Moving the mouse will show them again.",
+      "type": "boolean",
+      "default": false
+    },
+    "auto_hide_status_bar": {
+      "markdownDescription": "Hides status bar automatically when typing. Moving the mouse will show it again.",
+      "type": "boolean",
+      "default": false
+    },
+    "reveal_tabs_with_timeout": {
+      "markdownDescription": "Related to `auto_hide_tabs`, if this is enabled, tabs will be momentarily displayed when switching files. Tabs will automatically be hidden upon resuming typing or after a fixed amount of time.",
+      "type": "boolean",
+      "default": false
+    },
+    "shift_tab_unindent": {
+      "markdownDescription": "By default, shift+tab will only unindent if the selection spans multiple lines.\nWhen pressing shift+tab at other times, it'll insert a tab character - this allows tabs to be inserted when tab_completion is enabled.\nSet this to `true` to make shift+tab always unindent, instead of inserting tabs.",
+      "type": "boolean",
+      "default": false
+    },
+    "copy_with_empty_selection": {
+      "markdownDescription": "If true, the copy and cut commands will operate on the current line when the selection is empty, rather than doing nothing.",
+      "type": "boolean",
+      "default": true
+    },
+    "find_selected_text": {
+      "markdownDescription": "If true, the selected text will be copied into the find panel when it's shown.\nOn Mac, this value is overridden in the platform specific settings.",
+      "type": "boolean",
+      "default": true
+    },
+    "auto_find_in_selection": {
+      "markdownDescription": "When auto_find_in_selection is enabled, the \"Find in Selection\" flag will be enabled automatically when multiple lines of text are selected.",
+      "type": "boolean",
+      "default": false,
+      "scope": "view"
+    },
+    "drag_text": {
+      "markdownDescription": "When enabled, clicking on selected text will begin a drag-drop operation.",
+      "type": "boolean",
+      "default": true
+    },
+    "theme": {
+      "markdownDescription": "The theme controls the look of Sublime Text's UI (buttons, tabs, scroll bars, etc).",
+      "type": "string",
+      "pattern": "^.*\\.sublime-theme",
+      "default": "Default.sublime-theme"
+    },
+    "scroll_speed": {
+      "markdownDescription": "Set to `0` to disable smooth scrolling. Set to a value between `0` and `1` to scroll slower, or set to larger than `1` to scroll faster.",
+      "type": "number",
+      "minimum": 0.0,
+      "default": 1.0
+    },
+    "tree_animation_enabled": {
+      "markdownDescription": "Controls side bar animation when expanding or collapsing folders.",
+      "type": "boolean",
+      "default": true
+    },
+    "animation_enabled": {
+      "markdownDescription": "Controls animation throughout the application.",
+      "type": "boolean",
+      "default": true
+    },
+    "highlight_modified_tabs": {
+      "markdownDescription": "Makes tabs with modified files more visible.",
+      "type": "boolean",
+      "default": false
+    },
+    "show_tab_close_buttons": {
+      "markdownDescription": "Whether to show a close button on the right of the tab.",
+      "type": "boolean",
+      "default": true
+    },
+    "bold_folder_labels": {
+      "markdownDescription": "Shows folders in the side bar in bold.",
+      "type": "boolean",
+      "default": false
+    },
+    "adaptive_dividers": {
+      "markdownDescription": "Draws divider lines between sections of the UI when using the Adaptive theme.",
+      "type": "boolean",
+      "default": true
+    },
+    "native_tabs": {
+      "markdownDescription": "Mac only. Controls use of macOS tabs in 10.12 and newer.\nEach native tab contains an entire project, thus allowing multiple projects in a single window.",
+      "enum": ["system", "preferred", "disabled"],
+      "default": "system"
+    },
+    "overlay_scroll_bars": {
+      "enum": ["system", "enabled", "disabled"],
+      "default": "system"
+    },
+    "enable_tab_scrolling": {
+      "markdownDescription": "Allows tabs to scroll left and right, instead of simply shrinking.",
+      "type": "boolean",
+      "default": true
+    },
+    "show_encoding": {
+      "markdownDescription": "Displays file encoding in the status bar.",
+      "type": "boolean",
+      "default": false
+    },
+    "show_line_endings": {
+      "markdownDescription": "Displays line endings in the status bar.",
+      "type": "boolean",
+      "default": false
+    },
+    "ui_scale": {
+      "markdownDescription": "Magnifies the entire user interface. Sublime Text must be restarted for this to take effect.\n1.0 is normal scale, 0.0 allows for auto-detection based on text scale with older Linux configurations that don't fully support GTK display scaling.",
+      "type": "number",
+      "minimum": 0.0,
+      "default": 0.0
+    },
+    "hardware_acceleration": {
+      "markdownDescription": "Enables hardware accelerated rendering.\n This moves rendering to your GPU, allowing for faster rendering at higher resolutions. Changing this setting requires an application restart to take effect.\n- \"none\": Performs CPU rendering.\n- \"opengl\": Uses OpenGL for rendering. Minimum required version is 4.1\n\nOn Mac, this value is overridden in the platform specific settings.",
+      "enum": ["none", "opengl"],
+      "default": "none"
+    },
+    "hot_exit": {
+      "markdownDescription": "Exiting the application with hot_exit enabled will cause it to close immediately without prompting. Unsaved modifications and open files will be preserved and restored when next starting.\n\nClosing a window with an associated project will also close the window without prompting, preserving unsaved changes in the workspace file alongside the project.\n\nHot exit has different modes to choose from:\n- \"always\": Always perform a hot exit when the application exits. This includes when the last window is closed on relevant platforms.\n- \"only_on_quit\": Only perform a hot exit when the application is asked to exit, not when the last window is closed. This setting is only used on Windows and Linux.\n- \"disabled\": Disable hot exit.",
+      "enum": ["always", "only_on_quit", "disabled"],
+      "default": "always"
+    },
+    "remember_full_screen": {
+      "markdownDescription": "allows Sublime Text to start in full screen mode if it was exited in full screen mode. When set to `false`, Sublime Text will never start in full screen mode.",
+      "type": "boolean",
+      "default": false
+    },
+    "shell_environment": {
+      "markdownDescription": "Mac only. If the user's default shell should be invoked to obtain the user's customized environment variables. May be a boolean, or a string of the path the shell to invoke. Sublime Text must be restarted for this to take effect.",
+      "type": "boolean",
+      "default": true
+    },
+    "reload_file_on_change": {
+      "markdownDescription": "Whether to reload a file if it has changed on disk.",
+      "type": "boolean",
+      "default": true
+    },
+    "always_prompt_for_file_reload": {
+      "markdownDescription": "Always prompt before reloading a file, even if the file hasn't been modified. If a file has unsaved changes, a prompt will always be shown. Will only show if `reload_file_on_change` is `true`.",
+      "type": "boolean",
+      "default": false
+    },
+    "open_files_in_new_window": {
+      "markdownDescription": "Mac only: When files are opened from finder, or by dragging onto the dock icon, this controls if a new window is created or not.",
+      "type": "boolean",
+      "default": true
+    },
+    "create_window_at_startup": {
+      "markdownDescription": "Mac only: This controls if an empty window is created at startup or not.",
+      "type": "boolean",
+      "default": true
+    },
+    "show_navigation_bar": {
+      "markdownDescription": "Mac only: This controls if an empty window is created at startup or not.",
+      "type": "boolean",
+      "default": true
+    },
+    "close_windows_when_empty": {
+      "markdownDescription": "Set to true to close windows as soon as the last file is closed, unless there's a folder open within the window. On Mac, this value is overridden in the platform specific settings, so you'll need to place this line in your user settings to override it. Set to true on Mac.",
+      "type": "boolean",
+      "default": false
+    },
+    "show_full_path": {
+      "markdownDescription": "Show the full path to files in the title bar.\nOn Mac, this value is overridden in the platform specific settings, with a default value of `false`.",
+      "type": "boolean",
+      "default": true
+    },
+    "show_rel_path": {
+      "markdownDescription": "Show the relative path to files in the title bar. This overrides show_full_path for files that are listed in the side bar, however `show_full_path` is still used for other files.",
+      "type": "boolean",
+      "default": false
+    },
+    "show_project_first": {
+      "markdownDescription": "Show \"project - file\" or \"file - project\" in the title bar.",
+      "type": "boolean",
+      "default": false
+    },
+    "show_panel_on_build": {
+      "markdownDescription": "Shows the Build Results panel when building. If set to false, the Build Results can be shown via the Tools/Build Results menu.",
+      "type": "boolean",
+      "default": true
+    },
+    "show_errors_inline": {
+      "markdownDescription": "Shows build errors just under the line on which they occur.",
+      "type": "boolean",
+      "default": true
+    },
+    "show_git_status": {
+      "markdownDescription": "Shows git repository information next to files in sidebar and in the status bar. Sublime Text has to be restarted for this to take effect.",
+      "type": "boolean",
+      "default": true
+    },
+    "allow_git_home_dir": {
+      "markdownDescription": "Enables showing git status for a git repository in the user's home directory.\nThis is disabled by default since it is typically accidental and can cause heavy CPU usage related to file system watches.",
+      "type": "boolean",
+      "default": false
+    },
+    "git_diff_target": {
+      "markdownDescription": "This setting determines whether tracked Git files should be diffed against the index or HEAD.",
+      "enum": ["index", "head"],
+      "default": "index"
+    },
+    "preview_on_click": {
+      "markdownDescription": "Preview file contents when clicking on a file in the side bar.\nDouble clicking or editing the preview will open the file and assign it a tab.",
+      "type": "boolean",
+      "default": true
+    },
+    "folder_exclude_patterns": {
+      "markdownDescription": "Controls which folders are not listed in the side bar.\nThese can also be set on a per-project basis.",
+      "type": "array",
+      "items": {"type": "string"},
+      "default": [".svn", ".git", ".hg", "CVS"]
+    },
+    "file_exclude_patterns": {
+      "markdownDescription": "Controls which files are not listed in the side bar.\nThese can also be set on a per-project basis.",
+      "type": "array",
+      "items": {"type": "string"},
+      "default": ["*.pyc", "*.pyo", "*.exe", "*.dll", "*.obj","*.o", "*.a", "*.lib", "*.so", "*.dylib", "*.ncb", "*.sdf", "*.suo", "*.pdb", "*.idb", ".DS_Store", "*.class", "*.psd", "*.db", "*.sublime-workspace"]
+    },
+    "binary_file_patterns": {
+      "markdownDescription": "These files will still show up in the side bar, but won't be included in Goto Anything or Find in Files.",
+      "type": "array",
+      "items": {"type": "string"},
+      "default": ["*.jpg", "*.jpeg", "*.png", "*.gif", "*.ttf", "*.tga", "*.dds", "*.ico", "*.eot", "*.pdf", "*.swf", "*.jar", "*.zip"]
+    },
+    "index_files": {
+      "markdownDescription": "File indexing parses all files in the side bar, and builds an index of their symbols. This is required for Goto Definition to work.",
+      "type": "boolean",
+      "default": true
+    },
+    "index_workers": {
+      "markdownDescription": "Set the number threads to use for indexing. A value of 0 will make Sublime Text guess based on the number of cores.\nUse the `index_files` setting to disable all workers.",
+      "type": "integer",
+      "default": 0
+    },
+    "index_exclude_gitignore": {
+      "markdownDescription": "Sets whether the indexer should exclude files ignored by git.",
+      "type": "boolean",
+      "default": true
+    },
+    "index_exclude_unknown_extensions": {
+      "markdownDescription": "Whether unknown file extensions should be checked for indexing or skipped entirely.\nIf a file extension is not being recognised we suggest setting/changing the default syntax for that extension instead of turning this setting off.",
+      "type": "boolean",
+      "default": true
+    },
+    "index_exclude_patterns": {
+      "markdownDescription": "Indicates which files won't be indexed.",
+      "type": "array",
+      "items": {"type": "string"},
+      "default": ["*.log"]
+    },
+    "index_skip_unknown_extensions": {
+      "markdownDescription": "Whether unknown file extensions should be checked for indexing or skipped entirely. If a file extension is not being recognised we suggest setting/changing the default syntax for that extension instead of turning this setting off.",
+      "type": "boolean",
+      "default": true
+    },
+    "ignored_packages": {
+      "markdownDescription": "List any packages to ignore here.\nWhen removing entries from this list, a restart may be required if the package contains plugins.",
+      "type": "array",
+      "items": {"type": "string"},
+      "default": ["Vintage"]
+    }
+  }
 }

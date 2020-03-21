@@ -1,14 +1,15 @@
 {
-    "allowComments": true,
-    "allowTrailingCommas": true,
-    "title": "JSON schema for the TypeScript compiler's configuration file",
-    "type": "object",
-    "default": {
-        "compilerOptions": {
-            "module": "commonjs"
-        },
-        "exclude": [
-            "node_modules"
-        ]
-    }
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "allowComments": true,
+  "allowTrailingCommas": true,
+  "title": "JSON schema for the TypeScript compiler's configuration file",
+  "type": "object",
+  "default": {
+    "compilerOptions": {
+      "module": "commonjs"
+    },
+    "exclude": [
+      "node_modules"
+    ]
+  }
 }
