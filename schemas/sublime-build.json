@@ -1,7 +1,122 @@
 {
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "sublime://sublime-build",
   "title": "Sublime Text Build System",
   "allowComments": true,
   "allowTrailingCommas": true,
-  "type": "object"
+  "type": "object",
+  "properties": {
+    "selector": {
+      "type": "string",
+      "markdownDescription": "The base scope name of the syntax that this build system should be enabled for."
+    },
+    "file_patterns": {
+      "markdownDescription": "A list of file name patterns the build system should be enabled for.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "keyfiles": {
+      "markdownDescription": "A list of file names, if present in one of the opened folders, that will cause the build system to be enabled.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "variants": {
+      "markdownDescription": "A list of subsidiary build systems that will inherit the options from the top-level build system. Each variant needs to specify a `name` key, and may override or add options to the top-level build system",
+      "type": "array",
+      "items": {
+        "allOf": [
+          {"$ref": "#"},
+          { "properties": {
+              "name": {
+                "type": "string"
+              }
+            },
+            "required": ["name"]
+          }
+        ]
+      }
+    },
+    "cancel": {
+      "markdownDescription": "A string command name, or an object of string options. If a string is specified, the command specified will be used to cancel the build. If an object, the primary target will be called, with these options added on. This only needs to be specified when using a custom `target`.",
+      "type": ["string", "object"]
+    },
+    "target": {
+      "markdownDescription": "The command to run when the build system is invoked. The default value of exec allows use of the additional options specified in [exec Target Options](https://www.sublimetext.com/docs/3/build_systems.html#exec_options). If a value other than `exec` is specified, none of the options in exec Target Options will do anything. See the [Advanced Example](https://www.sublimetext.com/docs/3/build_systems.html#advanced_example) for a complete example.",
+      "type": "string"
+    },
+    "windows": {
+      "allOf": [
+        {"$ref": "#"},
+        {
+          "markdownDescription": "An object of options to use when the build system is being executed on a Windows machine.\nExample:\n```\n{\n\t\"cmd\": [\"my_command.exe\", \"/D\", \"$file\"]\n}\n```"
+        }
+      ]
+    },
+    "osx": {
+      "allOf": [
+        {"$ref": "#"},
+        {
+          "markdownDescription": "An object of options to use when the build system is being executed on a Mac machine.\nExample:\n```\n{\n\t\"cmd\": [\"/Applications/MyProgram.app/Contents/MacOS/my_command\", \"-d\", \"$file\"]\n}"
+        }
+      ]
+    },
+    "linux": {
+      "allOf": [
+        {"$ref": "#"},
+        {
+          "markdownDescription": "An object of options to use when the build system is being executed on a Linux machine.\nExample:\n```\n{\n\t\"cmd\": [\"/usr/local/bin/my_command\", \"-d\", \"$file\"]\n}"
+        }
+      ]
+    },
+    "cmd": {
+      "markdownDescription": "A list of strings specifying the executable to run, plus any arguments to pass to it. Shell constructs such as piping and redirection are not supported – see [shell_cmd](https://www.sublimetext.com/docs/3/build_systems.html#exec_option-shell_cmd). May use [variables](https://www.sublimetext.com/docs/3/build_systems.html#variables).",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "shell_cmd": {
+      "markdownDescription": "A string specifying a shell command to execute. Unlike the [cmd](https://www.sublimetext.com/docs/3/build_systems.html#exec_option-cmd) option, this does allow piping and redirection. Will use `bash` on Mac and Linux machine, and `cmd.exe` on Windows. May use [variables](https://www.sublimetext.com/docs/3/build_systems.html#variables).\nExample: `\"my_command \\\"$file\\\" | other_command\"`",
+      "type": "string"
+    },
+    "working_dir": {
+      "markdownDescription": "A string specifying the directory to execute the [cmd](https://www.sublimetext.com/docs/3/build_systems.html#exec_option-cmd) or [shell_cmd](https://www.sublimetext.com/docs/3/build_systems.html#exec_option-shell_cmd) within. May use [variables](https://www.sublimetext.com/docs/3/build_systems.html#variables).\nExample: `\"$file_path\"`",
+      "type": "string"
+    },
+    "file_regex": {
+      "markdownDescription": "A string containing a regular expression to run on the build output to match file information. The matched file information is used to enable result navigation. The regex should capture 2, 3 or 4 groups.\n\nThe capture groups should be:\n\n1. filename\n2. line number\n3. column number\n4. message\n\nExample: `\"^\\s*(\\S[^:]*)\\((\\d+):(\\d+)\\): ([^\\n]+)\"`",
+      "type": "string",
+      "format": "regex"
+    },
+    "line_regex": {
+      "markdownDescription": "A string containing a regular expression to run on the build output to match line information. The matched file information is used to enable result navigation. The regex should capture 1, 2 or 3 groups.\n\nThe groups should capture:\n\n1.line number\n2. column number\n3. error message\n\nThis regular expression is only necessary when some results contain strictly a line number, line and column numbers, or line and column numbers with a message. When such a match is made, the [file_regex](https://www.sublimetext.com/docs/3/build_systems.html#exec_option-file_regex) option will be used to search backwards to find the appropriate file name.\n\nExample: `\"^\\s*line (\\d+) col (\\d+): ([^\\n]+)\"",
+      "type": "string",
+      "format": "regex"
+    },
+    "encoding": {
+      "markdownDescription": "A string specifying the encoding of the build system output. Uses [Python codec names](https://docs.python.org/3.3/library/codecs.html#id3). Defaults to `\"utf-8\"`.\n\nExample: `\"iso-8859-1\"`",
+      "type": "string"
+    },
+    "env": {
+      "markdownDescription": "An object containing environment variable values to use when running the [cmd](https://www.sublimetext.com/docs/3/build_systems.html#exec_option-cmd) or [shell_cmd](https://www.sublimetext.com/docs/3/build_systems.html#exec_option-shell_cmd).\nExample:\n```\n{\n\t\"PYTHONIOENCODING\": \"utf-8\"\n}",
+      "type": "object"
+    },
+    "quiet": {
+      "markdownDescription": "A boolean that reduces the amount of output about the build system invocation.",
+      "type": "boolean"
+    },
+    "word_wrap": {
+      "markdownDescription": "A boolean that turns on word wrapping in the build system output panel.",
+      "type": "boolean"
+    },
+    "syntax": {
+      "markdownDescription": "A string specifying the syntax file to use to highlight the build system output panel.\nExample: `\"Packages/JavaScript/JSON.sublime-syntax\"`",
+      "type": "string",
+      "pattern": "^Packages/.+\\.(sublime-syntax|tmLanguage)"
+    }
+  }
 }
