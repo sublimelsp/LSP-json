@@ -4,5 +4,5 @@
   "title": "Sublime Text Theme",
   "allowComments": true,
   "allowTrailingCommas": true,
-  "type": "array"
+  "type": ["array", "object"]
 }
