@@ -88,7 +88,7 @@ class LspJSONPlugin(LanguageHandler):
         if not is_node_installed():
             sublime.status_message('Please install Node.js for the JSON server to work.')
             return False
-        return True
+        return server.ready
 
     def on_initialized(self, client) -> None:
         client.on_request(
