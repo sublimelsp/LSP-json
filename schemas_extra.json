@@ -48,6 +48,15 @@
     "url": "sublime://schemas/package-json-eslint"
   },
   {
+    "fileMatch": [
+      "Preferences.sublime-settings",
+      "Preferences%20%28Linux%29.sublime-settings",
+      "Preferences%20%28OSX%29.sublime-settings",
+      "Preferences%20%28Windows%29.sublime-settings"
+    ],
+    "url": "sublime://schemas/preferences.sublime-settings"
+  },
+  {
     "fileMatch": ["tsconfig.json", "tsconfig.*.json", "tsconfig-*.json"],
     "url": "sublime://schemas/tsconfig"
   },
