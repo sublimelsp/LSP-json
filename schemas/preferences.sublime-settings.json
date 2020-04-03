@@ -29,6 +29,8 @@
       "items": {
         "type": "string",
         "enum": [
+          "bold",
+          "italic",
           "no_bold",
           "no_italic",
           "no_antialias",
@@ -55,6 +57,8 @@
           "no_round"
         ],
         "markdownEnumDescriptions": [
+          "Make all text bold.",
+          "Make all text italic.",
           "Disable bold text.",
           "Disable italic text.",
           "Disable antialiasing.",
@@ -426,6 +430,11 @@
       "type": "boolean",
       "default": true
     },
+    "draw_shadows": {
+      "markdownDescription": "A boolean that can disable the shadow effect when any line is longer than the window.",
+      "type": "boolean",
+      "default": true
+    },
     "indent_guide_options": {
       "markdownDescription": "Controls how the indent guides are drawn, valid options are \"draw_normal\" and \"draw_active\". `draw_active` will draw the indent guides containing the caret in a different color.",
       "type": "array",
@@ -433,7 +442,9 @@
       "items": {
         "enum": [
           "draw_normal",
-          "draw_active"
+          "draw_active",
+          "draw_active_single",
+          "solid"
         ]
       },
       "default": ["draw_normal"]
