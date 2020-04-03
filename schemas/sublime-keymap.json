@@ -79,6 +79,7 @@
           },
           "operand": {
             "oneOf": [
+              { "type": "integer" },
               { "type": "string" },
               { "type": "boolean" }
             ]
