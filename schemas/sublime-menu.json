@@ -4,5 +4,62 @@
   "title": "Sublime Text Menu",
   "allowComments": true,
   "allowTrailingCommas": true,
-  "type": "array"
+  "definitions": {
+    "menuItemSchema": {
+      "type": "object",
+      "properties": {
+        "args": {
+          "type": "object",
+          "description": "Arguments to pass to the command to execute"
+        },
+        "caption": {
+          "type": "string",
+          "description": "A text of the menu entry"
+        },
+        "checkbox": {
+          "type": "boolean",
+          "description": "An item is a checkbox type if true",
+          "default": false
+        },
+        "children": {
+          "type": "array",
+          "description": "A list of menu entries to create a submenu from",
+          "items": {
+            "$ref": "#/definitions/menuItemSchema"
+          }
+        },
+        "command": {
+          "type": "string",
+          "description": "A string of the command to execute when the entry is activated"
+        },
+        "id": {
+          "type": "string",
+          "markdownDescription": "A unique string for the menu entry. Used for menu entries with `children` to allow adding additional child entries."
+        },
+        "mnemonic": {
+          "type": "string",
+          "markdownDescription": "A character to use as the key to press to activate the entry. Only applies to Windows and Linux. Must match the case of the character in the `caption`."
+        },
+        "platform": {
+          "type": "string",
+          "enum": [
+            "Linux",
+            "!Linux",
+            "OSX",
+            "!OSX",
+            "Windows",
+            "!Windows"
+          ],
+          "markdownDescription": "One of the strings: `OSX`, `!OSX`, `Windows`, `!Windows`, `Linux` or `!Linux`. Controls what platforms the entry is shown on."
+        }
+      },
+      "uniqueItems": true,
+      "additionalProperties": false
+    }
+  },
+  "type": "array",
+  "description": "Specifies a menu that can either modify  in the application",
+  "items": {
+    "$ref": "#/definitions/menuItemSchema"
+  }
 }
