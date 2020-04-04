@@ -4,5 +4,47 @@
   "title": "Sublime Text Completions",
   "allowComments": true,
   "allowTrailingCommas": true,
-  "type": "object"
+  "type": "object",
+  "required": [
+    "scope",
+    "completions"
+  ],
+  "properties": {
+    "scope": {
+      "type": "string",
+      "description": "A selector to match the scope name for completions to be enabled"
+    },
+    "completions": {
+      "type": "array",
+      "description": "A list of completion objects with trigger and contents. Alternatively a list of plain completion strings.",
+      "items": {
+        "oneOf": [
+          {
+            "type": "string",
+            "description": "A completion string that is at the same time a trigger for that completion"
+          },
+          {
+            "type": "object",
+            "required": [
+              "trigger",
+              "contents"
+            ],
+            "properties": {
+              "trigger": {
+                "type": "string",
+                "markdownDescription": "Text that will be displayed in the completions list and will cause the contents to be inserted when chosen.\nYou can optionally follow it with a tab character (`\\t`) and a text to add a hint for the preceding trigger. The hint will be displayed alongside the trigger and does not affect the trigger itself."
+              },
+              "contents": {
+                "type": "string",
+                "markdownDescription": "A text to be inserted when completion is triggered. Supports the same string [interpolation features](https://sublime-text-unofficial-documentation.readthedocs.io/en/latest/extensibility/snippets.html#snippet-features) as snippets.\n\n**Note**: If you want a literal $, you have to escape it like this: `\\$`."
+              }
+            },
+            "uniqueItems": true
+          }
+        ]
+      }
+    }
+  },
+  "additionalProperties": false,
+  "uniqueItems": true
 }

@@ -12,6 +12,10 @@
     "url": "sublime://schemas/sublime-commands"
   },
   {
+    "fileMatch": ["*.sublime-completions"],
+    "url": "sublime://schemas/sublime-completions"
+  },
+  {
     "fileMatch": ["*.sublime-keymap"],
     "url": "sublime://schemas/sublime-keymap"
   },
