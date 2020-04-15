@@ -29,6 +29,7 @@
       "items": {
         "type": "string",
         "enum": [
+          "glow",
           "bold",
           "italic",
           "no_bold",
@@ -57,6 +58,7 @@
           "no_round"
         ],
         "markdownEnumDescriptions": [
+          "Make all text have a glow effect (only available in 4000+ builds).",
           "Make all text bold.",
           "Make all text italic.",
           "Disable bold text.",
