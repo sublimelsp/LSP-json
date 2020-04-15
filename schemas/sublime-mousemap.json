@@ -4,5 +4,71 @@
   "title": "Sublime Text Mousemap",
   "allowComments": true,
   "allowTrailingCommas": true,
-  "type": "array"
+  "type": "array",
+  "definitions": {
+    "buttonTypeSchema": {
+      "type": "string",
+      "description": "Mouse button type",
+      "enum": [
+        "button1",
+        "button2",
+        "button3",
+        "button4",
+        "button5",
+        "button6",
+        "button7",
+        "button8",
+        "button9",
+        "button10",
+        "button11",
+        "button12",
+        "button13",
+        "button14",
+        "button15",
+        "button16",
+        "scroll_up",
+        "scroll_down",
+        "scroll_left",
+        "scroll_right"
+      ]
+    }
+  },
+  "items": {
+    "required": [
+      "button"
+    ],
+    "properties": {
+      "args": {
+        "type": "object",
+        "markdownDescription": "Arguments to pass to the `command` to execute"
+      },
+      "button": {
+        "$ref": "#/definitions/buttonTypeSchema"
+      },
+      "command": {
+        "type": "string",
+        "description": "Name of the command to execute"
+      },
+      "count": {
+        "type": "number",
+        "markdownDescription": "A number of times the `button` has to trigger to trigger action",
+        "default": 1
+      },
+      "modifiers": {
+        "type": "array",
+        "markdownDescription": "A modifier that is required to be active for the action to execute. Can also be any of the mouse buttons to form a simple chording actions.",
+        "items": {
+          "type": "string"
+        }
+      },
+      "press_args": {
+        "type": "object",
+        "markdownDescription": "Arguments to pass to the `press_command`"
+      },
+      "press_command": {
+        "type": "string",
+        "description": "Name of the command to execute"
+      }
+    }
+  }
 }
