@@ -60,7 +60,7 @@
               },
               "contents": {
                 "type": "string",
-                "markdownDescription": "**Completion Contents**\n\nA text to be inserted when completion is triggered.\n\n_Notes:_\n\n- Supports the same string [interpolation features](https://sublime-text-unofficial-documentation.readthedocs.io/en/latest/extensibility/snippets.html#snippet-features) as snippets.\n- Literal $ need to be escapedlike this: `\\$`."
+                "markdownDescription": "**Completion Contents**\n\nA text to be inserted when completion is triggered.\n\n_Notes:_\n\n- Supports the same string [interpolation features](https://www.sublimetext.com/docs/completions.html#snippet_variables) as snippets.\n- Literal $ need to be escapedlike this: `\\$`."
               },
               "annotation": {
                 "type": "string",
