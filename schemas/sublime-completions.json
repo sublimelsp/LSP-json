@@ -40,12 +40,12 @@
     },
     "completions": {
       "type": "array",
-      "description": "A list of completion objects with trigger and contents.\nAlternatively a list of plain completion strings.",
+      "markdownDescription": "**A list of completions**\n\nConsiting of plain completion strings:\n\n```js\n[\n    \"function\",\n    \"variable\\tannotation\"\n]\n```\n\nor objects with trigger and contents:\n\n```js\n[\n    { \"trigger\": \"function(arg1, arg2)\", \"contents\": \"function($1, ${2:arg2})\" },\n    { \"trigger\": \"variable\\tannotation\", \"contents\": \"variable=\" }\n]\n```",
       "items": {
         "oneOf": [
           {
             "type": "string",
-            "description": "A completion string that is at the same time a trigger for that completion."
+            "markdownDescription": "**Completion String**\n\nA plain string which is both a trigger and the contents to add to the editor.\nIt can optionally be followed by a tab character (`\\t`) and an annotation.\n\n```js\n[\n    \"function\",\n    \"variable\\tannotation\"\n]\n```\n\n**Annotations:**\n\n- are displayed on the right-hand edge of the completions popup,\n  and may contain any information the author deems useful.\n- typically consist of a word or two.\n- are not added to the editor when committing the comletion."
           },
           {
             "type": "object",
@@ -56,11 +56,11 @@
             "properties": {
               "trigger": {
                 "type": "string",
-                "markdownDescription": "**Completion Trigger**\n\nThe text the user must enter to match the completion.\n\nIt can optionally be followed by a tab character (`\\t`) and an annotation.\nAnnotations are displayed on the right-hand edge of the completions popup,\nand may contain any information the author deems useful.\nTypically the annotations will be a word or two."
+                "markdownDescription": "**Completion Trigger**\n\nThe text the user must enter to match the completion.\nIt can optionally be followed by a tab character (`\\t`) and an annotation.\n\n```js\n[\n    { \"trigger\": \"function\", ... },\n    { \"trigger\": \"variable\\tannotation\", ... },\n]\n```\n\n**Annotations:**\n\n- are displayed on the right-hand edge of the completions popup,\n  and may contain any information the author deems useful.\n- typically consist of a word or two.\n- can also be defined by dedicated `annotations` field _(requires ST4073)_."
               },
               "contents": {
                 "type": "string",
-                "markdownDescription": "**Completion Contents**\n\nA text to be inserted when completion is triggered.\n\n_Notes:_\n\n- Supports the same string [interpolation features](https://www.sublimetext.com/docs/completions.html#snippet_variables) as snippets.\n- Literal $ need to be escaped like this: `\\$`."
+                "markdownDescription": "**Completion Contents**\n\nA text to be inserted when completion is committed.\n\n_Notes:_\n\n- Supports the same string [interpolation features](https://www.sublimetext.com/docs/completions.html#snippet_variables) as snippets.\n- Literal $ need to be escaped like this: `\\$`."
               },
               "annotation": {
                 "type": "string",
@@ -68,10 +68,10 @@
               },
               "details": {
                 "type": "string",
-                "markdownDescription": "**Completion Details**\n\nA single line description of the completion.\nMay contain the following HTML tags for basic formatting:\n\n\n\n_Example:_\n\n```js\n\"details\": \"Wraps selection in a <code>&lt;b&gt;</code> tag\"\n```"
+                "markdownDescription": "**Completion Details**\n\nA single line description of the completion.\nMay contain the following HTML tags for basic formatting:\n\n_Example:_\n\n```js\n\"details\": \"Wraps selection in a <code>&lt;b&gt;</code> tag\"\n```"
               },
               "kind": {
-                "markdownDescription": "**Completion Kind Metadata**\n\nThe kind metadata for the completion.\n\nIf the value is a string, it must be one of: \n\n- `\"ambiguous\"`\n- `\"function\"`\n- `\"keyword\"`\n- `\"markup\"`\n- `\"namespace\"`\n- `\"navigation\"`\n- `\"snippet\"`\n- `\"type\"`\n- `\"variable\"`\n\n_Example:_\n\n```js\n\"kind\": \"function\"\n```\n\nIf the value is a 3-element array of strings, the must be:\n\n1. A string from the list above, which is used by the theme to select the color of the kind metadata\n2. A single Unicode character to be shown to the left of the trigger\n3. A description of the kind, viewable in the kind letter tool tip, and the detail pane (when visible)\n\n_Example:_\n\n```js\n\"kind\": [\"function\", \"m\", \"Method\"]\n```",
+                "markdownDescription": "**Completion Kind Metadata**\n\nThe kind metadata for the completion.\n\n---\n\n**String**\n\nIf the value is a string, it must be one of `ambiguous`, `function`, `keyword`, `markup`, `namespace`,\n`navigation`, `snippet`, `type`, `variable`.\n\n_Example:_\n\n```js\n\"kind\": \"function\"\n```\n\n---\n\n**Array**\n\nIf the value is a 3-element array of strings, they must be:\n\n1. A string from the list above, which is used by the theme to select the color of the kind metadata\n2. A single Unicode character to be shown to the left of the trigger\n3. A description of the kind, viewable in the kind letter tool tip, and the detail pane (when visible)\n\n_Example:_\n\n```js\n\"kind\": [\"function\", \"m\", \"Method\"]\n```",
                 "oneOf": [
                     {
                       "type": "array",
