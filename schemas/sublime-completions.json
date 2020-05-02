@@ -56,7 +56,7 @@
             "properties": {
               "trigger": {
                 "type": "string",
-                "markdownDescription": "**Completion Trigger**\n\nThe text the user must enter to match the completion.\nIt can optionally be followed by a tab character (`\\t`) and an annotation.\n\n```js\n[\n    { \"trigger\": \"function\", ... },\n    { \"trigger\": \"variable\\tannotation\", ... },\n]\n```\n\n**Annotations:**\n\n- are displayed on the right-hand edge of the completions popup,\n  and may contain any information the author deems useful.\n- typically consist of a word or two.\n- can also be defined by dedicated `annotations` field _(requires ST4073)_."
+                "markdownDescription": "**Completion Trigger**\n\nThe text the user must enter to match the completion.\nIt can optionally be followed by a tab character (`\\t`) and an annotation.\n\n```js\n[\n    { \"trigger\": \"function\", ... },\n    { \"trigger\": \"variable\\tannotation\", ... },\n]\n```\n\n**Annotations:**\n\n- are displayed on the right-hand edge of the completions popup,\n  and may contain any information the author deems useful.\n- typically consist of a word or two.\n- can also be defined by dedicated `annotations` field."
               },
               "contents": {
                 "type": "string",
