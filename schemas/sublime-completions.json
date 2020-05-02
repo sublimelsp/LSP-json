@@ -40,12 +40,12 @@
     },
     "completions": {
       "type": "array",
-      "markdownDescription": "**A list of completions**\n\nConsiting of plain completion strings:\n\n```js\n[\n    \"function\",\n    \"variable\\tannotation\"\n]\n```\n\nor objects with trigger and contents:\n\n```js\n[\n    { \"trigger\": \"function(arg1, arg2)\", \"contents\": \"function($1, ${2:arg2})\" },\n    { \"trigger\": \"variable\\tannotation\", \"contents\": \"variable=\" }\n]\n```",
+      "markdownDescription": "**A list of completions**\n\nConsisting of plain completion strings:\n\n```js\n[\n    \"function\",\n    \"variable\\tannotation\"\n]\n```\n\nor objects with trigger and contents:\n\n```js\n[\n    { \"trigger\": \"function(arg1, arg2)\", \"contents\": \"function($1, ${2:arg2})\" },\n    { \"trigger\": \"variable\\tannotation\", \"contents\": \"variable=\" }\n]\n```",
       "items": {
         "oneOf": [
           {
             "type": "string",
-            "markdownDescription": "**Completion String**\n\nA plain string which is both a trigger and the contents to add to the editor.\nIt can optionally be followed by a tab character (`\\t`) and an annotation.\n\n```js\n[\n    \"function\",\n    \"variable\\tannotation\"\n]\n```\n\n**Annotations:**\n\n- are displayed on the right-hand edge of the completions popup,\n  and may contain any information the author deems useful.\n- typically consist of a word or two.\n- are not added to the editor when committing the comletion."
+            "markdownDescription": "**Completion String**\n\nA plain string which is both a trigger and the contents to add to the editor.\nIt can optionally be followed by a tab character (`\\t`) and an annotation.\n\n```js\n[\n    \"function\",\n    \"variable\\tannotation\"\n]\n```\n\n**Annotations:**\n\n- are displayed on the right-hand edge of the completions popup,\n  and may contain any information the author deems useful.\n- typically consist of a word or two.\n- are not added to the editor when committing the completion."
           },
           {
             "type": "object",
@@ -77,11 +77,11 @@
                       "type": "array",
                       "items": [
                         {
-                          "markdownDescription": "**Kind Category**\n\nA highlevel category of a symbol kind,\nwhich is used by the theme to select the color of the kind metadata.\n\nIt must be one of: \n\n- `\"ambiguous\"`\n- `\"function\"`\n- `\"keyword\"`\n- `\"markup\"`\n- `\"namespace\"`\n- `\"navigation\"`\n- `\"snippet\"`\n- `\"type\"`\n- `\"variable\"`",
+                          "markdownDescription": "**Kind Category**\n\nA high-level category of a symbol kind,\nwhich is used by the theme to select the color of the kind metadata.\n\nIt must be one of: \n\n- `ambiguous`\n- `function`\n- `keyword`\n- `markup`\n- `namespace`\n- `navigation`\n- `snippet`\n- `type`\n- `variable`",
                           "$ref": "#/definitions/kindCategory"
                         },
                         {
-                          "markdownDescription": "**Kind Icon**\n\nA single Unicode character to be shown to the left of the trigger",
+                          "markdownDescription": "**Kind Icon**\n\nA single unicode character to be shown to the left of the trigger.",
                           "$ref": "#/definitions/kindIcon"
                         },
                         {
