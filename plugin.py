@@ -34,9 +34,7 @@ class LspJSONPlugin(NpmClientHandler):
         configuration['settings'].setdefault('json', {})['schemas'] = self._default_schemas
 
     def on_ready(self, api) -> None:
-        api.on_request(
-            'vscode/content',
-            lambda params, request_id: self.handle_vscode_content(params, request_id))
+        api.on_request('vscode/content', self.handle_vscode_content)
 
     def handle_vscode_content(self, uri, respond):
         name = uri.split('/')[-1]
