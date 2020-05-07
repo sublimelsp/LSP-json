@@ -443,6 +443,12 @@
   },
   {
     "fileMatch": [
+      "app.json"
+    ],
+    "url": "http://json.schemastore.org/expo-37.0.0.json"
+  },
+  {
+    "fileMatch": [
       ".eslintrc",
       ".eslintrc.json",
       ".eslintrc.yml",
@@ -470,7 +476,8 @@
   },
   {
     "fileMatch": [
-      "action.yml"
+      "action.yml",
+      "action.yaml"
     ],
     "url": "http://json.schemastore.org/github-action"
   },
@@ -498,6 +505,17 @@
       "global.json"
     ],
     "url": "http://json.schemastore.org/global"
+  },
+  {
+    "fileMatch": [
+      ".meshrc.yml",
+      ".meshrc.yaml",
+      ".meshrc.json",
+      ".meshrc.js",
+      ".graphql-mesh.yaml",
+      ".graphql-mesh.yml"
+    ],
+    "url": "http://json.schemastore.org/graphql-mesh-0.0.16"
   },
   {
     "fileMatch": [
@@ -767,6 +785,13 @@
   },
   {
     "fileMatch": [
+      ".pre-commit-config.yml",
+      ".pre-commit-config.yaml"
+    ],
+    "url": "http://json.schemastore.org/pre-commit-config"
+  },
+  {
+    "fileMatch": [
       ".phraseapp.yml"
     ],
     "url": "http://json.schemastore.org/phraseapp"
@@ -774,7 +799,9 @@
   {
     "fileMatch": [
       ".prettierrc",
-      ".prettierrc.json"
+      ".prettierrc.json",
+      ".prettierrc.yml",
+      ".prettierrc.yaml"
     ],
     "url": "http://json.schemastore.org/prettierrc"
   },
@@ -997,6 +1024,13 @@
   },
   {
     "fileMatch": [
+      "ui5.yaml",
+      "ui5-*.yaml"
+    ],
+    "url": "https://sap.github.io/ui5-tooling/schema/ui5.yaml.json"
+  },
+  {
+    "fileMatch": [
       "*.vg",
       "*.vg.json"
     ],
@@ -1014,6 +1048,12 @@
       "version.json"
     ],
     "url": "https://raw.githubusercontent.com/AArnott/Nerdbank.GitVersioning/master/src/NerdBank.GitVersioning/version.schema.json"
+  },
+  {
+    "fileMatch": [
+      "*vim*/addon-info.json"
+    ],
+    "url": "http://json.schemastore.org/vim-addon-info"
   },
   {
     "fileMatch": [
@@ -1089,6 +1129,12 @@
       "*.web-types.json"
     ],
     "url": "http://json.schemastore.org/web-types"
+  },
+  {
+    "fileMatch": [
+      "*.version"
+    ],
+    "url": "http://json.schemastore.org/ksp-avc"
   },
   {
     "fileMatch": [
@@ -1252,5 +1298,32 @@
       "*.har"
     ],
     "url": "https://raw.githubusercontent.com/ahmadnassri/har-schema/master/lib/har.json"
+  },
+  {
+    "fileMatch": [
+      "conf.js*",
+      "jsdoc.js*"
+    ],
+    "url": "http://json.schemastore.org/jsdoc-1.0.0"
+  },
+  {
+    "fileMatch": [
+      "ray-*-cluster.yaml"
+    ],
+    "url": "https://raw.githubusercontent.com/ray-project/ray/master/python/ray/autoscaler/ray-schema.json"
+  },
+  {
+    "fileMatch": [
+      ".hadolint.yaml",
+      "hadolint.yaml"
+    ],
+    "url": "http://json.schemastore.org/hadolint"
+  },
+  {
+    "fileMatch": [
+      "container-structure-test.yaml",
+      "structure-test.yaml"
+    ],
+    "url": "http://json.schemastore.org/container-structure-test"
   }
 ]
