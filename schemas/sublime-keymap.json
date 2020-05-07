@@ -75,7 +75,16 @@
             ]
           },
           "operator": {
-            "type": "string"
+            "type": "string",
+            "markdownDescription": "The operator used to match the given `key` and the `operand`.",
+            "enum": [
+              "equal",
+              "not_equal",
+              "not_regex_contains",
+              "not_regex_match",
+              "regex_contains",
+              "regex_match"
+            ]
           },
           "operand": {
             "oneOf": [
