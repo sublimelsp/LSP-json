@@ -19,19 +19,17 @@ class LspJSONPlugin(NpmClientHandler):
     server_binary_path = os.path.join(
         server_directory, 'node_modules', 'vscode-json-languageserver', 'bin', 'vscode-json-languageserver'
     )
+    _default_schemas = []  # type: List[Dict]
 
-    def __init__(self) -> None:
-        super().__init__()
-        self._default_schemas = []  # type: List[Dict]
-
-    def on_client_configuration_ready(self, configuration: Dict):
-        if not self._default_schemas:
+    @classmethod
+    def on_client_configuration_ready(cls, configuration: Dict):
+        if not cls._default_schemas:
             schemas = ['schemas_extra.json', 'schemas.json']
             for schema in schemas:
-                path = 'Packages/{}/{}'.format(self.package_name, schema)
-                self._default_schemas.extend(json.loads(ResourcePath(path).read_text()))
+                path = 'Packages/{}/{}'.format(cls.package_name, schema)
+                cls._default_schemas.extend(json.loads(ResourcePath(path).read_text()))
 
-        configuration['settings'].setdefault('json', {})['schemas'] = self._default_schemas
+        configuration['settings'].setdefault('json', {})['schemas'] = cls._default_schemas
 
     def on_ready(self, api) -> None:
         api.on_request('vscode/content', self.handle_vscode_content)
