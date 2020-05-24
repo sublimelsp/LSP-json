@@ -1,6 +1,7 @@
 import json
 import os
-from LSP.plugin.core.typing import Dict, List
+import sublime
+from LSP.plugin.core.typing import Any, Dict, List
 from lsp_utils import NpmClientHandler
 from sublime_lib import ResourcePath
 
@@ -19,19 +20,28 @@ class LspJSONPlugin(NpmClientHandler):
     server_binary_path = os.path.join(
         server_directory, 'node_modules', 'vscode-json-languageserver', 'bin', 'vscode-json-languageserver'
     )
+    _default_schemas = []  # type: List[Dict]
 
-    def __init__(self) -> None:
-        super().__init__()
-        self._default_schemas = []  # type: List[Dict]
+    @classmethod
+    def configuration(cls) -> sublime.Settings:
+        config = super().configuration()
+        settings = config.get('settings')
+        cls._setup_schemas(settings)
+        config.set('settings', settings)
+        return config
 
-    def on_client_configuration_ready(self, configuration: Dict):
-        if not self._default_schemas:
+    @classmethod
+    def on_client_configuration_ready(cls, configuration: Dict):
+        cls._setup_schemas(configuration['settings'])
+
+    @classmethod
+    def _setup_schemas(cls, d: Dict[str, Any]) -> None:
+        if not cls._default_schemas:
             schemas = ['schemas_extra.json', 'schemas.json']
             for schema in schemas:
-                path = 'Packages/{}/{}'.format(self.package_name, schema)
-                self._default_schemas.extend(json.loads(ResourcePath(path).read_text()))
-
-        configuration['settings'].setdefault('json', {})['schemas'] = self._default_schemas
+                path = 'Packages/{}/{}'.format(cls.package_name, schema)
+                cls._default_schemas.extend(json.loads(ResourcePath(path).read_text()))
+        d.setdefault('json', {})['schemas'] = cls._default_schemas
 
     def on_ready(self, api) -> None:
         api.on_request('vscode/content', self.handle_vscode_content)
