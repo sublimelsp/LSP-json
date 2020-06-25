@@ -1,5 +1,5 @@
-import json
 import os
+import sublime
 from LSP.plugin.core.typing import Dict, List
 from lsp_utils import NpmClientHandler
 from sublime_lib import ResourcePath
@@ -24,10 +24,9 @@ class LspJSONPlugin(NpmClientHandler):
     @classmethod
     def on_client_configuration_ready(cls, configuration: Dict):
         if not cls._default_schemas:
-            schemas = ['schemas_extra.json', 'schemas.json']
-            for schema in schemas:
+            for schema in ['schemas_extra.json', 'schemas.json']:
                 path = 'Packages/{}/{}'.format(cls.package_name, schema)
-                cls._default_schemas.extend(json.loads(ResourcePath(path).read_text()))
+                cls._default_schemas.extend(sublime.decode_value(ResourcePath(path).read_text()))
 
         configuration['settings'].setdefault('json', {})['schemas'] = cls._default_schemas
 
