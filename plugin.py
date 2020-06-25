@@ -20,6 +20,13 @@ class LspJSONPlugin(NpmClientHandler):
         server_directory, 'node_modules', 'vscode-json-languageserver', 'bin', 'vscode-json-languageserver'
     )
     _default_schemas = []  # type: List[Dict]
+    _user_schemas = []  # type: List[Dict]
+
+    @classmethod
+    def on_settings_read(cls, settings: sublime.Settings):
+        cls._user_schemas = settings.get('userSchemas', [])
+        # Nothing has changed so don't force saving.
+        return False
 
     @classmethod
     def on_client_configuration_ready(cls, configuration: Dict):
@@ -28,7 +35,7 @@ class LspJSONPlugin(NpmClientHandler):
                 path = 'Packages/{}/{}'.format(cls.package_name, schema)
                 cls._default_schemas.extend(sublime.decode_value(ResourcePath(path).read_text()))
 
-        configuration['settings'].setdefault('json', {})['schemas'] = cls._default_schemas
+        configuration['settings'].setdefault('json', {})['schemas'] = cls._default_schemas + cls._user_schemas
 
     def on_ready(self, api) -> None:
         api.on_request('vscode/content', self.handle_vscode_content)
