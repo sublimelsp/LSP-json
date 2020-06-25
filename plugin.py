@@ -24,7 +24,7 @@ class LspJSONPlugin(NpmClientHandler):
     @classmethod
     def on_client_configuration_ready(cls, configuration: Dict):
         if not cls._default_schemas:
-            for schema in ['schemas_extra.json', 'schemas.json']:
+            for schema in ['lsp-json-schemas_extra.json', 'lsp-json-schemas.json']:
                 path = 'Packages/{}/{}'.format(cls.package_name, schema)
                 cls._default_schemas.extend(sublime.decode_value(ResourcePath(path).read_text()))
 

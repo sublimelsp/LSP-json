@@ -21,7 +21,7 @@ def main():
         if fileMatch:
             schema_list.append({'fileMatch': fileMatch, 'url': url})
 
-    with open(os.path.join(DIRECTORY, '..', 'schemas.json'), 'w') as f:
+    with open(os.path.join(DIRECTORY, '..', 'lsp-json-schemas.json'), 'w') as f:
         f.write(dumps(schema_list, indent=2))
 
 
