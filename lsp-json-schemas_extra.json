@@ -67,5 +67,9 @@
   {
     "fileMatch": ["jsconfig.json", "jsconfig.*.json"],
     "url": "sublime://schemas/jsconfig"
-  }
+  },
+  {
+    "fileMatch": ["lsp-json-schemas*.json"],
+    "url": "sublime://schemas/json-with-comments"
+  },
 ]
