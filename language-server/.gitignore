@@ -1,0 +1,4 @@
+/node_modules/
+
+# downloaded source codes
+/vscode-json-languageserver/
