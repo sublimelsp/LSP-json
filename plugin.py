@@ -15,10 +15,8 @@ def plugin_unloaded():
 
 class LspJSONPlugin(NpmClientHandler):
     package_name = __package__
-    server_directory = 'vscode-json-languageserver'
-    server_binary_path = os.path.join(
-        server_directory, 'node_modules', 'vscode-json-languageserver', 'bin', 'vscode-json-languageserver'
-    )
+    server_directory = 'language-server'
+    server_binary_path = os.path.join(server_directory, 'out', 'node', 'jsonServerMain.js')
     _default_schemas = []  # type: List[Dict]
     _user_schemas = []  # type: List[Dict]
 
