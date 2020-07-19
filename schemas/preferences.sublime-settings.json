@@ -19,7 +19,7 @@
     },
     "font_size": {
       "markdownDescription": "Point size of the font used in the text area.\n`font_size` is overridden in the platform specific settings file, for example, \"Preferences (Linux).sublime-settings\".\n Because of this, setting it here will have no effect: you must set it in your User File Preferences.",
-      "type": "integer",
+      "type": "number",
       "default": 10
     },
     "font_options": {
