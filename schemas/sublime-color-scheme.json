@@ -4,5 +4,293 @@
   "title": "Sublime Text Color Scheme",
   "allowComments": true,
   "allowTrailingCommas": true,
-  "type": "object"
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "markdownDescription": "The name of the color scheme."
+    },
+    "author": {
+      "type": "string",
+      "markdownDescription": "The name of the author."
+    },
+    "variables": {
+      "type": "object",
+      "additionalProperties": {"type": "string"}
+    },
+    "globals": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "background": {
+          "type": "string",
+          "markdownDescription": "The default background color."
+        },
+        "foreground": {
+          "type": "string",
+          "markdownDescription": "The default color for text."
+        },
+        "invisibles": {
+          "type": "string",
+          "markdownDescription": "The color for whitespace, when rendered. When not specified, defaults to `foreground` with an opacity of `0.35`."
+        },
+        "caret": {
+          "type": "string",
+          "markdownDescription": "The color of the caret."
+        },
+        "block_caret": {
+          "type": "string",
+          "markdownDescription": "**ST >= 3190** The color of the caret when using a block caret."
+        },
+        "line_highlight": {
+          "type": "string",
+          "markdownDescription": "The background color of the line containing the caret. Only used when the `highlight_line` setting is enabled."
+        },
+        "misspelling": {
+          "type": "string",
+          "markdownDescription": "The color to use for the squiggly underline drawn under misspelled words."
+        },
+        "fold_marker": {
+          "type": "string",
+          "markdownDescription": "The color to use for the marker that indicates content has been folded."
+        },
+        "minimap_border": {
+          "type": "string",
+          "markdownDescription": "The color of the border drawn around the viewport area of the minimap when the setting `draw_minimap_border` is enabled. Note that the viewport is normally only visible on hover, unless the `always_show_minimap_viewport` setting is enabled."
+        },
+        "scroll_highlight": {
+          "type": "string",
+          "markdownDescription": "**ST >= 4050** The color search result positions drawn on top of the scroll bar."
+        },
+        "scroll_selected_highlight": {
+          "type": "string",
+          "markdownDescription": "**ST >= 4050** The color of the selected search result position drawn on top of the scroll bar."
+        },
+        "accent": {
+          "type": "string",
+          "markdownDescription": "A color made available for use by the theme. The Default theme uses this to highlight modified tabs when the `highlight_modified_tabs` setting is enabled."
+        },
+        "popup_css": {
+          "type": "string",
+          "markdownDescription": "CSS passed to popups."
+        },
+        "phantom_css": {
+          "type": "string",
+          "markdownDescription": "CSS passed to phantoms. If not specified, uses `popup_css`."
+        },
+        "sheet_css": {
+          "type": "string",
+          "markdownDescription": "**ST >= 4065** CSS passed to HTML sheets."
+        },
+        "gutter": {
+          "type": "string",
+          "markdownDescription": "The background color of the gutter."
+        },
+        "gutter_foreground": {
+          "type": "string",
+          "markdownDescription": "The color of line numbers in the gutter."
+        },
+        "gutter_foreground_highlight": {
+          "type": "string",
+          "markdownDescription": "**ST >= 4050** The color of line numbers in the gutter when a line is highlighted."
+        },
+        "line_diff_width": {
+          "type": "string",
+          "markdownDescription": "**ST >= 3186** The width of the diff lines, between `1` and `8`."
+        },
+        "line_diff_added": {
+          "type": "string",
+          "markdownDescription": "**ST >= 3189** The color of diff markers for added lines."
+        },
+        "line_diff_modified": {
+          "type": "string",
+          "markdownDescription": "**ST >= 3186** The color of diff markers for modified lines."
+        },
+        "line_diff_deleted": {
+          "type": "string",
+          "markdownDescription": "**ST >= 3189** The color of diff markers for deleted lines."
+        },
+        "selection": {
+          "type": "string",
+          "markdownDescription": "The background color of selected text."
+        },
+        "selction_foreground": {
+          "type": "string",
+          "markdownDescription": "A color that will override the scope-based text color of the selection."
+        },
+        "selection_border": {
+          "type": "string",
+          "markdownDescription": "The color for the border of the selection."
+        },
+        "selection_border_width": {
+          "type": "string",
+          "markdownDescription": "The width of the selection border, from `0` to `4`."
+        },
+        "inactive_selection": {
+          "type": "string",
+          "markdownDescription": "The background color of a selection in a view that is not currently focused."
+        },
+        "inactive_selection_border": {
+          "type": "string",
+          "markdownDescription": "**ST >= 4074** The color for the border of the selection in a view that is not currently focused."
+        },
+        "inactive_selection_foreground": {
+          "type": "string",
+          "markdownDescription": "A color that will override the scope-based text color of the selection in a view that is not currently focused."
+        },
+        "selection_corner_style": {
+          "type": "string",
+          "markdownDescription": "The style of corners to use on selections.",
+          "enum": [
+            "round",
+            "cut",
+            "square"
+          ],
+          "default": "round"
+        },
+        "selection_corner_radius": {
+          "type": "string",
+          "markdownDescription": "The radius to use when the `selection_corner_style` is `round` or `cut`."
+        },
+        "highlight": {
+          "type": "string",
+          "markdownDescription": "The border color for \"other\" matches when the Highlight matches option is selected in the Find panel. Also used to highlight matches in Find in Files results."
+        },
+        "find_highlight": {
+          "type": "string",
+          "markdownDescription": "The background color of text matched by the Find panel."
+        },
+        "find_highlight_foreground": {
+          "type": "string",
+          "markdownDescription": "A color that will override the scope-based text color of text matched by the Find panel."
+        },
+        "guide": {
+          "type": "string",
+          "markdownDescription": "The color used to draw indent guides. Only used if the option `\"draw_normal\"` is present in the setting `indent_guide_options`."
+        },
+        "active_guide": {
+          "type": "string",
+          "markdownDescription": "The color used to draw the indent guides for the indentation levels containing the caret. Only used if the option `\"draw_active\"` is present in the setting `indent_guide_options`."
+        },
+        "stack_guide": {
+          "type": "string",
+          "markdownDescription": "The color used to draw the indent guides for the parent indentation levels of the indentation level containing the caret. Only used if the option `\"draw_active\"` is present in the setting `indent_guide_options`."
+        },
+        "brackets_options": {
+          "type": "string",
+          "markdownDescription": "How brackets are highlighted when the caret is next to one.",
+          "examples": [
+            "underline",
+            "stippled_underline",
+            "squiggly_underline",
+            "foreground",
+            "bold",
+            "italic"
+          ]
+        },
+        "brackets_foreground": {
+          "type": "string",
+          "markdownDescription": "The color to use when drawing the style specified by `brackets_options`."
+        },
+        "bracket_contents_options": {
+          "type": "string",
+          "markdownDescription": "How brackets are highlighted when the caret is positioned in between a pair of brackets.",
+          "examples": [
+            "underline",
+            "stippled_underline",
+            "squiggly_underline",
+            "foreground"
+          ]
+        },
+        "bracket_contents_foreground": {
+          "type": "string",
+          "markdownDescription": "The color to use when drawing the style specified by `brackets_contents_options`."
+        },
+        "tags_options": {
+          "type": "string",
+          "markdownDescription": "How tags are highlighted when the caret is inside of one.",
+          "examples": [
+            "underline",
+            "stippled_underline",
+            "squiggly_underline",
+            "foreground"
+          ]
+        },
+        "tags_foreground": {
+          "type": "string",
+          "markdownDescription": "The color to use when drawing the style specified by `tags_options`."
+        },
+        "shadow": {
+          "type": "string",
+          "markdownDescription": "The color of the shadow used to show when a text area can be horizontally scrolled."
+        },
+        "shadow_width": {
+          "type": "string",
+          "markdownDescription": "The width of the shadow in device-independent pixels."
+        }
+      }
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "defaultSnippets": [
+          {
+            "label": "Rule",
+            "body": {
+              "scope": "$1",
+              "foreground": "$2"
+            }
+          }
+        ],
+        "required": ["scope"],
+        "additionalProperties": false,
+        "minProperties": 2,
+        "dependencies": {
+          "foreground_adjust": ["background"]
+        },
+        "properties": {
+          "name": {
+            "type": "string",
+            "markdownDescription": "The (arbitrary) name for the scope rule."
+          },
+          "scope": {
+            "type": "string",
+            "markdownDescription": "Scopes are set to code or prose tokens via the syntax. Scopes are dotted strings, specified from least-to-most specific. For example, the `if` keyword in PHP could be specified via the scope name `keyword.control.php`."
+          },
+          "foreground": {
+            "type": ["string", "array"],
+            "markdownDescription": "The text color. Supports a special mode called _Hashed Syntax Highlighting_, where each token matching the scope specified will receive a unique color from one, or more, gradients. Some editors refer to this style of highlighting as _Semantic Highlighting_.\n\nTo use hashed syntax highlighting, the value must be an array of two or more colors. Sublime Text will create 256 different colors that are linear interpolations (lerp) between the colors provided. The interpolation is done in HSL space.\n\nAs Sublime Text highlights the tokens in a file, it will create a hashed value of the token, and use that to pick one of the 256 linear interpolations. Every instance of a given token will use the same color. For instance, each instance of `first_name` would have the same color, but every instance of `name` would have a different color.\n\nFor hashed syntax highlighting to be most obvious, the hue difference between the start and end points should be as far apart as possible. Here is an example of using blues, purples and pinks for variable names:\n```json\n{\n\t\"scope\": \"source - punctuation - keyword\",\n\t\"foreground\": [\"hsl(200, 60%, 70%)\", \"hsl(330, 60%, 70%)\"]\n}\n```",
+            "items": {"type": "string"},
+            "minItems": 2,
+            "uniqueItems": true
+          },
+          "background": {
+            "type": "string",
+            "markdownDescription": "The background color."
+          },
+          "foreground_adjust": {
+            "type": "string",
+            "markdownDescription": "**ST >= 3179** An adjustment to the `\"foreground\"` color. Accepts a space-separated list of adjusters that are supported by the [minihtml color() mod function](https://www.sublimetext.com/docs/minihtml.html#color-mod_function). It is only supported when the `\"background\"` key is also specified, and thus allows modifying all foregrounds used in combination with the background, without having to create different rules for every permutation."
+          },
+          "selection_foreground": {
+            "type": "string",
+            "markdownDescription": "The text color when selected."
+          },
+          "font_style": {
+            "type": "string",
+            "markdownDescription": "Takes a space-separated list of options\n*Note: The `glow` and `*underline` options only work in ST >= 4050*.",
+            "examples": [
+              "bold",
+              "italic",
+              "glow",
+              "underline",
+              "stippled_underline",
+              "squiggly_underline"
+            ]
+          }
+        }
+      }
+    }
+  }
 }
