@@ -383,6 +383,16 @@
   },
   {
     "fileMatch": [
+      "graphql.config.json",
+      "graphql.config.js",
+      ".graphqlrc",
+      ".graphqlrc.json",
+      ".graphqlrc.js"
+    ],
+    "url": "https://raw.githubusercontent.com/kamilkisiela/graphql-config/master/config-schema.json"
+  },
+  {
+    "fileMatch": [
       "codegen.json",
       "codegen.js",
       ".codegen.json",
@@ -612,6 +622,12 @@
       "openapi.json"
     ],
     "url": "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/schemas/v3.0/schema.json"
+  },
+  {
+    "fileMatch": [
+      "kratos.json"
+    ],
+    "url": "https://raw.githubusercontent.com/ory/kratos/master/.schema/version.schema.json"
   },
   {
     "fileMatch": [
@@ -940,13 +956,13 @@
     "fileMatch": [
       "*.version"
     ],
-    "url": "https://json.schemastore.org/ksp-avc"
+    "url": "https://raw.githubusercontent.com/linuxgurugamer/KSPAddonVersionChecker/master/KSP-AVC.schema.json"
   },
   {
     "fileMatch": [
       "*.ckan"
     ],
-    "url": "https://json.schemastore.org/ksp-ckan"
+    "url": "https://raw.githubusercontent.com/KSP-CKAN/CKAN/master/CKAN.schema"
   },
   {
     "fileMatch": [
@@ -1030,6 +1046,12 @@
   },
   {
     "fileMatch": [
+      "xs-app.json"
+    ],
+    "url": "https://json.schemastore.org/xs-app.json"
+  },
+  {
+    "fileMatch": [
       "hemtt.json",
       "hemtt.toml"
     ],
@@ -1086,5 +1108,11 @@
       "*.tokenlist.json"
     ],
     "url": "https://uniswap.org/tokenlist.schema.json"
+  },
+  {
+    "fileMatch": [
+      "**/*devinit*.json"
+    ],
+    "url": "https://json.schemastore.org/devinit.schema-1.0"
   }
 ]
