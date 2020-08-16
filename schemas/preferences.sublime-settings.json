@@ -389,7 +389,7 @@
       "default": true
     },
     "scroll_context_lines": {
-      "markdownDescription": "Set the number of context lines to show when scrolling to reveal. This affects all selection changes, like selection dragging, page-up/page-down and moving the caret.",
+      "markdownDescription": "Set the number of context lines to show when scrolling. This affects all selection changes, like selection dragging, page-up/page-down and moving the caret.",
       "type": "integer",
       "default": 0
     },
@@ -736,7 +736,7 @@
       "default": "system"
     },
     "overlay_scroll_bars": {
-      "markdownDescription": "",
+      "markdownDescription": "Control overlay scroll bars",
       "enum": ["system", "enabled", "disabled"],
       "default": "system"
     },
@@ -751,7 +751,7 @@
       "default": true
     },
     "show_git_status_in_status_bar": {
-      "markdownDescription": "Display the git status in the status bar, requires the show_git_status setting to be enabled.",
+      "markdownDescription": "Display the git status in the status bar, requires the `show_git_status` setting to be enabled.",
       "type": "boolean",
       "default": true
     },
@@ -820,7 +820,7 @@
       "default": false
     },
     "close_deleted_files": {
-      "markdownDescription": "When reopening Sublime Text close saved files that have been deleted from the filesystem (Unsaved files will not be closed). If this setting is `false` no files will be closed, instead they will be restored as empty files.\nThis is useful when working from an unstable networked file system where tabs would be lost if the connection wasn't active.",
+      "markdownDescription": "When reopening Sublime Text close saved files that have been deleted from the filesystem (unsaved files will not be closed). If this setting is `false` no files will be closed, instead they will be restored as empty files.\nThis is useful when working from an unstable networked file system where tabs would be lost if the connection wasn't active.",
       "type": "boolean",
       "default": true
     },
@@ -949,7 +949,7 @@
       "default": false
     },
     "relative_line_numbers": {
-      "markdownDescription": "relative_line_numbers will draw each line number as the distance from the current line. Useful in conjunction with Vintage.",
+      "markdownDescription": "Draw each line number as the distance from the current line. Useful in conjunction with Vintage.",
       "type": "boolean",
       "default": false
     },
