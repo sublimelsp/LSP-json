@@ -9,7 +9,7 @@
     "color_scheme": {
       "markdownDescription": "Sets the colors used within the text area.",
       "type": "string",
-      "pattern": "^.+\\.(sublime-color-scheme|tmTheme)$",
+      "pattern": "^.+\\.((sublime|hidden)-color-scheme|tmTheme)$",
       "default": "Monokai.sublime-color-scheme"
     },
     "font_face": {
@@ -388,6 +388,11 @@
       "type": "boolean",
       "default": true
     },
+    "scroll_context_lines": {
+      "markdownDescription": "Set the number of context lines to show when scrolling to reveal. This affects all selection changes, like selection dragging, page-up/page-down and moving the caret.",
+      "type": "integer",
+      "default": 0
+    },
     "move_to_limit_on_up_down": {
       "markdownDescription": "This controls what happens when pressing up or down when on the first or last line.\nOn Mac, this value is overridden in the platform specific settings, so you'll need to place this line in your user settings to override it.",
       "type": "boolean",
@@ -426,6 +431,19 @@
       "markdownDescription": "Controls how non-ascii white space is drawn.\n- \"none\": Draw unicode white space verbatim, eg. hiding zero-width spaces.\n- \"punctuation\": Draw codepoints of unicode white space defined as punctuation. This includes NBSP, but excludes the CJK Ideographic Space.\n- \"all\": Draw codepoints of all non-ascii space characters.",
       "type": "string",
       "default": "punctuation"
+    },
+    "selection_description_column_type": {
+      "markdownDescription": "Controls what type of columns selection description (\"Line X, Column Y\" in the status bar).",
+      "type": "string",
+      "enum": [
+        "real",
+        "virtual"
+      ],
+      "enumDescriptions": [
+        "Count real columns. Tabs count as one column.",
+        "Count virtual columns. Tabs count as their width in spaces."
+      ],
+      "default": "virtual"
     },
     "draw_indent_guides": {
       "markdownDescription": "Set to `false` to turn off the indentation guides.\nThe color and width of the indent guides may be customized by editing the corresponding .tmTheme file, and specifying the colors \"guide\", \"activeGuide\" and \"stackGuide\".",
@@ -560,6 +578,11 @@
       "type": "boolean",
       "default": true
     },
+    "auto_complete_use_history": {
+      "markdownDescription": "If previously-selected completions should be automatically selected.",
+      "type": "boolean",
+      "default": false
+    },
     "auto_complete_preserve_order": {
       "markdownDescription": "Controls how the auto complete results are reordered when typing:\n- \"none\" will fully reorder the results according to how well the completion matches the typed text.\n- \"some\" will partially reorder the results, taking into account how well the completion matches whats typed, and likelihood of the completion.\n- \"strict\" will never reorder the results.",
       "enum": ["none", "some", "strict"],
@@ -614,6 +637,11 @@
       "type": "boolean",
       "default": false
     },
+    "hide_pointer_while_typing": {
+      "markdownDescription": "If `true`, when typing the mouse pointer/cursor will be hidden. Moving the pointer will unhide it. This setting has no effect on macOS.",
+      "type": "boolean",
+      "default": true
+    },
     "shift_tab_unindent": {
       "markdownDescription": "By default, shift+tab will only unindent if the selection spans multiple lines.\nWhen pressing shift+tab at other times, it'll insert a tab character - this allows tabs to be inserted when tab_completion is enabled.\nSet this to `true` to make shift+tab always unindent, instead of inserting tabs.",
       "type": "boolean",
@@ -634,6 +662,16 @@
       "type": "boolean",
       "default": false,
       "scope": "view"
+    },
+    "highlight_find_results_in_scrollbar": {
+      "markdownDescription": "Whether to highlight find results in the scrollbar.",
+      "type": "boolean",
+      "default": true
+    },
+    "find_in_files_max_result_size": {
+      "markdownDescription": "The maximum output size for find-in-files. Prevents searches with a large number of results from using too much memory. Use `0` to remove this limit.",
+      "type": "integer",
+      "default": 16777216
     },
     "drag_text": {
       "markdownDescription": "When enabled, clicking on selected text will begin a drag-drop operation.",
@@ -672,6 +710,11 @@
       "type": "boolean",
       "default": true
     },
+    "show_tab_close_buttons_on_left": {
+      "markdownDescription": "Determines which side the close button is on. The default for OSX is `true` (on the left) and for other platforms it's `false` (on the right).",
+      "type": "boolean",
+      "default": false
+    },
     "bold_folder_labels": {
       "markdownDescription": "Shows folders in the side bar in bold.",
       "type": "boolean",
@@ -682,12 +725,18 @@
       "type": "boolean",
       "default": true
     },
+    "popup_shadows": {
+      "markdownDescription": "Draw shadows under popup windows.",
+      "type": "boolean",
+      "default": true
+    },
     "native_tabs": {
       "markdownDescription": "Mac only. Controls use of macOS tabs in 10.12 and newer.\nEach native tab contains an entire project, thus allowing multiple projects in a single window.",
       "enum": ["system", "preferred", "disabled"],
       "default": "system"
     },
     "overlay_scroll_bars": {
+      "markdownDescription": "",
       "enum": ["system", "enabled", "disabled"],
       "default": "system"
     },
@@ -696,15 +745,35 @@
       "type": "boolean",
       "default": true
     },
+    "show_sidebar_button": {
+      "markdownDescription": "Display the toggle sidebar button in the status bar.",
+      "type": "boolean",
+      "default": true
+    },
+    "show_git_status_in_status_bar": {
+      "markdownDescription": "Display the git status in the status bar, requires the show_git_status setting to be enabled.",
+      "type": "boolean",
+      "default": true
+    },
     "show_encoding": {
-      "markdownDescription": "Displays file encoding in the status bar.",
+      "markdownDescription": "Display file encoding in the status bar.",
       "type": "boolean",
       "default": false
     },
     "show_line_endings": {
-      "markdownDescription": "Displays line endings in the status bar.",
+      "markdownDescription": "Display line endings in the status bar.",
       "type": "boolean",
       "default": false
+    },
+    "show_indentation": {
+      "markdownDescription": "Display indentation in the status bar.",
+      "type": "boolean",
+      "default": true
+    },
+    "show_syntax": {
+      "markdownDescription": "Display syntax in the status bar.",
+      "type": "boolean",
+      "default": true
     },
     "ui_scale": {
       "markdownDescription": "Magnifies the entire user interface. Sublime Text must be restarted for this to take effect.\n1.0 is normal scale, 0.0 allows for auto-detection based on text scale with older Linux configurations that don't fully support GTK display scaling.",
@@ -749,6 +818,11 @@
       "markdownDescription": "Always prompt before reloading a file, even if the file hasn't been modified. If a file has unsaved changes, a prompt will always be shown. Will only show if `reload_file_on_change` is `true`.",
       "type": "boolean",
       "default": false
+    },
+    "close_deleted_files": {
+      "markdownDescription": "When reopening Sublime Text close saved files that have been deleted from the filesystem (Unsaved files will not be closed). If this setting is `false` no files will be closed, instead they will be restored as empty files.\nThis is useful when working from an unstable networked file system where tabs would be lost if the connection wasn't active.",
+      "type": "boolean",
+      "default": true
     },
     "open_files_in_new_window": {
       "markdownDescription": "Mac only: When files are opened from finder, or by dragging onto the dock icon, this controls if a new window is created or not.",
@@ -858,6 +932,26 @@
       "type": "array",
       "items": {"type": "string"},
       "default": ["*.log"]
+    },
+    "vintage_start_in_command_mode": {
+      "markdownDescription": "When Vintage, the vi emulation package, is enabled (see ignored_packages, below), this setting controls if files are opened in command mode or insert mode by default.",
+      "type": "boolean",
+      "default": false
+    },
+    "vintage_use_clipboard": {
+      "markdownDescription": "Yank commands can place the text in either an internal register, or in the system clipboard.",
+      "type": "boolean",
+      "default": false
+    },
+    "vintage_ctrl_keys": {
+      "markdownDescription": "By default Vintage will interpret all `ctrl+<key>` key bindings as regular Sublime Text key bindings. Set this to `true` to make `ctrl` keys act as they do in vim, instead (e.g., `ctrl+f` to move forward a page).",
+      "type": "boolean",
+      "default": false
+    },
+    "relative_line_numbers": {
+      "markdownDescription": "relative_line_numbers will draw each line number as the distance from the current line. Useful in conjunction with Vintage.",
+      "type": "boolean",
+      "default": false
     },
     "index_skip_unknown_extensions": {
       "markdownDescription": "Whether unknown file extensions should be checked for indexing or skipped entirely. If a file extension is not being recognised we suggest setting/changing the default syntax for that extension instead of turning this setting off.",
