@@ -87,6 +87,7 @@
             ]
           },
           "operand": {
+            "default": true,
             "oneOf": [
               { "type": "integer" },
               { "type": "string" },
@@ -94,7 +95,9 @@
             ]
           },
           "match_all": {
-            "type": "boolean"
+            "type": "boolean",
+            "default": false,
+            "markdownDescription": "If `true`, then the condition must evaluate to true for all selections."
           }
         },
         "additionalProperties": false
