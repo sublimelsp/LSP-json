@@ -25,7 +25,6 @@
         "type": "object"
       }
     },
-    "additionalProperties": false,
-  },
-  "uniqueItems": true
+    "additionalProperties": false
+  }
 }

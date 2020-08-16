@@ -24,7 +24,6 @@
         "children": {
           "type": "array",
           "description": "A list of menu entries to create a submenu from",
-          "uniqueItems": true,
           "items": {
             "$ref": "#/definitions/menuItemSchema"
           }
@@ -59,7 +58,6 @@
   },
   "type": "array",
   "description": "Specifies a menu that can either modify  in the application",
-  "uniqueItems": true,
   "items": {
     "$ref": "#/definitions/menuItemSchema"
   }
