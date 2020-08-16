@@ -47,7 +47,7 @@
       },
       "command": {
         "type": "string",
-        "description": "Name of the command to execute"
+        "description": "The name of the command to be executed when the corresponding button is **released after being pressed**."
       },
       "count": {
         "type": "number",
@@ -67,7 +67,7 @@
       },
       "press_command": {
         "type": "string",
-        "description": "Name of the command to execute"
+        "description": "The name of the command to be executed when the corresponding button is **pressed**."
       }
     }
   }
