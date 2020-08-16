@@ -24,6 +24,7 @@
         "children": {
           "type": "array",
           "description": "A list of menu entries to create a submenu from",
+          "uniqueItems": true,
           "items": {
             "$ref": "#/definitions/menuItemSchema"
           }
@@ -53,12 +54,12 @@
           "markdownDescription": "One of the strings: `OSX`, `!OSX`, `Windows`, `!Windows`, `Linux` or `!Linux`. Controls what platforms the entry is shown on."
         }
       },
-      "uniqueItems": true,
       "additionalProperties": false
     }
   },
   "type": "array",
   "description": "Specifies a menu that can either modify  in the application",
+  "uniqueItems": true,
   "items": {
     "$ref": "#/definitions/menuItemSchema"
   }

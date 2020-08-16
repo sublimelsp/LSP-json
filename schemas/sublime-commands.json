@@ -26,6 +26,6 @@
       }
     },
     "additionalProperties": false,
-    "uniqueItems": true
-  }
+  },
+  "uniqueItems": true
 }
