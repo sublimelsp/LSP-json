@@ -1,0 +1,111 @@
+{
+  "contributions": {
+    "settings": [
+      {
+        "file_patterns": ["/LSP-json.sublime-settings"],
+        "schema": {
+          "definitions": {
+            "userSchema": {
+              "type": "object",
+              "properties": {
+                "fileMatch": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                },
+                "uri": {
+                  "type": "string"
+                }
+              },
+              "required": ["fileMatch", "uri"],
+              "additionalProperties": false,
+              "defaultSnippets": [
+                {
+                  "label": "User Schema",
+                  "body": {
+                    "fileMatch": ["$1"],
+                    "uri": "$2"
+                  }
+                }
+              ],
+            },
+            "kindIcon": {
+              "type": "string",
+              "maxLength": 1
+            },
+            "kindDescription": {
+              "type": "string",
+              "maxLength": 32
+            }
+          },
+          "properties": {
+            "languages": {
+              "type": "array"
+            },
+            "initializationOptions": {
+              "type": "object",
+              "properties": {
+                "customCapabilities": {
+                  "type": "object",
+                  "properties": {
+                    "rangeFormatting": {
+                      "type": "object",
+                      "properties": {
+                        "editLimit": {
+                          "type": "number",
+                          "default": 1000
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "provideFormatter": {
+                  "type": "boolean",
+                  "default": true
+                }
+              },
+              "additionalProperties": false
+            },
+            "settings": {
+              "markdownDescription": "Default settings for LSP-json",
+              "type": "object",
+              "properties": {
+                "json": {
+                  "type": "object",
+                  "properties": {
+                    "format": {
+                      "type": "object",
+                      "properties": {
+                        "enable": {
+                          "type": "boolean"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "resultLimit": {
+                      "type": "number",
+                      "default": 5000
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            },
+            "userSchemas": {
+              "markdownDescription": "User-defined schemas to extend default schemas with",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/userSchema"
+              }
+            }
+          },
+          "additionalProperties": false,
+        }
+      },
+    ]
+  }
+}
