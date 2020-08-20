@@ -56,7 +56,7 @@ class LspJSONPlugin(NpmClientHandler):
                 LspJSONPlugin._default_schemas.extend(schema_json)
 
     def load_package_schemas(self, api: ApiWrapperInterface) -> None:
-        resources = ResourcePath.glob_resources('sublime-package-types.json')
+        resources = ResourcePath.glob_resources('sublime-package.json')
         for resource in resources:
             schema = parse_schema(resource)
             if schema:

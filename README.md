@@ -19,7 +19,7 @@ To load manually created schemas, add those to `userSchemas` configuration in th
 
 Sublime Text packages can provide schemas for its own settings, or contribute to global ST settings or other configuration files (for example `*.sublime-project` files).
 
-This is accomplished by including a `sublime-package-types.json` file in the package (location doesn't matter) and defining schemas within it.
+This is accomplished by including a `sublime-package.json` file in the package (location doesn't matter) and defining schemas within it.
 
 Here is a an example of how this could look:
 

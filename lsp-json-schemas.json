@@ -1,1117 +1,1123 @@
 [
   {
     "fileMatch": [
-      ".angular-cli.json",
-      "angular-cli.json"
+      "/.angular-cli.json",
+      "/angular-cli.json"
     ],
     "uri": "https://raw.githubusercontent.com/angular/angular-cli/master/packages/angular/cli/lib/config/schema.json"
   },
   {
     "fileMatch": [
-      "apple-app-site-association"
+      "/apple-app-site-association"
     ],
     "uri": "https://json.schemastore.org/apple-app-site-association"
   },
   {
     "fileMatch": [
-      "appsscript.json"
+      "/appsscript.json"
     ],
     "uri": "https://json.schemastore.org/appsscript"
   },
   {
     "fileMatch": [
-      "appsettings.json",
-      "appsettings.*.json"
+      "/appsettings.json",
+      "/appsettings.*.json"
     ],
     "uri": "https://json.schemastore.org/appsettings"
   },
   {
     "fileMatch": [
-      "arc.json"
+      "/arc.json"
     ],
     "uri": "https://raw.githubusercontent.com/architect/parser/master/schema.json"
   },
   {
     "fileMatch": [
-      ".avsc"
+      "/.avsc"
     ],
     "uri": "https://json.schemastore.org/avro-avsc"
   },
   {
     "fileMatch": [
-      "deployment.template.json",
-      "deployment.*.template.json"
+      "/deployment.template.json",
+      "/deployment.*.template.json"
     ],
     "uri": "https://json.schemastore.org/azure-iot-edge-deployment-template-2.0"
   },
   {
     "fileMatch": [
-      "manifest.json"
+      "/manifest.json"
     ],
     "uri": "https://json.schemastore.org/foxx-manifest"
   },
   {
     "fileMatch": [
-      "*.asmdef"
+      "/*.asmdef"
     ],
     "uri": "https://json.schemastore.org/asmdef"
   },
   {
     "fileMatch": [
-      ".babelrc",
-      "babel.config.json"
+      "/.babelrc",
+      "/babel.config.json"
     ],
     "uri": "https://json.schemastore.org/babelrc"
   },
   {
     "fileMatch": [
-      ".backportrc.json"
+      "/.backportrc.json"
     ],
     "uri": "https://json.schemastore.org/backportrc"
   },
   {
     "fileMatch": [
-      ".bootstraprc"
+      "/.bootstraprc"
     ],
     "uri": "https://json.schemastore.org/bootstraprc"
   },
   {
     "fileMatch": [
-      "bower.json",
-      ".bower.json"
+      "/bower.json",
+      "/.bower.json"
     ],
     "uri": "https://json.schemastore.org/bower"
   },
   {
     "fileMatch": [
-      ".bowerrc"
+      "/.bowerrc"
     ],
     "uri": "https://json.schemastore.org/bowerrc"
   },
   {
     "fileMatch": [
-      ".suite.json",
-      ".xsuite.json"
+      "/.suite.json",
+      "/.xsuite.json"
     ],
     "uri": "https://json.schemastore.org/bozr"
   },
   {
     "fileMatch": [
-      "bsconfig.json"
+      "/bsconfig.json"
     ],
     "uri": "https://bucklescript.github.io/bucklescript/docson/build-schema.json"
   },
   {
     "fileMatch": [
-      "buildkite.json",
-      "buildkite.*.json",
-      ".buildkite/pipeline.json",
-      ".buildkite/pipeline.*.json"
+      "/buildkite.json",
+      "/buildkite.*.json",
+      "/.buildkite/pipeline.json",
+      "/.buildkite/pipeline.*.json"
     ],
     "uri": "https://raw.githubusercontent.com/buildkite/pipeline-schema/master/schema.json"
   },
   {
     "fileMatch": [
-      "bundleconfig.json"
+      "/bundleconfig.json"
     ],
     "uri": "https://json.schemastore.org/bundleconfig"
   },
   {
     "fileMatch": [
-      ".clasp.json"
+      "/.clasp.json"
     ],
     "uri": "https://json.schemastore.org/clasp"
   },
   {
     "fileMatch": [
-      "compilerconfig.json"
+      "/compilerconfig.json"
     ],
     "uri": "https://json.schemastore.org/compilerconfig"
   },
   {
     "fileMatch": [
-      "compile_commands.json"
+      "/compile_commands.json"
     ],
     "uri": "https://json.schemastore.org/compile-commands"
   },
   {
     "fileMatch": [
-      "commands.json"
+      "/commands.json"
     ],
     "uri": "https://json.schemastore.org/commands"
   },
   {
     "fileMatch": [
-      "cosmos.config.json"
+      "/cosmos.config.json"
     ],
     "uri": "https://json.schemastore.org/cosmos-config"
   },
   {
     "fileMatch": [
-      "chutzpah.json"
+      "/chutzpah.json"
     ],
     "uri": "https://json.schemastore.org/chutzpah"
   },
   {
     "fileMatch": [
-      "contentmanifest.json"
+      "/contentmanifest.json"
     ],
     "uri": "https://json.schemastore.org/vsix-manifestinjection"
   },
   {
     "fileMatch": [
-      "cloudbuild.json",
-      "*.cloudbuild.json"
+      "/cloudbuild.json",
+      "/*.cloudbuild.json"
     ],
     "uri": "https://json.schemastore.org/cloudbuild"
   },
   {
     "fileMatch": [
-      "*.cf.json",
-      "cloudformation.json"
+      "/*.cf.json",
+      "/cloudformation.json"
     ],
     "uri": "https://raw.githubusercontent.com/awslabs/goformation/master/schema/cloudformation.schema.json"
   },
   {
     "fileMatch": [
-      "*.sam.json",
-      "sam.json"
+      "/*.sam.json",
+      "/sam.json"
     ],
     "uri": "https://raw.githubusercontent.com/awslabs/goformation/master/schema/sam.schema.json"
   },
   {
     "fileMatch": [
-      "coffeelint.json"
+      "/coffeelint.json"
     ],
     "uri": "https://json.schemastore.org/coffeelint"
   },
   {
     "fileMatch": [
-      "composer.json"
+      "/composer.json"
     ],
     "uri": "https://json.schemastore.org/composer"
   },
   {
     "fileMatch": [
-      "component.json"
+      "/component.json"
     ],
     "uri": "https://json.schemastore.org/component"
   },
   {
     "fileMatch": [
-      "config.json"
+      "/config.json"
     ],
     "uri": "https://json.schemastore.org/config"
   },
   {
     "fileMatch": [
-      "contribute.json"
+      "/contribute.json"
     ],
     "uri": "https://json.schemastore.org/contribute"
   },
   {
     "fileMatch": [
-      "cypress.json"
+      "/cypress.json"
     ],
     "uri": "https://raw.githubusercontent.com/cypress-io/cypress/develop/cli/schema/cypress.schema.json"
   },
   {
     "fileMatch": [
-      ".creatomic"
+      "/.creatomic"
     ],
     "uri": "https://json.schemastore.org/creatomic"
   },
   {
     "fileMatch": [
-      ".cspell.json",
-      "cspell.json",
-      "cSpell.json"
+      "/.cspell.json",
+      "/cspell.json",
+      "/cSpell.json"
     ],
     "uri": "https://raw.githubusercontent.com/streetsidesoftware/cspell/master/cspell.schema.json"
   },
   {
     "fileMatch": [
-      ".csscomb.json"
+      "/.csscomb.json"
     ],
     "uri": "https://json.schemastore.org/csscomb"
   },
   {
     "fileMatch": [
-      ".csslintrc"
+      "/.csslintrc"
     ],
     "uri": "https://json.schemastore.org/csslintrc"
   },
   {
     "fileMatch": [
-      ".dla.json"
+      "/.dla.json"
     ],
     "uri": "https://json.schemastore.org/datalogic-scan2deploy-android"
   },
   {
     "fileMatch": [
-      ".dlc.json"
+      "/.dlc.json"
     ],
     "uri": "https://json.schemastore.org/datalogic-scan2deploy-ce"
   },
   {
     "fileMatch": [
-      "debugsettings.json"
+      "/debugsettings.json"
     ],
     "uri": "https://json.schemastore.org/debugsettings"
   },
   {
     "fileMatch": [
-      "docfx.json"
+      "/docfx.json"
     ],
     "uri": "https://json.schemastore.org/docfx"
   },
   {
     "fileMatch": [
-      ".dolittle/artifacts.json"
+      "/.dolittle/artifacts.json"
     ],
     "uri": "https://raw.githubusercontent.com/dolittle/DotNET.SDK/master/Schemas/Artifacts.Configuration/artifacts.json"
   },
   {
     "fileMatch": [
-      "bounded-context.json"
+      "/bounded-context.json"
     ],
     "uri": "https://raw.githubusercontent.com/dolittle/Runtime/master/Schemas/Applications.Configuration/bounded-context.json"
   },
   {
     "fileMatch": [
-      ".dolittle/event-horizons.json"
+      "/.dolittle/event-horizons.json"
     ],
     "uri": "https://raw.githubusercontent.com/dolittle/Runtime/master/Schemas/Events/event-horizons.json"
   },
   {
     "fileMatch": [
-      ".dolittle/resources.json"
+      "/.dolittle/resources.json"
     ],
     "uri": "https://raw.githubusercontent.com/dolittle/DotNET.Fundamentals/master/Schemas/ResourceTypes.Configuration/resources.json"
   },
   {
     "fileMatch": [
-      ".dolittle/server.json"
+      "/.dolittle/server.json"
     ],
     "uri": "https://raw.githubusercontent.com/dolittle/Runtime/master/Schemas/Server/server.json"
   },
   {
     "fileMatch": [
-      ".dolittle/tenants.json"
+      "/.dolittle/tenants.json"
     ],
     "uri": "https://raw.githubusercontent.com/dolittle/Runtime/master/Schemas/Tenancy/tenants.json"
   },
   {
     "fileMatch": [
-      ".dolittle/tenant-map.json"
+      "/.dolittle/tenant-map.json"
     ],
     "uri": "https://raw.githubusercontent.com/dolittle/DotNET.Fundamentals/master/Schemas/Tenancy.Configuration/tenant-map.json"
   },
   {
     "fileMatch": [
-      ".dolittle/topology.json"
+      "/.dolittle/topology.json"
     ],
     "uri": "https://raw.githubusercontent.com/dolittle/DotNET.SDK/master/Schemas/Applications.Configuration/topology.json"
   },
   {
     "fileMatch": [
-      "dotnetcli.host.json"
+      "/dotnetcli.host.json"
     ],
     "uri": "https://json.schemastore.org/dotnetcli.host"
   },
   {
     "fileMatch": [
-      "epr-manifest.json"
+      "/epr-manifest.json"
     ],
     "uri": "https://json.schemastore.org/epr-manifest"
   },
   {
     "fileMatch": [
-      "electron-builder.json"
+      "/electron-builder.json"
     ],
     "uri": "https://json.schemastore.org/electron-builder"
   },
   {
     "fileMatch": [
-      "app.json"
+      "/app.json"
     ],
     "uri": "https://json.schemastore.org/expo-37.0.0.json"
   },
   {
     "fileMatch": [
-      ".eslintrc",
-      ".eslintrc.json"
+      "/.eslintrc",
+      "/.eslintrc.json"
     ],
     "uri": "https://json.schemastore.org/eslintrc"
   },
   {
     "fileMatch": [
-      "fabric.mod.json"
+      "/fabric.mod.json"
     ],
     "uri": "https://json.schemastore.org/fabric.mod.json"
   },
   {
     "fileMatch": [
-      "fantomas-config.json"
+      "/fantomas-config.json"
     ],
     "uri": "https://json.schemastore.org/fantomas"
   },
   {
     "fileMatch": [
-      "function.json"
+      "/function.json"
     ],
     "uri": "https://json.schemastore.org/function"
   },
   {
     "fileMatch": [
-      "gitversion.json"
+      "/gitversion.json"
     ],
     "uri": "https://json.schemastore.org/gitversion"
   },
   {
     "fileMatch": [
-      "global.json"
+      "/global.json"
     ],
     "uri": "https://json.schemastore.org/global"
   },
   {
     "fileMatch": [
-      ".meshrc.json",
-      ".meshrc.js"
+      "/.meshrc.json",
+      "/.meshrc.js"
     ],
     "uri": "https://raw.githubusercontent.com/Urigo/graphql-mesh/master/packages/types/src/config-schema.json"
   },
   {
     "fileMatch": [
-      "graphql.config.json",
-      "graphql.config.js",
-      ".graphqlrc",
-      ".graphqlrc.json",
-      ".graphqlrc.js"
+      "/graphql.config.json",
+      "/graphql.config.js",
+      "/.graphqlrc",
+      "/.graphqlrc.json",
+      "/.graphqlrc.js"
     ],
     "uri": "https://raw.githubusercontent.com/kamilkisiela/graphql-config/master/config-schema.json"
   },
   {
     "fileMatch": [
-      "codegen.json",
-      "codegen.js",
-      ".codegen.json",
-      ".codegen.js"
+      "/codegen.json",
+      "/codegen.js",
+      "/.codegen.json",
+      "/.codegen.js"
     ],
     "uri": "https://raw.githubusercontent.com/dotansimha/graphql-code-generator/master/website/static/config.schema.json"
   },
   {
     "fileMatch": [
-      "copy.json"
+      "/copy.json"
     ],
     "uri": "https://json.schemastore.org/grunt-copy-task"
   },
   {
     "fileMatch": [
-      "clean.json"
+      "/clean.json"
     ],
     "uri": "https://json.schemastore.org/grunt-clean-task"
   },
   {
     "fileMatch": [
-      "cssmin.json"
+      "/cssmin.json"
     ],
     "uri": "https://json.schemastore.org/grunt-cssmin-task"
   },
   {
     "fileMatch": [
-      "jshint.json"
+      "/jshint.json"
     ],
     "uri": "https://json.schemastore.org/grunt-jshint-task"
   },
   {
     "fileMatch": [
-      "watch.json"
+      "/watch.json"
     ],
     "uri": "https://json.schemastore.org/grunt-watch-task"
   },
   {
     "fileMatch": [
-      "grunt/*.json",
-      "*-tasks.json"
+      "/grunt/*.json",
+      "/*-tasks.json"
     ],
     "uri": "https://json.schemastore.org/grunt-task"
   },
   {
     "fileMatch": [
-      "haxelib.json"
+      "/haxelib.json"
     ],
     "uri": "https://json.schemastore.org/haxelib"
   },
   {
     "fileMatch": [
-      "host.json"
+      "/host.json"
     ],
     "uri": "https://json.schemastore.org/host"
   },
   {
     "fileMatch": [
-      "host-meta.json"
+      "/host-meta.json"
     ],
     "uri": "https://json.schemastore.org/host-meta"
   },
   {
     "fileMatch": [
-      ".htmlhintrc"
+      "/.htmlhintrc"
     ],
     "uri": "https://json.schemastore.org/htmlhint"
   },
   {
     "fileMatch": [
-      "imageoptimizer.json"
+      "/imageoptimizer.json"
     ],
     "uri": "https://json.schemastore.org/imageoptimizer"
   },
   {
     "fileMatch": [
-      ".jsbeautifyrc"
+      "/.jsbeautifyrc"
     ],
     "uri": "https://json.schemastore.org/jsbeautifyrc"
   },
   {
     "fileMatch": [
-      ".jsbeautifyrc"
+      "/.jsbeautifyrc"
     ],
     "uri": "https://json.schemastore.org/jsbeautifyrc-nested"
   },
   {
     "fileMatch": [
-      ".jscsrc",
-      "jscsrc.json"
+      "/.jscsrc",
+      "/jscsrc.json"
     ],
     "uri": "https://json.schemastore.org/jscsrc"
   },
   {
     "fileMatch": [
-      ".jshintrc"
+      "/.jshintrc"
     ],
     "uri": "https://json.schemastore.org/jshintrc"
   },
   {
     "fileMatch": [
-      ".jsinspectrc"
+      "/.jsinspectrc"
     ],
     "uri": "https://json.schemastore.org/jsinspectrc"
   },
   {
     "fileMatch": [
-      "*.schema.json"
+      "/*.schema.json"
     ],
     "uri": "https://jsonapi.org/schema"
   },
   {
     "fileMatch": [
-      "feed.json"
+      "/feed.json"
     ],
     "uri": "https://json.schemastore.org/feed"
   },
   {
     "fileMatch": [
-      "*.jsonld"
+      "/*.jsonld"
     ],
     "uri": "https://json.schemastore.org/jsonld"
   },
   {
     "fileMatch": [
-      "*.patch"
+      "/*.patch"
     ],
     "uri": "https://json.schemastore.org/json-patch"
   },
   {
     "fileMatch": [
-      "jsconfig.json"
+      "/jsconfig.json"
     ],
     "uri": "https://json.schemastore.org/jsconfig"
   },
   {
     "fileMatch": [
-      "launchsettings.json"
+      "/launchsettings.json"
     ],
     "uri": "https://json.schemastore.org/launchsettings"
   },
   {
     "fileMatch": [
-      "lerna.json"
+      "/lerna.json"
     ],
     "uri": "https://json.schemastore.org/lerna"
   },
   {
     "fileMatch": [
-      "libman.json"
+      "/libman.json"
     ],
     "uri": "https://json.schemastore.org/libman"
   },
   {
     "fileMatch": [
-      "*.lsdl.json"
+      "/localazy.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/localazy/cli-schema/master/localazy.json"
+  },
+  {
+    "fileMatch": [
+      "/*.lsdl.json"
     ],
     "uri": "https://json.schemastore.org/lsdlschema"
   },
   {
     "fileMatch": [
-      "mimetypes.json"
+      "/mimetypes.json"
     ],
     "uri": "https://json.schemastore.org/mimetypes"
   },
   {
     "fileMatch": [
-      ".modernizrrc"
+      "/.modernizrrc"
     ],
     "uri": "https://json.schemastore.org/modernizrrc"
   },
   {
     "fileMatch": [
-      "mycode.json"
+      "/mycode.json"
     ],
     "uri": "https://json.schemastore.org/mycode"
   },
   {
     "fileMatch": [
-      ".nestcli.json",
-      ".nest-cli.json",
-      "nest-cli.json",
-      "nest.json"
+      "/.nestcli.json",
+      "/.nest-cli.json",
+      "/nest-cli.json",
+      "/nest.json"
     ],
     "uri": "https://json.schemastore.org/nest-cli"
   },
   {
     "fileMatch": [
-      ".nodehawkrc"
+      "/.nodehawkrc"
     ],
     "uri": "https://json.schemastore.org/nodehawkrc"
   },
   {
     "fileMatch": [
-      "nodemon.json"
+      "/nodemon.json"
     ],
     "uri": "https://json.schemastore.org/nodemon"
   },
   {
     "fileMatch": [
-      ".npmpackagejsonlintrc",
-      "npmpackagejsonlintrc.json",
-      ".npmpackagejsonlintrc.json"
+      "/.npmpackagejsonlintrc",
+      "/npmpackagejsonlintrc.json",
+      "/.npmpackagejsonlintrc.json"
     ],
     "uri": "https://json.schemastore.org/npmpackagejsonlintrc"
   },
   {
     "fileMatch": [
-      "nswag.json"
+      "/nswag.json"
     ],
     "uri": "https://json.schemastore.org/nswag"
   },
   {
     "fileMatch": [
-      "ocelot.json"
+      "/ocelot.json"
     ],
     "uri": "https://json.schemastore.org/ocelot"
   },
   {
     "fileMatch": [
-      "omnisharp.json"
+      "/omnisharp.json"
     ],
     "uri": "https://json.schemastore.org/omnisharp"
   },
   {
     "fileMatch": [
-      "openapi.json"
+      "/openapi.json"
     ],
     "uri": "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/schemas/v3.0/schema.json"
   },
   {
     "fileMatch": [
-      "kratos.json"
+      "/kratos.json"
     ],
     "uri": "https://raw.githubusercontent.com/ory/kratos/master/.schema/version.schema.json"
   },
   {
     "fileMatch": [
-      "package.json"
+      "/package.json"
     ],
     "uri": "https://json.schemastore.org/package"
   },
   {
     "fileMatch": [
-      "package.manifest"
+      "/package.manifest"
     ],
     "uri": "https://json.schemastore.org/package.manifest"
   },
   {
     "fileMatch": [
-      "pattern.json"
+      "/pattern.json"
     ],
     "uri": "https://json.schemastore.org/pattern"
   },
   {
     "fileMatch": [
-      ".prettierrc",
-      ".prettierrc.json"
+      "/.prettierrc",
+      "/.prettierrc.json"
     ],
     "uri": "https://json.schemastore.org/prettierrc"
   },
   {
     "fileMatch": [
-      "project.json"
+      "/project.json"
     ],
     "uri": "https://json.schemastore.org/project"
   },
   {
     "fileMatch": [
-      "*.rules"
+      "/*.rules"
     ],
     "uri": "https://json.schemastore.org/prometheus.rules"
   },
   {
     "fileMatch": [
-      "proxies.json"
+      "/proxies.json"
     ],
     "uri": "https://json.schemastore.org/proxies"
   },
   {
     "fileMatch": [
-      "pyrseas-0.8.json"
+      "/pyrseas-0.8.json"
     ],
     "uri": "https://json.schemastore.org/pyrseas-0.8"
   },
   {
     "fileMatch": [
-      "*.resjson"
+      "/*.resjson"
     ],
     "uri": "https://json.schemastore.org/resjson"
   },
   {
     "fileMatch": [
-      "resume.json"
+      "/resume.json"
     ],
     "uri": "https://json.schemastore.org/resume"
   },
   {
     "fileMatch": [
-      "renovate.json",
-      "renovate.json5",
-      ".github/renovate.json",
-      ".github/renovate.json5",
-      ".renovaterc",
-      ".renovaterc.json"
+      "/renovate.json",
+      "/renovate.json5",
+      "/.github/renovate.json",
+      "/.github/renovate.json5",
+      "/.renovaterc",
+      "/.renovaterc.json"
     ],
     "uri": "https://docs.renovatebot.com/renovate-schema.json"
   },
   {
     "fileMatch": [
-      "settings.job"
+      "/settings.job"
     ],
     "uri": "https://json.schemastore.org/settings.job"
   },
   {
     "fileMatch": [
-      "skyuxconfig.json",
-      "skyuxconfig.*.json"
+      "/skyuxconfig.json",
+      "/skyuxconfig.*.json"
     ],
     "uri": "https://raw.githubusercontent.com/blackbaud/skyux-builder/master/skyuxconfig-schema.json"
   },
   {
     "fileMatch": [
-      ".solidarity",
-      ".solidarity.json"
+      "/.solidarity",
+      "/.solidarity.json"
     ],
     "uri": "https://json.schemastore.org/solidaritySchema"
   },
   {
     "fileMatch": [
-      "*.map"
+      "/*.map"
     ],
     "uri": "https://json.schemastore.org/sourcemap-v3"
   },
   {
     "fileMatch": [
-      "*.mixins.json"
+      "/*.mixins.json"
     ],
     "uri": "https://json.schemastore.org/sponge-mixins"
   },
   {
     "fileMatch": [
-      "*.sprite"
+      "/*.sprite"
     ],
     "uri": "https://json.schemastore.org/sprite"
   },
   {
     "fileMatch": [
-      "stryker.conf.json",
-      "stryker-*.conf.json"
+      "/stryker.conf.json",
+      "/stryker-*.conf.json"
     ],
     "uri": "https://raw.githubusercontent.com/stryker-mutator/stryker/master/packages/api/schema/stryker-core.json"
   },
   {
     "fileMatch": [
-      "stylecop.json"
+      "/stylecop.json"
     ],
     "uri": "https://raw.githubusercontent.com/DotNetAnalyzers/StyleCopAnalyzers/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json"
   },
   {
     "fileMatch": [
-      ".stylelintrc",
-      "stylelintrc.json",
-      ".stylelintrc.json"
+      "/.stylelintrc",
+      "/stylelintrc.json",
+      "/.stylelintrc.json"
     ],
     "uri": "https://json.schemastore.org/stylelintrc"
   },
   {
     "fileMatch": [
-      "swagger.json"
+      "/swagger.json"
     ],
     "uri": "https://json.schemastore.org/swagger-2.0"
   },
   {
     "fileMatch": [
-      ".template.config/template.json"
+      "/.template.config/template.json"
     ],
     "uri": "https://json.schemastore.org/template"
   },
   {
     "fileMatch": [
-      "templatesources.json"
+      "/templatesources.json"
     ],
     "uri": "https://json.schemastore.org/templatesources"
   },
   {
     "fileMatch": [
-      "*.tmLanguage.json"
+      "/*.tmLanguage.json"
     ],
     "uri": "https://raw.githubusercontent.com/Septh/tmlanguage/master/tmLanguage.schema.json"
   },
   {
     "fileMatch": [
-      "tsconfig.json"
+      "/tsconfig.json"
     ],
     "uri": "https://json.schemastore.org/tsconfig"
   },
   {
     "fileMatch": [
-      "tsd.json"
+      "/tsd.json"
     ],
     "uri": "https://json.schemastore.org/tsd"
   },
   {
     "fileMatch": [
-      ".tsdrc"
+      "/.tsdrc"
     ],
     "uri": "https://json.schemastore.org/tsdrc"
   },
   {
     "fileMatch": [
-      "ts-force-config.json"
+      "/ts-force-config.json"
     ],
     "uri": "https://json.schemastore.org/ts-force-config"
   },
   {
     "fileMatch": [
-      "tslint.json"
+      "/tslint.json"
     ],
     "uri": "https://json.schemastore.org/tslint"
   },
   {
     "fileMatch": [
-      "typewiz.json"
+      "/typewiz.json"
     ],
     "uri": "https://json.schemastore.org/typewiz"
   },
   {
     "fileMatch": [
-      "typings.json"
+      "/typings.json"
     ],
     "uri": "https://json.schemastore.org/typings"
   },
   {
     "fileMatch": [
-      ".typingsrc"
+      "/.typingsrc"
     ],
     "uri": "https://json.schemastore.org/typingsrc"
   },
   {
     "fileMatch": [
-      "up.json"
+      "/up.json"
     ],
     "uri": "https://json.schemastore.org/up.json"
   },
   {
     "fileMatch": [
-      ".manifest"
+      "/.manifest"
     ],
     "uri": "https://json.schemastore.org/ui5-manifest"
   },
   {
     "fileMatch": [
-      "webapp/manifest.json",
-      "src/main/webapp/manifest.json"
+      "/webapp/manifest.json",
+      "/src/main/webapp/manifest.json"
     ],
     "uri": "https://raw.githubusercontent.com/SAP/ui5-manifest/master/schema.json"
   },
   {
     "fileMatch": [
-      "*.vg",
-      "*.vg.json"
+      "/*.vg",
+      "/*.vg.json"
     ],
     "uri": "https://json.schemastore.org/vega"
   },
   {
     "fileMatch": [
-      "*.vl",
-      "*.vl.json"
+      "/*.vl",
+      "/*.vl.json"
     ],
     "uri": "https://json.schemastore.org/vega-lite"
   },
   {
     "fileMatch": [
-      "version.json"
+      "/version.json"
     ],
     "uri": "https://raw.githubusercontent.com/dotnet/Nerdbank.GitVersioning/master/src/NerdBank.GitVersioning/version.schema.json"
   },
   {
     "fileMatch": [
-      "*vim*/addon-info.json"
+      "/*vim*/addon-info.json"
     ],
     "uri": "https://json.schemastore.org/vim-addon-info"
   },
   {
     "fileMatch": [
-      ".vsls.json"
+      "/.vsls.json"
     ],
     "uri": "https://json.schemastore.org/vsls"
   },
   {
     "fileMatch": [
-      "vs-2017.3.host.json"
+      "/vs-2017.3.host.json"
     ],
     "uri": "https://json.schemastore.org/vs-2017.3.host"
   },
   {
     "fileMatch": [
-      "*.filenesting.json",
-      ".filenesting.json"
+      "/*.filenesting.json",
+      "/.filenesting.json"
     ],
     "uri": "https://json.schemastore.org/vs-nesting"
   },
   {
     "fileMatch": [
-      "*.vsconfig"
+      "/*.vsconfig"
     ],
     "uri": "https://json.schemastore.org/vsconfig"
   },
   {
     "fileMatch": [
-      "*.vsext"
+      "/*.vsext"
     ],
     "uri": "https://json.schemastore.org/vsext"
   },
   {
     "fileMatch": [
-      "vs-publish.json"
+      "/vs-publish.json"
     ],
     "uri": "https://json.schemastore.org/vsix-publish"
   },
   {
     "fileMatch": [
-      "vss-extension.json"
+      "/vss-extension.json"
     ],
     "uri": "https://json.schemastore.org/vss-extension"
   },
   {
     "fileMatch": [
-      "manifest.json"
+      "/manifest.json"
     ],
     "uri": "https://json.schemastore.org/webextension"
   },
   {
     "fileMatch": [
-      "manifest.json",
-      "*.webmanifest"
+      "/manifest.json",
+      "/*.webmanifest"
     ],
     "uri": "https://json.schemastore.org/web-manifest"
   },
   {
     "fileMatch": [
-      "webjobs-list.json"
+      "/webjobs-list.json"
     ],
     "uri": "https://json.schemastore.org/webjobs-list"
   },
   {
     "fileMatch": [
-      "webjobpublishsettings.json"
+      "/webjobpublishsettings.json"
     ],
     "uri": "https://json.schemastore.org/webjob-publish-settings"
   },
   {
     "fileMatch": [
-      "web-types.json",
-      "*.web-types.json"
+      "/web-types.json",
+      "/*.web-types.json"
     ],
     "uri": "https://json.schemastore.org/web-types"
   },
   {
     "fileMatch": [
-      "*.version"
+      "/*.version"
     ],
     "uri": "https://raw.githubusercontent.com/linuxgurugamer/KSPAddonVersionChecker/master/KSP-AVC.schema.json"
   },
   {
     "fileMatch": [
-      "*.ckan"
+      "/*.ckan"
     ],
     "uri": "https://raw.githubusercontent.com/KSP-CKAN/CKAN/master/CKAN.schema"
   },
   {
     "fileMatch": [
-      "xunit.runner.json"
+      "/xunit.runner.json"
     ],
     "uri": "https://json.schemastore.org/xunit.runner.schema"
   },
   {
     "fileMatch": [
-      "*.servicehub.service.json"
+      "/*.servicehub.service.json"
     ],
     "uri": "https://json.schemastore.org/servicehub.service.schema"
   },
   {
     "fileMatch": [
-      "servicehub.config.json"
+      "/servicehub.config.json"
     ],
     "uri": "https://json.schemastore.org/servicehub.config.schema"
   },
   {
     "fileMatch": [
-      "*.cryproj"
+      "/*.cryproj"
     ],
     "uri": "https://json.schemastore.org/cryproj.52.schema"
   },
   {
     "fileMatch": [
-      "*.cryproj"
+      "/*.cryproj"
     ],
     "uri": "https://json.schemastore.org/cryproj.53.schema"
   },
   {
     "fileMatch": [
-      "*.cryproj"
+      "/*.cryproj"
     ],
     "uri": "https://json.schemastore.org/cryproj.54.schema"
   },
   {
     "fileMatch": [
-      "*.cryproj"
+      "/*.cryproj"
     ],
     "uri": "https://json.schemastore.org/cryproj.55.schema"
   },
   {
     "fileMatch": [
-      "*.cryproj"
+      "/*.cryproj"
     ],
     "uri": "https://json.schemastore.org/cryproj.dev.schema"
   },
   {
     "fileMatch": [
-      "*.cryproj"
+      "/*.cryproj"
     ],
     "uri": "https://json.schemastore.org/cryproj"
   },
   {
     "fileMatch": [
-      "typedoc.json"
+      "/typedoc.json"
     ],
     "uri": "https://json.schemastore.org/typedoc"
   },
   {
     "fileMatch": [
-      ".huskyrc",
-      ".huskyrc.json"
+      "/.huskyrc",
+      "/.huskyrc.json"
     ],
     "uri": "https://json.schemastore.org/huskyrc"
   },
   {
     "fileMatch": [
-      ".lintstagedrc",
-      ".lintstagedrc.json"
+      "/.lintstagedrc",
+      "/.lintstagedrc.json"
     ],
     "uri": "https://json.schemastore.org/lintstagedrc.schema"
   },
   {
     "fileMatch": [
-      "*.mtaext"
+      "/*.mtaext"
     ],
     "uri": "https://json.schemastore.org/mtaext"
   },
   {
     "fileMatch": [
-      "xs-app.json"
+      "/xs-app.json"
     ],
     "uri": "https://json.schemastore.org/xs-app.json"
   },
   {
     "fileMatch": [
-      "hemtt.json",
-      "hemtt.toml"
+      "/hemtt.json",
+      "/hemtt.toml"
     ],
     "uri": "https://json.schemastore.org/hemtt-0.6.2"
   },
   {
     "fileMatch": [
-      "now.json"
+      "/now.json"
     ],
     "uri": "https://json.schemastore.org/now"
   },
   {
     "fileMatch": [
-      "BizTalkServerInventory.json"
+      "/BizTalkServerInventory.json"
     ],
     "uri": "https://json.schemastore.org/BizTalkServerApplicationSchema"
   },
   {
     "fileMatch": [
-      ".httpmockrc",
-      ".httpmock.json"
+      "/.httpmockrc",
+      "/.httpmock.json"
     ],
     "uri": "https://json.schemastore.org/httpmockrc"
   },
   {
     "fileMatch": [
-      ".nl.json",
-      ".neoload.json"
+      "/.nl.json",
+      "/.neoload.json"
     ],
     "uri": "https://raw.githubusercontent.com/Neotys-Labs/neoload-cli/master/resources/as-code.latest.schema.json"
   },
   {
     "fileMatch": [
-      "*.har"
+      "/*.har"
     ],
     "uri": "https://raw.githubusercontent.com/ahmadnassri/har-schema/master/lib/har.json"
   },
   {
     "fileMatch": [
-      "conf.js*",
-      "jsdoc.js*"
+      "/conf.js*",
+      "/jsdoc.js*"
     ],
     "uri": "https://json.schemastore.org/jsdoc-1.0.0"
   },
   {
     "fileMatch": [
-      ".commitlintrc",
-      ".commitlintrc.json"
+      "/.commitlintrc",
+      "/.commitlintrc.json"
     ],
     "uri": "https://json.schemastore.org/commitlintrc"
   },
   {
     "fileMatch": [
-      "*.tokenlist.json"
+      "/*.tokenlist.json"
     ],
     "uri": "https://uniswap.org/tokenlist.schema.json"
   },
   {
     "fileMatch": [
-      "**/*devinit*.json"
+      "/**/*devinit*.json"
     ],
     "uri": "https://json.schemastore.org/devinit.schema-1.0"
   }
