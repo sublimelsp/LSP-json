@@ -61,8 +61,8 @@
     "uri": "sublime://schemas/preferences.sublime-settings"
   },
   {
-    "fileMatch": ["/sublime-package.json"],
-    "uri": "sublime://schemas/sublime-package"
+    "fileMatch": ["/sublime-package-schema.json"],
+    "uri": "sublime://schemas/sublime-package-schema"
   },
   {
     "fileMatch": ["/tsconfig.json", "/tsconfig.*.json", "/tsconfig-*.json"],
