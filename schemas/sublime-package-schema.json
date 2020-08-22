@@ -8,12 +8,12 @@
   "properties": {
     "contributions": {
       "type": "object",
-      "markdownDescription": "A type of resources that package contributes to Sublime Text",
+      "markdownDescription": "A type of resource that the package contributes to Sublime Text",
       "additionalProperties": false,
       "uniqueItems": true,
       "properties": {
         "settings": {
-          "markdownDescription": "Contributed editor settings",
+          "markdownDescription": "Contributed settings",
           "type": "array",
           "items": {
             "type": "object",

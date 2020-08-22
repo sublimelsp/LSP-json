@@ -61,7 +61,7 @@
     "uri": "sublime://schemas/preferences.sublime-settings"
   },
   {
-    "fileMatch": ["/sublime-package-schema.json"],
+    "fileMatch": ["/sublime-package.json"],
     "uri": "sublime://schemas/sublime-package-schema"
   },
   {
