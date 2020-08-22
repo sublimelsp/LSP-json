@@ -36,11 +36,6 @@
 			"resultLimit": 5000,
 		}
 	},
-	// An array of schemas to additionally register with the server.
-	// Each schema object must include those two properties:
-	// - fileMatch: An array of globs matching a path
-	// - uri: The string URL to the actual schema definition
-	// A commented out examples are provided below.
 	"userSchemas": [
 		// {
 		// 	"fileMatch": ["tasks/*.yaml"],
