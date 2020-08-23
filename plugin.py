@@ -26,28 +26,27 @@ class StoreListener(metaclass=ABCMeta):
 class SchemaStore:
     def __init__(self) -> None:
         self._listeners = WeakSet()  # type: WeakSet[StoreListener]
-        self._schemas = []  # type: List[Dict]
+        self._schema_list = []  # type: List[Dict]
+        self._schema_uri_to_content = {}  # type: Dict[str, str]
         self._schemas_loaded = False
-        self._package_schemas = {'settings': []}  # type: Dict[str, List[str]]
         self._watched_settings = []  # type: List[sublime.Settings]
 
     def add_listener(self, listener: StoreListener) -> None:
         self._listeners.add(listener)
 
     def get_schema_for_uri(self, uri: str) -> Optional[str]:
-        if not uri.startswith('sublime://'):
-            print('LSP-json: Unknown schema URI "{}"'.format(uri))
-            return None
-        schema_path = uri.replace('sublime://', '')
-        schema_components = schema_path.split('/')
-        domain = schema_components[0]
-        if domain == 'schemas':
-            # Internal schema - 1:1 schema path to file path mapping.
-            schema_path = 'Packages/{}/{}.json'.format(LspJSONPlugin.package_name, schema_path)
-            return ResourcePath(schema_path).read_text()
-        if domain == 'settings':
-            schema_index = int(schema_components[1])
-            return self._package_schemas[domain][schema_index]
+        if uri in self._schema_uri_to_content:
+            return self._schema_uri_to_content[uri]
+        if uri.startswith('sublime://'):
+            schema_path = uri.replace('sublime://', '')
+            schema_components = schema_path.split('/')
+            domain = schema_components[0]
+            if domain == 'schemas':
+                # Internal schema - 1:1 schema path to file path mapping.
+                schema_path = 'Packages/{}/{}.json'.format(LspJSONPlugin.package_name, schema_path)
+                return ResourcePath(schema_path).read_text()
+        print('LSP-json: Unknown schema URI "{}"'.format(uri))
+        return None
 
     def cleanup(self) -> None:
         for settings in self._watched_settings:
@@ -64,8 +63,8 @@ class SchemaStore:
         sublime.set_timeout_async(self._collect_schemas_async)
 
     def _collect_schemas_async(self) -> None:
-        self._schemas = []
-        self._package_schemas = {'settings': []}
+        self._schema_list = []
+        self._schema_uri_to_content = {}
         self._load_bundled_schemas()
         self._load_package_schemas()
         sublime.set_timeout_async(self._notify_listeners)
@@ -76,7 +75,7 @@ class SchemaStore:
             path = 'Packages/{}/{}'.format(LspJSONPlugin.package_name, schema)
             schema_json = self._parse_schema(ResourcePath(path))
             if schema_json:
-                self._schemas.extend(schema_json)
+                self._schema_list.extend(schema_json)
 
     def _load_package_schemas(self) -> None:
         resources = ResourcePath.glob_resources('sublime-package.json')
@@ -85,12 +84,11 @@ class SchemaStore:
             if schema:
                 settings = schema.get('contributions').get('settings')
                 for s in settings:
-                    i = len(self._package_schemas['settings'])
-                    schema_id = 'sublime://settings/{}'.format(i)
-                    self._schemas.append({'fileMatch': s.get('file_patterns'), 'uri': schema_id})
+                    i = len(self._schema_uri_to_content)
                     schema_content = s.get('schema')
-                    schema_content['type'] = 'object'
-                    self._package_schemas['settings'].append(sublime.encode_value(schema_content))
+                    uri = schema_content.get('$id') or 'sublime://settings/{}'.format(i)
+                    self._schema_uri_to_content[uri] = sublime.encode_value(schema_content)
+                    self._schema_list.append({'fileMatch': s.get('file_patterns'), 'uri': uri})
 
     def _parse_schema(self, resource: ResourcePath) -> Any:
         try:
@@ -101,7 +99,7 @@ class SchemaStore:
 
     def _notify_listeners(self) -> None:
         for listener in self._listeners:
-            listener.on_store_changed(self._schemas)
+            listener.on_store_changed(self._schema_list)
 
 
 class LspJSONPlugin(NpmClientHandler, StoreListener):

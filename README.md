@@ -17,11 +17,11 @@ To load manually created schemas, add those to `userSchemas` configuration in th
 
 ### Schemas contributed by Packages
 
-Sublime Text packages can provide schemas for its own settings, or contribute to global ST settings or other configuration files (for example a `*.sublime-project` files).
+Sublime Text packages can provide schemas for its own settings, or contribute to global ST settings or other configuration files (for example `*.sublime-project` files).
 
 This is accomplished by including a `sublime-package.json` file in the package (location doesn't matter) and defining schemas within it. Any changes made to the schemas are automatically applied to matching files so there is no need to restart the server or ST.
 
-Here is a an example of how this could look like:
+Here is a an example of three different schemas defined in one `sublime-package.json` file:
 
 ```js
 {
@@ -48,6 +48,21 @@ Here is a an example of how this could look like:
         "schema": {
           "properties": {
             "my_cool_setting": {
+              // Reuses definition from the pattern-less schema defined below.
+              "$ref": "sublime://settings/foo/base#/definitions/ReuseMe"
+            }
+          },
+        }
+      },
+      {
+        // Pattern-less schema (note that "file_patterns" is missing).
+        // Can be added for the purpose of referencing it (or its definitions) from another schema.
+        // Pattern-less schema must define an "$id" to be able to refer to it from other schemas.
+        // It's recommended to assign URIs like "sublime://settings/foo/base" for "$id".
+        "schema": {
+          "$id": "sublime://settings/foo/base"
+          "definitions": {
+            "ReuseMe": {
               "type": "string",
               "default": "no",
               "enum": ["yes", "no"],

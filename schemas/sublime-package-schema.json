@@ -26,11 +26,11 @@
                 }
               },
               "schema": {
-                "type": "object",
-                "$ref": "http://json-schema.org/draft-07/schema#",
-                "default": {}
+                "$ref": "http://json-schema.org/draft-07/schema#"
               }
-            }
+            },
+            "required": ["schema"],
+            "additionalProperties": false
           }
         }
       }
