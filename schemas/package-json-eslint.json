@@ -1,5 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "sublime://schemas/package-json-eslint",
   "properties": {
     "eslintConfig": {
       "description": "ESLint configuration",

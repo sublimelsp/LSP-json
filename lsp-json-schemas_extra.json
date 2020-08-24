@@ -1,75 +1,78 @@
 [
   {
-    "fileMatch": ["*.sublime-build"],
-    "url": "sublime://schemas/sublime-build"
+    "fileMatch": ["/*.sublime-build"],
+    "uri": "sublime://schemas/sublime-build"
   },
   {
-    "fileMatch": ["*.sublime-color-scheme", "*.hidden-color-scheme"],
-    "url": "sublime://schemas/sublime-color-scheme"
+    "fileMatch": ["/*.sublime-color-scheme", "/*.hidden-color-scheme"],
+    "uri": "sublime://schemas/sublime-color-scheme"
   },
   {
-    "fileMatch": ["*.sublime-commands"],
-    "url": "sublime://schemas/sublime-commands"
+    "fileMatch": ["/*.sublime-commands"],
+    "uri": "sublime://schemas/sublime-commands"
   },
   {
-    "fileMatch": ["*.sublime-completions"],
-    "url": "sublime://schemas/sublime-completions"
+    "fileMatch": ["/*.sublime-completions"],
+    "uri": "sublime://schemas/sublime-completions"
   },
   {
-    "fileMatch": ["*.sublime-keymap"],
-    "url": "sublime://schemas/sublime-keymap"
+    "fileMatch": ["/*.sublime-keymap"],
+    "uri": "sublime://schemas/sublime-keymap"
   },
   {
-    "fileMatch": ["*.sublime-macro"],
-    "url": "sublime://schemas/sublime-macro"
+    "fileMatch": ["/*.sublime-macro"],
+    "uri": "sublime://schemas/sublime-macro"
   },
   {
-    "fileMatch": ["*.sublime-menu"],
-    "url": "sublime://schemas/sublime-menu"
+    "fileMatch": ["/*.sublime-menu"],
+    "uri": "sublime://schemas/sublime-menu"
   },
   {
-    "fileMatch": ["*.sublime-mousemap"],
-    "url": "sublime://schemas/sublime-mousemap"
+    "fileMatch": ["/*.sublime-mousemap"],
+    "uri": "sublime://schemas/sublime-mousemap"
   },
   {
-    "fileMatch": ["*.sublime-project"],
-    "url": "sublime://schemas/sublime-project"
+    "fileMatch": ["/*.sublime-project"],
+    "uri": "sublime://schemas/sublime-project"
   },
   {
-    "fileMatch": ["*.sublime-settings"],
-    "url": "sublime://schemas/sublime-settings"
+    "fileMatch": ["/*.sublime-settings"],
+    "uri": "sublime://schemas/sublime-settings"
   },
   {
-    "fileMatch": ["*.sublime-theme", "*.hidden-theme"],
-    "url": "sublime://schemas/sublime-theme"
+    "fileMatch": ["/*.sublime-theme", "/*.hidden-theme"],
+    "uri": "sublime://schemas/sublime-theme"
   },
   {
     "fileMatch": ["/.vscode/*.json"],
-    "url": "sublime://schemas/vscode-base"
+    "uri": "sublime://schemas/vscode-base"
   },
   {
     "fileMatch": ["/package.json"],
-    "url": "sublime://schemas/package-json-eslint"
+    "uri": "sublime://schemas/package-json-eslint"
   },
   {
     "fileMatch": [
-      "Preferences.sublime-settings",
-      "Preferences%20%28Linux%29.sublime-settings",
-      "Preferences%20%28OSX%29.sublime-settings",
-      "Preferences%20%28Windows%29.sublime-settings"
+      "/Preferences.sublime-settings",
+      "/Preferences%20%28Linux%29.sublime-settings",
+      "/Preferences%20%28OSX%29.sublime-settings",
+      "/Preferences%20%28Windows%29.sublime-settings"
     ],
-    "url": "sublime://schemas/preferences.sublime-settings"
+    "uri": "sublime://schemas/preferences.sublime-settings"
   },
   {
-    "fileMatch": ["tsconfig.json", "tsconfig.*.json", "tsconfig-*.json"],
-    "url": "sublime://schemas/tsconfig"
+    "fileMatch": ["/sublime-package.json"],
+    "uri": "sublime://schemas/sublime-package-schema"
   },
   {
-    "fileMatch": ["jsconfig.json", "jsconfig.*.json"],
-    "url": "sublime://schemas/jsconfig"
+    "fileMatch": ["/tsconfig.json", "/tsconfig.*.json", "/tsconfig-*.json"],
+    "uri": "sublime://schemas/tsconfig"
   },
   {
-    "fileMatch": ["lsp-json-schemas*.json"],
-    "url": "sublime://schemas/json-with-comments"
+    "fileMatch": ["/jsconfig.json", "/jsconfig.*.json"],
+    "uri": "sublime://schemas/jsconfig"
+  },
+  {
+    "uri": "sublime://schemas/json-with-comments"
   },
 ]
