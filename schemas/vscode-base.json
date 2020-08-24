@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "id": "vscode://schemas/base",
+  "id": "sublime://schemas/vscode-base",
   "allowComments": true,
   "allowTrailingCommas": true,
   "type": "object"
