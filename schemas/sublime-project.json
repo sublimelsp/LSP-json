@@ -66,13 +66,13 @@
       }
     },
     "settings": {
-      "type": "object"
+      "$ref": "sublime://schemas/preferences.sublime-settings"
     },
     "build_systems": {
       "type": "array",
       "items": {
         "allOf": [
-          {"$ref": "sublime://schemas/sublime-build"},
+          { "$ref": "sublime://schemas/sublime-build" },
           { "properties": {
               "name": {
                 "type": "string"
