@@ -44,17 +44,17 @@
             "items": {"type": "string"}
           },
           "binary_file_patterns": {
-            "markdownDescription": "Patterns of files to treat as binary files, and thus ignored in Goto Anything and Find in Files.",
+            "markdownDescription": "**ST >= 3158** [Patterns](http://www.sublimetext.com/docs/file_patterns.html) of files to treat as binary files, and thus ignored in Goto Anything and Find in Files.",
             "type": "array",
             "items": {"type": "string"}
           },
           "index_include_patterns": {
-            "markdownDescription": "[Patterns](http://www.sublimetext.com/docs/file_patterns.html) of files to index in the folder. This is added to the global setting of the same name. Anything not matching these patterns will be excluded from the index. This is checked before `\"index_exclude_patterns\"`.",
+            "markdownDescription": "**ST >= 3158** [Patterns](http://www.sublimetext.com/docs/file_patterns.html) of files to index in the folder. This is added to the global setting of the same name. Anything not matching these patterns will be excluded from the index. This is checked before `\"index_exclude_patterns\"`.",
             "type": "array",
             "items": {"type": "string"}
           },
           "index_exclude_patterns": {
-            "markdownDescription": "[Patterns](http://www.sublimetext.com/docs/file_patterns.html) of files to excluding from indexing in the folder. This is added to the global setting of the same name. This is checked after `\"index_include_patterns\"`.",
+            "markdownDescription": "**ST >= 3158** [Patterns](http://www.sublimetext.com/docs/file_patterns.html) of files to excluding from indexing in the folder. This is added to the global setting of the same name. This is checked after `\"index_include_patterns\"`.",
             "type": "array",
             "items": {"type": "string"}
           },
