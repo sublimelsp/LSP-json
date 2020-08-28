@@ -6,7 +6,7 @@
   "type": "object",
   "anyOf": [
     {
-      "$ref": "sublime://schemas/preferences.sublime-settings"
+      "$ref": "sublime://schemas/preferences.sublime-settings#/definitions/EditorSettings"
     },
     {
       "properties": {
