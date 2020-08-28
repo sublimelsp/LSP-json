@@ -1,0 +1,11 @@
+=> 1.4.0
+
+Breaking:
+
+ - If you have customized the `userSchemas` object in LSP-json.sublime-settings, it now takes an
+   array of objects with keys `fileMatch` and `uri` instead of `fileMatch` and `url` (`uri` instead of `url`).
+
+Feature:
+
+ - Implement support for packages defining `sublime-package.json` file to define schema for its settings.
+   See documentation at https://github.com/sublimelsp/LSP-json#schemas-contributed-by-packages
