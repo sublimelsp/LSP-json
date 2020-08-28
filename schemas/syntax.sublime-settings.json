@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "sublime://schemas/syntax.sublime-settings",
+  "allowComments": true,
+  "allowTrailingCommas": true,
+  "type": "object",
+  "anyOf": [
+    {
+      "$ref": "sublime://schemas/preferences.sublime-settings"
+    },
+    {
+      "properties": {
+        "extensions": {
+          "type": "array",
+          "markdownDescription": "Custom file extensions assigned to this syntax.",
+          "additionalItems": {
+            "type": "string"
+          }
+        },
+        "hidden_extensions": {
+          "type": "array",
+          "markdownDescription": "Custom file extensions assigned to this syntax.",
+          "additionalItems": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  ]
+}
