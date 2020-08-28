@@ -6,7 +6,7 @@
   "allowTrailingCommas": true,
   "type": "object",
   "definitions": {
-    "editor_settings": {
+    "EditorSettings": {
       "properties": {
         "color_scheme": {
           "markdownDescription": "Sets the colors used within the text area.",
@@ -684,7 +684,7 @@
     }
   },
   "anyOf": [
-    {"$ref": "#/definitions/editor_settings"},
+    {"$ref": "#/definitions/EditorSettings"},
     {
       "properties": {
         "theme": {

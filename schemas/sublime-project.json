@@ -66,7 +66,7 @@
       }
     },
     "settings": {
-      "$ref": "sublime://schemas/preferences.sublime-settings#/definitions/editor_settings" 
+      "$ref": "sublime://schemas/preferences.sublime-settings#/definitions/EditorSettings" 
     },
     "build_systems": {
       "type": "array",
