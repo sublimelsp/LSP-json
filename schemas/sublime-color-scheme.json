@@ -178,6 +178,10 @@
           "type": "string",
           "markdownDescription": "The color used to draw the indent guides for the parent indentation levels of the indentation level containing the caret. Only used if the option `\"draw_active\"` is present in the setting `indent_guide_options`."
         },
+        "rulers": {
+          "type": "string",
+          "markdownDescription": "The color used to draw rulers."
+        },
         "brackets_options": {
           "type": "string",
           "markdownDescription": "How brackets are highlighted when the caret is next to one.",
