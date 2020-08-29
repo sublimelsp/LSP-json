@@ -54,9 +54,9 @@
   {
     "fileMatch": [
       "/Preferences.sublime-settings",
-      "/Preferences%20%28Linux%29.sublime-settings",
-      "/Preferences%20%28OSX%29.sublime-settings",
-      "/Preferences%20%28Windows%29.sublime-settings"
+      "/Preferences (Linux).sublime-settings",
+      "/Preferences (OSX).sublime-settings",
+      "/Preferences (Windows).sublime-settings"
     ],
     "uri": "sublime://schemas/preferences.sublime-settings"
   },
