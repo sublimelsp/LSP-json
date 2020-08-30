@@ -1,0 +1,6 @@
+=> 1.4.2
+
+Breaking:
+
+ - File patterns defined for `userSchemas` or within `sublime-package.json` should no longer
+   be URL-escaped. This is now handled internally.
