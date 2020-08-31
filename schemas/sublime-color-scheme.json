@@ -137,7 +137,7 @@
           "format": "color",
           "markdownDescription": "The background color of selected text."
         },
-        "selction_foreground": {
+        "selection_foreground": {
           "type": "string",
           "format": "color",
           "markdownDescription": "A color that will override the scope-based text color of the selection."
