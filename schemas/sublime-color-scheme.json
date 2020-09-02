@@ -114,7 +114,6 @@
         },
         "line_diff_width": {
           "type": "string",
-          "format": "color",
           "markdownDescription": "**ST >= 3186** The width of the diff lines, between `1` and `8`.",
           "pattern": "^[1-8]$"
         },
@@ -150,7 +149,6 @@
         },
         "selection_border_width": {
           "type": "string",
-          "format": "color",
           "markdownDescription": "The width of the selection border, from `0` to `4`.",
           "pattern": "^[0-4]$"
         },
