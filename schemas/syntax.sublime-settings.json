@@ -4,7 +4,7 @@
   "allowComments": true,
   "allowTrailingCommas": true,
   "type": "object",
-  "anyOf": [
+  "allOf": [
     {
       "$ref": "sublime://schemas/preferences.sublime-settings#/definitions/EditorSettings"
     },

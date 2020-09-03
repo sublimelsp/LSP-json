@@ -544,20 +544,20 @@
         },
         "auto_complete_triggers": {
           "markdownDescription": "Additional situations to trigger auto complete.",
-          "uniqueItems": true,
           "type": "array",
           "items": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
               "selector": {"type": "string"},
-              "characters": {"type": "string"}
+              "characters": {"type": "string"},
+              "rhs_empty": {"type": "boolean", "default": false}
             },
             "required": ["selector"]
           },
           "default": [
-            {"selector": "text.html", "characters": "<"},
-            {"selector": "punctuation.accessor"}
+            {"selector": "text.html, text.xml", "characters": "<"},
+            {"selector": "punctuation.accessor", "rhs_empty": true}
           ]
         },
         "auto_complete_commit_on_tab": {
@@ -683,7 +683,7 @@
       }
     }
   },
-  "anyOf": [
+  "allOf": [
     {"$ref": "#/definitions/EditorSettings"},
     {
       "properties": {
