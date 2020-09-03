@@ -314,7 +314,8 @@
             "format": "color",
             "markdownDescription": "The text color. Supports a special mode called _Hashed Syntax Highlighting_, where each token matching the scope specified will receive a unique color from one, or more, gradients. Some editors refer to this style of highlighting as _Semantic Highlighting_.\n\nTo use hashed syntax highlighting, the value must be an array of two or more colors. Sublime Text will create 256 different colors that are linear interpolations (lerp) between the colors provided. The interpolation is done in HSL space.\n\nAs Sublime Text highlights the tokens in a file, it will create a hashed value of the token, and use that to pick one of the 256 linear interpolations. Every instance of a given token will use the same color. For instance, each instance of `first_name` would have the same color, but every instance of `name` would have a different color.\n\nFor hashed syntax highlighting to be most obvious, the hue difference between the start and end points should be as far apart as possible. Here is an example of using blues, purples and pinks for variable names:\n```json\n{\n\t\"scope\": \"source - punctuation - keyword\",\n\t\"foreground\": [\"hsl(200, 60%, 70%)\", \"hsl(330, 60%, 70%)\"]\n}\n```",
             "items": {
-              "type": "string"
+              "type": "string",
+              "format": "color"
             },
             "minItems": 2,
             "uniqueItems": true
