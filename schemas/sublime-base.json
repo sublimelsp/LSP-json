@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "sublime://schemas/sublime-base",
+  "allowComments": true,
+  "allowTrailingCommas": true,
+  "definitions": {
+    "schemaArray": {
+        "items": { "$ref": "#/definitions/VSCodeSchemaExtensionRoot" }
+    },
+    "VSCodeSchemaExtensionRoot": {
+      "allOf": [
+        { "$ref": "http://json-schema.org/draft-07/schema#" },
+        { "$ref": "#/definitions/VSCodeSchemaExtensionProperties"}
+      ]
+    },
+    "VSCodeSchemaExtensionProperties": {
+      "properties": {
+        "deprecationMessage": {
+          "type": "string",
+          "description": "If set, the property is marked as deprecated and the given message is shown as an explanation."
+        },
+        "enumDescriptions": {
+          "type": "array",
+          "description": "Descriptions for enum values.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "markdownDescription": {
+          "type": "string",
+          "description": "The description in the markdown format."
+        },
+        "markdownEnumDescriptions": {
+          "type": "array",
+          "description": "Descriptions for enum values in the markdown format.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "additionalItems": { "$ref": "#/definitions/VSCodeSchemaExtensionRoot" },
+        "additionalProperties": { "$ref": "#/definitions/VSCodeSchemaExtensionRoot" },
+        "definitions": {
+            "additionalProperties": { "$ref": "#/definitions/VSCodeSchemaExtensionRoot" }
+        },
+        "items": {
+            "anyOf": [
+                { "$ref": "#/definitions/VSCodeSchemaExtensionRoot" },
+                { "$ref": "#/definitions/schemaArray" }
+            ]
+        },
+        "properties": {
+          "additionalProperties": { "$ref": "#/definitions/VSCodeSchemaExtensionRoot" }
+        },
+        "patternProperties": {
+          "additionalProperties": { "$ref": "#/definitions/VSCodeSchemaExtensionRoot" }
+        },
+        "propertyNames": { "$ref": "#/definitions/VSCodeSchemaExtensionRoot" },
+        "if": { "$ref": "#/definitions/VSCodeSchemaExtensionRoot" },
+        "then": { "$ref": "#/definitions/VSCodeSchemaExtensionRoot" },
+        "else": { "$ref": "#/definitions/VSCodeSchemaExtensionRoot" },
+        "allOf": { "$ref": "#/definitions/schemaArray" },
+        "anyOf": { "$ref": "#/definitions/schemaArray" },
+        "oneOf": { "$ref": "#/definitions/schemaArray" },
+        "not": { "$ref": "#/definitions/VSCodeSchemaExtensionRoot" }
+      }
+    }
+  },
+  "properties": {
+    "allowComments": {
+      "type": "boolean"
+    },
+    "allowTrailingCommas": {
+      "type": "boolean"
+    }
+  },
+  "$ref": "#/definitions/VSCodeSchemaExtensionRoot"
+}

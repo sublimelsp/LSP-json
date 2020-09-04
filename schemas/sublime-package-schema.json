@@ -8,29 +8,37 @@
   "properties": {
     "contributions": {
       "type": "object",
-      "markdownDescription": "A type of resource that the package contributes to Sublime Text",
+      "markdownDescription": "A type of resource that the package contributes to Sublime Text.",
       "additionalProperties": false,
       "uniqueItems": true,
       "properties": {
         "settings": {
-          "markdownDescription": "Contributed settings",
+          "markdownDescription": "Contributed settings.",
           "type": "array",
           "items": {
             "type": "object",
             "properties": {
               "file_patterns": {
-                "markdownDescription": "A list of file name patterns to match given configuration file",
+                "markdownDescription": "A list of file name patterns to match given configuration file.",
                 "type": "array",
                 "items": {
                   "type": "string"
                 }
               },
               "schema": {
-                "$ref": "http://json-schema.org/draft-07/schema#"
+                "$ref": "sublime://schemas/sublime-base"
               }
             },
             "required": ["schema"],
-            "additionalProperties": false
+            "additionalProperties": false,
+            "defaultSnippets": [
+              {
+                "body": {
+                  "file_patterns": ["$0"],
+                  "schema": {}
+                }
+              }
+            ]
           }
         }
       }
