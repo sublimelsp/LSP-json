@@ -73,6 +73,6 @@
     "uri": "sublime://schemas/jsconfig"
   },
   {
-    "uri": "sublime://schemas/json-with-comments"
-  },
+    "uri": "sublime://schemas/sublime-base"
+  }
 ]
