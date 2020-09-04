@@ -16,19 +16,23 @@
     "VSCodeSchemaExtensionProperties": {
       "properties": {
         "deprecationMessage": {
-          "type": "string"
+          "type": "string",
+          "description": "If set, the property is marked as deprecated and the given message is shown as an explanation."
         },
         "enumDescriptions": {
           "type": "array",
+          "description": "Descriptions for enum values.",
           "items": {
             "type": "string"
           }
         },
         "markdownDescription": {
-          "type": "string"
+          "type": "string",
+          "description": "The description in the markdown format."
         },
         "markdownEnumDescriptions": {
           "type": "array",
+          "description": "Descriptions for enum values in the markdown format.",
           "items": {
             "type": "string"
           }
