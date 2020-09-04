@@ -26,6 +26,7 @@
 				"editLimit": 1000
 			}
 		},
+		"handledSchemaProtocols": ["https", "http", "file"],
 		"provideFormatter": true,
 	},
 	"settings": {
