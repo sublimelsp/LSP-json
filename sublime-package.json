@@ -4,18 +4,21 @@
       {
         "file_patterns": ["/LSP-json.sublime-settings"],
         "schema": {
+          "$id": "sublime://settings/LSP-json",
           "definitions": {
             "userSchema": {
               "type": "object",
               "properties": {
                 "fileMatch": {
                   "type": "array",
+                  "markdownDescription": "An array of file patterns to match against when resolving JSON files to schemas.\n\n- `*` can be used as a wildcard\n- Exclusion patterns can also be defined and start with a '!'.\n\nA file matches when there is at least one matching pattern and the last matching pattern is not an exclusion pattern.",
                   "items": {
                     "type": "string"
                   },
                 },
                 "uri": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "A URL to a schema."
                 }
               },
               "required": ["fileMatch", "uri"],
@@ -30,31 +33,82 @@
                 }
               ],
             },
-            "kindIcon": {
-              "type": "string",
-              "maxLength": 1
-            },
-            "kindDescription": {
-              "type": "string",
-              "maxLength": 32
-            }
           },
-          "properties": {
-            "languages": {
-              "type": "array"
-            },
-            "initializationOptions": {
-              "type": "object",
+          "allOf": [
+            { "$ref": "sublime://settings/LSP-plugin-base"},
+            {
               "properties": {
-                "customCapabilities": {
-                  "type": "object",
+                "initializationOptions": {
+                  "additionalProperties": false,
                   "properties": {
-                    "rangeFormatting": {
+                    "customCapabilities": {
+                      "type": "object",
+                      "description": "Additional non-LSP client capabilities",
+                      "additionalProperties": false,
+                      "properties": {
+                        "rangeFormatting": {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "editLimit": {
+                              "type": "integer",
+                              "default": 1000,
+                              "markdownDescription": "For performance reasons, limit the number of edits returned by the range formatter to `x`.",
+                            }
+                          },
+                        }
+                      },
+                    },
+                    "handledSchemaProtocols": {
+                      "type": "array",
+                      "markdownDescription": "The schema URI protocols handled by the server. Requests for all other protocols are sent to the client.\n\nBy default server handles the `https`, `http` and `file` protocols itself.\n\n- `http`, `https`: Loaded using NodeJS's HTTP support. Proxies can be configured through the settings.\n - `file`: Loaded using NodeJS's `fs` support.",
+                      "default": ["https", "http", "file"],
+                      "items": { "type": "string" },
+                      "uniqueItems": true,
+                    },
+                    "provideFormatter": {
+                      "type": "boolean",
+                      "default": true,
+                      "markdownDescription": "Whether the server provides the `documentRangeFormattingProvider` capability on initialization. If undefined, the setting `json.format.enable` is used to determine whether formatting is provided. The formatter will then be registered through dynamic registration. If the client does not support dynamic registration, no formatter will be available."
+                    }
+                  },
+                },
+                "settings": {
+                  "properties": {
+                    "http": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "proxy": {
+                          "type": "string",
+                          "default": "",
+                          "description": "The URL of the proxy server to use when fetching schema. When undefined or empty, no proxy is used."
+                        },
+                        "proxyStrictSSL": {
+                          "type": "boolean",
+                          "default": true,
+                          "description": "Whether the proxy server certificate should be verified against the list of supplied CAs."
+                        }
+                      }
+                    },
+                    "json": {
                       "type": "object",
                       "properties": {
-                        "editLimit": {
-                          "type": "number",
-                          "default": 1000
+                        "format": {
+                          "type": "object",
+                          "properties": {
+                            "enable": {
+                              "type": "boolean",
+                              "default": true,
+                              "description": "Enable/disable JSON formatter."
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "resultLimit": {
+                          "type": "integer",
+                          "default": 5000,
+                          "description": "The maximum number of outline symbols and folding regions computed (limited for performance reasons)."
                         }
                       },
                       "additionalProperties": false
@@ -62,48 +116,16 @@
                   },
                   "additionalProperties": false
                 },
-                "provideFormatter": {
-                  "type": "boolean",
-                  "default": true
+                "userSchemas": {
+                  "description": "User-defined schemas to extend default schemas with.",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/userSchema"
+                  }
                 }
               },
-              "additionalProperties": false
-            },
-            "settings": {
-              "markdownDescription": "Default settings for LSP-json",
-              "type": "object",
-              "properties": {
-                "json": {
-                  "type": "object",
-                  "properties": {
-                    "format": {
-                      "type": "object",
-                      "properties": {
-                        "enable": {
-                          "type": "boolean"
-                        }
-                      },
-                      "additionalProperties": false
-                    },
-                    "resultLimit": {
-                      "type": "number",
-                      "default": 5000
-                    }
-                  },
-                  "additionalProperties": false
-                }
-              },
-              "additionalProperties": false
-            },
-            "userSchemas": {
-              "markdownDescription": "User-defined schemas to extend default schemas with",
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/userSchema"
-              }
             }
-          },
-          "additionalProperties": false,
+          ],
         }
       },
     ]
