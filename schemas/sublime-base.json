@@ -15,6 +15,39 @@
     },
     "VSCodeSchemaExtensionProperties": {
       "properties": {
+        "defaultSnippets": {
+          "type": "array",
+          "description": "Additional snippets to extend completions with.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "body": {
+                "markdownDescription": "The content to insert on accepting completion, in JSON format.\n\nThe value is processed using snippet rules (see [Sublime Text snippets documentation](http://www.sublimetext.com/docs/completions.html#snippets)).\n\n**Warning**: Make sure that the `$` symbol is escaped when wanting to insert it literally."
+              },
+              "bodyText": {
+                "type": "string",
+                "markdownDescription": "The content to insert on accepting completion, in text format.\n\nThe value is processed using snippet rules (see [Sublime Text snippets documentation](http://www.sublimetext.com/docs/completions.html#snippets)).\n\n**Warning**: Make sure that the `$` symbol is escaped when wanting to insert it literally."
+              },
+              "description": {
+                "type": "string",
+                "description": "The text shown for the documentation field, in plain-text format."
+              },
+              "label": {
+                "type": "string",
+                "description": "The label of the completion item."
+              },
+              "markdownDescription": {
+                "type": "string",
+                "description": "The text shown for the documentation field, in markdown format."
+              }
+            },
+            "oneOf": [
+              { "required": ["body"] },
+              { "required": ["bodyText"] }
+            ]
+          }
+        },
         "deprecationMessage": {
           "type": "string",
           "description": "If set, the property is marked as deprecated and the given message is shown as an explanation."
