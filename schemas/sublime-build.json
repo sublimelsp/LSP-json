@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "sublime://schemas/sublime-base",
   "$id": "sublime://schemas/sublime-build",
   "title": "Sublime Text Build System",
   "allowComments": true,
