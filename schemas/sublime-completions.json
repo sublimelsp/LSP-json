@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "sublime://schemas/sublime-base",
   "$id": "sublime://schemas/sublime-completions",
   "title": "Sublime Text Completions",
   "allowComments": true,
