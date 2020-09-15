@@ -99,7 +99,7 @@ class SchemaStore:
                 if file_patterns:
                     for pattern in file_patterns:
                         if pattern == '/Preferences.sublime-settings':
-                             global_preferences_schemas.append(schema_content)
+                            global_preferences_schemas.append(schema_content)
         return global_preferences_schemas
 
     def _generate_project_settings_schemas(self, global_preferences_schemas: List[Any]):
