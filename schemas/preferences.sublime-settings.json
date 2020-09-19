@@ -406,7 +406,7 @@
           "default": true
         },
         "draw_white_space": {
-          "markdownDescription": "Controls when white space is drawn. Any of the valid options may be combined.\nFor example [\"selection\", \"trailing\", \"isolated\"] will draw whitespace at the end of any lines and under the selection.",
+          "markdownDescription": "Controls when white space is drawn.\n\nAny of the following options may be combined:\n\n - `\"selection\"`: Draw white space under the current selection.\n - `\"leading\"`: Draw any white space between the beginning of a line and the first character.\n - `\"enclosed\"`: Draw white space enclosed by other characters.\n - `\"trailing\"`: Draw white space following the last character on a line.\n - `\"isolated\"`: Draw white space on lines containing no other characters.\n - `\"all\"`: All of the above, ie. always draw white space.\n\nThese options may be further refined by appending any of the following separated by an underscore:\n\n - `\"none\"`: Don't draw this kind of white space.\n - `\"tabs\"`: Only draw tabs here.\n - `\"spaces\"`: Only draw spaces here.\n - `\"mixed\"`: Only draw white space that does not match the indentation style. For example if \"translate_tabs_to_spaces\" is true only draw tabs.\n - `\"mixed_tabs\"`: Like \"mixed\" but only draw tabs.\n - `\"mixed_spaces\"`: Like \"mixed\" but only draw spaces.\n - `\"all\"`: Draw both tabs and spaces. This is the default.\n\n Note that options are applied in sequence. So a later option may override an earlier one.\n\n**Examples:**\n\n- `[\"selection\", \"trailing\", \"isolated\"]`:\n   Draw white space at the end of any lines and under the selection.\n\n- `[\"all_tabs\", \"selection\"]`:\n   Draw tabs anywhere and any white space under the selection.\n\n- `[\"all_mixed\"]`:\n   Draw any white space that does not match the indentation style.\n\n- `[\"leading_mixed\", \"isolated_mixed\"]`:\n   Draw any indentation that does not match the indentation style.\n\n- `[\"selection_mixed_tabs\"]`:\n  Draw only tabs under the selection and only if the indentation style is spaces.\n\n- `[\"all_tabs\", \"selection\"]`:\n  Draw all tabs and any white space under the selection.\n\n- `[\"all\", \"selection_none\"]`:\n  Inverse of the default. Draw white space everywhere except under the selection.",
           "oneOf": [
             {
               "type": "array",
@@ -414,11 +414,52 @@
               "items": {
                 "enum": [
                   "selection",
+                  "selection_none",
+                  "selection_tabs",
+                  "selection_spaces",
+                  "selection_mixed",
+                  "selection_mixed_tabs",
+                  "selection_mixed_spaces",
+                  "selection_all",
                   "leading",
+                  "leading_none",
+                  "leading_tabs",
+                  "leading_spaces",
+                  "leading_mixed",
+                  "leading_mixed_tabs",
+                  "leading_mixed_spaces",
+                  "leading_all",
                   "enclosed",
+                  "enclosed_none",
+                  "enclosed_tabs",
+                  "enclosed_spaces",
+                  "enclosed_mixed",
+                  "enclosed_mixed_tabs",
+                  "enclosed_mixed_spaces",
+                  "enclosed_all",
                   "trailing",
+                  "trailing_none",
+                  "trailing_tabs",
+                  "trailing_spaces",
+                  "trailing_mixed",
+                  "trailing_mixed_tabs",
+                  "trailing_mixed_spaces",
+                  "trailing_all",
                   "isolated",
-                  "all"
+                  "isolated_none",
+                  "isolated_tabs",
+                  "isolated_spaces",
+                  "isolated_mixed",
+                  "isolated_mixed_tabs",
+                  "isolated_mixed_spaces",
+                  "isolated_all",
+                  "all",
+                  "all_none",
+                  "all_tabs",
+                  "all_spaces",
+                  "all_mixed",
+                  "all_mixed_tabs",
+                  "all_mixed_spaces",
                 ]
               },
               "default": ["selection"]
@@ -593,7 +634,7 @@
         "auto_complete_trailing_symbols": {
           "markdownDescription": "Add trailing symbols (e.g., '.', '()') if the auto complete engine thinks they're likely enough.",
           "type": "boolean",
-          "default": true
+          "default": false
         },
         "auto_complete_trailing_spaces": {
           "markdownDescription": "Add a space after completions if the auto complete engine thinks they're likely enough.",
