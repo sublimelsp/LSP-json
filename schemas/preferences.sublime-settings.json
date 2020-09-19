@@ -514,8 +514,9 @@
         },
         "trim_trailing_white_space_on_save": {
           "markdownDescription": "Set to `true` to enable removing trailing white space on save.",
-          "type": "boolean",
-          "default": false
+          "type": "string",
+          "enum": ["all", "none", "not_on_caret"],
+          "default": "none"
         },
         "trim_only_modified_white_space": {
           "markdownDescription": "Only trim whitespace on save for the parts of a file that have been modified by you. If there is trailing whitespace in other parts of the file they are left alone.",
