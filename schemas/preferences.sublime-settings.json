@@ -540,7 +540,7 @@
         "auto_complete_selector": {
           "markdownDescription": "Controls what scopes auto complete will be triggered in.",
           "type": "string",
-          "default": "meta.tag - punctuation.definition.tag.begin, source - comment - string.quoted.double.block - string.quoted.single.block - string.unquoted.heredoc"
+          "default": "meta.tag, source - comment - string.quoted.double.block - string.quoted.single.block - string.unquoted.heredoc"
         },
         "auto_complete_triggers": {
           "markdownDescription": "Additional situations to trigger auto complete.",
