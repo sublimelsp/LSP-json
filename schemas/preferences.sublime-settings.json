@@ -895,7 +895,8 @@
         },
         "preview_on_click": {
           "markdownDescription": "Preview file contents when clicking on a file in the side bar.\nDouble clicking or editing the preview will open the file and assign it a tab.",
-          "type": "boolean",
+          "type": ["boolean", "string"],
+          "enum": [false, true, "only_left"],
           "default": true
         },
         "folder_exclude_patterns": {
