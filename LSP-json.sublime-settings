@@ -2,6 +2,7 @@
 	"languages": [
 		{
 			"languageId": "json",
+			// ST3
 			"scopes": ["source.json"],
 			"syntaxes": [
 				"Packages/JavaScript/JSON.sublime-syntax",
@@ -21,21 +22,13 @@
 		}
 	],
 	"initializationOptions": {
-		"customCapabilities": {
-			"rangeFormatting": {
-				"editLimit": 1000
-			}
-		},
+		"customCapabilities.rangeFormatting.editLimit": 1000,
 		"handledSchemaProtocols": ["https", "http", "file"],
 		"provideFormatter": true,
 	},
 	"settings": {
-		"json": {
-			"format": {
-				"enable": true
-			},
-			"resultLimit": 5000,
-		}
+		"json.format.enable": true,
+		"json.resultLimit": 5000,
 	},
 	"userSchemas": [
 		// {
