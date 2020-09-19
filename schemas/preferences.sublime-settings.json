@@ -12,7 +12,7 @@
           "markdownDescription": "Sets the colors used within the text area.",
           "type": "string",
           "pattern": "^.+\\.((sublime|hidden)-color-scheme|tmTheme)$",
-          "default": "Monokai.sublime-color-scheme"
+          "default": "Mariana.sublime-color-scheme"
         },
         "font_face": {
           "markdownDescription": "Font face of the text area.\n`font_face` is overridden in the platform specific settings file, for example, \"Preferences (Linux).sublime-settings\".\n Because of this, setting it here will have no effect: you must set it in your User File Preferences.",
