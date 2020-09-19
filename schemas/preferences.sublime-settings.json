@@ -311,7 +311,7 @@
           "default": true
         },
         "caret_style": {
-          "markdownDescription": "The caret style.\nPrevious versions of Sublime Text used \"smooth\" by default.",
+          "markdownDescription": "The caret style.\nPrevious versions of Sublime Text used `\"smooth\"` by default.",
           "enum": [
             "smooth",
             "phase",
@@ -471,7 +471,7 @@
           ]
         },
         "draw_unicode_white_space": {
-          "markdownDescription": "Controls how non-ascii white space is drawn.\n- \"none\": Draw unicode white space verbatim, eg. hiding zero-width spaces.\n- \"punctuation\": Draw codepoints of unicode white space defined as punctuation. This includes NBSP, but excludes the CJK Ideographic Space.\n- \"all\": Draw codepoints of all non-ascii space characters.",
+          "markdownDescription": "Controls how non-ascii white space is drawn.\n\n- `\"none\"`: Draw unicode white space verbatim, eg. hiding zero-width spaces.\n- `\"punctuation\"`: Draw codepoints of unicode white space defined as punctuation. This includes NBSP, but excludes the CJK Ideographic Space.\n- `\"all\"`: Draw codepoints of all non-ascii space characters.",
           "type": "string",
           "default": "punctuation"
         },
@@ -499,7 +499,7 @@
           "default": true
         },
         "indent_guide_options": {
-          "markdownDescription": "Controls how the indent guides are drawn, valid options are \"draw_normal\" and \"draw_active\". `draw_active` will draw the indent guides containing the caret in a different color.",
+          "markdownDescription": "Controls how the indent guides are drawn, valid options are:\n\n- `\"draw_normal\"`: Draw all indent guides in the same color.\n- `\"draw_active\"`: Draw the indent guides containing the caret in a different color.\n- `\"draw_active_single\"`: Draw only the active indent guide containing the caret.\n- `\"solid\"`: Draw solid vertical lines instead of dotted.\n",
           "type": "array",
           "uniqueItems": true,
           "items": {
@@ -550,7 +550,7 @@
           "default": true
         },
         "default_line_ending": {
-          "markdownDescription": "Determines what character(s) are used to terminate each line in new files.\nValid values are \"system\" (whatever the OS uses), \"windows\" (CRLF) and \"unix\" (LF only).",
+          "markdownDescription": "Determines what character(s) are used to terminate each line in new files.\nValid values are `\"system\"` (whatever the OS uses), `\"windows\"` (CRLF) and `\"unix\"` (LF only).",
           "enum": ["system", "windows", "unix"],
           "default": "system"
         },
@@ -628,7 +628,7 @@
           "default": false
         },
         "auto_complete_preserve_order": {
-          "markdownDescription": "Controls how the auto complete results are reordered when typing:\n- \"none\" will fully reorder the results according to how well the completion matches the typed text.\n- \"some\" will partially reorder the results, taking into account how well the completion matches whats typed, and likelihood of the completion.\n- \"strict\" will never reorder the results.",
+          "markdownDescription": "Controls how the auto complete results are reordered when typing:\n- `\"none\"` will fully reorder the results according to how well the completion matches the typed text.\n- `\"some\"` will partially reorder the results, taking into account how well the completion matches whats typed, and likelihood of the completion.\n- `\"strict\"` will never reorder the results.",
           "enum": ["none", "some", "strict"],
           "default": "some"
         },
