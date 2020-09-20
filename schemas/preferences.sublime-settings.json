@@ -459,7 +459,7 @@
                   "all_spaces",
                   "all_mixed",
                   "all_mixed_tabs",
-                  "all_mixed_spaces",
+                  "all_mixed_spaces"
                 ]
               },
               "default": ["selection"]
