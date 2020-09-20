@@ -568,9 +568,14 @@
           "default": ["draw_normal"]
         },
         "trim_trailing_white_space_on_save": {
-          "markdownDescription": "Set to `true` to enable removing trailing white space on save.",
+          "markdownDescription": "Controls where trailing white space is removed on save.\n\n - `\"none\"`: Do not remove any trailing white space on save.\n - `\"all\"`: Remove all trailing white space on save.\n - `\"not_on_caret\"`: Only remove white space that won't affect the caret.",
           "type": "string",
           "enum": ["all", "none", "not_on_caret"],
+          "enumDescriptions": [
+            "Remove all trailing white space on save.",
+            "Do not remove any trailing white space on save.",
+            "Only remove white space that won't affect the caret."
+          ],
           "default": "none"
         },
         "trim_only_modified_white_space": {
