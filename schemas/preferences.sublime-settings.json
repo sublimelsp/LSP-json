@@ -557,6 +557,12 @@
               "draw_active",
               "draw_active_single",
               "solid"
+            ],
+            "enumDescriptions": [
+              "Draw all indent guides in the same color.",
+              "Draw the indent guides containing the caret in a different color.",
+              "Draw only the active indent guide containing the caret.",
+              "Draw solid vertical lines instead of dotted."
             ]
           },
           "default": ["draw_normal"]
