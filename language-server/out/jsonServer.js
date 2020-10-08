@@ -81,7 +81,7 @@ function startServer(connection, runtime) {
     // After the server has started the client sends an initialize request. The server receives
     // in the passed params the rootPath of the workspace plus the client capabilities.
     connection.onInitialize((params) => {
-        var _a, _b, _c, _d, _e;
+        var _a, _b, _c, _d, _e, _f;
         const handledProtocols = (_a = params.initializationOptions) === null || _a === void 0 ? void 0 : _a.handledSchemaProtocols;
         languageService = vscode_json_languageservice_1.getLanguageService({
             schemaRequestService: getSchemaRequestService(handledProtocols),
@@ -113,7 +113,7 @@ function startServer(connection, runtime) {
             } : undefined,
             hoverProvider: true,
             documentSymbolProvider: true,
-            documentRangeFormattingProvider: params.initializationOptions.provideFormatter === true,
+            documentRangeFormattingProvider: ((_f = params.initializationOptions) === null || _f === void 0 ? void 0 : _f.provideFormatter) === true,
             colorProvider: {},
             foldingRangeProvider: true,
             selectionRangeProvider: true,
