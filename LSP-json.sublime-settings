@@ -21,7 +21,7 @@
 			],
 		}
 	],
-	"auto_complete_selector": "punctuation.separator.mapping.key-value | (string - punctuation.definition.string.end)",
+	"auto_complete_selector": "punctuation.separator.mapping.key-value | (string - punctuation.definition.string.end - constant.character.escape)",
 	"initializationOptions": {
 		"customCapabilities.rangeFormatting.editLimit": 1000,
 		"handledSchemaProtocols": ["https", "http", "file"],
