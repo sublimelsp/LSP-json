@@ -1045,6 +1045,11 @@
           "items": {"type": "string"},
           "default": ["*.log"]
         },
+        "update_check": {
+          "markdownDescription": "Whether update check on start is enabled.\n\n**Can only be disabled if Sublime Text is registered.**",
+          "type": "boolean",
+          "default": true
+        },
         "vintage_start_in_command_mode": {
           "markdownDescription": "When Vintage, the vi emulation package, is enabled (see ignored_packages, below), this setting controls if files are opened in command mode or insert mode by default.",
           "type": "boolean",
