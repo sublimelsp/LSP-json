@@ -7,6 +7,7 @@ from sublime_lib import ResourcePath
 from urllib.parse import quote
 from weakref import WeakSet
 import sublime
+import sublime_plugin
 
 
 def plugin_loaded():
@@ -199,3 +200,11 @@ class LspJSONPlugin(NpmClientHandler, StoreListener):
 
     def on_store_changed(self, schemas: List[Dict]) -> None:
         self._api.send_notification('json/schemaAssociations', schemas + self._user_schemas)
+
+
+class LspJsonAutoCompleteCommand(sublime_plugin.TextCommand):
+    def run(self, _: sublime.Edit) -> None:
+        self.view.run_command("insert_snippet", {"contents": "\"$0\""})
+        # Do auto-complete one tick later, otherwise LSP is not up-to-date with
+        # the incremental text sync.
+        sublime.set_timeout(lambda: self.view.run_command("auto_complete"))
