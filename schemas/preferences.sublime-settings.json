@@ -1046,7 +1046,7 @@
           "default": ["*.log"]
         },
         "update_check": {
-          "markdownDescription": "Whether update check on start is enabled.\n\n**Can only be disabled if Sublime Text is registered.**",
+          "markdownDescription": "Check for updates when the application is started.\n\n**This can only be disabled if Sublime Text is registered.**",
           "type": "boolean",
           "default": true
         },
