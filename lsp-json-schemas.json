@@ -1,10 +1,16 @@
 [
   {
     "fileMatch": [
+      "/.adonisrc.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/adonisjs/application/master/adonisrc.schema.json"
+  },
+  {
+    "fileMatch": [
       "/.angular-cli.json",
       "/angular-cli.json"
     ],
-    "uri": "https://raw.githubusercontent.com/angular/angular-cli/master/packages/angular/cli/lib/config/schema.json"
+    "uri": "https://raw.githubusercontent.com/angular/angular-cli/v10.1.6/packages/angular/cli/lib/config/schema.json"
   },
   {
     "fileMatch": [
@@ -29,7 +35,7 @@
     "fileMatch": [
       "/arc.json"
     ],
-    "uri": "https://raw.githubusercontent.com/architect/parser/master/schema.json"
+    "uri": "https://raw.githubusercontent.com/architect/parser/v2.3.0/arc-schema.json"
   },
   {
     "fileMatch": [
@@ -99,7 +105,7 @@
     "fileMatch": [
       "/bsconfig.json"
     ],
-    "uri": "https://bucklescript.github.io/bucklescript/docson/build-schema.json"
+    "uri": "https://raw.githubusercontent.com/rescript-lang/rescript-compiler/8.2.0/docs/docson/build-schema.json"
   },
   {
     "fileMatch": [
@@ -170,14 +176,14 @@
       "/*.cf.json",
       "/cloudformation.json"
     ],
-    "uri": "https://raw.githubusercontent.com/awslabs/goformation/master/schema/cloudformation.schema.json"
+    "uri": "https://raw.githubusercontent.com/awslabs/goformation/v4.15.0/schema/cloudformation.schema.json"
   },
   {
     "fileMatch": [
       "/*.sam.json",
       "/sam.json"
     ],
-    "uri": "https://raw.githubusercontent.com/awslabs/goformation/master/schema/sam.schema.json"
+    "uri": "https://raw.githubusercontent.com/awslabs/goformation/v4.15.0/schema/sam.schema.json"
   },
   {
     "fileMatch": [
@@ -207,13 +213,13 @@
     "fileMatch": [
       "/contribute.json"
     ],
-    "uri": "https://json.schemastore.org/contribute"
+    "uri": "https://raw.githubusercontent.com/mozilla/contribute.json/master/schema.json"
   },
   {
     "fileMatch": [
       "/cypress.json"
     ],
-    "uri": "https://raw.githubusercontent.com/cypress-io/cypress/develop/cli/schema/cypress.schema.json"
+    "uri": "https://raw.githubusercontent.com/cypress-io/cypress/v5.3.0/cli/schema/cypress.schema.json"
   },
   {
     "fileMatch": [
@@ -227,7 +233,7 @@
       "/cspell.json",
       "/cSpell.json"
     ],
-    "uri": "https://raw.githubusercontent.com/streetsidesoftware/cspell/master/cspell.schema.json"
+    "uri": "https://raw.githubusercontent.com/streetsidesoftware/cspell/cspell4/cspell.schema.json"
   },
   {
     "fileMatch": [
@@ -269,37 +275,37 @@
     "fileMatch": [
       "/.dolittle/artifacts.json"
     ],
-    "uri": "https://raw.githubusercontent.com/dolittle/DotNET.SDK/master/Schemas/Artifacts.Configuration/artifacts.json"
+    "uri": "https://raw.githubusercontent.com/dolittle/DotNET.SDK/v5.0.0/Schemas/Artifacts.Configuration/artifacts.json"
   },
   {
     "fileMatch": [
       "/bounded-context.json"
     ],
-    "uri": "https://raw.githubusercontent.com/dolittle/Runtime/master/Schemas/Applications.Configuration/bounded-context.json"
+    "uri": "https://raw.githubusercontent.com/dolittle/Runtime/v5.1.1/Schemas/Applications.Configuration/bounded-context.json"
   },
   {
     "fileMatch": [
       "/.dolittle/event-horizons.json"
     ],
-    "uri": "https://raw.githubusercontent.com/dolittle/Runtime/master/Schemas/Events/event-horizons.json"
+    "uri": "https://raw.githubusercontent.com/dolittle/Runtime/v5.1.1/Schemas/Events/event-horizons.json"
   },
   {
     "fileMatch": [
       "/.dolittle/resources.json"
     ],
-    "uri": "https://raw.githubusercontent.com/dolittle/DotNET.Fundamentals/master/Schemas/ResourceTypes.Configuration/resources.json"
+    "uri": "https://raw.githubusercontent.com/dolittle/DotNET.Fundamentals/v5.1.0/Schemas/ResourceTypes.Configuration/resources.json"
   },
   {
     "fileMatch": [
       "/.dolittle/server.json"
     ],
-    "uri": "https://raw.githubusercontent.com/dolittle/Runtime/master/Schemas/Server/server.json"
+    "uri": "https://raw.githubusercontent.com/dolittle/Runtime/v5.1.1/Schemas/Server/server.json"
   },
   {
     "fileMatch": [
       "/.dolittle/tenants.json"
     ],
-    "uri": "https://raw.githubusercontent.com/dolittle/Runtime/master/Schemas/Tenancy/tenants.json"
+    "uri": "https://raw.githubusercontent.com/dolittle/Runtime/v5.1.1/Schemas/Tenancy/tenants.json"
   },
   {
     "fileMatch": [
@@ -318,6 +324,12 @@
       "/dotnetcli.host.json"
     ],
     "uri": "https://json.schemastore.org/dotnetcli.host"
+  },
+  {
+    "fileMatch": [
+      "/ecosystem.json"
+    ],
+    "uri": "https://json.schemastore.org/pm2-ecosystem"
   },
   {
     "fileMatch": [
@@ -352,12 +364,6 @@
   },
   {
     "fileMatch": [
-      "/fantomas-config.json"
-    ],
-    "uri": "https://json.schemastore.org/fantomas"
-  },
-  {
-    "fileMatch": [
       "/function.json"
     ],
     "uri": "https://json.schemastore.org/function"
@@ -376,10 +382,17 @@
   },
   {
     "fileMatch": [
+      "/.golangci.toml",
+      "/.golangci.json"
+    ],
+    "uri": "https://json.schemastore.org/golangci-lint"
+  },
+  {
+    "fileMatch": [
       "/.meshrc.json",
       "/.meshrc.js"
     ],
-    "uri": "https://raw.githubusercontent.com/Urigo/graphql-mesh/master/packages/types/src/config-schema.json"
+    "uri": "https://raw.githubusercontent.com/Urigo/graphql-mesh/v0.2.15/packages/types/src/config-schema.json"
   },
   {
     "fileMatch": [
@@ -389,7 +402,7 @@
       "/.graphqlrc.json",
       "/.graphqlrc.js"
     ],
-    "uri": "https://raw.githubusercontent.com/kamilkisiela/graphql-config/master/config-schema.json"
+    "uri": "https://raw.githubusercontent.com/kamilkisiela/graphql-config/v3.0.3/config-schema.json"
   },
   {
     "fileMatch": [
@@ -398,7 +411,7 @@
       "/.codegen.json",
       "/.codegen.js"
     ],
-    "uri": "https://raw.githubusercontent.com/dotansimha/graphql-code-generator/master/website/static/config.schema.json"
+    "uri": "https://raw.githubusercontent.com/dotansimha/graphql-code-generator/v1.17.7/website/static/config.schema.json"
   },
   {
     "fileMatch": [
@@ -460,6 +473,13 @@
       "/.htmlhintrc"
     ],
     "uri": "https://json.schemastore.org/htmlhint"
+  },
+  {
+    "fileMatch": [
+      "/hydra.json",
+      "/hydra.toml"
+    ],
+    "uri": "https://raw.githubusercontent.com/ory/hydra/v1.8.5/.schema/version.schema.json"
   },
   {
     "fileMatch": [
@@ -530,6 +550,13 @@
   },
   {
     "fileMatch": [
+      "/keto.json",
+      "/keto.toml"
+    ],
+    "uri": "https://raw.githubusercontent.com/ory/keto/master/.schema/config.schema.json"
+  },
+  {
+    "fileMatch": [
       "/launchsettings.json"
     ],
     "uri": "https://json.schemastore.org/launchsettings"
@@ -545,6 +572,12 @@
       "/libman.json"
     ],
     "uri": "https://json.schemastore.org/libman"
+  },
+  {
+    "fileMatch": [
+      "/local.settings.json"
+    ],
+    "uri": "https://json.schemastore.org/local.settings"
   },
   {
     "fileMatch": [
@@ -566,6 +599,13 @@
   },
   {
     "fileMatch": [
+      "/.mocharc.json",
+      "/.mocharc.jsonc"
+    ],
+    "uri": "https://json.schemastore.org/mocharc"
+  },
+  {
+    "fileMatch": [
       "/.modernizrrc"
     ],
     "uri": "https://json.schemastore.org/modernizrrc"
@@ -578,12 +618,25 @@
   },
   {
     "fileMatch": [
+      "/nightwatch.json"
+    ],
+    "uri": "https://json.schemastore.org/nightwatch"
+  },
+  {
+    "fileMatch": [
       "/.nestcli.json",
       "/.nest-cli.json",
       "/nest-cli.json",
       "/nest.json"
     ],
     "uri": "https://json.schemastore.org/nest-cli"
+  },
+  {
+    "fileMatch": [
+      "/nlu.json",
+      "/.nlu.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/oresoftware/npm-link-up/master/assets/nlu.schema.json"
   },
   {
     "fileMatch": [
@@ -613,6 +666,13 @@
   },
   {
     "fileMatch": [
+      "/oathkeeper.json",
+      "/oathkeeper.toml"
+    ],
+    "uri": "https://raw.githubusercontent.com/ory/oathkeeper/master/.schemas/config.schema.json"
+  },
+  {
+    "fileMatch": [
       "/ocelot.json"
     ],
     "uri": "https://json.schemastore.org/ocelot"
@@ -627,7 +687,7 @@
     "fileMatch": [
       "/openapi.json"
     ],
-    "uri": "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/schemas/v3.0/schema.json"
+    "uri": "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/3.0.3/schemas/v3.0/schema.json"
   },
   {
     "fileMatch": [
@@ -646,6 +706,18 @@
       "/package.manifest"
     ],
     "uri": "https://json.schemastore.org/package.manifest"
+  },
+  {
+    "fileMatch": [
+      "/packer.json"
+    ],
+    "uri": "https://json.schemastore.org/packer"
+  },
+  {
+    "fileMatch": [
+      "/pgap_yaml_input_reader.json"
+    ],
+    "uri": "https://json.schemastore.org/pgap_yaml_input_reader"
   },
   {
     "fileMatch": [
@@ -670,7 +742,7 @@
     "fileMatch": [
       "/*.rules"
     ],
-    "uri": "https://json.schemastore.org/prometheus.rules"
+    "uri": "https://json.schemastore.org/prometheus.rules.json"
   },
   {
     "fileMatch": [
@@ -683,6 +755,18 @@
       "/pyrseas-0.8.json"
     ],
     "uri": "https://json.schemastore.org/pyrseas-0.8"
+  },
+  {
+    "fileMatch": [
+      "/info.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/Cog-Creators/Red-DiscordBot/V3/develop/schema/red_cog.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/info.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/Cog-Creators/Red-DiscordBot/V3/develop/schema/red_cog_repo.schema.json"
   },
   {
     "fileMatch": [
@@ -718,7 +802,7 @@
       "/skyuxconfig.json",
       "/skyuxconfig.*.json"
     ],
-    "uri": "https://raw.githubusercontent.com/blackbaud/skyux-builder/master/skyuxconfig-schema.json"
+    "uri": "https://raw.githubusercontent.com/blackbaud/skyux-config/4.0.4/skyuxconfig-schema.json"
   },
   {
     "fileMatch": [
@@ -750,13 +834,13 @@
       "/stryker.conf.json",
       "/stryker-*.conf.json"
     ],
-    "uri": "https://raw.githubusercontent.com/stryker-mutator/stryker/master/packages/api/schema/stryker-core.json"
+    "uri": "https://raw.githubusercontent.com/stryker-mutator/stryker/v4.0.0/packages/api/schema/stryker-core.json"
   },
   {
     "fileMatch": [
       "/stylecop.json"
     ],
-    "uri": "https://raw.githubusercontent.com/DotNetAnalyzers/StyleCopAnalyzers/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json"
+    "uri": "https://raw.githubusercontent.com/DotNetAnalyzers/StyleCopAnalyzers/1.1.118/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json"
   },
   {
     "fileMatch": [
@@ -875,7 +959,7 @@
     "fileMatch": [
       "/version.json"
     ],
-    "uri": "https://raw.githubusercontent.com/dotnet/Nerdbank.GitVersioning/master/src/NerdBank.GitVersioning/version.schema.json"
+    "uri": "https://raw.githubusercontent.com/dotnet/Nerdbank.GitVersioning/v3.3.37/src/NerdBank.GitVersioning/version.schema.json"
   },
   {
     "fileMatch": [
@@ -937,7 +1021,7 @@
       "/manifest.json",
       "/*.webmanifest"
     ],
-    "uri": "https://json.schemastore.org/web-manifest"
+    "uri": "https://json.schemastore.org/web-manifest-combined"
   },
   {
     "fileMatch": [
@@ -962,13 +1046,13 @@
     "fileMatch": [
       "/*.version"
     ],
-    "uri": "https://raw.githubusercontent.com/linuxgurugamer/KSPAddonVersionChecker/master/KSP-AVC.schema.json"
+    "uri": "https://raw.githubusercontent.com/linuxgurugamer/KSPAddonVersionChecker/1.4.1.5/KSP-AVC.schema.json"
   },
   {
     "fileMatch": [
       "/*.ckan"
     ],
-    "uri": "https://raw.githubusercontent.com/KSP-CKAN/CKAN/master/CKAN.schema"
+    "uri": "https://raw.githubusercontent.com/KSP-CKAN/CKAN/v1.28.0/CKAN.schema"
   },
   {
     "fileMatch": [
@@ -1087,13 +1171,13 @@
       "/.nl.json",
       "/.neoload.json"
     ],
-    "uri": "https://raw.githubusercontent.com/Neotys-Labs/neoload-cli/master/resources/as-code.latest.schema.json"
+    "uri": "https://raw.githubusercontent.com/Neotys-Labs/neoload-cli/1.1.4/resources/as-code.latest.schema.json"
   },
   {
     "fileMatch": [
       "/*.har"
     ],
-    "uri": "https://raw.githubusercontent.com/ahmadnassri/har-schema/master/lib/har.json"
+    "uri": "https://raw.githubusercontent.com/ahmadnassri/har-schema/v2.0.0/lib/har.json"
   },
   {
     "fileMatch": [
@@ -1117,8 +1201,21 @@
   },
   {
     "fileMatch": [
-      "/**/*devinit*.json"
+      "/devinit.json",
+      "/.devinit.json"
     ],
-    "uri": "https://json.schemastore.org/devinit.schema-1.0"
+    "uri": "https://json.schemastore.org/devinit.schema-2.0"
+  },
+  {
+    "fileMatch": [
+      "/**/tsoa.json"
+    ],
+    "uri": "https://json.schemastore.org/tsoa"
+  },
+  {
+    "fileMatch": [
+      "/**/api.json"
+    ],
+    "uri": "http://json.schemastore.org/apibuilder.json"
   }
 ]
