@@ -21,7 +21,8 @@
 			],
 		}
 	],
-	"auto_complete_selector": "- comment - punctuation.separator - punctuation.definition.string.end", // don't auto-complete in comments and after typing a "," or ":"
+	// don't auto-complete in comments and after typing a "," or ":", and after closing a string
+	"auto_complete_selector": "- comment - punctuation.separator - punctuation.definition.string.end - constant.character.escape - invalid.illegal",
 	"ignore_server_trigger_chars": true,
 	"initializationOptions": {
 		"customCapabilities.rangeFormatting.editLimit": 1000,
