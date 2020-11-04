@@ -180,6 +180,10 @@ class LspJSONPlugin(NpmClientHandler, StoreListener):
         super().cleanup()
 
     @classmethod
+    def install_in_cache(cls) -> bool:
+        return False
+
+    @classmethod
     def on_settings_read(cls, settings: sublime.Settings):
         cls._user_schemas = settings.get('userSchemas', [])
         # Nothing has changed so don't force saving.
