@@ -27,7 +27,18 @@
                         "file"
                       ],
                       "items": {
-                        "type": "string"
+                        "anyOf": [
+                          {
+                            "enum": [
+                              "file",
+                              "http",
+                              "https"
+                            ]
+                          },
+                          {
+                            "type": "string"
+                          }
+                        ],
                       },
                       "uniqueItems": true,
                     },
