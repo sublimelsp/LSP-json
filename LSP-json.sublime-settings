@@ -21,8 +21,8 @@
 			],
 		}
 	],
-	"auto_complete_selector": "- comment - punctuation.separator", // don't auto-complete in comments and after typing a "," or ":"
-	"allow_completion_triggers_from_server": false,
+	"auto_complete_selector": "- comment - punctuation.separator - punctuation.definition.string.end", // don't auto-complete in comments and after typing a "," or ":"
+	"ignore_server_trigger_chars": true,
 	"initializationOptions": {
 		"customCapabilities.rangeFormatting.editLimit": 1000,
 		"handledSchemaProtocols": ["https", "http", "file"],
