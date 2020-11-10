@@ -48,7 +48,7 @@ class SchemaStore:
             if domain == 'schemas':
                 # Internal schema - 1:1 schema path to file path mapping.
                 schema_path = 'Packages/{}/{}.json'.format(LspJSONPlugin.package_name, schema_path)
-                return ResourcePath(schema_path).read_text()
+                return sublime.encode_value(sublime.decode_value(ResourcePath(schema_path).read_text()), pretty=False)
         print('LSP-json: Unknown schema URI "{}"'.format(uri))
         return None
 
@@ -95,7 +95,7 @@ class SchemaStore:
                 file_patterns = s.get('file_patterns')
                 schema_content = s.get('schema')
                 uri = schema_content.get('$id') or 'sublime://settings/{}'.format(i)
-                self._schema_uri_to_content[uri] = sublime.encode_value(schema_content)
+                self._schema_uri_to_content[uri] = sublime.encode_value(schema_content, pretty=False)
                 self._register_schemas([{'fileMatch': file_patterns, 'uri': uri}])
                 if file_patterns:
                     for pattern in file_patterns:
@@ -119,7 +119,7 @@ class SchemaStore:
                     'settings': schema,
                 },
             }
-            self._schema_uri_to_content[schema_uri] = sublime.encode_value(schema_content)
+            self._schema_uri_to_content[schema_uri] = sublime.encode_value(schema_content, pretty=False)
             self._register_schemas([{'fileMatch': ['/*.sublime-project'], 'uri': schema_uri}])
 
     def _load_syntax_schemas(self, global_preferences_schemas: List[Any]) -> None:
@@ -145,7 +145,7 @@ class SchemaStore:
                     'type': 'object',
                 }
                 schema_content.update(schema)
-                self._schema_uri_to_content[schema_uri] = sublime.encode_value(schema_content)
+                self._schema_uri_to_content[schema_uri] = sublime.encode_value(schema_content, pretty=False)
                 self._register_schemas([{'fileMatch': file_patterns, 'uri': schema_uri}])
 
     def _parse_schema(self, resource: ResourcePath) -> Any:
