@@ -1,8 +1,7 @@
 {
+	// ST3
 	"languages": [
 		{
-			"languageId": "json",
-			// ST3
 			"scopes": ["source.json"],
 			"syntaxes": [
 				"Packages/JavaScript/JSON.sublime-syntax",
@@ -21,6 +20,8 @@
 			],
 		}
 	],
+	// ST4
+	"selector": "source.json",
 	// don't auto-complete in comments and after typing a "," or ":", and after closing a string
 	"auto_complete_selector": "- comment - punctuation.separator - punctuation.definition.string.end - constant.character.escape - invalid.illegal",
 	"ignore_server_trigger_chars": true,
