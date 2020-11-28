@@ -1034,11 +1034,6 @@
           "type": "boolean",
           "default": true
         },
-        "index_exclude_unknown_extensions": {
-          "markdownDescription": "Whether unknown file extensions should be checked for indexing or skipped entirely.\nIf a file extension is not being recognised we suggest setting/changing the default syntax for that extension instead of turning this setting off.",
-          "type": "boolean",
-          "default": true
-        },
         "index_exclude_patterns": {
           "markdownDescription": "Indicates which files won't be indexed.",
           "type": "array",
