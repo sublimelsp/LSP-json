@@ -1,11 +1,16 @@
 from abc import ABCMeta, abstractmethod
-from LSP.plugin.core.typing import Any, Dict, List, Optional
+from LSP.plugin import DottedDict
+from LSP.plugin import Notification
+from LSP.plugin import Request
+from LSP.plugin.core.typing import Any, Callable, Dict, List, Optional
 from lsp_utils import ApiWrapperInterface
+from lsp_utils import request_handler
 from lsp_utils import NpmClientHandler
 from os import path
 from sublime_lib import ResourcePath
 from urllib.parse import quote
 from weakref import WeakSet
+import re
 import sublime
 import sublime_plugin
 
@@ -103,7 +108,7 @@ class SchemaStore:
                             global_preferences_schemas.append(schema_content)
         return global_preferences_schemas
 
-    def _generate_project_settings_schemas(self, global_preferences_schemas: List[Any]):
+    def _generate_project_settings_schemas(self, global_preferences_schemas: List[Any]) -> None:
         """
         Injects schemas mapped to /Preferences.json into the "settings" object in *.sublime.project schemas.
         """
@@ -171,7 +176,6 @@ class LspJSONPlugin(NpmClientHandler, StoreListener):
     package_name = __package__
     server_directory = 'language-server'
     server_binary_path = path.join(server_directory, 'out', 'node', 'jsonServerMain.js')
-    _user_schemas = []  # type: List[Dict]
     _schema_store = SchemaStore()
 
     @classmethod
@@ -179,28 +183,39 @@ class LspJSONPlugin(NpmClientHandler, StoreListener):
         cls._schema_store.cleanup()
         super().cleanup()
 
-    @classmethod
-    def install_in_cache(cls) -> bool:
-        return False
-
-    @classmethod
-    def on_settings_read(cls, settings: sublime.Settings):
-        cls._user_schemas = settings.get('userSchemas', [])
-        # Nothing has changed so don't force saving.
-        return False
-
-    def __init__(self, *args, **kwargs) -> None:
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
         self._api = None  # type: Optional[ApiWrapperInterface]
+        self._user_schemas = []  # type: List[Dict]
+        self._jsonc_patterns = []  # type: List[re.Pattern]
         super().__init__(*args, **kwargs)
+
+    def on_settings_changed(self, settings: DottedDict) -> None:
+        self._user_schemas = settings.get('userSchemas') or []
+        self._jsonc_patterns = list(map(self.create_pattern_regexp, settings.get('jsonc.patterns') or []))
+
+    def create_pattern_regexp(self, pattern: str) -> 're.Pattern':
+        # This matches handling of patterns in vscode-json-languageservice.
+        escaped = re.sub(r'[\-\\\{\}\+\?\|\^\$\.\,\[\]\(\)\#\s]', r'\\\g<0>', pattern)
+        escaped = re.sub(r'[\*]', r'.*', escaped)
+        return re.compile(escaped + '$')
 
     def on_ready(self, api: ApiWrapperInterface) -> None:
         self._api = api
         self._schema_store.add_listener(self)
         self._schema_store.load_schemas()
-        self._api.on_request('vscode/content', self.handle_vscode_content)
 
-    def handle_vscode_content(self, uri, respond):
+    @request_handler('vscode/content')
+    def handle_vscode_content(self, uri: str, respond: Callable[[Any], None]) -> None:
         respond(self._schema_store.get_schema_for_uri(uri))
+
+    # ST4-only
+    def on_pre_send_notification_async(self, notification: Notification) -> None:
+        if notification.method == 'textDocument/didOpen':
+            text_document = notification.params['textDocument']
+            if any((pattern.search(text_document['uri']) for pattern in self._jsonc_patterns)):
+                text_document['languageId'] = 'jsonc'
+
+    # --- StoreListener ------------------------------------------------------------------------------------------------
 
     def on_store_changed(self, schemas: List[Dict]) -> None:
         self._api.send_notification('json/schemaAssociations', schemas + self._user_schemas)

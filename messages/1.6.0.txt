@@ -1,0 +1,14 @@
+=> 1.6.0
+
+Breaking:
+
+ - The "userSchemas" setting that was part of the root configuration file before is now part of the "settings".
+   If you have customized "userSchemas" option, please move it inside the "settings" object:
+
+  {
+    "setting": {
+      "userSchemas": {
+        // ...
+      }
+    }
+  }
