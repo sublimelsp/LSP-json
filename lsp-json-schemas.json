@@ -173,6 +173,13 @@
   },
   {
     "fileMatch": [
+      "/workflows.json",
+      "/*.workflows.json"
+    ],
+    "uri": "https://json.schemastore.org/workflows"
+  },
+  {
+    "fileMatch": [
       "/*.cf.json",
       "/cloudformation.json"
     ],
@@ -458,6 +465,12 @@
   },
   {
     "fileMatch": [
+      "/*.hayson.json"
+    ],
+    "uri": "https://bitbucket.org/finproducts/hayson/raw/master/hayson-json-schema.json"
+  },
+  {
+    "fileMatch": [
       "/host.json"
     ],
     "uri": "https://json.schemastore.org/host"
@@ -715,7 +728,7 @@
   },
   {
     "fileMatch": [
-      "/pgap_yaml_input_reader.json"
+      "/submol*.json"
     ],
     "uri": "https://json.schemastore.org/pgap_yaml_input_reader"
   },
@@ -1216,6 +1229,6 @@
     "fileMatch": [
       "/**/api.json"
     ],
-    "uri": "http://json.schemastore.org/apibuilder.json"
+    "uri": "https://json.schemastore.org/apibuilder.json"
   }
 ]
