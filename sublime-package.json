@@ -71,45 +71,53 @@
                       "default": 5000,
                       "description": "The maximum number of outline symbols and folding regions computed (limited for performance reasons)."
                     },
+                    "jsonc.patterns": {
+                      "description": "An array of file patterns that should trigger JSONC handling that allows comments.",
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "uniqueItems": true
+                      }
+                    },
+                    "userSchemas": {
+                      "description": "User-defined schemas to extend default schemas with.",
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "fileMatch": {
+                            "type": "array",
+                            "markdownDescription": "An array of file patterns to match against when resolving JSON files to schemas.\n\n- `*` can be used as a wildcard\n- Exclusion patterns can also be defined and start with a '!'.\n\nA file matches when there is at least one matching pattern and the last matching pattern is not an exclusion pattern.",
+                            "items": {
+                              "type": "string"
+                            },
+                          },
+                          "uri": {
+                            "type": "string",
+                            "description": "A URL to a schema."
+                          }
+                        },
+                        "required": [
+                          "fileMatch",
+                          "uri"
+                        ],
+                        "additionalProperties": false,
+                        "defaultSnippets": [
+                          {
+                            "label": "User Schema",
+                            "body": {
+                              "fileMatch": [
+                                "$1"
+                              ],
+                              "uri": "$2"
+                            }
+                          }
+                        ],
+                      }
+                    }
                   },
                   "additionalProperties": false
                 },
-                "userSchemas": {
-                  "description": "User-defined schemas to extend default schemas with.",
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "fileMatch": {
-                        "type": "array",
-                        "markdownDescription": "An array of file patterns to match against when resolving JSON files to schemas.\n\n- `*` can be used as a wildcard\n- Exclusion patterns can also be defined and start with a '!'.\n\nA file matches when there is at least one matching pattern and the last matching pattern is not an exclusion pattern.",
-                        "items": {
-                          "type": "string"
-                        },
-                      },
-                      "uri": {
-                        "type": "string",
-                        "description": "A URL to a schema."
-                      }
-                    },
-                    "required": [
-                      "fileMatch",
-                      "uri"
-                    ],
-                    "additionalProperties": false,
-                    "defaultSnippets": [
-                      {
-                        "label": "User Schema",
-                        "body": {
-                          "fileMatch": [
-                            "$1"
-                          ],
-                          "uri": "$2"
-                        }
-                      }
-                    ],
-                  }
-                }
               },
             },
           },

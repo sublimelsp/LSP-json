@@ -72,7 +72,7 @@
     "uri": "sublime://schemas/tsconfig"
   },
   {
-    "fileMatch": ["/jsconfig.json", "/jsconfig.*.json"],
+    "fileMatch": ["/jsconfig.json", "/jsconfig.*.json", "/jsconfig-*.json"],
     "uri": "sublime://schemas/jsconfig"
   }
 ]

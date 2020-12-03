@@ -1,4 +1,5 @@
 {
+	"command": ["node", "${server_path}", "--stdio"],
 	// ST3
 	"languages": [
 		{
@@ -33,15 +34,28 @@
 	"settings": {
 		"json.format.enable": true,
 		"json.resultLimit": 5000,
+		"jsonc.patterns": [
+			".babelrc",
+			".eslintrc",
+			".eslintrc.json",
+			".hintrc",
+			".jsfmtrc",
+			".jshintrc",
+			".jsonc",
+			".swcrc",
+			"/.ember-cli",
+			"/.vscode/*.json",
+			"/babel.config.json",
+		],
+		"userSchemas": [
+			// {
+			// 	"fileMatch": ["tasks/*.yaml"],
+			// 	"uri": "http://json.schemastore.org/ansible-stable-2.9"
+			// },
+			// {
+			// 	"fileMatch": ["some-file.json"],
+			// 	"uri": "file:///Users/me/some-schema.json"
+			// }
+		],
 	},
-	"userSchemas": [
-		// {
-		// 	"fileMatch": ["tasks/*.yaml"],
-		// 	"uri": "http://json.schemastore.org/ansible-stable-2.9"
-		// },
-		// {
-		// 	"fileMatch": ["some-file.json"],
-		// 	"uri": "file:///Users/me/some-schema.json"
-		// }
-	],
 }
