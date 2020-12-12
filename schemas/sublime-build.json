@@ -116,7 +116,7 @@
     "syntax": {
       "markdownDescription": "A string specifying the syntax file to use to highlight the build system output panel.\nExample: `\"Packages/JavaScript/JSON.sublime-syntax\"`",
       "type": "string",
-      "pattern": "^Packages/.+\\.(sublime-syntax|tmLanguage)"
+      "pattern": "^(([^/]+|Packages/.+)\\.sublime-syntax|Packages/.+\\.(hidden-)?tmLanguage)$"
     }
   }
 }
