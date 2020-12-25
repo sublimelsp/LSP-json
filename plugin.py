@@ -2,7 +2,7 @@ from abc import ABCMeta, abstractmethod
 from LSP.plugin import DottedDict
 from LSP.plugin import Notification
 from LSP.plugin import Request
-from LSP.plugin.core.typing import Any, Callable, Dict, List, Optional
+from LSP.plugin.core.typing import Any, Callable, Dict, List, Mapping, Optional
 from lsp_utils import ApiWrapperInterface
 from lsp_utils import request_handler
 from lsp_utils import NpmClientHandler
@@ -214,6 +214,11 @@ class LspJSONPlugin(NpmClientHandler, StoreListener):
             text_document = notification.params['textDocument']
             if any((pattern.search(text_document['uri']) for pattern in self._jsonc_patterns)):
                 text_document['languageId'] = 'jsonc'
+
+    def on_pre_server_command(self, command: Mapping[str, Any], done_callback: Callable[[], None]) -> bool:
+        if command['command'] == 'editor.action.triggerSuggest':
+            return True
+        return False
 
     # --- StoreListener ------------------------------------------------------------------------------------------------
 
