@@ -50,8 +50,7 @@
           {
             "type": "object",
             "required": [
-              "trigger",
-              "contents"
+              "trigger"
             ],
             "properties": {
               "trigger": {
