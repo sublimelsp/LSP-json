@@ -23,9 +23,14 @@
 	],
 	// ST4
 	"selector": "source.json",
-	// don't auto-complete in comments and after typing a "," or ":", and after closing a string
-	"auto_complete_selector": "- comment - punctuation.separator - punctuation.definition.string.end - constant.character.escape - invalid.illegal",
-	"ignore_server_trigger_chars": true,
+	// don't auto-complete in comments and after typing a ",", ":", "{" or "[", and after closing a string
+	"auto_complete_selector": "- comment - punctuation.separator - punctuation.definition.string.end - constant.character.escape - invalid.illegal - punctuation.section.mapping.begin - punctuation.section.sequence.begin",
+	"disabled_capabilities": {
+		// the trigger characters are too blunt, we'll specify auto_complete_selector manually
+		"completionProvider": {
+			"triggerCharacters": true
+		}
+	},
 	"initializationOptions": {
 		"customCapabilities.rangeFormatting.editLimit": 1000,
 		"handledSchemaProtocols": ["https", "http", "file"],
