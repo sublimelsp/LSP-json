@@ -1,4 +1,5 @@
 {
+	// Open "Preferences: LSP Utils Settings" from the Command Palette to customize the Node runtime.
 	"command": ["${node_bin}", "${server_path}", "--stdio"],
 	// ST3
 	"languages": [
