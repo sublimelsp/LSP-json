@@ -25,7 +25,7 @@
 	// ST4
 	"selector": "source.json",
 	// don't auto-complete in comments and after typing a ",", ":", "{" or "[", and after closing a string
-	"auto_complete_selector": "- comment - punctuation.separator - punctuation.definition.string.end - constant.character.escape - invalid.illegal - punctuation.section.mapping.begin - punctuation.section.sequence.begin",
+	"auto_complete_selector": "- comment - punctuation.separator - punctuation.definition.string.end - constant.character.escape - invalid.illegal - punctuation.section.mapping - punctuation.section.sequence",
 	"disabled_capabilities": {
 		// the trigger characters are too blunt, we'll specify auto_complete_selector manually
 		"completionProvider": {
