@@ -174,7 +174,14 @@ class SchemaStore:
 class LspJSONPlugin(NpmClientHandler, StoreListener):
     package_name = __package__
     server_directory = 'language-server'
-    server_binary_path = path.join(server_directory, 'out', 'node', 'jsonServerMain.js')
+    server_binary_path = path.join(
+        server_directory,
+        'node_modules',
+        'vscode-json-languageserver',
+        'out',
+        'node',
+        'jsonServerMain.js',
+    )
     _schema_store = SchemaStore()
 
     @classmethod
