@@ -1,7 +1,7 @@
 from abc import ABCMeta, abstractmethod
 from LSP.plugin import DottedDict
 from LSP.plugin import Notification
-from LSP.plugin.core.typing import Any, Callable, Dict, List, Optional
+from LSP.plugin.core.typing import Any, Callable, Dict, List, Optional, Tuple
 from lsp_utils import ApiWrapperInterface
 from lsp_utils import request_handler
 from lsp_utils import NpmClientHandler
@@ -211,8 +211,8 @@ class LspJSONPlugin(NpmClientHandler, StoreListener):
         self._schema_store.load_schemas()
 
     @request_handler('vscode/content')
-    def handle_vscode_content(self, uri: str, respond: Callable[[Any], None]) -> None:
-        respond(self._schema_store.get_schema_for_uri(uri))
+    def handle_vscode_content(self, params: Tuple[str], respond: Callable[[Any], None]) -> None:
+        respond(self._schema_store.get_schema_for_uri(params[0]))
 
     # ST4-only
     def on_pre_send_notification_async(self, notification: Notification) -> None:
@@ -224,7 +224,7 @@ class LspJSONPlugin(NpmClientHandler, StoreListener):
     # --- StoreListener ------------------------------------------------------------------------------------------------
 
     def on_store_changed(self, schemas: List[Dict]) -> None:
-        self._api.send_notification('json/schemaAssociations', schemas + self._user_schemas)
+        self._api.send_notification('json/schemaAssociations', [schemas + self._user_schemas])
 
 
 class LspJsonAutoCompleteCommand(sublime_plugin.TextCommand):
