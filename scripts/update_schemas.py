@@ -22,6 +22,8 @@ def main():
     for schema in schemas:
         fileMatch = schema.get('fileMatch')
         url = schema['url']
+        if not fileMatch:
+            schema_list.append({'uri': url})
         if fileMatch:
             fileMatch = list(filter(lambda pattern: not RE_YAML.search(pattern), schema['fileMatch']))
         if fileMatch:
