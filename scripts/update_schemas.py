@@ -28,7 +28,7 @@ def main():
             fileMatch = list(filter(lambda pattern: not RE_YAML.search(pattern), schema['fileMatch']))
         if fileMatch:
             fileMatch = list(map(to_absolute_pattern, fileMatch))
-            schema_list.append({'fileMatch': fileMatch, 'uri': url})        
+            schema_list.append({'fileMatch': fileMatch, 'uri': url})
 
     with open(os.path.join(DIRECTORY, '..', 'lsp-json-schemas.json'), 'w') as f:
         f.write(dumps(schema_list, indent=2))
