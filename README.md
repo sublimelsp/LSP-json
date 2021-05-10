@@ -4,13 +4,25 @@ JSON support for Sublime's LSP plugin.
 
 Uses [VSCode JSON Language Server](https://github.com/Microsoft/vscode/tree/master/extensions/json-language-features/server) to provide validation, formatting and other features for JSON files. See linked repository for more information.
 
-* Make sure you have Node.js installed and `node` is in your `$PATH`. The language server subprocess is a Node.js app.
+### Installation
+
 * Install [LSP](https://packagecontrol.io/packages/LSP) and `LSP-json` from Package Control.
 * Restart Sublime.
 
 ### Configuration
 
 Open configuration file using command palette with `Preferences: LSP-json Settings` command or opening it from the Sublime menu (`Preferences > Package Settings > LSP > Servers > LSP-json`).
+
+### For users of PackageDev
+
+The [PackageDev](https://packagecontrol.io/packages/PackageDev) package implements feature that provides completions and tooltips when editing the Sublime settings files, which overlaps and conflicts with functionality provided by this package. To take advantage of the strict schemas that this package provides, disable corresponding functionality in `PackageDev` by opening `Preferences: PackageDev Settings` from the Command Palette and setting the following settings on the right side:
+
+```json
+{
+  "settings.auto_complete": false,
+  "settings.tooltip": false
+}
+```
 
 ### Custom schemas
 
