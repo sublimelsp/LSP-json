@@ -15,7 +15,7 @@ Open configuration file using command palette with `Preferences: LSP-json Settin
 
 ### For users of PackageDev
 
-The [PackageDev](https://packagecontrol.io/packages/PackageDev) package implements feature that provides completions and tooltips when editing the Sublime settings files, which overlaps and conflicts with functionality provided by this package. To take advantage of the strict schemas that this package provides, disable corresponding functionality in `PackageDev` by opening `Preferences: PackageDev Settings` from the Command Palette and setting the following settings on the right side:
+The [PackageDev](https://packagecontrol.io/packages/PackageDev) package implements features that provide completions and tooltips when editing the Sublime settings files, which overlaps and conflicts with functionality provided by this package. To take advantage of the strict schemas that this package provides, disable corresponding functionality in `PackageDev` by opening `Preferences: PackageDev Settings` from the Command Palette and set the following settings on the right side:
 
 ```json
 {
