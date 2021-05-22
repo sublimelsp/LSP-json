@@ -533,6 +533,14 @@
           "type": "string",
           "default": "punctuation"
         },
+        "control_character_style": {
+          "markdownDescription": "Control characters (or white space if enabled) can be drawn as either hex or using their abbreviation.",
+          "enum": ["hex", "names"],
+          "markdownEnumDescriptions": [
+            "Draw characters using their hex encoding, ie. `<0xA0>`",
+            "Draw characters using their abbreviation, ie. `<NBSP>`"
+          ]
+        },
         "selection_description_column_type": {
           "markdownDescription": "Controls what type of columns selection description (\"Line X, Column Y\" in the status bar).",
           "type": "string",
@@ -548,11 +556,6 @@
         },
         "draw_indent_guides": {
           "markdownDescription": "Set to `false` to turn off the indentation guides.\nThe color and width of the indent guides may be customized by editing the corresponding .tmTheme file, and specifying the colors \"guide\", \"activeGuide\" and \"stackGuide\".",
-          "type": "boolean",
-          "default": true
-        },
-        "draw_shadows": {
-          "markdownDescription": "A boolean that can disable the shadow effect when any line is longer than the window.",
           "type": "boolean",
           "default": true
         },
@@ -621,6 +624,11 @@
         "default_line_ending": {
           "markdownDescription": "Determines what character(s) are used to terminate each line in new files.\nValid values are `\"system\"` (whatever the OS uses), `\"windows\"` (CRLF) and `\"unix\"` (LF only).",
           "enum": ["system", "windows", "unix"],
+          "enumDescriptions": [
+            "whatever the OS uses",
+            "CRLF",
+            "LF only"
+          ],
           "default": "system"
         },
         "show_definitions": {
@@ -697,12 +705,17 @@
           "default": false
         },
         "auto_complete_preserve_order": {
-          "markdownDescription": "Controls how the auto complete results are reordered when typing:\n- `\"none\"` will fully reorder the results according to how well the completion matches the typed text.\n- `\"some\"` will partially reorder the results, taking into account how well the completion matches whats typed, and likelihood of the completion.\n- `\"strict\"` will never reorder the results.",
+          "markdownDescription": "Controls how the auto complete results are reordered when typing.",
           "enum": ["none", "some", "strict"],
+          "enumDescriptions": [
+            "Fully reorder the results according to how well the completion matches the typed text.",
+            "Partially reorder the results, taking into account how well the completion matches whats typed, and likelihood of the completion.",
+            "Never reorder the results"
+          ],
           "default": "some"
         },
         "auto_complete_trailing_symbols": {
-          "markdownDescription": "Add trailing symbols (e.g., '.', '()') if the auto complete engine thinks they're likely enough.",
+          "markdownDescription": "Add trailing symbols (e.g., `.`, `()`) if the auto complete engine thinks they're likely enough.",
           "type": "boolean",
           "default": false
         },
@@ -776,6 +789,16 @@
           "default": false,
           "scope": "view"
         },
+        "close_find_after_find_all": {
+          "description": "This determines whether the find panel is closed when the \"Find All\" button is pressed. Note this does not change the keybinding behavior.",
+          "type": "boolean",
+          "default": true
+        },
+        "close_find_after_replace_all": {
+          "description": "This determines whether the find panel is closed when the \"Replace All\" button is pressed. Note this does not change the keybinding behavior.",
+          "type": "boolean",
+          "default": true
+        },
         "highlight_find_results_in_scrollbar": {
           "markdownDescription": "Whether to highlight find results in the scrollbar.",
           "type": "boolean",
@@ -803,6 +826,37 @@
           "type": "string",
           "pattern": "^(?:.*\\.sublime-theme|auto)$",
           "default": "Default.sublime-theme"
+        },
+        "light_theme": {
+          "markdownDescription": "Controls the `\"theme\"` when set to `\"auto\"`.",
+          "type": "string",
+          "pattern": "^:.*\\.sublime-theme$",
+          "default": "Default.sublime-theme"
+        },
+        "dark_theme": {
+          "markdownDescription": "Controls the `\"theme\"` when set to `\"auto\"`.",
+          "type": "string",
+          "pattern": "^:.*\\.sublime-theme$",
+          "default": "Default Dark.sublime-theme"
+        },
+        "themed_title_bar": {
+          "description": "Adaptive theme only: controls if a custom or default title bar is used",
+          "type": "boolean",
+          "default": true
+        },
+        "file_tab_style": {
+          "description": "Controls the style of file tabs for the Default, Default Dark, and Adaptive themes.",
+          "enum": ["rounded", "squared", "angled"],
+          "enumDescriptions": [
+            "",
+            "",
+            "Provides the tab style from Sublime Text 3, but is only compatible with the Default and Adaptive themes, and will not support new features like inactive pane dimming."
+          ]
+        },
+        "inactive_sheet_dimming": {
+          "description": "If inactive sheets should have their background slightly modified to make input focus more obvious.",
+          "type": "boolean",
+          "default": true
         },
         "scroll_speed": {
           "markdownDescription": "Set to `0` to disable smooth scrolling. Set to a value between `0` and `1` to scroll slower, or set to larger than `1` to scroll faster.",
@@ -864,6 +918,16 @@
           "markdownDescription": "Allows tabs to scroll left and right, instead of simply shrinking.",
           "type": "boolean",
           "default": true
+        },
+        "hide_tab_scrolling_buttons": {
+          "description": "Hides the buttons for scrolling tabs left/right, requiring use of a trackpad or mouse scroll wheel.",
+          "type": "boolean",
+          "default": false
+        },
+        "hide_new_tab_button": {
+          "description": "Hides the new tab button.",
+          "type": "boolean",
+          "default": false
         },
         "show_sidebar_button": {
           "markdownDescription": "Display the toggle sidebar button in the status bar.",
@@ -1014,11 +1078,22 @@
           "enum": ["index", "head"],
           "default": "index"
         },
+        "sublime_merge_path": {
+          "description": "The path to the Sublime Merge executable. This should only be set if Sublime Merge is not installed in a standard location, such as when using a portable install.",
+          "type": "string",
+          "default": ""
+        },
         "preview_on_click": {
           "markdownDescription": "Preview file contents when clicking on a file in the side bar.\nDouble clicking or editing the preview will open the file and assign it a tab.",
           "type": ["boolean", "string"],
           "enum": [false, true, "only_left"],
           "default": true
+        },
+        "console_max_history_lines": {
+          "markdownDescription": "Controls the maximum number of lines kept in the console's history. Note a large limit will increase memory usage. Use `0` to remove any limit.",
+          "type": "integer",
+          "default": 3000,
+          "minimum": 0
         },
         "folder_exclude_patterns": {
           "markdownDescription": "Controls which folders are not listed in the side bar.\nThese can also be set on a per-project basis.",
@@ -1053,6 +1128,11 @@
           "type": "boolean",
           "default": true
         },
+        "index_skip_unknown_extensions": {
+          "markdownDescription": "Whether unknown file extensions should be checked for indexing or skipped entirely. If a file extension is not being recognised we suggest setting/changing the default syntax for that extension instead of turning this setting off.",
+          "type": "boolean",
+          "default": true
+        },
         "index_exclude_patterns": {
           "markdownDescription": "Indicates which files won't be indexed.",
           "type": "array",
@@ -1083,11 +1163,6 @@
           "markdownDescription": "Draw each line number as the distance from the current line. Useful in conjunction with Vintage.",
           "type": "boolean",
           "default": false
-        },
-        "index_skip_unknown_extensions": {
-          "markdownDescription": "Whether unknown file extensions should be checked for indexing or skipped entirely. If a file extension is not being recognised we suggest setting/changing the default syntax for that extension instead of turning this setting off.",
-          "type": "boolean",
-          "default": true
         },
         "ignored_packages": {
           "markdownDescription": "List any packages to ignore here.\nWhen removing entries from this list, a restart may be required if the package contains plugins.",
