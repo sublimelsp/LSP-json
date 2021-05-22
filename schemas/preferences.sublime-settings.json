@@ -11,7 +11,7 @@
         "color_scheme": {
           "markdownDescription": "Sets the colors used within the text area.",
           "type": "string",
-          "pattern": "^.+\\.((sublime|hidden)-color-scheme|tmTheme)$",
+          "pattern": "^(?:(.+\\.((sublime|hidden)-color-scheme|tmTheme)|auto)$",
           "default": "Mariana.sublime-color-scheme"
         },
         "font_face": {
@@ -386,9 +386,18 @@
           "default": 0
         },
         "scroll_past_end": {
-          "markdownDescription": "Set to `false` to disable scrolling past the end of the buffer.\nOn Mac, this value is overridden in the platform specific settings, so you'll need to place this line in your user settings to override it.",
-          "type": "boolean",
-          "default": true
+          "markdownDescription": "Set to `false` to disable scrolling past the end of the buffer.\nOn Mac, this value is overridden in the platform specific settings, so you'll need to place this line in your user settings to override it.\n\nThis setting may also be set to a number between 0.0 and 1.0 to specify how much scrolling past the end of the buffer should be allowed. 0.5 scrolls halfway and 0.0 is the same as false.",
+          "oneOf": [
+            {
+              "type": "boolean",
+              "default": true
+            },
+            {
+              "type": "number",
+              "minimum": 0.0,
+              "maximum": 1.0
+            }
+          ]
         },
         "scroll_context_lines": {
           "markdownDescription": "Set the number of context lines to show when scrolling. This affects all selection changes, like selection dragging, page-up/page-down and moving the caret.",
@@ -792,7 +801,7 @@
         "theme": {
           "markdownDescription": "The theme controls the look of Sublime Text's UI (buttons, tabs, scroll bars, etc).",
           "type": "string",
-          "pattern": "^.*\\.sublime-theme",
+          "pattern": "^(?:.*\\.sublime-theme|auto)$",
           "default": "Default.sublime-theme"
         },
         "scroll_speed": {
@@ -902,7 +911,12 @@
           "oneOf": [
             {
               "enum": ["always", "only_on_quit", "disabled"],
-              "default": ["always"]
+              "markdownEnumDescriptions": [
+                "Always perform a hot exit when the application exits. This includes when the last window is closed on relevant platforms.",
+                "Only perform a hot exit when the application is asked to exit, not when the last window is closed. This setting is only used on Windows and Linux.",
+                "Disable hot exit."
+              ],
+              "default": "always"
             },
             {
               "type": "boolean",
@@ -936,9 +950,14 @@
           "default": true
         },
         "open_files_in_new_window": {
-          "markdownDescription": "Mac only: When files are opened from finder, or by dragging onto the dock icon, this controls if a new window is created or not.",
-          "type": "boolean",
-          "default": true
+          "markdownDescription": "When files are opened from a file explorer or from the command line, this controls whether a new window is created or not.",
+          "enum": ["never", "always", "finder_only"],
+          "markdownEnumDescriptions": [
+            "Never open a new window unless no window is open.",
+            "Always open files in a new window.",
+            "(macOS only) Only open files in a new window when opening them from finder or dragging onto the dock icon."
+          ],
+          "default": "never"
         },
         "create_window_at_startup": {
           "markdownDescription": "Mac only: This controls if an empty window is created at startup or not.",
