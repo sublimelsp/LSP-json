@@ -11,7 +11,19 @@
         "color_scheme": {
           "markdownDescription": "Sets the colors used within the text area.",
           "type": "string",
-          "pattern": "^(?:(.+\\.((sublime|hidden)-color-scheme|tmTheme)|auto)$",
+          "pattern": "^(.+\\.((sublime|hidden)-color-scheme|tmTheme)|auto)",
+          "default": "Mariana.sublime-color-scheme"
+        },
+        "light_color_scheme": {
+          "markdownDescription": "Controls the `\"color_scheme\"` when set to `\"auto\"`.",
+          "type": "string",
+          "pattern": "^.+\\.((sublime|hidden)-color-scheme|tmTheme)",
+          "default": "Breakers.sublime-color-scheme"
+        },
+        "dark_color_scheme": {
+          "markdownDescription": "Controls the `\"color_scheme\"` when set to `\"auto\"`.",
+          "type": "string",
+          "pattern": "^.+\\.((sublime|hidden)-color-scheme|tmTheme)",
           "default": "Mariana.sublime-color-scheme"
         },
         "font_face": {
@@ -254,6 +266,11 @@
           "markdownDescription": "Set to a value other than `0` to force wrapping at that column rather than the window width.",
           "type": "integer",
           "default": 0
+        },
+        "wrap_width_style": {
+          "description": "???",
+          "type": "string",
+          "default": ""
         },
         "indent_subsequent_lines": {
           "markdownDescription": "Set to `false` to prevent word wrapped lines from being indented to the same level",
@@ -529,8 +546,13 @@
           ]
         },
         "draw_unicode_white_space": {
-          "markdownDescription": "Controls how non-ascii white space is drawn.\n\n- `\"none\"`: Draw unicode white space verbatim, eg. hiding zero-width spaces.\n- `\"punctuation\"`: Draw codepoints of unicode white space defined as punctuation. This includes NBSP, but excludes the CJK Ideographic Space.\n- `\"all\"`: Draw codepoints of all non-ascii space characters.",
-          "type": "string",
+          "description": "Controls how non-ascii white space is drawn.",
+          "enum": ["none", "punctuation", "all"],
+          "enumDescriptions": [
+            "Draw unicode white space verbatim, eg. hiding zero-width spaces.",
+            "Draw codepoints of unicode white space defined as punctuation. This includes NBSP, but excludes the CJK Ideographic Space.",
+            "Draw codepoints of all non-ascii space characters."
+          ],
           "default": "punctuation"
         },
         "control_character_style": {
@@ -734,6 +756,16 @@
           "type": "boolean",
           "default": true
         },
+        "auto_complete_when_likely": {
+          "markdownDescription": "**Experimental**. Present the auto-complete widget when Sublime Text thinks it's appropriate.",
+          "type": "boolean",
+          "default": true
+        },
+        "mini_auto_complete": {
+          "markdownDescription": "**Experimental**. Present an alternative stripped-down version of the auto-complete widget.",
+          "type": "boolean",
+          "default": false
+        },
         "ignored_snippets": {
           "markdownDescription": "A list of wildcard patterns specifying which snippet files to ignore. For example, to ignore all the default C++ snippets, set this to `[\"C++/*\"]`",
           "examples": [["C++/*"]],
@@ -757,6 +789,11 @@
           "markdownDescription": "Hides status bar automatically when typing. Moving the mouse will show it again.",
           "type": "boolean",
           "default": false
+        },
+        "remember_workspace": {
+          "description": "???",
+          "type": "boolean",
+          "default": true
         },
         "reveal_tabs_with_timeout": {
           "markdownDescription": "Related to `auto_hide_tabs`, if this is enabled, tabs will be momentarily displayed when switching files. Tabs will automatically be hidden upon resuming typing or after a fixed amount of time.",
@@ -784,10 +821,15 @@
           "default": true
         },
         "auto_find_in_selection": {
-          "markdownDescription": "When auto_find_in_selection is enabled, the \"Find in Selection\" flag will be enabled automatically when multiple lines of text are selected.",
-          "type": "boolean",
-          "default": false,
-          "scope": "view"
+          "markdownDescription": "Enable or disable the \"Find in Selection\" flag in the \"Find\" and/or the \"Replace\" panel.",
+          "enum": [false, true, "find_only", "replace_only"],
+          "enumDescriptions": [
+            "Do not enable the \"Find in Selection\" flag automatically when multiple lines of text are selected for the \"Find\" panel and \"Replace\" panel.",
+            "Enable the \"Find in Selection\" flag automatically when multiple lines of text are selected for the \"Find\" panel and \"Replace\" panel..",
+            "Enable the \"Find in Selection\" flag automatically when multiple lines of text are selected for the \"Find\" panel, but not the \"Replace\" panel.",
+            "Enable the \"Find in Selection\" flag automatically when multiple lines of text are selected for the \"Replace\" panel, but not the \"Find\" panel."
+          ],
+          "default": false
         },
         "close_find_after_find_all": {
           "description": "This determines whether the find panel is closed when the \"Find All\" button is pressed. Note this does not change the keybinding behavior.",
@@ -824,7 +866,7 @@
         "theme": {
           "markdownDescription": "The theme controls the look of Sublime Text's UI (buttons, tabs, scroll bars, etc).",
           "type": "string",
-          "pattern": "^(?:.*\\.sublime-theme|auto)$",
+          "pattern": "^(.*\\.sublime-theme|auto)$",
           "default": "Default.sublime-theme"
         },
         "light_theme": {
