@@ -866,8 +866,8 @@
         "theme": {
           "markdownDescription": "The theme controls the look of Sublime Text's UI (buttons, tabs, scroll bars, etc).",
           "type": "string",
-          "pattern": "^(.*\\.sublime-theme|auto)$",
-          "default": "Default.sublime-theme"
+          "pattern": "^(.*\\.sublime-theme|auto)",
+          "default": "auto"
         },
         "light_theme": {
           "markdownDescription": "Controls the `\"theme\"` when set to `\"auto\"`.",
