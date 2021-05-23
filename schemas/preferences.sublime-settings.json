@@ -15,13 +15,13 @@
           "default": "Mariana.sublime-color-scheme"
         },
         "light_color_scheme": {
-          "markdownDescription": "Controls the `\"color_scheme\"` when set to `\"auto\"`.",
+          "markdownDescription": "Controls the [color scheme](https://www.sublimetext.com/docs/color_schemes.html) when `\"color_scheme\"` is set to `\"auto\"`.",
           "type": "string",
           "pattern": "^.+\\.((sublime|hidden)-color-scheme|tmTheme)$",
           "default": "Breakers.sublime-color-scheme"
         },
         "dark_color_scheme": {
-          "markdownDescription": "Controls the `\"color_scheme\"` when set to `\"auto\"`.",
+          "markdownDescription": "Controls the [color scheme](https://www.sublimetext.com/docs/color_schemes.html) when `\"color_scheme\"` is set to `\"auto\"`.",
           "type": "string",
           "pattern": "^.+\\.((sublime|hidden)-color-scheme|tmTheme)$",
           "default": "Mariana.sublime-color-scheme"
@@ -870,13 +870,13 @@
           "default": "auto"
         },
         "light_theme": {
-          "markdownDescription": "Controls the `\"theme\"` when set to `\"auto\"`.",
+          "markdownDescription": "Controls the [theme](https://www.sublimetext.com/docs/themes.html) when `\"theme\"` is set to `\"auto\"`.",
           "type": "string",
           "pattern": "^.*\\.sublime-theme$",
           "default": "Default.sublime-theme"
         },
         "dark_theme": {
-          "markdownDescription": "Controls the `\"theme\"` when set to `\"auto\"`.",
+          "markdownDescription": "Controls the [theme](https://www.sublimetext.com/docs/themes.html) when `\"theme\"` is set to `\"auto\"`.",
           "type": "string",
           "pattern": "^.*\\.sublime-theme$",
           "default": "Default Dark.sublime-theme"
