@@ -11,19 +11,19 @@
         "color_scheme": {
           "markdownDescription": "Sets the colors used within the text area.",
           "type": "string",
-          "pattern": "^(.+\\.((sublime|hidden)-color-scheme|tmTheme)|auto)",
+          "pattern": "^(.+\\.((sublime|hidden)-color-scheme|tmTheme)|auto)$",
           "default": "Mariana.sublime-color-scheme"
         },
         "light_color_scheme": {
           "markdownDescription": "Controls the `\"color_scheme\"` when set to `\"auto\"`.",
           "type": "string",
-          "pattern": "^.+\\.((sublime|hidden)-color-scheme|tmTheme)",
+          "pattern": "^.+\\.((sublime|hidden)-color-scheme|tmTheme)$",
           "default": "Breakers.sublime-color-scheme"
         },
         "dark_color_scheme": {
           "markdownDescription": "Controls the `\"color_scheme\"` when set to `\"auto\"`.",
           "type": "string",
-          "pattern": "^.+\\.((sublime|hidden)-color-scheme|tmTheme)",
+          "pattern": "^.+\\.((sublime|hidden)-color-scheme|tmTheme)$",
           "default": "Mariana.sublime-color-scheme"
         },
         "font_face": {
@@ -866,7 +866,7 @@
         "theme": {
           "markdownDescription": "The theme controls the look of Sublime Text's UI (buttons, tabs, scroll bars, etc).",
           "type": "string",
-          "pattern": "^(.*\\.sublime-theme|auto)",
+          "pattern": "^(.*\\.sublime-theme|auto)$",
           "default": "auto"
         },
         "light_theme": {
