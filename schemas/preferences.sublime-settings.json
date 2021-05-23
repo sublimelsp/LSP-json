@@ -872,13 +872,13 @@
         "light_theme": {
           "markdownDescription": "Controls the `\"theme\"` when set to `\"auto\"`.",
           "type": "string",
-          "pattern": "^:.*\\.sublime-theme$",
+          "pattern": "^.*\\.sublime-theme$",
           "default": "Default.sublime-theme"
         },
         "dark_theme": {
           "markdownDescription": "Controls the `\"theme\"` when set to `\"auto\"`.",
           "type": "string",
-          "pattern": "^:.*\\.sublime-theme$",
+          "pattern": "^.*\\.sublime-theme$",
           "default": "Default Dark.sublime-theme"
         },
         "themed_title_bar": {
