@@ -1216,6 +1216,11 @@
           "markdownDescription": "Set's the default extension in the OS Save dialog when an untitled file is saved",
           "type": "string",
           "default": ""
+        },
+        "show_legacy_color_schemes": {
+          "markdownDescription": "Show's the legacy color schemes in UI: Select Color Scheme",
+          "type": "boolean",
+          "default": false
         }
       }
     }
