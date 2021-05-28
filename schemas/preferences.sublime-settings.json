@@ -1221,6 +1221,12 @@
           "markdownDescription": "Show's the legacy color schemes in UI: Select Color Scheme",
           "type": "boolean",
           "default": false
+        },
+        "gtk_enable_key_translation": {
+          "markdownDescription": "Disables ST4's new key translation behavior. Added in Build 4103",
+          "type": "boolean",
+          "default": false
+        },
         }
       }
     }
