@@ -1218,7 +1218,7 @@
           "default": ""
         },
         "show_legacy_color_schemes": {
-          "markdownDescription": "Show's the legacy color schemes in UI: Select Color Scheme.",
+          "markdownDescription": "Show's the legacy color schemes in UI: Select Color Scheme. Added in Build 3136.",
           "type": "boolean",
           "default": false
         },
@@ -1238,7 +1238,7 @@
           "default": false
         },
         "print_using_browser": {
-          "markdownDescription": "Print's the active view using the given browser as described by [webbrowser.get](https://docs.python.org/3/library/webbrowser.html#webbrowser.get) API.",
+          "markdownDescription": "Print's the active view using the given browser as described by [webbrowser.get](https://docs.python.org/3/library/webbrowser.html#webbrowser.get) API. Added in Build 4094.",
           "oneOf": [
             {
               "type": "null",
