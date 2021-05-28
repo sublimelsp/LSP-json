@@ -1231,6 +1231,11 @@
           "markdownDescription": "To disable the client side window decorations when using GNOME on Linux",
           "type": "boolean",
           "default": false
+        },
+        "auto_complete_enable_plugins": {
+          "markdownDescription": "Disable auto completions from (all third party) plugins even when explicitly requested",
+          "type": "boolean",
+          "default": false
         }
       }
     }
