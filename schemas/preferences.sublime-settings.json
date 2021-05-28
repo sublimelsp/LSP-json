@@ -1227,6 +1227,10 @@
           "type": "boolean",
           "default": false
         },
+        "gtk_client_side_window_decorations": {
+          "markdownDescription": "To disable the client side window decorations when using GNOME on Linux",
+          "type": "boolean",
+          "default": false
         }
       }
     }
