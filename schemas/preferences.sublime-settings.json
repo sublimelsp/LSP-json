@@ -1211,6 +1211,11 @@
           "type": "array",
           "items": {"type": "string"},
           "default": ["Vintage"]
+        },
+        "default_extension": {
+          "markdownDescription": "Set's the default extension in the OS Save dialog when an untitled file is saved",
+          "type": "string",
+          "default": ""
         }
       }
     }
