@@ -1223,9 +1223,9 @@
           "default": false
         },
         "gtk_enable_key_translation": {
-          "markdownDescription": "Disables ST4's new key translation behavior. Added in Build 4103.",
+          "markdownDescription": "Whether ST4's new key translation behavior should be enabled. Added in Build 4103.",
           "type": "boolean",
-          "default": false
+          "default": true
         },
         "gtk_client_side_window_decorations": {
           "markdownDescription": "To disable the client side window decorations when using GNOME on Linux.",
