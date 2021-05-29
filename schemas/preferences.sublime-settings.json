@@ -1247,6 +1247,11 @@
               "type": "string"
             }
           ]
+        },
+        "default_dir": {
+          "markdownDescription": "**Unlisted.** The folder location where the Save As OS dialog should open when saving untitled new files.\nShould be an absolute path on disk",
+          "type": "string",
+          "default": ""
         }
       }
     }
