@@ -1213,12 +1213,12 @@
           "default": ["Vintage"]
         },
         "default_extension": {
-          "markdownDescription": "**Unlisted.** Set's the default extension in the OS Save dialog when an untitled file is saved.",
+          "markdownDescription": "**Unlisted.** Sets the default extension in the OS Save dialog when an untitled file is saved.",
           "type": "string",
           "default": ""
         },
         "show_legacy_color_schemes": {
-          "markdownDescription": "**Unlisted.** Show's the legacy color schemes in UI: Select Color Scheme. Added in Build 3136.",
+          "markdownDescription": "**Unlisted.** Shows the legacy color schemes in `UI: Select Color Scheme`. Added in Build 3136.",
           "type": "boolean",
           "default": false
         },
@@ -1233,12 +1233,12 @@
           "default": false
         },
         "auto_complete_enable_plugins": {
-          "markdownDescription": "**Unlisted.** Disable auto completions from (all third party) plugins even when explicitly requested.",
+          "markdownDescription": "**Unlisted.** Disable auto completions from all third party plugins even when explicitly requested.",
           "type": "boolean",
           "default": false
         },
         "print_using_browser": {
-          "markdownDescription": "**Unlisted.** Print's the active view using the given browser as described by [webbrowser.get](https://docs.python.org/3/library/webbrowser.html#webbrowser.get) API. Added in Build 4094.",
+          "markdownDescription": "**Unlisted.** Prints the active view using the given browser as described by [webbrowser.get](https://docs.python.org/3/library/webbrowser.html#webbrowser.get) API. Added in Build 4094.",
           "oneOf": [
             {
               "type": "null",
@@ -1249,7 +1249,7 @@
           ]
         },
         "default_dir": {
-          "markdownDescription": "**Unlisted.** The folder location where the Save As OS dialog should open when saving untitled new files.\nShould be an absolute path on disk",
+          "markdownDescription": "**Unlisted.** The folder location where the Save As OS dialog should open when saving untitled new files.\n\nShould be an absolute path on disk.",
           "type": "string",
           "default": ""
         }
