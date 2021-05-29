@@ -1213,32 +1213,32 @@
           "default": ["Vintage"]
         },
         "default_extension": {
-          "markdownDescription": "Set's the default extension in the OS Save dialog when an untitled file is saved.",
+          "markdownDescription": "**Unlisted.** Set's the default extension in the OS Save dialog when an untitled file is saved.",
           "type": "string",
           "default": ""
         },
         "show_legacy_color_schemes": {
-          "markdownDescription": "Show's the legacy color schemes in UI: Select Color Scheme. Added in Build 3136.",
+          "markdownDescription": "**Unlisted.** Show's the legacy color schemes in UI: Select Color Scheme. Added in Build 3136.",
           "type": "boolean",
           "default": false
         },
         "gtk_enable_key_translation": {
-          "markdownDescription": "Whether ST4's new key translation behavior should be enabled. Added in Build 4103.",
+          "markdownDescription": "**Unlisted.** Whether ST4's new key translation behavior should be enabled. Added in Build 4103.",
           "type": "boolean",
           "default": true
         },
         "gtk_client_side_window_decorations": {
-          "markdownDescription": "To disable the client side window decorations when using GNOME on Linux.",
+          "markdownDescription": "**Unlisted.** To disable the client side window decorations when using GNOME on Linux.",
           "type": "boolean",
           "default": false
         },
         "auto_complete_enable_plugins": {
-          "markdownDescription": "Disable auto completions from (all third party) plugins even when explicitly requested.",
+          "markdownDescription": "**Unlisted.** Disable auto completions from (all third party) plugins even when explicitly requested.",
           "type": "boolean",
           "default": false
         },
         "print_using_browser": {
-          "markdownDescription": "Print's the active view using the given browser as described by [webbrowser.get](https://docs.python.org/3/library/webbrowser.html#webbrowser.get) API. Added in Build 4094.",
+          "markdownDescription": "**Unlisted.** Print's the active view using the given browser as described by [webbrowser.get](https://docs.python.org/3/library/webbrowser.html#webbrowser.get) API. Added in Build 4094.",
           "oneOf": [
             {
               "type": "null",
