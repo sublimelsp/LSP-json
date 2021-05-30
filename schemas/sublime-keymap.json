@@ -73,11 +73,11 @@
                   "If a panel is visible and has focus",
                   "If the quick panel is visible",
                   "If the overlay currently open has focus",
-                  "The name of the currently focussed overlay",
-                  "If the currently focussed group has multi selected tabs",
-                  "If the currently focussed group has a transient sheet",
+                  "The name of the currently focused overlay",
+                  "If the currently focused group has multi selected tabs",
+                  "If the currently focused group has a transient sheet",
                   "If the word to the immediate left of the cursor can be expanded to a snippet",
-                  "The type of the focussed panel"
+                  "The type of the focused panel"
                 ]
               },
               {
