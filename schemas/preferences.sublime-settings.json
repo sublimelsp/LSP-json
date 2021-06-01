@@ -888,7 +888,7 @@
         },
         "file_tab_style": {
           "description": "Controls the style of file tabs for the Default, Default Dark, and Adaptive themes.",
-          "enum": ["rounded", "squared", "angled"],
+          "enum": ["rounded", "square", "angled"],
           "enumDescriptions": [
             "",
             "",
