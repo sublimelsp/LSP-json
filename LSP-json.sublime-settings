@@ -24,6 +24,16 @@
 	],
 	// ST4
 	"selector": "source.json",
+	"schemes": [
+		// regular files
+		"file",
+		// in-memory buffers
+		"buffer",
+		// sublime resource files that are not strictly on-disk
+		"res",
+		// set by yaml-language-server when a remote schema is opened
+		"json-schema"
+	],
 	// don't auto-complete in comments and after typing a ",", ":", "{" or "[", and after closing a string
 	"auto_complete_selector": "- comment - punctuation.separator - punctuation.definition.string.end - constant.character.escape - invalid.illegal - punctuation.section.mapping - punctuation.section.sequence",
 	"disabled_capabilities": {
