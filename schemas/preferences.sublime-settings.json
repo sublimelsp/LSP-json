@@ -1252,6 +1252,11 @@
           "markdownDescription": "**Unlisted.** The folder location where the Save As OS dialog should open when saving untitled new files.\n\nShould be an absolute path on disk.",
           "type": "string",
           "default": ""
+        },
+        "reveal_menu": {
+          "markdownDescription": "Whether the menu should be shown (if it's hidden) when <kbd>alt</kbd> is pressed on Windows & Linux.\n\n This doesn't effect auto hiding or toggling the menu from the command palette",
+          "type": "boolean",
+          "default": false
         }
       }
     }
