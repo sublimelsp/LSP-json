@@ -1256,7 +1256,7 @@
         "reveal_menu": {
           "markdownDescription": "Whether the menu should be shown (if it's hidden) when <kbd>alt</kbd> is pressed on Windows & Linux.\n\n This doesn't effect auto hiding or toggling the menu from the command palette",
           "type": "boolean",
-          "default": false
+          "default": true
         }
       }
     }
