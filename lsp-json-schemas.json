@@ -237,7 +237,7 @@
     "fileMatch": [
       "/composer.json"
     ],
-    "uri": "https://json.schemastore.org/composer.json"
+    "uri": "https://raw.githubusercontent.com/composer/composer/master/res/composer-schema.json"
   },
   {
     "fileMatch": [
