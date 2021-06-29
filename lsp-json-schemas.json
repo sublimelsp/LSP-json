@@ -7,6 +7,18 @@
   },
   {
     "fileMatch": [
+      "/.aiproj.json"
+    ],
+    "uri": "https://json.schemastore.org/aiproj.json"
+  },
+  {
+    "fileMatch": [
+      "/angular.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/angular/angular-cli/master/packages/angular/cli/lib/config/workspace-schema.json"
+  },
+  {
+    "fileMatch": [
       "/.angular-cli.json",
       "/angular-cli.json"
     ],
@@ -42,7 +54,7 @@
   },
   {
     "fileMatch": [
-      "/.avsc"
+      "/*.avsc"
     ],
     "uri": "https://json.schemastore.org/avro-avsc.json"
   },
@@ -89,6 +101,20 @@
   },
   {
     "fileMatch": [
+      "/database.beef.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/Avanade/Beef/master/tools/Beef.CodeGen.Core/Schema/database.beef.json"
+  },
+  {
+    "fileMatch": [
+      "/entity.beef.json",
+      "/refdata.beef.json",
+      "/datamodel.beef.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/Avanade/Beef/master/tools/Beef.CodeGen.Core/Schema/entity.beef.json"
+  },
+  {
+    "fileMatch": [
       "/bitrise.json"
     ],
     "uri": "https://json.schemastore.org/bitrise.json"
@@ -118,6 +144,12 @@
       "/.xsuite.json"
     ],
     "uri": "https://json.schemastore.org/bozr.json"
+  },
+  {
+    "fileMatch": [
+      "/messages.json"
+    ],
+    "uri": "https://json.schemastore.org/browser.i18n.json"
   },
   {
     "fileMatch": [
@@ -419,6 +451,12 @@
   },
   {
     "fileMatch": [
+      "/**/application/instances/*.json"
+    ],
+    "uri": "https://www.facets.cloud/assets/fsdl/application.schema.json"
+  },
+  {
+    "fileMatch": [
       "/fabric.mod.json"
     ],
     "uri": "https://json.schemastore.org/fabric.mod.json"
@@ -453,6 +491,12 @@
   },
   {
     "fileMatch": [
+      "/.github/workflow-templates/**.properties.json"
+    ],
+    "uri": "https://json.schemastore.org/github-workflow-template-properties.json"
+  },
+  {
+    "fileMatch": [
       "/global.json"
     ],
     "uri": "https://json.schemastore.org/global.json"
@@ -472,7 +516,7 @@
       "/.meshrc.json",
       "/.meshrc.js"
     ],
-    "uri": "https://raw.githubusercontent.com/Urigo/graphql-mesh/v0.2.15/packages/types/src/config-schema.json"
+    "uri": "https://unpkg.com/@graphql-mesh/types/config-schema.json"
   },
   {
     "fileMatch": [
@@ -482,7 +526,7 @@
       "/.graphqlrc.json",
       "/.graphqlrc.js"
     ],
-    "uri": "https://raw.githubusercontent.com/kamilkisiela/graphql-config/v3.0.3/config-schema.json"
+    "uri": "https://unpkg.com/graphql-config/config-schema.json"
   },
   {
     "fileMatch": [
@@ -491,7 +535,7 @@
       "/.codegen.json",
       "/.codegen.js"
     ],
-    "uri": "https://raw.githubusercontent.com/dotansimha/graphql-code-generator/v1.17.7/website/static/config.schema.json"
+    "uri": "https://www.graphql-code-generator.com/config.schema.json"
   },
   {
     "fileMatch": [
@@ -540,7 +584,7 @@
     "fileMatch": [
       "/*.hayson.json"
     ],
-    "uri": "https://bitbucket.org/finproducts/hayson/raw/master/hayson-json-schema.json"
+    "uri": "https://raw.githubusercontent.com/j2inn/hayson/master/hayson-json-schema.json"
   },
   {
     "fileMatch": [
@@ -572,6 +616,14 @@
       "/imageoptimizer.json"
     ],
     "uri": "https://json.schemastore.org/imageoptimizer.json"
+  },
+  {
+    "fileMatch": [
+      "/jsonConfig.json",
+      "/jsonCustom.json",
+      "/jsonTab.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/ioBroker/adapter-react/master/schemas/jsonConfig.json"
   },
   {
     "fileMatch": [
@@ -802,7 +854,7 @@
     "fileMatch": [
       "/openapi.json"
     ],
-    "uri": "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/3.0.3/schemas/v3.0/schema.json"
+    "uri": "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json"
   },
   {
     "uri": "https://json.schemastore.org/openfin.json"
@@ -1021,6 +1073,12 @@
   },
   {
     "fileMatch": [
+      "/staticwebapp.config.json"
+    ],
+    "uri": "https://json.schemastore.org/staticwebapp.config.json"
+  },
+  {
+    "fileMatch": [
       "/stryker.conf.json",
       "/stryker-*.conf.json"
     ],
@@ -1063,6 +1121,12 @@
       "/*.tmLanguage.json"
     ],
     "uri": "https://raw.githubusercontent.com/Septh/tmlanguage/master/tmLanguage.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/testEnvironments.json"
+    ],
+    "uri": "https://json.schemastore.org/testenvironments.json"
   },
   {
     "uri": "https://json.schemastore.org/traefik-v2-file-provider.json"
@@ -1120,12 +1184,6 @@
       "/up.json"
     ],
     "uri": "https://json.schemastore.org/up.json"
-  },
-  {
-    "fileMatch": [
-      "/.manifest"
-    ],
-    "uri": "https://json.schemastore.org/ui5-manifest.json"
   },
   {
     "fileMatch": [
@@ -1444,5 +1502,31 @@
       "/*.specif.json"
     ],
     "uri": "https://json.schemastore.org/specif-1.0.json"
+  },
+  {
+    "fileMatch": [
+      "/cluster.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/dcermak/vscode-rke-cluster-config/main/schemas/cluster.json"
+  },
+  {
+    "fileMatch": [
+      "/**/db/changelog/**/*.json"
+    ],
+    "uri": "https://json.schemastore.org/liquibase.json"
+  },
+  {
+    "fileMatch": [
+      "/kfp_component.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/Cloud-Pipelines/component_spec_schema/stable/component_spec.json_schema.json"
+  },
+  {
+    "fileMatch": [
+      "/.markdownlintrc",
+      "/.markdownlint.json",
+      "/.markdownlint.jsonc"
+    ],
+    "uri": "https://json.schemastore.org/markdownlint.json"
   }
 ]
