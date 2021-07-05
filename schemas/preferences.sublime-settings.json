@@ -1257,6 +1257,11 @@
           "markdownDescription": "Whether the menu should be shown (if it's hidden) when <kbd>alt</kbd> is pressed on Windows & Linux.\n\n This doesn't effect auto hiding or toggling the menu from the command palette",
           "type": "boolean",
           "default": true
+        },
+        "syntax_detection_size_limit": {
+          "markdownDescription": "The maximum file size (in bytes) after which syntax highlighting will be disabled for files and will be shown as plain text.",
+          "type": "integer",
+          "default": 16777216
         }
       }
     }
