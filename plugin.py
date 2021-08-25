@@ -238,7 +238,7 @@ class LspJSONPlugin(NpmClientHandler, StoreListener):
             else:
                 schemas_without_file_match.append(schema)
         for match, uri in uris_by_file_match.items():
-            if match in schemas_by_uri:
+            if uri in schemas_by_uri:
                 schemas_by_uri[uri]['fileMatch'].append(match)
             else:
                 schemas_by_uri[uri] = {'fileMatch': [match], 'uri': uri}
