@@ -70,9 +70,9 @@
   {
     "fileMatch": [
       "/deployment.template.json",
-      "/deployment.*.template.json"
+      "/deployment.debug.template.json"
     ],
-    "uri": "https://json.schemastore.org/azure-iot-edge-deployment-template-2.0.json"
+    "uri": "https://json.schemastore.org/azure-iot-edge-deployment-template-4.0.json"
   },
   {
     "fileMatch": [
@@ -187,6 +187,18 @@
   },
   {
     "fileMatch": [
+      "/Chart.lock"
+    ],
+    "uri": "https://json.schemastore.org/chart-lock.json"
+  },
+  {
+    "fileMatch": [
+      "/.codeclimate.json"
+    ],
+    "uri": "https://json.schemastore.org/codeclimate.json"
+  },
+  {
+    "fileMatch": [
       "/.clasp.json"
     ],
     "uri": "https://json.schemastore.org/clasp.json"
@@ -258,6 +270,12 @@
       "/sam.json"
     ],
     "uri": "https://raw.githubusercontent.com/awslabs/goformation/v4.18.2/schema/sam.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/CITATION.cff"
+    ],
+    "uri": "https://citation-file-format.github.io/1.2.0/schema.json"
   },
   {
     "fileMatch": [
@@ -440,7 +458,7 @@
     "fileMatch": [
       "/app.json"
     ],
-    "uri": "https://json.schemastore.org/expo-40.0.0.json"
+    "uri": "https://json.schemastore.org/expo-41.0.0.json"
   },
   {
     "fileMatch": [
@@ -479,6 +497,21 @@
       "/function.json"
     ],
     "uri": "https://json.schemastore.org/function.json"
+  },
+  {
+    "fileMatch": [
+      "/gwcore.json",
+      "/gatewaycore.json",
+      "/*.gwcore.json",
+      "/*.gatewaycore.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/cloudtoid/gateway-core/master/src/Cloudtoid.GatewayCore/Options/Schema/2021-07.json"
+  },
+  {
+    "fileMatch": [
+      "/**/.well-known/gpc.json"
+    ],
+    "uri": "https://json.schemastore.org/gpc.json"
   },
   {
     "uri": "https://json.schemastore.org/geojson.json"
@@ -733,6 +766,12 @@
   },
   {
     "fileMatch": [
+      "/license-report-config.json"
+    ],
+    "uri": "https://json.schemastore.org/license-report-config.json"
+  },
+  {
+    "fileMatch": [
       "/local.settings.json"
     ],
     "uri": "https://json.schemastore.org/local.settings.json"
@@ -757,6 +796,72 @@
       "/mimetypes.json"
     ],
     "uri": "https://json.schemastore.org/mimetypes.json"
+  },
+  {
+    "fileMatch": [
+      "/**/data/*/advancements/*.json"
+    ],
+    "uri": "https://json.schemastore.org/minecraft-advancement.json"
+  },
+  {
+    "fileMatch": [
+      "/**/data/*/worldgen/biome/*.json"
+    ],
+    "uri": "https://json.schemastore.org/minecraft-biome.json"
+  },
+  {
+    "fileMatch": [
+      "/**/data/*/worldgen/configured_carver/*.json"
+    ],
+    "uri": "https://json.schemastore.org/minecraft-configured-carver.json"
+  },
+  {
+    "fileMatch": [
+      "/**/data/*/dimension_type/*.json"
+    ],
+    "uri": "https://json.schemastore.org/minecraft-dimension-type.json"
+  },
+  {
+    "fileMatch": [
+      "/**/data/*/dimension/*.json"
+    ],
+    "uri": "https://json.schemastore.org/minecraft-dimension.json"
+  },
+  {
+    "fileMatch": [
+      "/**/data/*/item_modifiers/*.json"
+    ],
+    "uri": "https://json.schemastore.org/minecraft-item-modifier.json"
+  },
+  {
+    "fileMatch": [
+      "/**/data/*/loot_tables/**/*.json"
+    ],
+    "uri": "https://json.schemastore.org/minecraft-loot-table.json"
+  },
+  {
+    "fileMatch": [
+      "/**/pack.mcmeta"
+    ],
+    "uri": "https://json.schemastore.org/minecraft-pack-mcmeta.json"
+  },
+  {
+    "fileMatch": [
+      "/**/data/*/predicates/*.json"
+    ],
+    "uri": "https://json.schemastore.org/minecraft-predicate.json"
+  },
+  {
+    "fileMatch": [
+      "/**/data/*/recipes/*.json"
+    ],
+    "uri": "https://json.schemastore.org/minecraft-recipe.json"
+  },
+  {
+    "fileMatch": [
+      "/**/data/*/worldgen/template_pool/*.json"
+    ],
+    "uri": "https://json.schemastore.org/minecraft-template-pool.json"
   },
   {
     "fileMatch": [
@@ -897,6 +1002,20 @@
   },
   {
     "fileMatch": [
+      "/portman-config.json",
+      "/portman.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/apideck-libraries/portman/main/src/utils/portman-config-schema.json"
+  },
+  {
+    "fileMatch": [
+      "/.postcssrc",
+      "/.postcssrc.json"
+    ],
+    "uri": "https://json.schemastore.org/postcssrc.json"
+  },
+  {
+    "fileMatch": [
       "/.prettierrc",
       "/.prettierrc.json"
     ],
@@ -961,15 +1080,23 @@
   },
   {
     "fileMatch": [
+      "/.remarkrc",
+      "/.remarkrc.json"
+    ],
+    "uri": "https://json.schemastore.org/remarkrc.json"
+  },
+  {
+    "fileMatch": [
       "/*.resjson"
     ],
     "uri": "https://json.schemastore.org/resjson.json"
   },
   {
     "fileMatch": [
-      "/resume.json"
+      "/**/resume.json",
+      "/**/*.resume.json"
     ],
-    "uri": "https://json.schemastore.org/resume.json"
+    "uri": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json"
   },
   {
     "fileMatch": [
@@ -1035,6 +1162,12 @@
   },
   {
     "fileMatch": [
+      "/bucket/**.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json"
+  },
+  {
+    "fileMatch": [
       "/settings.job"
     ],
     "uri": "https://json.schemastore.org/settings.job.json"
@@ -1093,7 +1226,6 @@
   {
     "fileMatch": [
       "/.stylelintrc",
-      "/stylelintrc.json",
       "/.stylelintrc.json"
     ],
     "uri": "https://json.schemastore.org/stylelintrc.json"
@@ -1461,6 +1593,12 @@
       "/*.tokenlist.json"
     ],
     "uri": "https://uniswap.org/tokenlist.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/**/.yamllint"
+    ],
+    "uri": "https://json.schemastore.org/yamllint.json"
   },
   {
     "fileMatch": [
