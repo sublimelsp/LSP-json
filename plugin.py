@@ -224,7 +224,25 @@ class LspJSONPlugin(NpmClientHandler, StoreListener):
     # --- StoreListener ------------------------------------------------------------------------------------------------
 
     def on_store_changed(self, schemas: List[Dict]) -> None:
-        self._api.send_notification('json/schemaAssociations', [schemas + self._user_schemas])
+        self._api.send_notification('json/schemaAssociations',
+                                    [self._deduplicate_file_matches(schemas + self._user_schemas)])
+
+    def _deduplicate_file_matches(self, schemas: List[Dict]) -> List[Dict]:
+        schemas_without_file_match = []  # type: List[Dict]
+        uris_by_file_match = {}  # type: Dict[str, str]
+        schemas_by_uri = {}  # type: Dict[str, Dict]
+        for schema in schemas:
+            if 'fileMatch' in schema and isinstance(schema['fileMatch'], list):
+                for file_match in schema['fileMatch']:
+                    uris_by_file_match[file_match] = schema['uri']
+            else:
+                schemas_without_file_match.append(schema)
+        for match, uri in uris_by_file_match.items():
+            if uri in schemas_by_uri:
+                schemas_by_uri[uri]['fileMatch'].append(match)
+            else:
+                schemas_by_uri[uri] = {'fileMatch': [match], 'uri': uri}
+        return schemas_without_file_match + list(schemas_by_uri.values())
 
 
 class LspJsonAutoCompleteCommand(sublime_plugin.TextCommand):
