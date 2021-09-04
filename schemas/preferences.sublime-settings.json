@@ -1262,6 +1262,11 @@
           "markdownDescription": "The maximum file size (in bytes) after which syntax highlighting will be disabled for files and will be shown as plain text.",
           "type": "integer",
           "default": 16777216
+        },
+        "find_scroll_highlights_limit": {
+          "markdownDescription": "The maximum number of find results to show in the scroll bar. If this number is exceeded no results will be shown. Use 0 to remove this limit.",
+          "type": "integer",
+          "default": 8192
         }
       }
     }
