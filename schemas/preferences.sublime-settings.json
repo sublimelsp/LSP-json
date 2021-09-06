@@ -1274,7 +1274,7 @@
           "default": 16777216
         },
         "find_regex_highlight_matches_max_size": {
-          "markdownDescription": "The maximum file size (in bytes) for which the find option **Regular expression** will highlight matches (affects regexp searches). Use `0` to remove this limit.",
+          "markdownDescription": "The maximum file size (in bytes) for which the find option **Highlight matches** will highlight matches (affects regexp searches). Use `0` to remove this limit.",
           "type": "integer",
           "default": 1048576
         }
