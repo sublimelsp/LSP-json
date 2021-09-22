@@ -1277,6 +1277,11 @@
           "markdownDescription": "The maximum file size (in bytes) after which syntax highlighting will be disabled for files and will be shown as plain text.",
           "type": "integer",
           "default": 16777216
+        },
+        "focus_on_file_drop": {
+          "markdownDescription": "Whether Sublime Text should take focus when a file is dragged & dropped into it. On **Windows**, this is overriden to true in the platform specific settings.",
+          "type": "boolean",
+          "default": false
         }
       }
     }
