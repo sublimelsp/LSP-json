@@ -855,6 +855,21 @@
           "markdownDescription": "When enabled, clicking on selected text will begin a drag-drop operation.",
           "type": "boolean",
           "default": true
+        },
+        "find_scroll_highlights_limit": {
+          "markdownDescription": "The maximum number of find results to show in the scroll bar. If this number is exceeded no results will be shown. Use `0` to remove this limit.",
+          "type": "integer",
+          "default": 8192
+        },
+        "find_highlight_matches_max_size": {
+          "markdownDescription": "The maximum file size (in bytes) for which the find option **Highlight matches** will highlight matches (affects non-regexp searches). Use `0` to remove this limit.",
+          "type": "integer",
+          "default": 16777216
+        },
+        "find_regex_highlight_matches_max_size": {
+          "markdownDescription": "The maximum file size (in bytes) for which the find option **Highlight matches** will highlight matches (affects regexp searches). Use `0` to remove this limit.",
+          "type": "integer",
+          "default": 1048576
         }
       }
     }
@@ -1241,7 +1256,7 @@
           "markdownDescription": "**Unlisted.** Prints the active view using the given browser as described by [webbrowser.get](https://docs.python.org/3/library/webbrowser.html#webbrowser.get) API. Added in Build 4094.",
           "oneOf": [
             {
-              "type": "null",
+              "type": "null"
             },
             {
               "type": "string"
@@ -1262,21 +1277,6 @@
           "markdownDescription": "The maximum file size (in bytes) after which syntax highlighting will be disabled for files and will be shown as plain text.",
           "type": "integer",
           "default": 16777216
-        },
-        "find_scroll_highlights_limit": {
-          "markdownDescription": "The maximum number of find results to show in the scroll bar. If this number is exceeded no results will be shown. Use `0` to remove this limit.",
-          "type": "integer",
-          "default": 8192
-        },
-        "find_highlight_matches_max_size": {
-          "markdownDescription": "The maximum file size (in bytes) for which the find option **Highlight matches** will highlight matches (affects non-regexp searches). Use `0` to remove this limit.",
-          "type": "integer",
-          "default": 16777216
-        },
-        "find_regex_highlight_matches_max_size": {
-          "markdownDescription": "The maximum file size (in bytes) for which the find option **Highlight matches** will highlight matches (affects regexp searches). Use `0` to remove this limit.",
-          "type": "integer",
-          "default": 1048576
         }
       }
     }
