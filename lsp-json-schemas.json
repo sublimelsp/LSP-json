@@ -115,6 +115,12 @@
   },
   {
     "fileMatch": [
+      "/*.bigquery.json"
+    ],
+    "uri": "https://json.schemastore.org/bigquery-table.json"
+  },
+  {
+    "fileMatch": [
       "/bitrise.json"
     ],
     "uri": "https://json.schemastore.org/bitrise.json"
@@ -261,7 +267,7 @@
       "/*.cf.json",
       "/cloudformation.json"
     ],
-    "uri": "https://raw.githubusercontent.com/awslabs/goformation/v4.18.2/schema/cloudformation.schema.json"
+    "uri": "https://raw.githubusercontent.com/awslabs/goformation/v5.2.9/schema/cloudformation.schema.json"
   },
   {
     "fileMatch": [
@@ -269,7 +275,7 @@
       "/*.sam.json",
       "/sam.json"
     ],
-    "uri": "https://raw.githubusercontent.com/awslabs/goformation/v4.18.2/schema/sam.schema.json"
+    "uri": "https://raw.githubusercontent.com/awslabs/goformation/v5.2.9/schema/sam.schema.json"
   },
   {
     "fileMatch": [
@@ -359,6 +365,9 @@
       "/debugsettings.json"
     ],
     "uri": "https://json.schemastore.org/debugsettings.json"
+  },
+  {
+    "uri": "https://raw.githubusercontent.com/barraIhsan/json-schema/master/discord/webhook.json"
   },
   {
     "fileMatch": [
@@ -642,7 +651,7 @@
       "/hydra.json",
       "/hydra.toml"
     ],
-    "uri": "https://raw.githubusercontent.com/ory/hydra/v1.8.5/.schema/version.schema.json"
+    "uri": "https://raw.githubusercontent.com/ory/hydra/master/.schema/version.schema.json"
   },
   {
     "fileMatch": [
@@ -744,7 +753,7 @@
       "/keto.json",
       "/keto.toml"
     ],
-    "uri": "https://raw.githubusercontent.com/ory/keto/master/.schema/config.schema.json"
+    "uri": "https://raw.githubusercontent.com/ory/keto/master/.schema/version.schema.json"
   },
   {
     "fileMatch": [
@@ -941,7 +950,7 @@
       "/oathkeeper.json",
       "/oathkeeper.toml"
     ],
-    "uri": "https://raw.githubusercontent.com/ory/oathkeeper/master/.schemas/config.schema.json"
+    "uri": "https://raw.githubusercontent.com/ory/oathkeeper/master/.schema/version.schema.json"
   },
   {
     "fileMatch": [
@@ -966,7 +975,8 @@
   },
   {
     "fileMatch": [
-      "/kratos.json"
+      "/kratos.json",
+      "/kratos.toml"
     ],
     "uri": "https://raw.githubusercontent.com/ory/kratos/master/.schema/version.schema.json"
   },
@@ -1247,6 +1257,12 @@
       "/templatesources.json"
     ],
     "uri": "https://json.schemastore.org/templatesources.json"
+  },
+  {
+    "fileMatch": [
+      "/theme.json"
+    ],
+    "uri": "https://json.schemastore.org/theme-v1.json"
   },
   {
     "fileMatch": [
