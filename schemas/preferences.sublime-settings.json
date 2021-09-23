@@ -857,7 +857,7 @@
           "default": true
         },
         "find_scroll_highlights_limit": {
-          "markdownDescription": "The maximum number of find results to show in the scroll bar. If this number is exceeded no results will be shown. Use `0` to remove this limit.",
+          "markdownDescription": "The maximum number of find results to show in the scroll bar. If this number is exceeded then no results will be shown. Use `0` to remove this limit.",
           "type": "integer",
           "default": 8192
         },
@@ -1279,12 +1279,12 @@
           "default": 16777216
         },
         "focus_on_file_drop": {
-          "markdownDescription": "Whether Sublime Text should take focus when a file is dragged & dropped into it. On **Windows**, this is overriden to true in the platform specific settings.",
+          "markdownDescription": "Whether Sublime Text should take focus when a file is dragged & dropped into it. On **Windows**, this is overridden to `true` in the platform specific settings.",
           "type": "boolean",
           "default": false
         },
         "remember_layout": {
-          "markdownDescription": "Whether Sublime Text should start with the same layout it was closed with. Only applies when **hot_exit** setting is disabled.",
+          "markdownDescription": "Whether Sublime Text should start with the same layout it was closed with. Only applies when `hot_exit` setting is disabled.",
           "type": "boolean",
           "default": false
         }
