@@ -1287,6 +1287,11 @@
           "markdownDescription": "Whether Sublime Text should start with the same layout it was closed with. Only applies when `hot_exit` setting is disabled.",
           "type": "boolean",
           "default": false
+        },
+        "use_find_clipboard": {
+          "markdownDescription": "Mac Only: Whether to use the global find clipboard.",
+          "type": "boolean",
+          "default": true
         }
       }
     }
