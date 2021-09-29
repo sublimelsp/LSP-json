@@ -1140,7 +1140,7 @@
           "type": ["null", "string"],
           "enum": [null, ""],
           "markdownEnumDescriptions": [
-            "This will hide Sublime Merge related integrations like context/side bar menu items etc."
+            "Hides Sublime Merge related integrations like context/side bar menu items etc."
           ],
           "default": ""
         },
