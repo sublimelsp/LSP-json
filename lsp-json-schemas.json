@@ -7,6 +7,12 @@
   },
   {
     "fileMatch": [
+      "/agripparc.json"
+    ],
+    "uri": "https://json.schemastore.org/agripparc-1.2.json"
+  },
+  {
+    "fileMatch": [
       "/.aiproj.json"
     ],
     "uri": "https://json.schemastore.org/aiproj.json"
@@ -161,7 +167,7 @@
     "fileMatch": [
       "/bsconfig.json"
     ],
-    "uri": "https://raw.githubusercontent.com/rescript-lang/rescript-compiler/8.2.0/docs/docson/build-schema.json"
+    "uri": "https://raw.githubusercontent.com/rescript-lang/rescript-compiler/master/docs/docson/build-schema.json"
   },
   {
     "fileMatch": [
@@ -177,6 +183,12 @@
       "/bundleconfig.json"
     ],
     "uri": "https://json.schemastore.org/bundleconfig.json"
+  },
+  {
+    "fileMatch": [
+      "/block.json"
+    ],
+    "uri": "https://json.schemastore.org/block.json"
   },
   {
     "fileMatch": [
@@ -208,6 +220,12 @@
       "/.clasp.json"
     ],
     "uri": "https://json.schemastore.org/clasp.json"
+  },
+  {
+    "fileMatch": [
+      "/*.code-snippets"
+    ],
+    "uri": "https://raw.githubusercontent.com/Yash-Singh1/vscode-snippets-json-schema/main/schema.json"
   },
   {
     "fileMatch": [
@@ -267,7 +285,7 @@
       "/*.cf.json",
       "/cloudformation.json"
     ],
-    "uri": "https://raw.githubusercontent.com/awslabs/goformation/v5.2.9/schema/cloudformation.schema.json"
+    "uri": "https://raw.githubusercontent.com/awslabs/goformation/v5.2.11/schema/cloudformation.schema.json"
   },
   {
     "fileMatch": [
@@ -275,7 +293,7 @@
       "/*.sam.json",
       "/sam.json"
     ],
-    "uri": "https://raw.githubusercontent.com/awslabs/goformation/v5.2.9/schema/sam.schema.json"
+    "uri": "https://raw.githubusercontent.com/awslabs/goformation/v5.2.11/schema/sam.schema.json"
   },
   {
     "fileMatch": [
@@ -329,9 +347,11 @@
     "fileMatch": [
       "/.cspell.json",
       "/cspell.json",
-      "/cSpell.json"
+      "/.cSpell.json",
+      "/cSpell.json",
+      "/cspell.config.json"
     ],
-    "uri": "https://raw.githubusercontent.com/streetsidesoftware/cspell/cspell4/cspell.schema.json"
+    "uri": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/packages/cspell-types/cspell.schema.json"
   },
   {
     "fileMatch": [
@@ -661,6 +681,12 @@
   },
   {
     "fileMatch": [
+      "/.imgbotconfig"
+    ],
+    "uri": "https://json.schemastore.org/imgbotconfig.json"
+  },
+  {
+    "fileMatch": [
       "/jsonConfig.json",
       "/jsonCustom.json",
       "/jsonTab.json"
@@ -679,7 +705,7 @@
       "/*filespec*.json",
       "/*.filespec"
     ],
-    "uri": "https://raw.githubusercontent.com/jfrog/jfrog-cli/master/schema/filespec-schema.json"
+    "uri": "https://raw.githubusercontent.com/jfrog/jfrog-cli/v2/schema/filespec-schema.json"
   },
   {
     "uri": "https://json.schemastore.org/jovo-language-model.json"
@@ -1012,6 +1038,18 @@
   },
   {
     "fileMatch": [
+      "/plagiarize.json"
+    ],
+    "uri": "https://json.schemastore.org/plagiarize.json"
+  },
+  {
+    "fileMatch": [
+      "/plagiarize-me.json"
+    ],
+    "uri": "https://json.schemastore.org/plagiarize-me.json"
+  },
+  {
+    "fileMatch": [
       "/portman-config.json",
       "/portman.json"
     ],
@@ -1120,6 +1158,12 @@
     "uri": "https://docs.renovatebot.com/renovate-schema.json"
   },
   {
+    "fileMatch": [
+      "/.sapphirerc.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/sapphiredev/cli/main/templates/schemas/.sapphirerc.scheme.json"
+  },
+  {
     "uri": "https://json.schemastore.org/sarif-1.0.0.json"
   },
   {
@@ -1184,6 +1228,12 @@
   },
   {
     "fileMatch": [
+      "/.size-limit.json"
+    ],
+    "uri": "https://json.schemastore.org/size-limit.json"
+  },
+  {
+    "fileMatch": [
       "/skyuxconfig.json",
       "/skyuxconfig.*.json"
     ],
@@ -1204,6 +1254,13 @@
   },
   {
     "fileMatch": [
+      "/*.specif",
+      "/*.specif.json"
+    ],
+    "uri": "https://json.schemastore.org/specif-1.1.json"
+  },
+  {
+    "fileMatch": [
       "/*.mixins.json"
     ],
     "uri": "https://json.schemastore.org/sponge-mixins.json"
@@ -1219,6 +1276,12 @@
       "/staticwebapp.config.json"
     ],
     "uri": "https://json.schemastore.org/staticwebapp.config.json"
+  },
+  {
+    "fileMatch": [
+      "/swa-cli.config.json"
+    ],
+    "uri": "https://json.schemastore.org/swa-cli.config.json"
   },
   {
     "fileMatch": [
@@ -1336,7 +1399,8 @@
   {
     "fileMatch": [
       "/webapp/manifest.json",
-      "/src/main/webapp/manifest.json"
+      "/src/main/webapp/manifest.json",
+      "/src/manifest.json"
     ],
     "uri": "https://raw.githubusercontent.com/SAP/ui5-manifest/master/schema.json"
   },
@@ -1408,6 +1472,12 @@
       "/vss-extension.json"
     ],
     "uri": "https://json.schemastore.org/vss-extension.json"
+  },
+  {
+    "fileMatch": [
+      "/studio.config.json"
+    ],
+    "uri": "https://webcomponents.dev/assets2/schemas/studio.config.json"
   },
   {
     "fileMatch": [
@@ -1652,13 +1722,6 @@
   },
   {
     "fileMatch": [
-      "/*.specif",
-      "/*.specif.json"
-    ],
-    "uri": "https://json.schemastore.org/specif-1.0.json"
-  },
-  {
-    "fileMatch": [
       "/cluster.json"
     ],
     "uri": "https://raw.githubusercontent.com/dcermak/vscode-rke-cluster-config/main/schemas/cluster.json"
@@ -1667,7 +1730,7 @@
     "fileMatch": [
       "/**/db/changelog/**/*.json"
     ],
-    "uri": "https://json.schemastore.org/liquibase.json"
+    "uri": "https://json.schemastore.org/liquibase-3.2.json"
   },
   {
     "fileMatch": [
