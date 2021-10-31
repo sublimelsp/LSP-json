@@ -50,6 +50,31 @@
           "format": "color",
           "markdownDescription": "**ST >= 3190** The color of the caret when using a block caret."
         },
+        "block_caret_border": {
+          "type": "string",
+          "format": "color",
+          "markdownDescription": "**ST >= 4086** The color of the border for a block caret."
+        },
+        "block_caret_underline": {
+          "type": "string",
+          "format": "color",
+          "markdownDescription": "**ST >= 4086** The color of the underline the block caret is drawn as when overlapping with a selection."
+        },
+        "block_caret_corner_style": {
+          "type": "string",
+          "format": "string",
+          "markdownDescription": "**ST >= 4086** The style of corners to use for block carets.",
+          "enum": [
+            "round",
+            "cut",
+            "square"
+          ],
+          "default": "round"
+        },
+        "block_caret_corner_radius": {
+          "type": "string",
+          "markdownDescription": "**ST >= 4086** The radius to use when the `block_caret_corner_style` is `round` or `cut`."
+        },
         "line_highlight": {
           "type": "string",
           "format": "color",
