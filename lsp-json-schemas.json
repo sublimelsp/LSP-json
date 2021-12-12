@@ -7,9 +7,10 @@
   },
   {
     "fileMatch": [
+      "/.agripparc.json",
       "/agripparc.json"
     ],
-    "uri": "https://json.schemastore.org/agripparc-1.2.json"
+    "uri": "https://json.schemastore.org/agripparc-1.3.json"
   },
   {
     "fileMatch": [
@@ -188,7 +189,7 @@
     "fileMatch": [
       "/block.json"
     ],
-    "uri": "https://json.schemastore.org/block.json"
+    "uri": "https://schemas.wp.org/trunk/block.json"
   },
   {
     "fileMatch": [
@@ -387,7 +388,7 @@
     "uri": "https://json.schemastore.org/debugsettings.json"
   },
   {
-    "uri": "https://raw.githubusercontent.com/barraIhsan/json-schema/master/discord/webhook.json"
+    "uri": "https://raw.githubusercontent.com/AxoCode/json-schema/master/discord/webhook.json"
   },
   {
     "fileMatch": [
@@ -571,6 +572,9 @@
     "uri": "https://json.schemastore.org/golangci-lint.json"
   },
   {
+    "uri": "https://goreleaser.com/static/schema-pro.json"
+  },
+  {
     "uri": "https://json.schemastore.org/grafana-dashboard-5.x.json"
   },
   {
@@ -647,6 +651,13 @@
       "/*.hayson.json"
     ],
     "uri": "https://raw.githubusercontent.com/j2inn/hayson/master/hayson-json-schema.json"
+  },
+  {
+    "fileMatch": [
+      "/hazelcast*.json",
+      "/hz-*.json"
+    ],
+    "uri": "https://hazelcast.com/schema/config/hazelcast-config-5.0.json"
   },
   {
     "fileMatch": [
@@ -900,6 +911,12 @@
   },
   {
     "fileMatch": [
+      "/**/assets/*/sounds.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/AxoCode/json-schema/master/minecraft/sounds.json"
+  },
+  {
+    "fileMatch": [
       "/.mocharc.json",
       "/.mocharc.jsonc"
     ],
@@ -1107,6 +1124,12 @@
       "/proxies.json"
     ],
     "uri": "https://json.schemastore.org/proxies.json"
+  },
+  {
+    "fileMatch": [
+      "/.putout.json"
+    ],
+    "uri": "https://json.schemastore.org/putout.json"
   },
   {
     "fileMatch": [
@@ -1325,7 +1348,7 @@
     "fileMatch": [
       "/theme.json"
     ],
-    "uri": "https://json.schemastore.org/theme-v1.json"
+    "uri": "https://schemas.wp.org/trunk/theme.json"
   },
   {
     "fileMatch": [
@@ -1745,5 +1768,11 @@
       "/.markdownlint.jsonc"
     ],
     "uri": "https://json.schemastore.org/markdownlint.json"
+  },
+  {
+    "fileMatch": [
+      "/*.ndst.json"
+    ],
+    "uri": "https://s3.eu-central-1.amazonaws.com/files.netin.io/spider-schemas/template.schema.json"
   }
 ]
