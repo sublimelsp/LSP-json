@@ -23,6 +23,17 @@
       "args": {
         "description": "Arguments to pass to the command to execute",
         "type": "object"
+      },
+      "platform": {
+        "description": "Controls what platforms the entry is shown on",
+        "enum": [
+          "OSX",
+          "!OSX",
+          "Windows",
+          "!Windows",
+          "Linux",
+          "!Linux"
+        ]
       }
     },
     "additionalProperties": false
