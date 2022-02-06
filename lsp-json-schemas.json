@@ -1,6 +1,14 @@
 [
   {
     "fileMatch": [
+      "/.awc.json",
+      "/.awc.jsonc",
+      "/.awc"
+    ],
+    "uri": "https://json.schemastore.org/anywork-ac-1.1.json"
+  },
+  {
+    "fileMatch": [
       "/.adonisrc.json"
     ],
     "uri": "https://raw.githubusercontent.com/adonisjs/application/master/adonisrc.schema.json"
@@ -10,7 +18,7 @@
       "/.agripparc.json",
       "/agripparc.json"
     ],
-    "uri": "https://json.schemastore.org/agripparc-1.3.json"
+    "uri": "https://json.schemastore.org/agripparc-1.4.json"
   },
   {
     "fileMatch": [
@@ -30,6 +38,13 @@
       "/angular-cli.json"
     ],
     "uri": "https://raw.githubusercontent.com/angular/angular-cli/v10.1.6/packages/angular/cli/lib/config/schema.json"
+  },
+  {
+    "fileMatch": [
+      "/.ansible-navigator.json",
+      "/ansible-navigator.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/ansible-community/schemas/main/f/ansible-navigator.json"
   },
   {
     "fileMatch": [
@@ -64,6 +79,18 @@
       "/*.avsc"
     ],
     "uri": "https://json.schemastore.org/avro-avsc.json"
+  },
+  {
+    "fileMatch": [
+      "/*.importmanifest.json"
+    ],
+    "uri": "https://json.schemastore.org/azure-deviceupdate-import-manifest-4.0.json"
+  },
+  {
+    "fileMatch": [
+      "/*.updatemanifest.json"
+    ],
+    "uri": "https://json.schemastore.org/azure-deviceupdate-update-manifest-4.json"
   },
   {
     "uri": "https://json.schemastore.org/azure-iot-edgeagent-deployment-1.1.json"
@@ -202,7 +229,7 @@
     "uri": "https://carafe.fm/schema/draft-02/bundle.schema.json"
   },
   {
-    "uri": "https://raw.githubusercontent.com/cityjson/specs/1.0.1/schemas/cityjson.min.schema.json"
+    "uri": "https://raw.githubusercontent.com/cityjson/specs/master/schemas/cityjson.min.schema.json"
   },
   {
     "fileMatch": [
@@ -221,6 +248,12 @@
       "/.clasp.json"
     ],
     "uri": "https://json.schemastore.org/clasp.json"
+  },
+  {
+    "fileMatch": [
+      "/vercel.json"
+    ],
+    "uri": "https://openapi.vercel.sh/vercel.json"
   },
   {
     "fileMatch": [
@@ -312,7 +345,7 @@
     "fileMatch": [
       "/composer.json"
     ],
-    "uri": "https://raw.githubusercontent.com/composer/composer/master/res/composer-schema.json"
+    "uri": "https://raw.githubusercontent.com/composer/composer/main/res/composer-schema.json"
   },
   {
     "fileMatch": [
@@ -406,13 +439,13 @@
     "fileMatch": [
       "/bounded-context.json"
     ],
-    "uri": "https://raw.githubusercontent.com/dolittle/Runtime/v5.1.1/Schemas/Applications.Configuration/bounded-context.json"
+    "uri": "https://raw.githubusercontent.com/dolittle/Runtime/master/Schemas/Applications.Configuration/bounded-context.json"
   },
   {
     "fileMatch": [
       "/.dolittle/event-horizons.json"
     ],
-    "uri": "https://raw.githubusercontent.com/dolittle/Runtime/v5.1.1/Schemas/Events/event-horizons.json"
+    "uri": "https://raw.githubusercontent.com/dolittle/Runtime/master/Schemas/Events/event-horizons.json"
   },
   {
     "fileMatch": [
@@ -424,13 +457,13 @@
     "fileMatch": [
       "/.dolittle/server.json"
     ],
-    "uri": "https://raw.githubusercontent.com/dolittle/Runtime/v5.1.1/Schemas/Server/server.json"
+    "uri": "https://raw.githubusercontent.com/dolittle/Runtime/master/Schemas/Server/server.json"
   },
   {
     "fileMatch": [
       "/.dolittle/tenants.json"
     ],
-    "uri": "https://raw.githubusercontent.com/dolittle/Runtime/v5.1.1/Schemas/Tenancy/tenants.json"
+    "uri": "https://raw.githubusercontent.com/dolittle/Runtime/master/Schemas/Tenancy/tenants.json"
   },
   {
     "fileMatch": [
@@ -514,13 +547,13 @@
       "/system.json",
       "/module.json"
     ],
-    "uri": "https://gitlab.com/-/snippets/2062623/raw/master/foundryvtt_manifest_schema.json"
+    "uri": "https://json.schemastore.org/foundryvtt-manifest.json"
   },
   {
     "fileMatch": [
       "/template.json"
     ],
-    "uri": "https://gitlab.com/-/snippets/2062623/raw/master/foundryvtt_template_schema.json"
+    "uri": "https://json.schemastore.org/foundryvtt-template.json"
   },
   {
     "fileMatch": [
@@ -695,6 +728,14 @@
       "/.imgbotconfig"
     ],
     "uri": "https://json.schemastore.org/imgbotconfig.json"
+  },
+  {
+    "fileMatch": [
+      "/importmap.json",
+      "/import_map.json",
+      "/import-map.json"
+    ],
+    "uri": "https://json.schemastore.org/importmap.json"
   },
   {
     "fileMatch": [
@@ -990,6 +1031,13 @@
   },
   {
     "fileMatch": [
+      "/ntangle.json",
+      "/ntangle.jsn"
+    ],
+    "uri": "https://raw.githubusercontent.com/Avanade/NTangle/main/schemas/ntangle.json"
+  },
+  {
+    "fileMatch": [
       "/oathkeeper.json",
       "/oathkeeper.toml"
     ],
@@ -1151,6 +1199,13 @@
   },
   {
     "fileMatch": [
+      "/.rehyperc",
+      "/.rehyperc.json"
+    ],
+    "uri": "https://json.schemastore.org/rehyperc.json"
+  },
+  {
+    "fileMatch": [
       "/.remarkrc",
       "/.remarkrc.json"
     ],
@@ -1260,7 +1315,7 @@
       "/skyuxconfig.json",
       "/skyuxconfig.*.json"
     ],
-    "uri": "https://raw.githubusercontent.com/blackbaud/skyux-config/4.0.4/skyuxconfig-schema.json"
+    "uri": "https://raw.githubusercontent.com/blackbaud/skyux-config/master/skyuxconfig-schema.json"
   },
   {
     "fileMatch": [
@@ -1311,13 +1366,13 @@
       "/stryker.conf.json",
       "/stryker-*.conf.json"
     ],
-    "uri": "https://raw.githubusercontent.com/stryker-mutator/stryker/v4.0.0/packages/api/schema/stryker-core.json"
+    "uri": "https://raw.githubusercontent.com/stryker-mutator/stryker/master/packages/api/schema/stryker-core.json"
   },
   {
     "fileMatch": [
       "/stylecop.json"
     ],
-    "uri": "https://raw.githubusercontent.com/DotNetAnalyzers/StyleCopAnalyzers/1.1.118/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json"
+    "uri": "https://raw.githubusercontent.com/DotNetAnalyzers/StyleCopAnalyzers/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json"
   },
   {
     "fileMatch": [
@@ -1445,7 +1500,7 @@
     "fileMatch": [
       "/version.json"
     ],
-    "uri": "https://raw.githubusercontent.com/dotnet/Nerdbank.GitVersioning/v3.3.37/src/NerdBank.GitVersioning/version.schema.json"
+    "uri": "https://raw.githubusercontent.com/dotnet/Nerdbank.GitVersioning/master/src/NerdBank.GitVersioning/version.schema.json"
   },
   {
     "fileMatch": [
@@ -1541,13 +1596,13 @@
     "fileMatch": [
       "/*.version"
     ],
-    "uri": "https://raw.githubusercontent.com/linuxgurugamer/KSPAddonVersionChecker/1.4.1.5/KSP-AVC.schema.json"
+    "uri": "https://raw.githubusercontent.com/linuxgurugamer/KSPAddonVersionChecker/master/KSP-AVC.schema.json"
   },
   {
     "fileMatch": [
       "/*.ckan"
     ],
-    "uri": "https://raw.githubusercontent.com/KSP-CKAN/CKAN/v1.28.0/CKAN.schema"
+    "uri": "https://raw.githubusercontent.com/KSP-CKAN/CKAN/master/CKAN.schema"
   },
   {
     "uri": "https://json-schema.org/draft-04/schema"
@@ -1557,6 +1612,9 @@
   },
   {
     "uri": "https://json-schema.org/draft/2019-09/schema"
+  },
+  {
+    "uri": "https://json-schema.org/draft/2020-12/schema"
   },
   {
     "fileMatch": [
@@ -1675,13 +1733,13 @@
       "/.nl.json",
       "/.neoload.json"
     ],
-    "uri": "https://raw.githubusercontent.com/Neotys-Labs/neoload-cli/1.1.4/resources/as-code.latest.schema.json"
+    "uri": "https://raw.githubusercontent.com/Neotys-Labs/neoload-cli/master/resources/as-code.latest.schema.json"
   },
   {
     "fileMatch": [
       "/*.har"
     ],
-    "uri": "https://raw.githubusercontent.com/ahmadnassri/har-schema/v2.0.0/lib/har.json"
+    "uri": "https://raw.githubusercontent.com/ahmadnassri/har-schema/master/lib/har.json"
   },
   {
     "fileMatch": [
