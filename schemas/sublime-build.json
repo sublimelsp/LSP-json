@@ -114,9 +114,9 @@
       "type": "boolean"
     },
     "syntax": {
-      "markdownDescription": "A string specifying the syntax file to use to highlight the build system output panel.\nExample: `\"Packages/JavaScript/JSON.sublime-syntax\"`",
+      "markdownDescription": "A string specifying the syntax file to use to highlight the build system output panel.\nExample: `\"Packages/JavaScript/JSON.sublime-syntax\"` or `\"scope:source.json\"`",
       "type": "string",
-      "pattern": "^(([^/]+|Packages/.+)\\.sublime-syntax|Packages/.+\\.(hidden-)?tmLanguage)$"
+      "pattern": "^(([^/]+|Packages/.+)\\.sublime-syntax|Packages/.+\\.(hidden-)?tmLanguage|scope:[\\w.\\-]+)$"
     }
   }
 }
