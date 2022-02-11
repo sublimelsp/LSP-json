@@ -1301,6 +1301,11 @@
           "markdownDescription": "Whether to open a new tab after the current tab. If `false`, the new tab will be opened at the end.",
           "type": "boolean",
           "default": true
+        },
+        "update_system_recent_files": {
+          "markdownDescription": "Whether the system's native recent files/folders list should be updated by Sublime Text.",
+          "type": "boolean",
+          "default": true
         }
       }
     }
