@@ -1296,6 +1296,11 @@
           "markdownDescription": "Mac Only: Whether to use the global find clipboard.",
           "type": "boolean",
           "default": true
+        },
+        "open_tabs_after_current": {
+          "markdownDescription": "Whether to open a new tab after the current tab. If `false`, the new tab will be opened at the end.",
+          "type": "boolean",
+          "default": true
         }
       }
     }
