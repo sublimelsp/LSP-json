@@ -72,7 +72,7 @@
                       "description": "The maximum number of outline symbols and folding regions computed (limited for performance reasons)."
                     },
                     "jsonc.patterns": {
-                      "markdownDescription": "Enables JSONC handling for matching files which enables less strict mode that allows comments.\n\nThe patterns are matched against the end of the file path and all characters but `*` are matched literally and don't need to be escaped. The special `*` character can be used to match any number of characters.",
+                      "markdownDescription": "Enables JSONC mode (comments allowed) for matching files.\n\nThe patterns are matched against the end of the file path and all characters but `*` are matched literally and don't need to be escaped. The special `*` character can be used to match any number of characters.",
                       "type": "array",
                       "items": {
                         "type": "string",
