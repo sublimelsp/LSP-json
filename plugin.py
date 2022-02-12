@@ -1,7 +1,7 @@
 from abc import ABCMeta, abstractmethod
 from LSP.plugin import DottedDict
 from LSP.plugin import Notification
-from LSP.plugin.core.typing import Any, Callable, Dict, List, Optional, Tuple
+from LSP.plugin.core.typing import Any, Callable, cast, Dict, List, Optional, Tuple
 from lsp_utils import ApiWrapperInterface
 from lsp_utils import request_handler
 from lsp_utils import NpmClientHandler
@@ -217,14 +217,16 @@ class LspJSONPlugin(NpmClientHandler, StoreListener):
     # ST4-only
     def on_pre_send_notification_async(self, notification: Notification) -> None:
         if notification.method == 'textDocument/didOpen':
-            text_document = notification.params['textDocument']
+            params = cast(Dict[str, Any], notification.params)
+            text_document = params['textDocument']
             if any((pattern.search(text_document['uri']) for pattern in self._jsonc_patterns)):
                 text_document['languageId'] = 'jsonc'
 
     # --- StoreListener ------------------------------------------------------------------------------------------------
 
     def on_store_changed(self, schemas: List[Dict]) -> None:
-        self._api.send_notification('json/schemaAssociations', [schemas + self._user_schemas])
+        if self._api:
+            self._api.send_notification('json/schemaAssociations', [schemas + self._user_schemas])
 
 
 class LspJsonAutoCompleteCommand(sublime_plugin.TextCommand):
