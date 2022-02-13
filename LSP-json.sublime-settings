@@ -28,6 +28,7 @@
 		"json.format.enable": true,
 		"json.resultLimit": 5000,
 		"jsonc.patterns": [
+			"buffer://*",
 			".babelrc",
 			".eslintrc",
 			".eslintrc.json",
