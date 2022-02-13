@@ -233,6 +233,13 @@
   },
   {
     "fileMatch": [
+      "/csr.json",
+      "/*.csr.json"
+    ],
+    "uri": "https://json.schemastore.org/csr.json"
+  },
+  {
+    "fileMatch": [
       "/Chart.lock"
     ],
     "uri": "https://json.schemastore.org/chart-lock.json"
