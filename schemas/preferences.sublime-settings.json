@@ -1311,6 +1311,11 @@
           "markdownDescription": "Whether the system's native recent files/folders list should be updated by Sublime Text.",
           "type": "boolean",
           "default": true
+        },
+        "goto_anything_exclude_gitignore": {
+          "markdownDescription": "Whether Goto Anything should exclude files ignored by git.",
+          "type": "boolean",
+          "default": false
         }
       }
     }
