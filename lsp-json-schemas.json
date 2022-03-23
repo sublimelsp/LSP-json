@@ -41,6 +41,12 @@
   },
   {
     "fileMatch": [
+      "/.ansible-lint"
+    ],
+    "uri": "https://raw.githubusercontent.com/ansible-community/schemas/main/f/ansible-lint.json"
+  },
+  {
+    "fileMatch": [
       "/.ansible-navigator.json",
       "/ansible-navigator.json"
     ],
@@ -204,7 +210,7 @@
       "/.buildkite/pipeline.json",
       "/.buildkite/pipeline.*.json"
     ],
-    "uri": "https://raw.githubusercontent.com/buildkite/pipeline-schema/master/schema.json"
+    "uri": "https://raw.githubusercontent.com/buildkite/pipeline-schema/main/schema.json"
   },
   {
     "fileMatch": [
@@ -217,6 +223,12 @@
       "/block.json"
     ],
     "uri": "https://schemas.wp.org/trunk/block.json"
+  },
+  {
+    "fileMatch": [
+      "/block-metadata.json"
+    ],
+    "uri": "https://blockprotocol.org/schemas/block-metadata.json"
   },
   {
     "fileMatch": [
@@ -326,7 +338,7 @@
       "/*.cf.json",
       "/cloudformation.json"
     ],
-    "uri": "https://raw.githubusercontent.com/awslabs/goformation/v5.2.11/schema/cloudformation.schema.json"
+    "uri": "https://raw.githubusercontent.com/awslabs/goformation/master/schema/cloudformation.schema.json"
   },
   {
     "fileMatch": [
@@ -334,7 +346,7 @@
       "/*.sam.json",
       "/sam.json"
     ],
-    "uri": "https://raw.githubusercontent.com/awslabs/goformation/v5.2.11/schema/sam.schema.json"
+    "uri": "https://raw.githubusercontent.com/awslabs/goformation/master/schema/sam.schema.json"
   },
   {
     "fileMatch": [
@@ -486,6 +498,12 @@
   },
   {
     "fileMatch": [
+      "/dotnet-release-index.json"
+    ],
+    "uri": "https://json.schemastore.org/dotnet-releases-index.json"
+  },
+  {
+    "fileMatch": [
       "/dotnetcli.host.json"
     ],
     "uri": "https://json.schemastore.org/dotnetcli.host.json"
@@ -561,6 +579,12 @@
       "/template.json"
     ],
     "uri": "https://json.schemastore.org/foundryvtt-template.json"
+  },
+  {
+    "fileMatch": [
+      "/fossa-deps.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/fossas/fossa-cli/master/docs/references/files/fossa-deps.schema.json"
   },
   {
     "fileMatch": [
@@ -697,7 +721,7 @@
       "/hazelcast*.json",
       "/hz-*.json"
     ],
-    "uri": "https://hazelcast.com/schema/config/hazelcast-config-5.0.json"
+    "uri": "https://hazelcast.com/schema/config/hazelcast-config-5.1.json"
   },
   {
     "fileMatch": [
@@ -987,6 +1011,9 @@
       "/nightwatch.json"
     ],
     "uri": "https://json.schemastore.org/nightwatch.json"
+  },
+  {
+    "uri": "https://json.schemastore.org/ninjs-2.0.json"
   },
   {
     "uri": "https://json.schemastore.org/ninjs-1.3.json"
@@ -1313,6 +1340,13 @@
   },
   {
     "fileMatch": [
+      "/settings.paf",
+      "/Settings.paf"
+    ],
+    "uri": "https://raw.githubusercontent.com/qualisys/qualisys-schemas/master/paf-module.schema.json"
+  },
+  {
+    "fileMatch": [
       "/.size-limit.json"
     ],
     "uri": "https://json.schemastore.org/size-limit.json"
@@ -1474,6 +1508,12 @@
       "/.typingsrc"
     ],
     "uri": "https://json.schemastore.org/typingsrc.json"
+  },
+  {
+    "fileMatch": [
+      "/user-data"
+    ],
+    "uri": "https://json.schemastore.org/ubuntu-server-autoinstall.json"
   },
   {
     "fileMatch": [
@@ -1839,5 +1879,8 @@
       "/*.ndst.json"
     ],
     "uri": "https://s3.eu-central-1.amazonaws.com/files.netin.io/spider-schemas/template.schema.json"
+  },
+  {
+    "uri": "https://json.schemastore.org/unist.json"
   }
 ]
