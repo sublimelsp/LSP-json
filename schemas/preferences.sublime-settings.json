@@ -166,7 +166,7 @@
           "default": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?"
         },
         "sub_word_separators": {
-          "markdownDescription": "Characters that are considered to separate subwords.",
+          "markdownDescription": "Characters that are considered to separate sub-words.",
           "type": "string",
           "default": "_"
         },
