@@ -299,8 +299,17 @@
         },
         "dictionary": {
           "markdownDescription": "Word list to use for spell checking.",
-          "type": "string",
-          "default": "Packages/Language - English/en_US.dic"
+          "oneOf": [
+            {
+              "type": "string",
+              "default": "Packages/Language - English/en_US.dic"
+            },
+            {
+              "type": "array",
+              "items": { "type": "string" },
+              "default": []
+            }
+          ]
         },
         "spelling_selector": {
           "markdownDescription": "Sets which scopes are checked for spelling errors.",
