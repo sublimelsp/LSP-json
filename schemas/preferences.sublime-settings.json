@@ -1152,7 +1152,6 @@
         "sublime_merge_path": {
           "description": "The path to the Sublime Merge executable. This should only be set if Sublime Merge is not installed in a standard location, such as when using a portable install.",
           "type": ["null", "string"],
-          "enum": [null, ""],
           "markdownEnumDescriptions": [
             "Hides Sublime Merge related integrations like context/side bar menu items etc."
           ],
