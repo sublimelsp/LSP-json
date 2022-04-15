@@ -1150,11 +1150,8 @@
           "default": "index"
         },
         "sublime_merge_path": {
-          "description": "The path to the Sublime Merge executable. This should only be set if Sublime Merge is not installed in a standard location, such as when using a portable install.",
+          "markdownDescription": "The path to the Sublime Merge executable. This should only be set if Sublime Merge is not installed in a standard location, such as when using a portable install. Set to `null` to hide Sublime Merge integrations.",
           "type": ["null", "string"],
-          "markdownEnumDescriptions": [
-            "Hides Sublime Merge related integrations like context/side bar menu items etc."
-          ],
           "default": ""
         },
         "preview_on_click": {
