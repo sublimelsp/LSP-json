@@ -61,6 +61,11 @@
                       "default": true,
                       "description": "Whether the proxy server certificate should be verified against the list of supplied CAs."
                     },
+                    "json.validate.enable": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable JSON validation."
+                    },
                     "json.format.enable": {
                       "type": "boolean",
                       "default": true,
