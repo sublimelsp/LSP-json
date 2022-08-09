@@ -25,6 +25,7 @@
 		"provideFormatter": true,
 	},
 	"settings": {
+		"json.validate.enable": true,
 		"json.format.enable": true,
 		"json.resultLimit": 5000,
 		"jsonc.patterns": [
