@@ -176,13 +176,15 @@ class LspJSONPlugin(NpmClientHandler, StoreListener):
     server_directory = 'language-server'
     server_binary_path = path.join(
         server_directory,
-        'node_modules',
-        'vscode-json-languageserver',
         'out',
         'node',
         'jsonServerMain.js',
     )
     _schema_store = SchemaStore()
+
+    @classmethod
+    def minimum_node_version(cls) -> Tuple[int, int, int]:
+        return (14, 0, 0)
 
     @classmethod
     def cleanup(cls) -> None:
