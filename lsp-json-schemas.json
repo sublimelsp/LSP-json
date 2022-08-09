@@ -1,5 +1,8 @@
 [
   {
+    "uri": "https://json.schemastore.org/base.json"
+  },
+  {
     "fileMatch": [
       "/.awc.json",
       "/.awc.jsonc",
@@ -28,6 +31,12 @@
   },
   {
     "fileMatch": [
+      "/*.task.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/airplanedev/lib/main/pkg/deploy/taskdir/definitions/schema_0_3.json"
+  },
+  {
+    "fileMatch": [
       "/angular.json"
     ],
     "uri": "https://raw.githubusercontent.com/angular/angular-cli/master/packages/angular/cli/lib/config/workspace-schema.json"
@@ -50,7 +59,7 @@
       "/.ansible-navigator.json",
       "/ansible-navigator.json"
     ],
-    "uri": "https://raw.githubusercontent.com/ansible-community/schemas/main/f/ansible-navigator.json"
+    "uri": "https://raw.githubusercontent.com/ansible/ansible-navigator/main/src/ansible_navigator/data/ansible-navigator.json"
   },
   {
     "fileMatch": [
@@ -78,7 +87,23 @@
     "uri": "https://raw.githubusercontent.com/architect/parser/v2.3.0/arc-schema.json"
   },
   {
+    "uri": "https://raw.githubusercontent.com/argoproj/argo-events/master/api/jsonschema/schema.json"
+  },
+  {
     "uri": "https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json"
+  },
+  {
+    "fileMatch": [
+      "/asconfig.json"
+    ],
+    "uri": "https://json.schemastore.org/asconfig-schema.json"
+  },
+  {
+    "fileMatch": [
+      "/asyncapi.json",
+      "/*asyncapi.json"
+    ],
+    "uri": "https://www.asyncapi.com/schema-store/all.schema-store.json"
   },
   {
     "fileMatch": [
@@ -90,7 +115,7 @@
     "fileMatch": [
       "/*.importmanifest.json"
     ],
-    "uri": "https://json.schemastore.org/azure-deviceupdate-import-manifest-4.0.json"
+    "uri": "https://json.schemastore.org/azure-deviceupdate-import-manifest-5.0.json"
   },
   {
     "fileMatch": [
@@ -119,6 +144,12 @@
       "/manifest.json"
     ],
     "uri": "https://json.schemastore.org/foxx-manifest.json"
+  },
+  {
+    "fileMatch": [
+      "/fly.toml"
+    ],
+    "uri": "https://json.schemastore.org/fly.json"
   },
   {
     "fileMatch": [
@@ -205,6 +236,14 @@
   },
   {
     "fileMatch": [
+      "/*buildinfo*.json",
+      "/*build-info*.json",
+      "/*.buildinfo"
+    ],
+    "uri": "https://raw.githubusercontent.com/jfrog/build-info-go/main/buildinfo-schema.json"
+  },
+  {
+    "fileMatch": [
       "/buildkite.json",
       "/buildkite.*.json",
       "/.buildkite/pipeline.json",
@@ -232,6 +271,15 @@
   },
   {
     "fileMatch": [
+      "/scripts.json",
+      "/better-scripts.json",
+      "/.better-scriptsrc",
+      "/.better-scriptsrc.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/iamyoki/better-scripts/main/lib/schema.json"
+  },
+  {
+    "fileMatch": [
       "/CMakePresets.json",
       "/CMakeUserPresets.json"
     ],
@@ -241,7 +289,31 @@
     "uri": "https://carafe.fm/schema/draft-02/bundle.schema.json"
   },
   {
+    "fileMatch": [
+      "/Cargo.toml"
+    ],
+    "uri": "https://json.schemastore.org/cargo.json"
+  },
+  {
+    "fileMatch": [
+      "/Makefile.toml"
+    ],
+    "uri": "https://json.schemastore.org/cargo-make.json"
+  },
+  {
     "uri": "https://raw.githubusercontent.com/cityjson/specs/master/schemas/cityjson.min.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/*.cncc.json"
+    ],
+    "uri": "https://appliedengdesign.github.io/cnccodes-json-schema/draft/2022-07/schema"
+  },
+  {
+    "uri": "https://raw.githubusercontent.com/Ortus-Solutions/vscode-commandbox/master/resources/schemas/box.schema.json"
+  },
+  {
+    "uri": "https://raw.githubusercontent.com/Ortus-Solutions/vscode-commandbox/master/resources/schemas/server.schema.json"
   },
   {
     "fileMatch": [
@@ -249,6 +321,12 @@
       "/*.csr.json"
     ],
     "uri": "https://json.schemastore.org/csr.json"
+  },
+  {
+    "fileMatch": [
+      "/dein.toml"
+    ],
+    "uri": "https://json.schemastore.org/dein.json"
   },
   {
     "fileMatch": [
@@ -300,6 +378,13 @@
   },
   {
     "fileMatch": [
+      "/*.cat.json",
+      "/*.catalog.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/howlowck/common-catalog-schema/main/schema-versions.json"
+  },
+  {
+    "fileMatch": [
       "/cosmos.config.json"
     ],
     "uri": "https://json.schemastore.org/cosmos-config.json"
@@ -332,6 +417,12 @@
       "/*.workflows.json"
     ],
     "uri": "https://json.schemastore.org/workflows.json"
+  },
+  {
+    "fileMatch": [
+      "/cdk.json"
+    ],
+    "uri": "https://json.schemastore.org/cdk.json"
   },
   {
     "fileMatch": [
@@ -371,6 +462,13 @@
       "/component.json"
     ],
     "uri": "https://json.schemastore.org/component.json"
+  },
+  {
+    "fileMatch": [
+      "/cdmanifest.json",
+      "/cgmanifest.json"
+    ],
+    "uri": "https://json.schemastore.org/component-detection-manifest.json"
   },
   {
     "fileMatch": [
@@ -440,7 +538,21 @@
     "uri": "https://json.schemastore.org/debugsettings.json"
   },
   {
+    "fileMatch": [
+      "/deno.json",
+      "/deno.jsonc"
+    ],
+    "uri": "https://raw.githubusercontent.com/denoland/deno/main/cli/schemas/config-file.v1.json"
+  },
+  {
     "uri": "https://raw.githubusercontent.com/AxoCode/json-schema/master/discord/webhook.json"
+  },
+  {
+    "fileMatch": [
+      "/dockerd.json",
+      "/docker.json"
+    ],
+    "uri": "https://json.schemastore.org/dockerd.json"
   },
   {
     "fileMatch": [
@@ -513,9 +625,13 @@
   },
   {
     "fileMatch": [
-      "/ecosystem.json"
+      "/ecosystem.json",
+      "/ecosystem.config.json"
     ],
     "uri": "https://json.schemastore.org/pm2-ecosystem.json"
+  },
+  {
+    "uri": "https://raw.githubusercontent.com/weaveworks/eksctl/main/pkg/apis/eksctl.io/v1alpha5/assets/schema.json"
   },
   {
     "fileMatch": [
@@ -750,6 +866,12 @@
   },
   {
     "fileMatch": [
+      "/ide.host.json"
+    ],
+    "uri": "https://json.schemastore.org/ide.host.json"
+  },
+  {
+    "fileMatch": [
       "/imageoptimizer.json"
     ],
     "uri": "https://json.schemastore.org/imageoptimizer.json"
@@ -774,13 +896,19 @@
       "/jsonCustom.json",
       "/jsonTab.json"
     ],
-    "uri": "https://raw.githubusercontent.com/ioBroker/adapter-react/master/schemas/jsonConfig.json"
+    "uri": "https://raw.githubusercontent.com/ioBroker/adapter-react-v5/main/schemas/jsonConfig.json"
   },
   {
     "fileMatch": [
       "/io-package.json"
     ],
     "uri": "https://json.schemastore.org/io-package.json"
+  },
+  {
+    "fileMatch": [
+      "/jasmine.json"
+    ],
+    "uri": "https://json.schemastore.org/jasmine.json"
   },
   {
     "fileMatch": [
@@ -825,9 +953,6 @@
     "uri": "https://json.schemastore.org/jsinspectrc.json"
   },
   {
-    "fileMatch": [
-      "/*.schema.json"
-    ],
     "uri": "https://jsonapi.org/schema"
   },
   {
@@ -859,6 +984,19 @@
   },
   {
     "fileMatch": [
+      "/krakend.json",
+      "/krakend.toml"
+    ],
+    "uri": "https://www.krakend.io/schema/v3.json"
+  },
+  {
+    "fileMatch": [
+      "/service.datadog.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/DataDog/schema/main/service-catalog/version.schema.json"
+  },
+  {
+    "fileMatch": [
       "/keto.json",
       "/keto.toml"
     ],
@@ -887,6 +1025,15 @@
       "/license-report-config.json"
     ],
     "uri": "https://json.schemastore.org/license-report-config.json"
+  },
+  {
+    "fileMatch": [
+      "/linkinator.config.json"
+    ],
+    "uri": "https://json.schemastore.org/linkinator-config.json"
+  },
+  {
+    "uri": "https://w3id.org/linkml/meta.schema.json"
   },
   {
     "fileMatch": [
@@ -1096,6 +1243,13 @@
     "uri": "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json"
   },
   {
+    "fileMatch": [
+      "/openrpc.json",
+      "/open-rpc.json"
+    ],
+    "uri": "https://meta.open-rpc.org/"
+  },
+  {
     "uri": "https://json.schemastore.org/openfin.json"
   },
   {
@@ -1221,6 +1375,12 @@
   },
   {
     "fileMatch": [
+      "/pyproject.toml"
+    ],
+    "uri": "https://json.schemastore.org/pyproject.json"
+  },
+  {
+    "fileMatch": [
       "/info.json"
     ],
     "uri": "https://raw.githubusercontent.com/Cog-Creators/Red-DiscordBot/V3/develop/schema/red_cog.schema.json"
@@ -1247,6 +1407,12 @@
   },
   {
     "fileMatch": [
+      "/replit.toml"
+    ],
+    "uri": "https://json.schemastore.org/replit.json"
+  },
+  {
+    "fileMatch": [
       "/*.resjson"
     ],
     "uri": "https://json.schemastore.org/resjson.json"
@@ -1268,6 +1434,18 @@
       "/.renovaterc.json"
     ],
     "uri": "https://docs.renovatebot.com/renovate-schema.json"
+  },
+  {
+    "fileMatch": [
+      "/rustfmt.toml"
+    ],
+    "uri": "https://json.schemastore.org/rustfmt.json"
+  },
+  {
+    "fileMatch": [
+      "/rust-toolchain.toml"
+    ],
+    "uri": "https://json.schemastore.org/rust-toolchain.json"
   },
   {
     "fileMatch": [
@@ -1331,6 +1509,13 @@
       "/bucket/**.json"
     ],
     "uri": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json"
+  },
+  {
+    "fileMatch": [
+      "/.releaserc",
+      "/.releaserc.json"
+    ],
+    "uri": "https://json.schemastore.org/semantic-release.json"
   },
   {
     "fileMatch": [
@@ -1404,6 +1589,12 @@
   },
   {
     "fileMatch": [
+      "/starship.toml"
+    ],
+    "uri": "https://starship.rs/config-schema.json"
+  },
+  {
+    "fileMatch": [
       "/stryker.conf.json",
       "/stryker-*.conf.json"
     ],
@@ -1430,6 +1621,12 @@
   },
   {
     "fileMatch": [
+      "/.talismanrc"
+    ],
+    "uri": "https://raw.githubusercontent.com/thoughtworks/talisman/main/third-party/schema-store-talismanrc.json"
+  },
+  {
+    "fileMatch": [
       "/.template.config/template.json"
     ],
     "uri": "https://json.schemastore.org/template.json"
@@ -1439,6 +1636,12 @@
       "/templatesources.json"
     ],
     "uri": "https://json.schemastore.org/templatesources.json"
+  },
+  {
+    "fileMatch": [
+      "/tikibase.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/kevgo/tikibase/main/doc/tikibase.schema.json"
   },
   {
     "fileMatch": [
@@ -1528,6 +1731,13 @@
       "/src/manifest.json"
     ],
     "uri": "https://raw.githubusercontent.com/SAP/ui5-manifest/master/schema.json"
+  },
+  {
+    "fileMatch": [
+      "/*.utam.json",
+      "/.utam.json"
+    ],
+    "uri": "https://json.schemastore.org/utam-page-object.json"
   },
   {
     "fileMatch": [
@@ -1655,6 +1865,9 @@
     "uri": "https://json-schema.org/draft-04/schema"
   },
   {
+    "fileMatch": [
+      "/*.schema.json"
+    ],
     "uri": "https://json-schema.org/draft-07/schema"
   },
   {
@@ -1665,7 +1878,8 @@
   },
   {
     "fileMatch": [
-      "/xunit.runner.json"
+      "/xunit.runner.json",
+      "/*.xunit.runner.json"
     ],
     "uri": "https://json.schemastore.org/xunit.runner.schema.json"
   },
@@ -1736,6 +1950,12 @@
       "/.lintstagedrc.json"
     ],
     "uri": "https://json.schemastore.org/lintstagedrc.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/motif.json"
+    ],
+    "uri": "https://motif.land/api/motif.schema.json"
   },
   {
     "fileMatch": [
@@ -1872,7 +2092,7 @@
       "/.markdownlint.json",
       "/.markdownlint.jsonc"
     ],
-    "uri": "https://json.schemastore.org/markdownlint.json"
+    "uri": "https://raw.githubusercontent.com/DavidAnson/markdownlint/main/schema/markdownlint-config-schema.json"
   },
   {
     "fileMatch": [
@@ -1882,5 +2102,117 @@
   },
   {
     "uri": "https://json.schemastore.org/unist.json"
+  },
+  {
+    "uri": "https://json.schemastore.org/hugo.json"
+  },
+  {
+    "fileMatch": [
+      "/.deployedrc",
+      "/.deployed.json"
+    ],
+    "uri": "https://json.schemastore.org/deployed.json"
+  },
+  {
+    "uri": "https://raw.githubusercontent.com/statelyai/xstate/main/packages/core/src/machine.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/*.bu"
+    ],
+    "uri": "https://raw.githubusercontent.com/Relativ-IT/Butane-Schemas/Release/Butane-Schema.json"
+  },
+  {
+    "uri": "https://geojson.org/schema/GeoJSON.json"
+  },
+  {
+    "fileMatch": [
+      "/.clang-format"
+    ],
+    "uri": "https://json.schemastore.org/clang-format.json"
+  },
+  {
+    "fileMatch": [
+      "/flow.json",
+      "/*.flow.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/estuary/flow/master/flow.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/**/v2ray/*.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/EHfive/v2ray-jsonschema/main/v4-config.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/.gherking.json",
+      "/.gherkingrc",
+      "/.gherking.js",
+      "/gherking.json",
+      "/gherking.js"
+    ],
+    "uri": "https://raw.githubusercontent.com/gherking/gherking/master/schema/gherking.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/.hintrc"
+    ],
+    "uri": "https://raw.githubusercontent.com/webhintio/hint/main/packages/hint/src/lib/config/config-schema.json"
+  },
+  {
+    "fileMatch": [
+      "/ava.config.json"
+    ],
+    "uri": "https://json.schemastore.org/ava.json"
+  },
+  {
+    "fileMatch": [
+      "/*.dhub.json"
+    ],
+    "uri": "https://datahubproject.io/schemas/datahub_ingestion_schema.json"
+  },
+  {
+    "fileMatch": [
+      "/.jscpd.json"
+    ],
+    "uri": "https://json.schemastore.org/jscpd.json"
+  },
+  {
+    "fileMatch": [
+      "/egg-*.json"
+    ],
+    "uri": "https://json.schemastore.org/pterodactyl.json"
+  },
+  {
+    "fileMatch": [
+      "/monika.json"
+    ],
+    "uri": "https://json.schemastore.org/monika-config-schema.json"
+  },
+  {
+    "fileMatch": [
+      "/.nycrc",
+      "/.nycrc.json"
+    ],
+    "uri": "https://json.schemastore.org/nycrc.json"
+  },
+  {
+    "fileMatch": [
+      "/*-index.json"
+    ],
+    "uri": "https://json.schemastore.org/mongodb-atlas-search-index-definition.json"
+  },
+  {
+    "fileMatch": [
+      "/embrace-config.json"
+    ],
+    "uri": "https://json.schemastore.org/embrace-config-schema-1.0.0.json"
+  },
+  {
+    "fileMatch": [
+      "/petstore-v1.0.json"
+    ],
+    "uri": "https://json.schemastore.org/petstore-v1.0.json"
   }
 ]
