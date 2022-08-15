@@ -224,6 +224,7 @@
   },
   {
     "fileMatch": [
+      "!/Packages/**/messages.json",
       "/messages.json"
     ],
     "uri": "https://json.schemastore.org/browser.i18n.json"
