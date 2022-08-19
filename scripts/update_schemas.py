@@ -10,12 +10,6 @@ DIRECTORY = os.path.dirname(__file__)
 RE_YAML = re.compile(r'\.ya?ml$')
 
 
-def to_absolute_pattern(pattern: str) -> str:
-    if pattern.startswith('/'):
-        return pattern
-    return '/{}'.format(pattern)
-
-
 def main():
     schemas = requests.get('http://schemastore.org/api/json/catalog.json').json()['schemas']
     schema_list = []
@@ -40,6 +34,12 @@ def is_ignored(file_match: str):
         "messages.json"  # fixes: https://github.com/sublimelsp/LSP-json/issues/109
     ]
     return file_match in ignored_schemas
+
+
+def to_absolute_pattern(pattern: str) -> str:
+    if pattern.startswith('/'):
+        return pattern
+    return '/{}'.format(pattern)
 
 
 if __name__ == '__main__':
