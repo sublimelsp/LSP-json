@@ -224,12 +224,6 @@
   },
   {
     "fileMatch": [
-      "/messages.json"
-    ],
-    "uri": "https://json.schemastore.org/browser.i18n.json"
-  },
-  {
-    "fileMatch": [
       "/bsconfig.json"
     ],
     "uri": "https://raw.githubusercontent.com/rescript-lang/rescript-compiler/master/docs/docson/build-schema.json"
@@ -1623,7 +1617,7 @@
     "fileMatch": [
       "/.talismanrc"
     ],
-    "uri": "https://raw.githubusercontent.com/thoughtworks/talisman/main/third-party/schema-store-talismanrc.json"
+    "uri": "https://raw.githubusercontent.com/thoughtworks/talisman/main/examples/schema-store-talismanrc.json"
   },
   {
     "fileMatch": [
@@ -1660,6 +1654,12 @@
       "/testEnvironments.json"
     ],
     "uri": "https://json.schemastore.org/testenvironments.json"
+  },
+  {
+    "fileMatch": [
+      "/turbo.json"
+    ],
+    "uri": "https://turborepo.org/schema.json"
   },
   {
     "uri": "https://json.schemastore.org/traefik-v2-file-provider.json"
@@ -2096,9 +2096,21 @@
   },
   {
     "fileMatch": [
+      "/.markdown-lint-check.json"
+    ],
+    "uri": "https://json.schemastore.org/markdown-lint-check.json"
+  },
+  {
+    "fileMatch": [
       "/*.ndst.json"
     ],
     "uri": "https://s3.eu-central-1.amazonaws.com/files.netin.io/spider-schemas/template.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/*.sw.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/serverlessworkflow/specification/main/schema/workflow.json"
   },
   {
     "uri": "https://json.schemastore.org/unist.json"

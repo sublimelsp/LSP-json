@@ -163,7 +163,7 @@ class SchemaStore:
         for schema in schemas:
             file_matches = schema.get('fileMatch')
             if file_matches:
-                schema['fileMatch'] = [quote(fm, safe="/*") for fm in file_matches]
+                schema['fileMatch'] = [quote(fm, safe="/*!") for fm in file_matches]
             self._schema_list.append(schema)
 
     def _on_schemas_changed(self) -> None:
