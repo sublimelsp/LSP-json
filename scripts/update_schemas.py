@@ -26,18 +26,20 @@ def main():
             schema_list.append({'uri': url})
         if file_match:
             file_match = list(filter(lambda pattern: not RE_YAML.search(pattern), schema['fileMatch']))
+            file_match = list(filter(lambda match: not is_ignored(match), file_match))
         if file_match:
             file_match = list(map(to_absolute_pattern, file_match))
-            file_match = fix_edge_cases(file_match)
             schema_list.append({'fileMatch': file_match, 'uri': url})
 
     with open(os.path.join(DIRECTORY, '..', 'lsp-json-schemas.json'), 'w') as f:
         f.write(dumps(schema_list, indent=2))
 
-def fix_edge_cases(file_match):
-    if "/messages.json" in file_match:
-        return ["!/Packages/**/messages.json", *file_match]
-    return file_match
+
+def is_ignored(file_match: str):
+    ignored_schemas = [
+        "messages.json"  # fixes: https://github.com/sublimelsp/LSP-json/issues/109
+    ]
+    return file_match in ignored_schemas
 
 
 if __name__ == '__main__':

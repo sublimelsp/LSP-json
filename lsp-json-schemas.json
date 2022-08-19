@@ -224,13 +224,6 @@
   },
   {
     "fileMatch": [
-      "!/Packages/**/messages.json",
-      "/messages.json"
-    ],
-    "uri": "https://json.schemastore.org/browser.i18n.json"
-  },
-  {
-    "fileMatch": [
       "/bsconfig.json"
     ],
     "uri": "https://raw.githubusercontent.com/rescript-lang/rescript-compiler/master/docs/docson/build-schema.json"
