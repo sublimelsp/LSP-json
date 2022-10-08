@@ -3,6 +3,7 @@ updates:
   - package-ecosystem: "npm"
     directory: "/language-server"
     ignore:
-      - dependency-type: development
+      - dependency-name: '*'
+        dependency-type: development
     schedule:
       interval: "daily"
