@@ -195,6 +195,17 @@
           "type": "boolean",
           "default": true
         },
+        "fold_style": {
+          "markdownDescription": "The style of code folding to use.",
+          "type": "string",
+          "enum": ["auto", "force_indentation", "scope_only"],
+          "markdownEnumDescriptions": [
+            "Use whatever the default is for the syntax in use",
+            "Always use indentation-based code folding",
+            "Only allow syntax-based code folding"
+          ],
+          "default": "auto"
+        },
         "mini_diff": {
           "markdownDescription": "Indicate modified lines in the gutter.",
           "enum": [true, false, "auto"],
@@ -206,11 +217,50 @@
           "default": "auto"
         },
         "rulers": {
-          "markdownDescription": "Columns in which to display vertical rulers.",
+          "markdownDescription": "Columns in which to display vertical rulers.\n\nAs of ST 4133 column and style (see `ruler_style`) can be paired.\n\ne.g.: `\"rulers\": [[80, \"solid\"], [100, \"dotted\"]]`",
           "type": "array",
           "uniqueItems": true,
-          "items": {"type": "integer"},
+          "items": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "array",
+                "uniqueItems": true,
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                  "oneOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "string",
+                      "enum": ["dotted", "stippled", "solid"],
+                      "markdownEnumDescriptions": [
+                        "Drawn as a dotted line",
+                        "Drawn as a stippled line",
+                        "Drawn as a solid line"
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          },
           "default": []
+        },
+        "ruler_style": {
+          "markdownDescription": "Controls how ruler lines are drawn.\n\n_requires: ST 4133+_",
+          "type": "string",
+          "enum": ["dotted", "stippled", "solid"],
+          "markdownEnumDescriptions": [
+            "Drawn as a dotted line",
+            "Drawn as a stippled line",
+            "Drawn as a solid line"
+          ],
+          "default": "dotted"
         },
         "spell_check": {
           "markdownDescription": "Set to true to turn spell checking on by default.",
@@ -298,7 +348,7 @@
           "default": true
         },
         "dictionary": {
-          "markdownDescription": "Word list to use for spell checking.",
+          "markdownDescription": "Word list to use for spell checking. May also be a list of dictionaries.",
           "oneOf": [
             {
               "type": "string",
@@ -323,6 +373,11 @@
         },
         "always_show_minimap_viewport": {
           "markdownDescription": "Always visualise the viewport on the minimap, as opposed to only showing it on mouse over.",
+          "type": "boolean",
+          "default": false
+        },
+        "minimap_horizontal_scrolling": {
+          "markdownDescription": "Whether the minimap should scroll horizontally to match the viewport.",
           "type": "boolean",
           "default": false
         },
@@ -568,6 +623,11 @@
             "Draw codepoints of all non-ascii space characters."
           ],
           "default": "punctuation"
+        },
+        "draw_unicode_bidi": {
+          "description": "Controls whether unicode bidi characters are drawn as codepoints.",
+          "contentMediaType": "boolean",
+          "default": true
         },
         "control_character_style": {
           "markdownDescription": "Control characters (or white space if enabled) can be drawn as either hex or using their abbreviation.",
@@ -834,6 +894,11 @@
           "type": "boolean",
           "default": true
         },
+        "regex_auto_escape": {
+          "markdownDescription": "If true, patterns copied from selected text to the find panel\nwill automatically be escaped when doing a regex search.",
+          "type": "boolean",
+          "default": true
+        },
         "auto_find_in_selection": {
           "markdownDescription": "Enable or disable the \"Find in Selection\" flag in the \"Find\" and/or the \"Replace\" panel.",
           "enum": [false, true, "find_only", "replace_only"],
@@ -864,6 +929,16 @@
           "markdownDescription": "The maximum output size for find-in-files. Prevents searches with a large number of results from using too much memory. Use `0` to remove this limit.",
           "type": "integer",
           "default": 16777216
+        },
+        "find_in_files_max_file_size": {
+          "markdownDescription": "Files over this size will be skipped. This prevents searches from using up all available memory when large files are present. Note that on computers with many cores more than one file will be loaded at once. Use 0 to remove this limit.",
+          "type": "integer",
+          "default": 104857600
+        },
+        "find_in_files_side_by_side": {
+          "markdownDescription": "Open search results from find in files buffer side-by-side.",
+          "type": "boolean",
+          "default": false
         },
         "drag_text": {
           "markdownDescription": "When enabled, clicking on selected text will begin a drag-drop operation.",
@@ -956,7 +1031,7 @@
           "default": true
         },
         "show_tab_close_buttons_on_left": {
-          "markdownDescription": "Determines which side the close button is on. The default for OSX is `true` (on the left) and for other platforms it's `false` (on the right).",
+          "markdownDescription": "Determines which side the close button is on.",
           "type": "boolean",
           "default": false
         },
@@ -1030,6 +1105,17 @@
           "type": "boolean",
           "default": true
         },
+        "show_line_column": {
+          "markdownDescription": "Show Line, Column in the status bar in full length, compact or completely hidden.\n\nValid values are \"enabled\", \"compact\" and \"disabled\"",
+          "type": "string",
+          "enum": ["enabled", "compact", "disabled"],
+          "default": "enabled"
+        },
+        "show_spelling_errors": {
+          "markdownDescription": "Display misspelled words in the status bar",
+          "type": "boolean",
+          "default": true
+        },
         "ui_scale": {
           "markdownDescription": "Magnifies the entire user interface. Sublime Text must be restarted for this to take effect.\n1.0 is normal scale, 0.0 allows for auto-detection based on text scale with older Linux configurations that don't fully support GTK display scaling.",
           "type": "number",
@@ -1058,6 +1144,11 @@
               "default": true
             }
           ]
+        },
+        "hot_exit_projects": {
+          "markdownDescription": "Closing projects with hot_exit_projects enabled will cause it to close immediately without prompting. Unsaved modifications and open files will be preserved in the workspace file and restored when reopened.",
+          "type": "boolean",
+          "default": true
         },
         "remember_full_screen": {
           "markdownDescription": "allows Sublime Text to start in full screen mode if it was exited in full screen mode. When set to `false`, Sublime Text will never start in full screen mode.",
@@ -1159,6 +1250,11 @@
           "type": ["boolean", "string"],
           "enum": [false, true, "only_left"],
           "default": true
+        },
+        "select_across_groups": {
+          "markdownDescription": "Controls the behavior when clicking on a single file in the sidebar that's already open.\n\n- `true`: If the file is already open in any group it will be selected.\n- `false`: Only if the file is open in the focused group will it be selected, otherwise a new view into the file is opened.",
+          "type": "boolean",
+          "default": false
         },
         "console_max_history_lines": {
           "markdownDescription": "Controls the maximum number of lines kept in the console's history. Note a large limit will increase memory usage. Use `0` to remove any limit.",
