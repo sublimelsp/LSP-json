@@ -895,7 +895,7 @@
           "default": true
         },
         "regex_auto_escape": {
-          "markdownDescription": "If true, patterns copied from selected text to the find panel\nwill automatically be escaped when doing a regex search.",
+          "markdownDescription": "If true, patterns copied from selected text to the find panel will automatically be escaped when doing a regex search.",
           "type": "boolean",
           "default": true
         },
