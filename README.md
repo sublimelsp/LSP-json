@@ -24,6 +24,18 @@ The [PackageDev](https://packagecontrol.io/packages/PackageDev) package implemen
 }
 ```
 
+### Color Provider
+
+The JSON-Language-Server implements a color provider that adds color decorators next to values representing colors in JSON files. If you are using a color plugin like [ColorHelper](https://packagecontrol.io/packages/ColorHelper) or [Color Highlight](https://packagecontrol.io/packages/Color%20Highlight) you may wish to disable this feature. To disable it open the LSP-json Settings as described above and add the following settings on the right side:
+
+```json
+{
+  "disabled_capabilities": {
+    "colorProvider": true
+  }
+}
+```
+
 ### Custom schemas
 
 To load manually created schemas, add those to `userSchemas` configuration in the settings file. See more information in the comments there.
