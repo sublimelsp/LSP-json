@@ -30,16 +30,33 @@ class SchemaStore:
             sublime.set_timeout_async(lambda: listener.on_store_changed(self._schema_list))
 
     def get_schema_for_uri(self, uri: str) -> Optional[str]:
+        # full schema is requested
         if uri in self._schema_uri_to_content:
             return self._schema_uri_to_content[uri]
-        if uri.startswith('sublime://'):
-            schema_path = uri.replace('sublime://', '')
-            schema_components = schema_path.split('/')
-            domain = schema_components[0]
-            if domain == 'schemas':
-                # Internal schema - 1:1 schema path to file path mapping.
-                schema_path = 'Packages/{}/{}.json'.format(package_name, schema_path)
-                return sublime.encode_value(sublime.decode_value(ResourcePath(schema_path).read_text()), pretty=False)
+
+        # sub component of of a known schema is requested
+        # used to resolve references to `definitions` etc. accross schemes"
+        #   $ref": "sublime://schema-from-package/definitions/something"
+        for schema_uri, schema_content in self._schema_uri_to_content.items():
+            if uri.startswith(schema_uri):
+                try:
+                    schema = sublime.decode_value(schema_content)
+                    for component in uri[len(schema_uri):].strip('/').split('/'):
+                        schema = schema[component]
+                    return sublime.encode_value(schema, pretty=False)
+                except KeyError:
+                    pass
+
+        else:
+            if uri.startswith('sublime://'):
+                schema_path = uri.replace('sublime://', '')
+                schema_components = schema_path.split('/')
+                domain = schema_components[0]
+                if domain == 'schemas':
+                    # Internal schema - 1:1 schema path to file path mapping.
+                    schema_path = 'Packages/{}/{}.json'.format(package_name, schema_path)
+                    return sublime.encode_value(sublime.decode_value(ResourcePath(schema_path).read_text()), pretty=False)
+
         print('{}: Unknown schema URI "{}"'.format(package_name, uri))
         return None
 
