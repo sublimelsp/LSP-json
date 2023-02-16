@@ -28,6 +28,10 @@
 		"json.validate.enable": true,
 		"json.format.enable": true,
 		"json.resultLimit": 5000,
+		"json.jsonFoldingLimit": 5000,
+		"json.jsoncFoldingLimit": 5000,
+		"json.jsonColorDecoratorLimit": 5000,
+		"json.jsoncColorDecoratorLimit": 5000,
 		"jsonc.patterns": [
 			"buffer://*",
 			".babelrc",

@@ -76,6 +76,26 @@
                       "default": 5000,
                       "description": "The maximum number of outline symbols and folding regions computed (limited for performance reasons)."
                     },
+                    "json.jsonFoldingLimit": {
+                      "type": "integer",
+                      "default": 5000,
+                      "description": "The maximum number of folding ranges to be computed for json documents (limited for performance reasons)."
+                    },
+                    "json.jsoncFoldingLimit": {
+                      "type": "integer",
+                      "default": 5000,
+                      "description": "The maximum number of folding ranges to be computed for jsonc documents (limited for performance reasons)."
+                    },
+                    "json.jsonColorDecoratorLimit": {
+                      "type": "integer",
+                      "default": 5000,
+                      "description": "The maximum number of color decorators to be computed for json documents (limited for performance reasons)."
+                    },
+                    "json.jsoncColorDecoratorLimit": {
+                      "type": "integer",
+                      "default": 5000,
+                      "description": "The maximum number of color decorators to be computed for jsonc documents (limited for performance reasons)."
+                    },
                     "jsonc.patterns": {
                       "markdownDescription": "Enables JSONC mode (comments allowed) for matching files.\n\nThe patterns are matched against the end of the file path and all characters but `*` are matched literally and don't need to be escaped. The special `*` character can be used to match any number of characters.",
                       "type": "array",

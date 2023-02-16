@@ -76,8 +76,11 @@ function startServer(connection, runtime) {
     let dynamicFormatterRegistration = false;
     let hierarchicalDocumentSymbolSupport = false;
     let foldingRangeLimitDefault = Number.MAX_VALUE;
-    let foldingRangeLimit = Number.MAX_VALUE;
     let resultLimit = Number.MAX_VALUE;
+    let jsonFoldingRangeLimit = Number.MAX_VALUE;
+    let jsoncFoldingRangeLimit = Number.MAX_VALUE;
+    let jsonColorDecoratorLimit = Number.MAX_VALUE;
+    let jsoncColorDecoratorLimit = Number.MAX_VALUE;
     let formatterMaxNumberOfEdits = Number.MAX_VALUE;
     let diagnosticsSupport;
     // After the server has started the client sends an initialize request. The server receives
@@ -149,8 +152,12 @@ function startServer(connection, runtime) {
         validateEnabled = !!settings.json?.validate?.enable;
         keepLinesEnabled = settings.json?.keepLines?.enable || false;
         updateConfiguration();
-        foldingRangeLimit = Math.trunc(Math.max(settings.json?.resultLimit || foldingRangeLimitDefault, 0));
-        resultLimit = Math.trunc(Math.max(settings.json?.resultLimit || Number.MAX_VALUE, 0));
+        const sanitizeLimitSetting = (settingValue) => Math.trunc(Math.max(settingValue, 0));
+        resultLimit = sanitizeLimitSetting(settings.json?.resultLimit || Number.MAX_VALUE);
+        jsonFoldingRangeLimit = sanitizeLimitSetting(settings.json?.jsonFoldingLimit || foldingRangeLimitDefault);
+        jsoncFoldingRangeLimit = sanitizeLimitSetting(settings.json?.jsoncFoldingLimit || foldingRangeLimitDefault);
+        jsonColorDecoratorLimit = sanitizeLimitSetting(settings.json?.jsonColorDecoratorLimit || Number.MAX_VALUE);
+        jsoncColorDecoratorLimit = sanitizeLimitSetting(settings.json?.jsoncColorDecoratorLimit || Number.MAX_VALUE);
         // dynamically enable & disable the formatter
         if (dynamicFormatterRegistration) {
             const enableFormatter = settings.json?.format?.enable;
@@ -238,7 +245,7 @@ function startServer(connection, runtime) {
                     uri = schema.schema.id || `vscode://schemas/custom/${index}`;
                 }
                 if (uri) {
-                    languageSettings.schemas.push({ uri, fileMatch: schema.fileMatch, schema: schema.schema });
+                    languageSettings.schemas.push({ uri, fileMatch: schema.fileMatch, schema: schema.schema, folderUri: schema.folderUri });
                 }
             });
         }
@@ -334,6 +341,7 @@ function startServer(connection, runtime) {
             const document = documents.get(params.textDocument.uri);
             if (document) {
                 const jsonDocument = getJSONDocument(document);
+                const resultLimit = document.languageId === 'jsonc' ? jsoncColorDecoratorLimit : jsonColorDecoratorLimit;
                 return languageService.findDocumentColors(document, jsonDocument, { resultLimit });
             }
             return [];
@@ -353,7 +361,8 @@ function startServer(connection, runtime) {
         return (0, runner_1.runSafe)(runtime, () => {
             const document = documents.get(params.textDocument.uri);
             if (document) {
-                return languageService.getFoldingRanges(document, { rangeLimit: foldingRangeLimit });
+                const rangeLimit = document.languageId === 'jsonc' ? jsoncFoldingRangeLimit : jsonFoldingRangeLimit;
+                return languageService.getFoldingRanges(document, { rangeLimit });
             }
             return null;
         }, null, `Error while computing folding ranges for ${params.textDocument.uri}`, token);
