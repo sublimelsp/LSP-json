@@ -9,6 +9,8 @@ const jsonServer_1 = require("../jsonServer");
 const messageReader = new browser_1.BrowserMessageReader(self);
 const messageWriter = new browser_1.BrowserMessageWriter(self);
 const connection = (0, browser_1.createConnection)(messageReader, messageWriter);
+console.log = connection.console.log.bind(connection.console);
+console.error = connection.console.error.bind(connection.console);
 const runtime = {
     timer: {
         setImmediate(callback, ...args) {
