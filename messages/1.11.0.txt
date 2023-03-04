@@ -1,0 +1,6 @@
+=> 1.11.0
+
+# Features
+
+Added support for sorting JSON documents. Use `LSP-json: Sort Document` from the Command Palette
+or configure a key binding that runs the `lsp_sort_document` command.
