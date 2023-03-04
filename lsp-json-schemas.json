@@ -3,6 +3,9 @@
     "uri": "https://json.schemastore.org/base.json"
   },
   {
+    "uri": "https://json.schemastore.org/base-04.json"
+  },
+  {
     "fileMatch": [
       "/.awc.json",
       "/.awc.jsonc",
@@ -27,7 +30,7 @@
     "fileMatch": [
       "/.aiproj.json"
     ],
-    "uri": "https://json.schemastore.org/aiproj.json"
+    "uri": "https://json.schemastore.org/aiproj-1.1.json"
   },
   {
     "fileMatch": [
@@ -52,7 +55,7 @@
     "fileMatch": [
       "/.ansible-lint"
     ],
-    "uri": "https://raw.githubusercontent.com/ansible-community/schemas/main/f/ansible-lint.json"
+    "uri": "https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible-lint-config.json"
   },
   {
     "fileMatch": [
@@ -107,6 +110,12 @@
   },
   {
     "fileMatch": [
+      "/.asyncapi-tool"
+    ],
+    "uri": "https://raw.githubusercontent.com/asyncapi/website/master/scripts/tools/tools-schema.json"
+  },
+  {
+    "fileMatch": [
       "/*.avsc"
     ],
     "uri": "https://json.schemastore.org/avro-avsc.json"
@@ -121,7 +130,7 @@
     "fileMatch": [
       "/*.updatemanifest.json"
     ],
-    "uri": "https://json.schemastore.org/azure-deviceupdate-update-manifest-4.json"
+    "uri": "https://json.schemastore.org/azure-deviceupdate-update-manifest-5.json"
   },
   {
     "uri": "https://json.schemastore.org/azure-iot-edgeagent-deployment-1.1.json"
@@ -141,15 +150,37 @@
   },
   {
     "fileMatch": [
+      "/cv.json",
+      "/cv.toml",
+      "/*.cv.json",
+      "/*.cv.toml"
+    ],
+    "uri": "https://raw.githubusercontent.com/hexagonkt/codecv/master/cv.schema.json"
+  },
+  {
+    "fileMatch": [
       "/manifest.json"
     ],
     "uri": "https://json.schemastore.org/foxx-manifest.json"
   },
   {
     "fileMatch": [
+      "/flagd.json",
+      "/*.flagd.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/open-feature/schemas/main/json/flagd-definitions.json"
+  },
+  {
+    "fileMatch": [
       "/fly.toml"
     ],
     "uri": "https://json.schemastore.org/fly.json"
+  },
+  {
+    "fileMatch": [
+      "/*.freifunk-api.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/freifunk/api.freifunk.net/master/specs/0.5.2.json"
   },
   {
     "fileMatch": [
@@ -160,6 +191,7 @@
   {
     "fileMatch": [
       "/.babelrc",
+      "/.babelrc.json",
       "/babel.config.json"
     ],
     "uri": "https://json.schemastore.org/babelrc.json"
@@ -183,6 +215,20 @@
       "/datamodel.beef.json"
     ],
     "uri": "https://raw.githubusercontent.com/Avanade/Beef/master/tools/Beef.CodeGen.Core/Schema/entity.beef.json"
+  },
+  {
+    "fileMatch": [
+      "/database.beef-5.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/Avanade/Beef/master/tools/Beef.CodeGen.Core/Schema/database.beef-5.json"
+  },
+  {
+    "fileMatch": [
+      "/entity.beef-5.json",
+      "/refdata.beef-5.json",
+      "/datamodel.beef-5.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/Avanade/Beef/master/tools/Beef.CodeGen.Core/Schema/entity.beef-5.json"
   },
   {
     "fileMatch": [
@@ -240,8 +286,8 @@
     "fileMatch": [
       "/buildkite.json",
       "/buildkite.*.json",
-      "/.buildkite/pipeline.json",
-      "/.buildkite/pipeline.*.json"
+      "/**/.buildkite/pipeline.json",
+      "/**/.buildkite/pipeline.*.json"
     ],
     "uri": "https://raw.githubusercontent.com/buildkite/pipeline-schema/main/schema.json"
   },
@@ -311,13 +357,6 @@
   },
   {
     "fileMatch": [
-      "/csr.json",
-      "/*.csr.json"
-    ],
-    "uri": "https://json.schemastore.org/csr.json"
-  },
-  {
-    "fileMatch": [
       "/dein.toml"
     ],
     "uri": "https://json.schemastore.org/dein.json"
@@ -339,6 +378,18 @@
       "/.clasp.json"
     ],
     "uri": "https://json.schemastore.org/clasp.json"
+  },
+  {
+    "fileMatch": [
+      "/.clangd"
+    ],
+    "uri": "https://json.schemastore.org/clangd.json"
+  },
+  {
+    "fileMatch": [
+      "/codux.config.json"
+    ],
+    "uri": "https://wixplosives.github.io/codux-config-schema/codux.config.schema.json"
   },
   {
     "fileMatch": [
@@ -431,7 +482,7 @@
       "/*.sam.json",
       "/sam.json"
     ],
-    "uri": "https://raw.githubusercontent.com/awslabs/goformation/master/schema/sam.schema.json"
+    "uri": "https://raw.githubusercontent.com/aws/serverless-application-model/main/samtranslator/schema/schema.json"
   },
   {
     "fileMatch": [
@@ -550,13 +601,20 @@
   },
   {
     "fileMatch": [
+      "/docker-seq.json",
+      "/*.docker-seq.json"
+    ],
+    "uri": "https://gitlab.com/sbenv/veroxis/docker-seq/-/raw/HEAD/docker-seq.schema.json"
+  },
+  {
+    "fileMatch": [
       "/docfx.json"
     ],
     "uri": "https://json.schemastore.org/docfx.json"
   },
   {
     "fileMatch": [
-      "/.dolittle/artifacts.json"
+      "/**/.dolittle/artifacts.json"
     ],
     "uri": "https://raw.githubusercontent.com/dolittle/DotNET.SDK/v5.0.0/Schemas/Artifacts.Configuration/artifacts.json"
   },
@@ -568,37 +626,37 @@
   },
   {
     "fileMatch": [
-      "/.dolittle/event-horizons.json"
+      "/**/.dolittle/event-horizons.json"
     ],
     "uri": "https://raw.githubusercontent.com/dolittle/Runtime/master/Schemas/Events/event-horizons.json"
   },
   {
     "fileMatch": [
-      "/.dolittle/resources.json"
+      "/**/.dolittle/resources.json"
     ],
     "uri": "https://raw.githubusercontent.com/dolittle/DotNET.Fundamentals/v5.1.0/Schemas/ResourceTypes.Configuration/resources.json"
   },
   {
     "fileMatch": [
-      "/.dolittle/server.json"
+      "/**/.dolittle/server.json"
     ],
     "uri": "https://raw.githubusercontent.com/dolittle/Runtime/master/Schemas/Server/server.json"
   },
   {
     "fileMatch": [
-      "/.dolittle/tenants.json"
+      "/**/.dolittle/tenants.json"
     ],
     "uri": "https://raw.githubusercontent.com/dolittle/Runtime/master/Schemas/Tenancy/tenants.json"
   },
   {
     "fileMatch": [
-      "/.dolittle/tenant-map.json"
+      "/**/.dolittle/tenant-map.json"
     ],
     "uri": "https://raw.githubusercontent.com/dolittle/DotNET.Fundamentals/master/Schemas/Tenancy.Configuration/tenant-map.json"
   },
   {
     "fileMatch": [
-      "/.dolittle/topology.json"
+      "/**/.dolittle/topology.json"
     ],
     "uri": "https://raw.githubusercontent.com/dolittle/DotNET.SDK/master/Schemas/Applications.Configuration/topology.json"
   },
@@ -656,7 +714,13 @@
     "fileMatch": [
       "/app.json"
     ],
-    "uri": "https://json.schemastore.org/expo-41.0.0.json"
+    "uri": "https://json.schemastore.org/expo-46.0.0.json"
+  },
+  {
+    "fileMatch": [
+      "/ezd.json"
+    ],
+    "uri": "https://gitlab.com/sbenv/veroxis/ezd-rs/-/raw/HEAD/ezd.schema.json"
   },
   {
     "fileMatch": [
@@ -728,7 +792,7 @@
   },
   {
     "fileMatch": [
-      "/.github/workflow-templates/**.properties.json"
+      "/**/.github/workflow-templates/**.properties.json"
     ],
     "uri": "https://json.schemastore.org/github-workflow-template-properties.json"
   },
@@ -756,7 +820,7 @@
       "/.meshrc.json",
       "/.meshrc.js"
     ],
-    "uri": "https://unpkg.com/@graphql-mesh/types/config-schema.json"
+    "uri": "https://unpkg.com/@graphql-mesh/types/esm/config-schema.json"
   },
   {
     "fileMatch": [
@@ -809,7 +873,7 @@
   },
   {
     "fileMatch": [
-      "/grunt/*.json",
+      "/**/grunt/*.json",
       "/*-tasks.json"
     ],
     "uri": "https://json.schemastore.org/grunt-task.json"
@@ -818,7 +882,7 @@
     "fileMatch": [
       "/haxelib.json"
     ],
-    "uri": "https://json.schemastore.org/haxelib.json"
+    "uri": "https://raw.githubusercontent.com/HaxeFoundation/haxelib/master/schema.json"
   },
   {
     "fileMatch": [
@@ -831,7 +895,7 @@
       "/hazelcast*.json",
       "/hz-*.json"
     ],
-    "uri": "https://hazelcast.com/schema/config/hazelcast-config-5.1.json"
+    "uri": "https://hazelcast.com/schema/config/hazelcast-config-5.2.json"
   },
   {
     "fileMatch": [
@@ -896,13 +960,28 @@
     "fileMatch": [
       "/io-package.json"
     ],
-    "uri": "https://json.schemastore.org/io-package.json"
+    "uri": "https://raw.githubusercontent.com/ioBroker/ioBroker.js-controller/master/schemas/io-package.json"
   },
   {
     "fileMatch": [
       "/jasmine.json"
     ],
     "uri": "https://json.schemastore.org/jasmine.json"
+  },
+  {
+    "fileMatch": [
+      "/*.jd2cr",
+      "/*.jd2cr.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/sergxerj/jdownloader2-crawler-rule-json-schema/main/jd2cr.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/*.jd2mcr",
+      "/*.jd2mcr.json",
+      "/*.linkcrawlerrules.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/sergxerj/jdownloader2-crawler-rule-json-schema/main/jd2mcr.schema.json"
   },
   {
     "fileMatch": [
@@ -966,7 +1045,8 @@
   },
   {
     "fileMatch": [
-      "/*.patch"
+      "/*.patch",
+      "/*.patch.json"
     ],
     "uri": "https://json.schemastore.org/json-patch.json"
   },
@@ -1004,6 +1084,12 @@
   },
   {
     "fileMatch": [
+      "/lego.json"
+    ],
+    "uri": "https://json.schemastore.org/lego.json"
+  },
+  {
+    "fileMatch": [
       "/lerna.json"
     ],
     "uri": "https://json.schemastore.org/lerna.json"
@@ -1031,6 +1117,12 @@
   },
   {
     "fileMatch": [
+      "/LivelyProperties.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/rocksdanister/lively/core-separation/schemas/livelyPropertiesSchema.json"
+  },
+  {
+    "fileMatch": [
       "/local.settings.json"
     ],
     "uri": "https://json.schemastore.org/local.settings.json"
@@ -1046,6 +1138,19 @@
       "/*.lsdl.json"
     ],
     "uri": "https://json.schemastore.org/lsdlschema.json"
+  },
+  {
+    "fileMatch": [
+      "/*.settings.json"
+    ],
+    "uri": "https://json.schemastore.org/micro.json"
+  },
+  {
+    "fileMatch": [
+      "/meltano-manifest.json",
+      "/meltano-manifest.*.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/meltano/meltano/main/src/meltano/schemas/meltano.schema.json"
   },
   {
     "uri": "https://json.schemastore.org/band-manifest.json"
@@ -1115,6 +1220,12 @@
       "/**/data/*/recipes/*.json"
     ],
     "uri": "https://json.schemastore.org/minecraft-recipe.json"
+  },
+  {
+    "fileMatch": [
+      "/**/data/*/tags/**/*.json"
+    ],
+    "uri": "https://json.schemastore.org/minecraft-tag.json"
   },
   {
     "fileMatch": [
@@ -1189,11 +1300,20 @@
   },
   {
     "fileMatch": [
+      "/service.nox.json"
+    ],
+    "uri": "https://noxorg.dev/schemas/NoxConfiguration.json"
+  },
+  {
+    "fileMatch": [
       "/.npmpackagejsonlintrc",
       "/npmpackagejsonlintrc.json",
       "/.npmpackagejsonlintrc.json"
     ],
     "uri": "https://json.schemastore.org/npmpackagejsonlintrc.json"
+  },
+  {
+    "uri": "https://json.schemastore.org/npm-badges.json"
   },
   {
     "uri": "https://json.schemastore.org/nuget-project.json"
@@ -1413,6 +1533,18 @@
   },
   {
     "fileMatch": [
+      "/ruff.toml"
+    ],
+    "uri": "https://json.schemastore.org/ruff.json"
+  },
+  {
+    "fileMatch": [
+      "/rust-project.json"
+    ],
+    "uri": "https://json.schemastore.org/rust-project.json"
+  },
+  {
+    "fileMatch": [
       "/**/resume.json",
       "/**/*.resume.json"
     ],
@@ -1422,8 +1554,10 @@
     "fileMatch": [
       "/renovate.json",
       "/renovate.json5",
-      "/.github/renovate.json",
-      "/.github/renovate.json5",
+      "/**/.github/renovate.json",
+      "/**/.github/renovate.json5",
+      "/**/.gitlab/renovate.json",
+      "/**/.gitlab/renovate.json5",
       "/.renovaterc",
       "/.renovaterc.json"
     ],
@@ -1500,7 +1634,7 @@
   },
   {
     "fileMatch": [
-      "/bucket/**.json"
+      "/**/bucket/**.json"
     ],
     "uri": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json"
   },
@@ -1526,6 +1660,13 @@
   },
   {
     "fileMatch": [
+      "/silkit.json",
+      "/*.silkit.json"
+    ],
+    "uri": "https://json.schemastore.org/sil-kit-participant-configuration.json"
+  },
+  {
+    "fileMatch": [
       "/.size-limit.json"
     ],
     "uri": "https://json.schemastore.org/size-limit.json"
@@ -1543,6 +1684,12 @@
       "/.solidarity.json"
     ],
     "uri": "https://json.schemastore.org/solidaritySchema.json"
+  },
+  {
+    "fileMatch": [
+      "/*.slnf"
+    ],
+    "uri": "https://json.schemastore.org/solution-filter.json"
   },
   {
     "fileMatch": [
@@ -1589,6 +1736,18 @@
   },
   {
     "fileMatch": [
+      "/stripe-app.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/stripe/stripe-apps/main/schema/stripe-app.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/stripe-app.*.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/stripe/stripe-apps/main/schema/stripe-app-local.schema.json"
+  },
+  {
+    "fileMatch": [
       "/stryker.conf.json",
       "/stryker-*.conf.json"
     ],
@@ -1621,7 +1780,7 @@
   },
   {
     "fileMatch": [
-      "/.template.config/template.json"
+      "/**/.template.config/template.json"
     ],
     "uri": "https://json.schemastore.org/template.json"
   },
@@ -1630,6 +1789,12 @@
       "/templatesources.json"
     ],
     "uri": "https://json.schemastore.org/templatesources.json"
+  },
+  {
+    "fileMatch": [
+      "/pricing.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/tierrun/tier/main/pricing/schema.json"
   },
   {
     "fileMatch": [
@@ -1647,7 +1812,7 @@
     "fileMatch": [
       "/*.tmLanguage.json"
     ],
-    "uri": "https://raw.githubusercontent.com/Septh/tmlanguage/master/tmLanguage.schema.json"
+    "uri": "https://raw.githubusercontent.com/Septh/tmlanguage/master/tmlanguage.json"
   },
   {
     "fileMatch": [
@@ -1666,7 +1831,7 @@
   },
   {
     "fileMatch": [
-      "/tsconfig.json"
+      "/tsconfig*.json"
     ],
     "uri": "https://json.schemastore.org/tsconfig.json"
   },
@@ -1693,6 +1858,13 @@
       "/tslint.json"
     ],
     "uri": "https://json.schemastore.org/tslint.json"
+  },
+  {
+    "fileMatch": [
+      "/*.tson",
+      "/*.tson.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/spectral-discord/TSON/main/schema/tson.json"
   },
   {
     "fileMatch": [
@@ -1726,9 +1898,9 @@
   },
   {
     "fileMatch": [
-      "/webapp/manifest.json",
-      "/src/main/webapp/manifest.json",
-      "/src/manifest.json"
+      "/**/webapp/manifest.json",
+      "/**/src/main/webapp/manifest.json",
+      "/**/src/manifest.json"
     ],
     "uri": "https://raw.githubusercontent.com/SAP/ui5-manifest/master/schema.json"
   },
@@ -1755,13 +1927,27 @@
   },
   {
     "fileMatch": [
+      "/venvironment.json",
+      "/*.venvironment.json"
+    ],
+    "uri": "https://json.schemastore.org/venvironment-schema.json"
+  },
+  {
+    "fileMatch": [
+      "/venvironment-basic.json",
+      "/*.venvironment-basic.json"
+    ],
+    "uri": "https://json.schemastore.org/venvironment-basic-schema.json"
+  },
+  {
+    "fileMatch": [
       "/version.json"
     ],
     "uri": "https://raw.githubusercontent.com/dotnet/Nerdbank.GitVersioning/master/src/NerdBank.GitVersioning/version.schema.json"
   },
   {
     "fileMatch": [
-      "/*vim*/addon-info.json"
+      "/**/*vim*/addon-info.json"
     ],
     "uri": "https://json.schemastore.org/vim-addon-info.json"
   },
@@ -1807,6 +1993,12 @@
       "/vss-extension.json"
     ],
     "uri": "https://json.schemastore.org/vss-extension.json"
+  },
+  {
+    "fileMatch": [
+      "/.v8rrc.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/chris48s/v8r/main/config-schema.json"
   },
   {
     "fileMatch": [
@@ -1950,6 +2142,12 @@
       "/.lintstagedrc.json"
     ],
     "uri": "https://json.schemastore.org/lintstagedrc.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/*.mirrord.+(toml|json|y?(a)ml)"
+    ],
+    "uri": "https://raw.githubusercontent.com/metalbear-co/mirrord/main/mirrord-schema.json"
   },
   {
     "fileMatch": [
@@ -2226,5 +2424,74 @@
       "/petstore-v1.0.json"
     ],
     "uri": "https://json.schemastore.org/petstore-v1.0.json"
+  },
+  {
+    "fileMatch": [
+      "/*batch-job-config*.json"
+    ],
+    "uri": "https://json-schema.api.strmprivacy.io/latest/strmprivacy.api.entities.v1.BatchJob.json"
+  },
+  {
+    "fileMatch": [
+      "/*simple-schema*.json"
+    ],
+    "uri": "https://json-schema.api.strmprivacy.io/latest/strmprivacy.api.entities.v1.Schema.SimpleSchemaDefinition.json"
+  },
+  {
+    "fileMatch": [
+      "/*stream.json"
+    ],
+    "uri": "https://json-schema.api.strmprivacy.io/latest/strmprivacy.api.entities.v1.Stream.json"
+  },
+  {
+    "fileMatch": [
+      "/*data-connector.json"
+    ],
+    "uri": "https://json-schema.api.strmprivacy.io/latest/strmprivacy.api.entities.v1.DataConnector.json"
+  },
+  {
+    "fileMatch": [
+      "/*contract.json"
+    ],
+    "uri": "https://json-schema.api.strmprivacy.io/latest/strmprivacy.api.entities.v1.DataContract.json"
+  },
+  {
+    "uri": "https://raw.githubusercontent.com/dahag-ag/keycloak-openapi/main/OpenApiDefinitions/keycloak-19.0.0.json"
+  },
+  {
+    "fileMatch": [
+      "/ize.toml"
+    ],
+    "uri": "https://raw.githubusercontent.com/hazelops/ize/1.1.5/internal/schema/ize-spec.json"
+  },
+  {
+    "fileMatch": [
+      "/qfconfig.json"
+    ],
+    "uri": "https://json.schemastore.org/qfconfig.json"
+  },
+  {
+    "fileMatch": [
+      "/.uplugin"
+    ],
+    "uri": "https://json.schemastore.org/uplugin.json"
+  },
+  {
+    "fileMatch": [
+      "/.uproject"
+    ],
+    "uri": "https://json.schemastore.org/uproject.json"
+  },
+  {
+    "fileMatch": [
+      "/pants*.toml"
+    ],
+    "uri": "https://json.schemastore.org/pantsbuild-2.15.0.json"
+  },
+  {
+    "fileMatch": [
+      "/.all-contributorsrc"
+    ],
+    "uri": "https://json.schemastore.org/all-contributors.json"
   }
 ]
