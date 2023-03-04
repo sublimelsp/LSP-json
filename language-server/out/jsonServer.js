@@ -31,6 +31,10 @@ var LanguageStatusRequest;
 (function (LanguageStatusRequest) {
     LanguageStatusRequest.type = new vscode_languageserver_1.RequestType('json/languageStatus');
 })(LanguageStatusRequest || (LanguageStatusRequest = {}));
+var DocumentSortingRequest;
+(function (DocumentSortingRequest) {
+    DocumentSortingRequest.type = new vscode_languageserver_1.RequestType('json/sort');
+})(DocumentSortingRequest || (DocumentSortingRequest = {}));
 const workspaceContext = {
     resolveRelativePath: (relativePath, resource) => {
         const base = resource.substring(0, resource.lastIndexOf('/') + 1);
@@ -216,6 +220,15 @@ function startServer(connection, runtime) {
         else {
             return { schemas: [] };
         }
+    });
+    connection.onRequest(DocumentSortingRequest.type, async (params) => {
+        const uri = params.uri;
+        const options = params.options;
+        const document = documents.get(uri);
+        if (document) {
+            return languageService.sort(document, options);
+        }
+        return [];
     });
     function updateConfiguration() {
         const languageSettings = {
