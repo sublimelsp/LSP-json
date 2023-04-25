@@ -58,7 +58,7 @@ class LspJSONPlugin(NpmClientHandler, StoreListener):
     def on_ready(self, api: ApiWrapperInterface) -> None:
         self._api = api
         self._schema_store.add_listener(self)
-        self._schema_store.load_schemas()
+        self._schema_store.load_schemas_async()
 
     @request_handler('vscode/content')
     def handle_vscode_content(self, params: Tuple[str], respond: Callable[[Any], None]) -> None:
@@ -74,7 +74,7 @@ class LspJSONPlugin(NpmClientHandler, StoreListener):
 
     # --- StoreListener ------------------------------------------------------------------------------------------------
 
-    def on_store_changed(self, schemas: List[Dict]) -> None:
+    def on_store_changed_async(self, schemas: List[Dict]) -> None:
         if self._api:
             self._api.send_notification('json/schemaAssociations', [schemas + self._user_schemas])
 

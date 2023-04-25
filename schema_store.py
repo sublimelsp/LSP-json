@@ -12,7 +12,7 @@ package_name = __package__
 class StoreListener(metaclass=ABCMeta):
 
     @abstractmethod
-    def on_store_changed(self, schemas: List[Dict]) -> None:
+    def on_store_changed_async(self, schemas: List[Dict]) -> None:
         pass
 
 
@@ -27,7 +27,7 @@ class SchemaStore:
     def add_listener(self, listener: StoreListener) -> None:
         self._listeners.add(listener)
         if self._schemas_loaded:
-            sublime.set_timeout_async(lambda: listener.on_store_changed(self._schema_list))
+            sublime.set_timeout_async(lambda: listener.on_store_changed_async(self._schema_list))
 
     def get_schema_for_uri(self, uri: str) -> Optional[str]:
         if uri in self._schema_uri_to_content:
@@ -47,14 +47,14 @@ class SchemaStore:
         for settings in self._watched_settings:
             settings.clear_on_change(package_name)
 
-    def load_schemas(self) -> None:
+    def load_schemas_async(self) -> None:
         if self._schemas_loaded:
             return
         settings = sublime.load_settings('sublime-package.json')
         settings.add_on_change(package_name, lambda: sublime.set_timeout_async(self._collect_schemas_async))
         self._watched_settings.append(settings)
-        sublime.set_timeout_async(self._collect_schemas_async)
         self._schemas_loaded = True
+        self._collect_schemas_async()
 
     def _collect_schemas_async(self) -> None:
         self._schema_list = []
@@ -63,7 +63,7 @@ class SchemaStore:
         global_preferences_schemas = self._load_package_schemas()
         self._generate_project_settings_schemas(global_preferences_schemas)
         self._load_syntax_schemas(global_preferences_schemas)
-        sublime.set_timeout_async(self._on_schemas_changed)
+        self._on_schemas_changed()
 
     def _load_bundled_schemas(self) -> None:
         for schema in ['lsp-json-schemas_extra.json', 'lsp-json-schemas.json']:
@@ -154,4 +154,4 @@ class SchemaStore:
 
     def _on_schemas_changed(self) -> None:
         for listener in self._listeners:
-            listener.on_store_changed(self._schema_list)
+            listener.on_store_changed_async(self._schema_list)
