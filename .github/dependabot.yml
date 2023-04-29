@@ -6,3 +6,4 @@ updates:
       - dependency-type: production
     schedule:
       interval: "daily"
+    versioning-strategy: increase
