@@ -940,6 +940,16 @@
           "type": "boolean",
           "default": false
         },
+        "find_in_files_context_lines": {
+          "markdownDescription": "The number of context lines to show for each result.",
+          "type": "integer",
+          "default": 2
+        },
+        "find_in_files_suppress_errors": {
+          "markdownDescription": "Error messages from failing to open and search files will be suppressed from results.",
+          "type": "boolean",
+          "default": false
+        },
         "drag_text": {
           "markdownDescription": "When enabled, clicking on selected text will begin a drag-drop operation.",
           "type": "boolean",
