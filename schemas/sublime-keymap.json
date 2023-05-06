@@ -14,17 +14,37 @@
     },
     "contextSchema": {
       "type": "array",
+      "defaultSnippets": [
+        {
+          "body": [
+            {
+              "key": "$1",
+              "operator": "equal",
+              "operand": "$0"
+            }
+          ]
+        }
+      ],
       "items": {
         "required": [
           "key"
         ],
         "type": "object",
+        "defaultSnippets": [
+          {
+            "body": {
+              "key": "$1",
+              "operator": "equal",
+              "operand": "$0"
+            }
+          }
+        ],
         "properties": {
           "key": {
             "anyOf": [
               {
                 "type": "string",
-                "description": "Condition that must evaluate to true for the key binding to be active",
+                "description": "Condition that must evaluate to true for the binding to be active.",
                 "enum": [
                   "auto_complete_visible",
                   "eol_selector",
@@ -142,7 +162,7 @@
       },
       "context": {
         "$ref": "#/definitions/contextSchema",
-        "description": "Context in which key is allowed to execute."
+        "description": "Context in which binding is allowed to execute."
       },
       "args": {
         "description": "Arguments to pass to the command to execute.",
