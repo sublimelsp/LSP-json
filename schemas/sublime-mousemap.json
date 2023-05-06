@@ -51,7 +51,7 @@
       },
       "context": {
         "$ref": "sublime://schemas/sublime-keymap#/definitions/contextSchema",
-        "description": "Context in which key is allowed to execute."
+        "description": "Context in which binding is allowed to execute."
       },
       "count": {
         "type": "number",
