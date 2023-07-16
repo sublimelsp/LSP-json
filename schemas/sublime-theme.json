@@ -4,5 +4,705 @@
   "title": "Sublime Text Theme",
   "allowComments": true,
   "allowTrailingCommas": true,
-  "type": ["array", "object"]
+  "anyOf": [
+    {
+      "$ref": "#/$defs/rules"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "extends": {
+          "type": "string",
+          "markdownDescription": "A theme may extend another theme, appending rules and overriding variables. To extend a theme, add a top-level key `\"extends\"` to the JSON object, with a string value of the base theme.\n\nThe resulting list of rules will start with the base theme rules followed by the extending theme rules. Any variables from the extending theme will override variables with the same name in the base theme. Variable overrides will affect rules both in the base theme and the extending theme."
+        },
+        "rules": {
+          "$ref": "#/$defs/rules"
+        },
+        "variables": {
+          "type": "object",
+          "additionalProperties": {
+            "type": ["string", "number", "boolean", "array", "object"]
+          },
+          "markdownDescription": "Reusable variables may be defined by a JSON object under the top-level key `\"variables\"`. Variable names are strings, however the value may be a string, number, boolean, array or object. Using a variable requires specifying a string in the format `var(example_variable_name`.\n\nVariables may be used as the value for any [properties](https://www.sublimetext.com/docs/themes.html#properties), but the variable must be the entire value, it may not be embedded within another variable. The only exception to this rule is that variables may be used as the base color for the CSS `color()` mod function."
+        }
+      },
+      "required": ["rules"]
+    }
+  ],
+  "$defs": {
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "class": {
+            "$ref": "#/$defs/class"
+          },
+          "attributes": {
+            "$ref": "#/$defs/attributes"
+          },
+          "settings": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": {
+                  "anyOf": [
+                    {
+                      "type": "boolean"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  ]
+                }
+              }
+            ],
+            "markdownDescription": "`\"settings\"` uses values from `.sublime-settings` files to filter rules. This allows theme authors to give users the ability to tweak a theme. Themes may define their own settings, but there are a handful of \"default\" settings that should be supported if possible. See [Settings](https://www.sublimetext.com/docs/themes.html#settings) for more details.\n\nThe value for the `\"settings\"` key may be one of:\n\n- *array of strings* - Each string is the name of a boolean setting. To check for a `false` value, prefix the setting name with a `!`. Example: `[\"bold_folder_labels\", \"!always_show_minimap_viewport\"]`\n- *object* - Each key is the name of a setting. A value may be a boolean, string, or array of strings. If an array of strings is used, the setting will be matched if any of the strings in the array matches the user's value. When comparing to a string, the user's setting will be coerced to an empty string when not set. Example: `{\"bold_folder_labels\": true, \"file_tab_style\": \"rounded\"}`"
+          },
+          "parents": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "class": {
+                  "$ref": "#/$defs/class"
+                },
+                "attributes": {
+                  "$ref": "#/$defs/attributes"
+                }
+              }
+            },
+            "markdownDescription": "The `\"parents\"` key is an array of objects specifying the `\"class\"` and `\"attributes\"` that must be matched in a parent element. Note that the parents must be ordered from the furthest to closest parent."
+          },
+          "platforms": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["osx", "windows", "linux"]
+            },
+            "markdownDescription": "The `\"platforms\"` key is an array of strings specifying what operating systems to apply the rule to. Valid options include `\"osx\"`, `\"windows\"` and `\"linux\"`."
+          },
+          "hit_test_level": {
+            "$ref": "#/$defs/float",
+            "markdownDescription": "A float value setting the required opacity of a pixel for a click to be considered a \"hit\"."
+          },
+          "content_margin": {
+            "$ref": "#/$defs/margin"
+          }
+        },
+        "patternProperties": {
+          "^layer[0-3].opacity$": {
+            "$ref": "#/$defs/float",
+            "markdownDescription": "A float value from `0.0` to `1.0` that controls the master opacity of the layer.\n\nExample: `0.9`"
+          },
+          "^layer[0-3].tint$": {
+            "$ref": "#/$defs/color",
+            "markdownDescription": "A [color value](https://www.sublimetext.com/docs/themes.html#colors) of a fill color to apply to the layer.\n\nExample: `[255, 0, 0, 127]`"
+          },
+          "^layer[0-3].texture$": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "keyframes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "markdownDescription": "An array of strings of the paths to PNG images, in order.\n\nExample: `[\"Theme - Default/spinner.png\", \"Theme - Default/spinner1.png\"]`"
+                  },
+                  "loop": {
+                    "type": "boolean",
+                    "markdownDescription": "An optional boolean that controls if the animation should repeat.\n\nDefault: `false`\n\nExample: `true`"
+                  },
+                  "frame_time": {
+                    "type": "number",
+                    "minimum": 0,
+                    "markdownDescription": "An optional float specifying how long each frame should be displayed. `1.0` represents 1 second.\n\nDefault: `0.0333` (30 fps)\n\nExample: `0.0166` (60 fps)"
+                  }
+                }
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "markdownDescription": "A string of the file path to a PNG image, relative to the `Packages/` folder.\n\nExample: `\"Theme - Default/arrow_right.png\"`"
+          },
+          "^layer[0-3].inner_margin$": {
+            "$ref": "#/$defs/margin",
+            "markdownDescription": "Texture images are stretched to fit the element by slicing into a grid of 9 using four lines. See [padding & margins](https://www.sublimetext.com/docs/themes.html#padding-margins) for valid formats with which to specify the margin used to make the slices.\n\nExample: `[5, 2, 5, 2]`"
+          },
+          "^layer[0-3].draw_center$": {
+            "type": ["boolean", "string"],
+            "markdownDescription": "A boolean that controls if the center rectangle of the 9-grid created via `layer#.inner_margin` should be drawn. This is an optimization that allows skipping an unused section of texture.\n\nExample: `false`"
+          },
+          "^layer[0-3].repeat$": {
+            "type": ["boolean", "string"],
+            "markdownDescription": "A boolean that controls if the texture should be repeated instead of streched.\n\nExample: `false`"
+          }
+        },
+        "required": ["class"]
+      }
+    },
+    "class": {
+      "anyOf": [
+        {
+          "enum": [
+            "title_bar",
+            "window",
+            "edit_window",
+            "switch_project_window",
+            "sidebar_container",
+            "sidebar_tree",
+            "tree_row",
+            "sidebar_heading",
+            "file_system_entry",
+            "sidebar_label",
+            "close_button",
+            "disclosure_button_control",
+            "icon_folder",
+            "icon_folder_loading",
+            "icon_folder_dup",
+            "icon_file_type",
+            "vcs_status_badge",
+            "tabset_control",
+            "tab_control",
+            "tab_label",
+            "tab_close_button",
+            "scroll_tabs_left_button",
+            "scroll_tabs_right_button",
+            "show_tabs_dropdown_button",
+            "tab_connector",
+            "overlay_control",
+            "overlay_control goto_file",
+            "overlay_control goto_symbol",
+            "overlay_control goto_symbol_in_project",
+            "overlay_control goto_line",
+            "overlay_control goto_word",
+            "overlay_control command_palette",
+            "quick_panel",
+            "mini_quick_panel_row",
+            "quick_panel_row",
+            "quick_panel_entry",
+            "kind_container",
+            "kind_container kind_ambiguous",
+            "kind_container kind_keyword",
+            "kind_container kind_type",
+            "kind_container kind_function",
+            "kind_container kind_namespace",
+            "kind_container kind_navigation",
+            "kind_container kind_markup",
+            "kind_container kind_variable",
+            "kind_container kind_snippet",
+            "kind_container kind_color_redish",
+            "kind_container kind_color_orangish",
+            "kind_container kind_color_yellowish",
+            "kind_container kind_color_greenish",
+            "kind_container kind_color_cyanish",
+            "kind_container kind_color_bluish",
+            "kind_container kind_color_purplish",
+            "kind_container kind_color_pinkish",
+            "kind_container kind_color_dark",
+            "kind_container kind_color_light",
+            "kind_label",
+            "symbol_container",
+            "quick_panel_label",
+            "quick_panel_path_label",
+            "quick_panel_label key_binding",
+            "quick_panel_label hint",
+            "quick_panel_detail_label",
+            "sheet_contents",
+            "text_area_control",
+            "grid_layout_control",
+            "minimap_control",
+            "fold_button_control",
+            "popup_shadow",
+            "popup_control",
+            "popup_control html_popup",
+            "popup_control annotation_popup",
+            "annotation_close_button",
+            "popup_control auto_complete_popup",
+            "auto_complete",
+            "table_row",
+            "trigger_container",
+            "auto_complete_label",
+            "auto_complete_label auto_complete_hint",
+            "auto_complete_detail_pane",
+            "auto_complete_info",
+            "auto_complete_kind_name_label",
+            "auto_complete_details",
+            "panel_control",
+            "panel_control find_panel",
+            "panel_control replace_panel",
+            "panel_control find_in_files_panel",
+            "panel_control input_panel",
+            "panel_control console_panel",
+            "panel_control output_panel",
+            "panel_control switch_project_panel",
+            "panel_grid_control",
+            "panel_close_button",
+            "status_bar",
+            "sidebar_button_control",
+            "status_container",
+            "status_button",
+            "vcs_status",
+            "vcs_branch_icon",
+            "vcs_changes_annotation",
+            "dialog",
+            "progress_bar_control",
+            "progress_gauge_control",
+            "scroll_area_control",
+            "scroll_bar_control",
+            "scroll_track_control",
+            "scroll_corner_control",
+            "puck_control",
+            "text_line_control",
+            "dropdown_button_control",
+            "button_control",
+            "icon_button_group",
+            "icon_button_control",
+            "icon_regex",
+            "icon_case",
+            "icon_whole_word",
+            "icon_wrap",
+            "icon_in_selection",
+            "icon_highlight",
+            "icon_preserve_case",
+            "icon_context",
+            "icon_use_buffer",
+            "icon_use_gitignore",
+            "label_control",
+            "title_label_control",
+            "tool_tip_control",
+            "tool_tip_label_control",
+            "overlay_control kind_info",
+            "new_tab_button",
+            "switch_project_panel_cancel_container",
+            "link_label"
+          ],
+          "markdownEnumDescriptions": [
+            "\n\n### Attributes\n\n- [Luminosity](https://www.sublimetext.com/docs/themes.html#luminosity-attributes)\n\n### Properties\n\n- `fg` - A [color value](https://www.sublimetext.com/docs/themes.html#colors) to use for the window title text - *Mac 10.10 or newer only*.\n- `bg` - A [color value](https://www.sublimetext.com/docs/themes.html#colors) to use for the title bar background - *Mac 10.10 or newer only*.\n- `style` - The OS style to use for the title bar - `\"system\"`, `\"dark\"` (Mac/Linux only) or `\"light\"` (Mac only). Default: `\"system\"`",
+            "This element can not be styled directly, however it can be used in a `\"parents\"` key. The luminosity attributes are set based on the global color scheme.\n\n### Attributes\n\n- [Luminosity](https://www.sublimetext.com/docs/themes.html#luminosity-attributes)",
+            "This element contains the main editor window, and is intended for use in a `\"parents\"` key.",
+            "This element contains the Switch Project window, and is intended for use in a `\"parents\"` key.",
+            "The primary sidebar container that handles scrolling.\n\n### Properties\n\n- `content_margin` - The [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) around the `sidebar_tree`.",
+            "A tree control containing multiple `tree_row`s.\n\n### Properties\n\n- `indent` - An integer amount to indent each level of the tree structure.\n- `indent_offset` - An additional indent applied to every row, for the sake of positioning `disclosure_button_control` and `close_button`.\n- `indent_top_level` - A boolean if top-level rows in the tree should be indented.\n- `spacer_rows` - A boolean controlling if a blank row should be added between the *Open Files* and *Folders* sections of the sidebar, when both are visible.",
+            "A row may contain a header, open file, folder or file.\n\n### Attributes\n\n- `selectable` - When a row is selectable.\n- `selected` - When a selectable row is selected.\n- `expandable` - When a row is expandable.\n- `expanded` - When an expandable row is expanded.",
+            "One of the \"Open Files\", \"Group \\#\" or \"Folders\" headings in the sidebar.\n\n### Properties\n\n- [font properties](https://www.sublimetext.com/docs/themes.html#font-properties)\n- `case` - The case modification to use for the heading - `\"upper\"`, `\"lower\"` or `\"title\"`. Default: `\"upper\"`",
+            "The container holding information about a file or folder in the sidebar. Contains different controls based on which section of the sidebar is within.\n\nWithin the *Open Files* section, this control will contain a `sidebar_label` with the file name, plus possibly a `vcs_status_badge`.\n\nWithin the *Folders* section, this control will contain a folder or file icon (either `icon_folder`, `icon_folder_loading`, `icon_folder_dup` or `icon_file_type`), a `sidebar_label` with the file or folder name, plus possibly a `vcs_status_badge`.\n\n### Attributes\n\n- `ignored` - **Files:** when a file is ignored. **Folders:** when the entire folder is ignored.\n- `untracked` - **Files:** when a file is new or not recognized. **Folders:** when a folder contains one or more untracked files.\n- `modified` - **Files:** when a file has been changed on disk. **Folders:** when a folder contains one or more modified files.\n- `missing` - **Folders:** when one or more of a folder's files is no longer on disk.\n- `added` - **Files:** when a new file has been newly added to the index. **Folders:** when a folder contains one or more added files.\n- `staged` - **Files:** when a modified file has been added to the index. **Folders:** when a folder contains one or more staged files.\n- `deleted` - **Folders:** when one or more of a folder's files has been added to the index for removal.\n- `unmerged` - **Files:** when a file is in a conflict state and needs to be resolved. **Folders:** when a folder contains one or more unmerged files.\n\n### Properties\n\n- `content_margin` - The [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) around the contained controls.\n- `spacing` - An integer number of pixels between each contained control.",
+            "Names of open files, folder names and filenames.\n\n### Properties\n\n- [font properties](https://www.sublimetext.com/docs/themes.html#font-properties)",
+            "A button to the left of each file in the *Open Files* section.\n\n### Properties\n\n- `content_margin` - For buttons, the [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) specifies the dimensions.",
+            "An expand/collapse icon present in all `tree_row`s that can be expanded.\n\n### Properties\n\n- `content_margin` - For buttons, the [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) specifies the dimensions.",
+            "Used for a folder once the contents have been fully enumerated.\n\n### Properties\n\n- `content_margin` - For icons, the [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) specifies the dimensions.",
+            "Used for a folder while the contents are being enumerated.\n\n### Properties\n\n- `content_margin` - For icons, the [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) specifies the dimensions.",
+            "Used for a folder that has been scanned previously in the sidebar. *This is necessary to prevent a possible infinite list of files due to recursive symlinks.*\n\n### Properties\n\n- `content_margin` - For icons, the [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) specifies the dimensions.",
+            "The icon for a file. The `layer0.texture` should not be set since it is determined dynamically based on the `icon` setting provided by `.tmPreferences` files.\n\n### Properties\n\n- `content_margin` - For icons, the [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) specifies the dimensions.",
+            "An icon contained within `file_system_entry` that is used to display the status of a file or folder with regards to a Git repository it is contained in. This icon will only be shown if the setting `show_git_status` is `true`, the file is contained within a Git repository, and the file has some sort of special state within the repository. *A file that is not shown via `git status` and is not ignored via a `.gitignore` rule will have no icon.*\n\n### Attributes\n\n- `ignored` - **Files:** when a file is ignored. **Folders:** when the entire folder is ignored.\n- `untracked` - **Files:** when a file is new or not recognized. **Folders:** when a folder contains one or more untracked files.\n- `modified` - **Files:** when a file has been changed on disk. **Folders:** when a folder contains one or more modified files.\n- `missing` - **Folders:** when one or more of a folder's files is no longer on disk.\n- `added` - **Files:** when a new file has been newly added to the index. **Folders:** when a folder contains one or more added files.\n- `staged` - **Files:** when a modified file has been added to the index. **Folders:** when a folder contains one or more staged files.\n- `deleted` - **Folders:** when one or more of a folder's files has been added to the index for removal.\n- `unmerged` - **Files:** when a file is in a conflict state and needs to be resolved. **Folders:** when a folder contains one or more unmerged files.\n\n### Properties\n\n- `content_margin` - The [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) around the contained controls.",
+            "\n\n### Attributes\n\n- [Luminosity](https://www.sublimetext.com/docs/themes.html#luminosity-attributes)\n\n### Properties\n\n- [texture tinting properties](https://www.sublimetext.com/docs/themes.html#texture-tinting-properties)\n- `content_margin` - The [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) around the `tab_control`s.\n- `tab_overlap` - How many DIPs the tabs should overlap.\n- `tab_width` - Default tab width when space is available.\n- `tab_min_width` - The minimum tab width before tab scrolling occurs.\n- `tab_height` - The height of the tabs in DIPs.\n- `mouse_wheel_switch` - If the mouse wheel should switch tabs - this should only be set to `true` if the setting `enable_tab_scrolling` is `false`.",
+            "\n\n### Attributes\n\n- [Luminosity](https://www.sublimetext.com/docs/themes.html#luminosity-attributes)\n- `dirty` - When the associated view has unsaved changes.\n- `selected` - When the associated view is the active view in its group.\n- `transient` - When the associate view is a preview and not fully opened.\n- `highlighted` - When the tab is for the sheet with input focus.\n- `left` - When the tab is the left-most tab in the tabset.\n- `right` - When the tab is the right-most tab in the tabset.\n- `multiple` - When the tab is part of a sheet multi-selection.\n- `left_of_selected` - When the tab is to the left of a selected tab.\n- `left_of_hover` - When the tab is to the left of a hovered tab.\n- `right_of_selected` - When the tab is to the right of a selected tab.\n- `right_of_hover` - When the tab is to the right of a hovered tab.\n- `left_overhang` - When the tab is overhanging to the left of its sheet, which can occur during sheet multi-selection.\n- `right_overhang` - When the tab is overhanging to the right of its sheet, which can occur during sheet multi-selection.\n\n### Properties\n\n- [texture tinting properties](https://www.sublimetext.com/docs/themes.html#texture-tinting-properties)\n- `content_margin` - The [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) around the `tab_label`.\n- `max_margin_trim` - How much of the left and right `content_margin` may be removed when tab space is extremely limited.\n- `accent_tint_index` - Controls which layer the accent tint is applied to. Must be an integer from `0` to `3`. The accent color is specified by the color scheme.\n- `accent_tint_modifier` - An array of four integers in the range `0` to `255`. The first three are blended into the RGB values from the accent tint color with the fourth value specifying how much of these RGB modifier values to apply.",
+            "\n\n### Attributes\n\n- `transient` - When the associated view is a preview and not fully opened.\n\n### Properties\n\n- [font properties](https://www.sublimetext.com/docs/themes.html#font-properties)",
+            "\n\n### Properties\n\n- `content_margin` - For buttons, the [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) specifies the dimensions.\n- `accent_tint_index` - Controls which layer the accent tint is applied to. Must be an integer from `0` to `3`. The accent color is specified by the color scheme.\n- `accent_tint_modifier` - An array of four integers in the range `0` to `255`. The first three are blended into the RGB values from the accent tint color with the fourth value specifying how much of these RGB modifier values to apply.",
+            "\n\n### Properties\n\n- `content_margin` - For buttons, the [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) specifies the dimensions.",
+            "\n\n### Properties\n\n- `content_margin` - For buttons, the [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) specifies the dimensions.",
+            "\n\n### Properties\n\n- `content_margin` - For buttons, the [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) specifies the dimensions.",
+            "\n\n### Attributes\n\n- `left_overhang` - When the tab is overhanging to the left of its sheet, which can occur during shett multi-selection.\n- `right_overhang` - When the tab is overhanging to the left of its sheet, which can occur during shett multi-selection.\n\n### Properties\n\n- [texture tinting properties](https://www.sublimetext.com/docs/themes.html#texture-tinting-properties)",
+            "The container for the quick panel, including the input and data table.\n\n### Properties\n\n- `content_margin` - The [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) around the `quick_panel`.",
+            "The Goto File quick panel.\n\n### Properties\n\n- `content_margin` - The [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) around the `quick_panel`.",
+            "The Goto Symbol quick panel.\n\n### Properties\n\n- `content_margin` - The [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) around the `quick_panel`.",
+            "The Goto Symbol in Project quick panel.\n\n### Properties\n\n- `content_margin` - The [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) around the `quick_panel`.",
+            "The Goto Line quick panel.\n\n### Properties\n\n- `content_margin` - The [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) around the `quick_panel`.",
+            "The Goto Anything quick panel, filtering by word.\n\n### Properties\n\n- `content_margin` - The [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) around the `quick_panel`.",
+            "The Command Palette.\n\n### Properties\n\n- `content_margin` - The [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) around the `quick_panel`.",
+            "The data table displayed below the input. Normally the height is dynamic so the layers will not be visible, however the Switch Project window will use layers for the blank space below the filtered options.\n\n### Properties\n\n- [data table properties](https://www.sublimetext.com/docs/themes.html#data-table-properties)",
+            "A non-file row in `quick_panel`. Contains one `quick_panel_label` for each line of text in the row.\n\n### Attributes\n\n- `selected` - When the row is selected.",
+            "A Goto Anything file row in `quick_panel`. Also used in the Switch Project window.\n\nContains `quick_panel_label` with the filename, and `quick_panel_path_label` for the file path.\n\n### Attributes\n\n- `selected` - When the row is selected.",
+            "A spacing-only container to control the spacing between `quick_panel_label` and `quick_panel_path_label` controls when a row has one or more detail lines.\n\n### Properties\n\n- `spacing` - An integer number of pixels between each line of text.",
+            "\n\n**Quick Panel:** A container shown to the left of the symbols in the Goto Symbol and Goto Symbol in Project quick panels. It contains the `kind_label` and is used to indicate the kind of the symbol.\n\n**Auto Complete:** A container shown to the left of an auto complete item, which contains the `kind_label` and is used to indicate the kind of the item.\n\n*A `\"parents\"` key should be used to distinguish the two uses.*\n\nThe element `kind_container` is always paired with a second class name indicated the general category the kind belongs to.\n\n### Properties\n\n- `content_margin` - A [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) that is added around the `kind_label`.",
+            "When the kind of the item is unknown - *no color*.\n\n### Properties\n\n- `content_margin` - A [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) that is added around the `kind_label`.",
+            "When the item is a keyword - *typically pink*.\n\n### Properties\n\n- `content_margin` - A [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) that is added around the `kind_label`.",
+            "When the item is a data type, class, struct, interface, enum, trait, etc. - *typically purple*.\n\n### Properties\n\n- `content_margin` - A [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) that is added around the `kind_label`.",
+            "When the item is a function, method, constructor or subroutine - *typically red*.\n\n### Properties\n\n- `content_margin` - A [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) that is added around the `kind_label`.",
+            "When the item is a namespace or mudule - *typically blue*.\n\n### Properties\n\n- `content_margin` - A [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) that is added around the `kind_label`.",
+            "When the item is a definition, label or section - *typically yellow*.\n\n### Properties\n\n- `content_margin` - A [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) that is added around the `kind_label`.",
+            "When the item is a markup component, including HTML tags and CSS selectors - *typically orange*.\n\n### Properties\n\n- `content_margin` - A [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) that is added around the `kind_label`.",
+            "When the item is a variable, member, attribute, constant or parameter - *typically cyan*.\n\n### Properties\n\n- `content_margin` - A [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) that is added around the `kind_label`.",
+            "When the item is a snippet - *typically green*.\n\n### Properties\n\n- `content_margin` - A [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) that is added around the `kind_label`.",
+            "When the plugin author wants to display red.\n\n### Properties\n\n- `content_margin` - A [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) that is added around the `kind_label`.",
+            "When the plugin author wants to display orange.\n\n### Properties\n\n- `content_margin` - A [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) that is added around the `kind_label`.",
+            "When the plugin author wants to display yellow.\n\n### Properties\n\n- `content_margin` - A [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) that is added around the `kind_label`.",
+            "When the plugin author wants to display green.\n\n### Properties\n\n- `content_margin` - A [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) that is added around the `kind_label`.",
+            "When the plugin author wants to display cyan.\n\n### Properties\n\n- `content_margin` - A [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) that is added around the `kind_label`.",
+            "When the plugin author wants to display blue.\n\n### Properties\n\n- `content_margin` - A [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) that is added around the `kind_label`.",
+            "When the plugin author wants to display purple.\n\n### Properties\n\n- `content_margin` - A [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) that is added around the `kind_label`.",
+            "When the plugin author wants to display pink.\n\n### Properties\n\n- `content_margin` - A [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) that is added around the `kind_label`.",
+            "When the plugin author wants to display a dark background.\n\n### Properties\n\n- `content_margin` - A [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) that is added around the `kind_label`.",
+            "When the plugin author wants to display a light background.\n\n### Properties\n\n- `content_margin` - A [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) that is added around the `kind_label`.",
+            "A label showing a single unicode character, contained within the `kind_container`.\n\n### Properties\n\n- [font properties](https://www.sublimetext.com/docs/themes.html#font-properties)",
+            "A container around the `quick_panel_label` when showing the Goto Symbol or Goto Symbol in Project symbol lists.\n\n### Properties\n\n- `content_margin` - A [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) that is added around the `quick_panel_label`.",
+            "Filenames in the `quick_panel_row` and all text in `mini_quick_panel_row`.\n\n### Properties\n\n- [filter label properties](https://www.sublimetext.com/docs/themes.html#filter-label-properties)",
+            "File paths in `quick_panel_row`.\n\n### Properties\n\n- [filter label properties](https://www.sublimetext.com/docs/themes.html#filter-label-properties)",
+            "Key bindings shown to the right-hand side of `quick_panel_row`.\n\n### Properties\n\n- [filter label properties](https://www.sublimetext.com/docs/themes.html#filter-label-properties)",
+            "Annotations shown to the right-hand side of `quick_panel_row`.\n\n### Properties\n\n- [filter label properties](https://www.sublimetext.com/docs/themes.html#filter-label-properties)",
+            "Detail rows in `quick_panel_row`.\n\n### Properties\n\n- `color` - A [color value](https://www.sublimetext.com/docs/themes.html#colors) to use for the text.\n- `link_color` - A [color value](https://www.sublimetext.com/docs/themes.html#colors) to use for links.\n- `monospace_color` - A [color value](https://www.sublimetext.com/docs/themes.html#colors) to use for monospace text.\n- `monospace_background_color` - A [color value](https://www.sublimetext.com/docs/themes.html#colors) to use for the background of monospace text.",
+            "A sheet can have text, image or HTML contents.\n\n### Attributes\n\n- [Luminosity](https://www.sublimetext.com/docs/themes.html#luminosity-attributes)\n- `highlighted` - When the sheet has input focus.\n\n### Properties\n\n- `background_modifier` - A string with a space-separated list of adjusters that are supported by the [color() mod function](https://www.sublimetext.com/docs/minihtml.html#colors). Used for implementing inactive sheet dimming.",
+            "This element can not be styled directly since it is controlled by the color scheme, however it can be used in a `\"parents\"` key.\n\n### Attributes\n\n- [Luminosity](https://www.sublimetext.com/docs/themes.html#luminosity-attributes)",
+            "The borders displayed between views when multiple groups are visible.\n\n### Properties\n\n- `border_color` - A [color value](https://www.sublimetext.com/docs/themes.html#colors) to use for the border.\n- `border_size` - An integer of the border size in DIPs.",
+            "Control over the display of the viewport projection on the minimap.\n\n### Properties\n\n- `viewport_color` - A [color value](https://www.sublimetext.com/docs/themes.html#colors) to fill the viewport projection with.\n- `viewport_opacity` - A float from `0.0` to `1.0` specifying the opacity of the viewport projection.",
+            "Code folding buttons in the gutter.\n\n### Attributes\n\n- `expanded` - When a section of code is unfolded.\n\n### Properties\n\n- `content_margin` - For buttons, the [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) specifies the dimensions.",
+            "A wrapper around popup windows that allows controlling the shadow.",
+            "",
+            "The primary container for the HTML popups used by *Show Definitions* and third-party packages. The tint of the scroll bar will be set to the background color of the HTML document.",
+            "The primary container for the annotations added to the right-hand side of the editor pane by build systems and third-party packages.",
+            "The close button shown at the left edge of `annotation_popup`.\n\n### Properties\n\n- `content_margin` - For buttons, the [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) specifies the dimensions.",
+            "The primary container for the auto complete popup.",
+            "The data table for completion data. The tint is set based on the background color of the color scheme applied to the view the popup is displayed in.\n\n### Properties\n\n- [data table properties](https://www.sublimetext.com/docs/themes.html#data-table-properties)\n- [texture tinting properties](https://www.sublimetext.com/docs/themes.html#texture-tinting-properties)",
+            "A row in `auto_complete`.\n\n### Attributes\n\n- `selected` - When the user has highlighted a completion.",
+            "A container around the `auto_complete_label`.\n\n### Properties\n\n- `content_margin` - A [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) that is added around the `auto_complete_label`.",
+            "Text in a `table_row`.\n\n### Properties\n\n- [filter label properties](https://www.sublimetext.com/docs/themes.html#filter-label-properties)\n- `fg_blend` - A boolean controlling if the `fg`, `match_fg`, `selected_fg`, and `selected_match_fg` values should be blended onto the foreground color from the color scheme of the current view.",
+            "The \"annotation\" hint displayed at the right-hand side of a `table_row`.\n\n### Properties\n\n- [font properties](https://www.sublimetext.com/docs/themes.html#font-properties) - *The `rem` root font size is based on the font size of the editor control the auto complete window is being shown for.*\n- `fg_blend` - A boolean controlling if the `color` value should be blended onto the foreground color from the color scheme of the current view.",
+            "A detail pane displayed below the list of auto complete items, containing the `auto_complete_info` spacer, with `auto_complete_kind_name_label` and `auto_complete_details` inside.\n\n### Properties\n\n- `content_margin` - A [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) that is added around the child controls.",
+            "Provides spacing between `auto_complete_kind_name_label` and `auto_complete_details`.\n\n### Properties\n\n- `spacing` - An integer number of pixels between each contained control.",
+            "A label used to display the name of the auto complete kind.\n\n### Properties\n\n- [font properties](https://www.sublimetext.com/docs/themes.html#font-properties) - *The `rem` root font size is based on the font size of the editor control the auto complete window is being shown for.*\n- [styled label properties](https://www.sublimetext.com/docs/themes.html#styled-label-properties)",
+            "A single-line HTML control used to display the details of the auto complete item.\n\n### Properties\n\n- `font.face` - The name of the font face.\n- `font.size` - The [font size](https://www.sublimetext.com/docs/themes.html#font-sizes) - the `rem` root font size is based on the font size of the editor control the auto complete window is being shown for.\n- `color` - A [color value](https://www.sublimetext.com/docs/themes.html#colors) to use for the text.\n- `link_color` - A [color value](https://www.sublimetext.com/docs/themes.html#colors) to use for links.\n- `monospace_color` - A [color value](https://www.sublimetext.com/docs/themes.html#colors) to use for monospace text.\n- `monospace_background_color` - A [color value](https://www.sublimetext.com/docs/themes.html#colors) to use for the background of monospace text.",
+            "",
+            "The container for the Find and Incremental Find panels.\n\n### Properties\n\n- `content_margin` - The [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) around the panel contents.",
+            "The container for the Replace panel.\n\n### Properties\n\n- `content_margin` - The [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) around the panel contents.",
+            "The container for the Find in Files panel.\n\n### Properties\n\n- `content_margin` - The [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) around the panel contents.",
+            "The container for the input panel, which is available via the API and used for things like file renaming.\n\n### Properties\n\n- `content_margin` - The [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) around the panel contents.",
+            "The container for the Console.\n\n### Properties\n\n- `content_margin` - The [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) around the panel contents.",
+            "The container for the output panel, which is available via the API and used for build results.\n\n### Properties\n\n- `content_margin` - The [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) around the panel contents.",
+            "The container for the input in the Switch Project window.\n\n### Properties\n\n- `content_margin` - The [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) around the panel contents.",
+            "The layout grid used to position inputs on the various panels.\n\n### Properties\n\n- `inside_spacing` - An integer padding to place between each cell of the grid.\n- `outside_vspacing` - An integer padding to place above and below the grid.\n- `outside_hspacing` - An integer padding to place to the left and right of the grid.",
+            "The button to close the open panel.\n\n### Properties\n\n- `content_margin` - For buttons, the [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) specifies the dimensions.",
+            "\n\n### Attributes\n\n- `panel_visible` - When a panel is displayed above the status bar.\n\n### Properties\n\n- `content_margin` - The [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) around the `sidebar_button_control`, `status_container` and `status_button`s.",
+            "The sidebar/panel switcher button on the left side of the status bar.\n\n### Properties\n\n- `content_margin` - For buttons, the [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) specifies the dimensions.",
+            "The area that contains the current status message.\n\n### Properties\n\n- `content_margin` - The [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) around the status message.",
+            "The status buttons that display, and allow changing, the indentation, syntax, encoding and line endings.\n\n### Properties\n\n- `content_margin` - For buttons, the [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) specifies the dimensions.\n- `min_size` - An array of two integers specifying the minimum width and height of a button, in DIPs.",
+            "The container holding the `vcs_branch_icon`, `label_control` with the current branch name, and `vcs_changes_annotation` control.\n\n### Properties\n\n- `content_margin` - The [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) around the contained controls.\n- `spacing` - An integer number of pixels between each contained control.",
+            "An icon shown to the left of the current branch name.\n\n### Properties\n\n- `content_margin` - For icons, the [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) specifies the dimensions.",
+            "Displays the number of files that have been added, modified or deleted.\n\n### Properties\n\n- [font properties](https://www.sublimetext.com/docs/themes.html#font-properties)\n- [styled label properties](https://www.sublimetext.com/docs/themes.html#styled-label-properties)",
+            "The Indexer Status and Update windows both use this class for the window background.",
+            "The progress bar container. The progress bar is displayed in the Update window used for updates on Mac and Windows.",
+            "The bar representing the progress completed so far.\n\n### Properties\n\n- `content_margin` - The [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) specifies the height of the bar.",
+            "The scroll area contains the element being scrolled, along with the bar, track and puck.\n\n### Attributes\n\n- `scrollable` - When the control can be scrolled vertically.\n- `hscrollable` - When the control can be scrolled horizontally.\n\n### Properties\n\n- `content_margin` - A [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) that is added around the content being scrolled.\n- `overlay` - Sets the scroll bars to be rendered on top of the content.\n- `left_shadow` - A [color value](https://www.sublimetext.com/docs/themes.html#colors) to use when drawing a shadow to indicate the area can be scrolled to the left.\n- `left_shadow_size` - An integer of the width of the shadow to draw when the area can be scrolled to the left.\n- `top_shadow` - A [color value](https://www.sublimetext.com/docs/themes.html#colors) to use when drawing a shadow to indicate the area can be scrolled to the top.\n- `top_shadow_size` - An integer of the height of the shadow to draw when the area can be scrolled to the top.\n- `right_shadow` - A [color value](https://www.sublimetext.com/docs/themes.html#colors) to use when drawing a shadow to indicate the area can be scrolled to the right.\n- `right_shadow_size` - An integer of the width of the shadow to draw when the area can be scrolled to the right.\n- `bottom_shadow` - A [color value](https://www.sublimetext.com/docs/themes.html#colors) to use when drawing a shadow to indicate the area can be scrolled to the bottom.\n- `bottom_shadow_size` - An integer of the height of the shadow to draw when the area can be scrolled to the bottom.",
+            "The scroll bar contains the scroll track. The tint is set based on the background color of the element being scrolled.\n\n### Attributes\n\n- `dark` - When the scroll area content is dark, necessitating a light scroll bar.\n- `horizontal` - When the scroll bar should be horizontal instead of vertical.\n\n### Properties\n\n- [texture tinting properties](https://www.sublimetext.com/docs/themes.html#texture-tinting-properties)\n- `content_margin` - A [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) that is added around the scroll track.",
+            "The track that the puck runs along. The tint is set based on the background color of the element being scrolled.\n\n### Attributes\n\n- `dark` - When the scroll area content is dark, necessitating a light scroll bar.\n- `horizontal` - When the scroll bar should be horizontal instead of vertical.\n\n### Properties\n\n- [texture tinting properties](https://www.sublimetext.com/docs/themes.html#texture-tinting-properties)",
+            "The dead space in the bottom right of a `scroll_area_control` when both the vertical and horizontal scroll bars are being shown.\n\n### Attributes\n\n- `dark` - When the scroll area content is dark, necessitating a light scroll bar.\n\n### Properties\n\n- [texture tinting properties](https://www.sublimetext.com/docs/themes.html#texture-tinting-properties)",
+            "The scroll puck, or handle. The tint is set based on the background color of the element being scrolled.\n\n### Attributes\n\n- `dark` - When the scroll area content is dark, necessitating a light scroll bar.\n- `horizontal` - When the scroll bar should be horizontal instead of vertical.\n\n### Properties\n\n- [texture tinting properties](https://www.sublimetext.com/docs/themes.html#texture-tinting-properties)",
+            "The text input used by the Quick Panel, Find, Replace, Find in Files and Input panels.\n\n### Properties\n\n- `content_margin` - The [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) around the text.\n- `color_scheme_tint` - A [color value](https://www.sublimetext.com/docs/themes.html#colors) to use to tint the background of the color scheme.\n- `color_scheme_tint_2` - A [color value](https://www.sublimetext.com/docs/themes.html#colors) to use to add a secondary tint to the background of the color scheme.",
+            "The button to close the open panel.\n\n### Properties\n\n- `content_margin` - For buttons, the [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) specifies the dimensions.",
+            "Text buttons.\n\n### Attributes\n\n- `pressed` - Set when a button is pressed down.\n\n### Properties\n\n- `min_size` - An array of two integers specifying the minimum width and height of a button, in DIPs.",
+            "A grid controlling the spacing of related icon buttons.\n\n### Properties\n\n- *no layer support*\n- `spacing` - An integer number of pixels between each button in the group.",
+            "Small icon-based buttons in the Find, Find in Files, and Replace panels.\n\n### Attributes\n\n- `selected` - When an icon button is toggled on.\n- `left` - When the button is the left-most button in a group.\n- `right` - When the button is the right-most button in a group.",
+            "The button to enable regex mode in the Find, Find in Files and Replace panels.\n\n### Properties\n\n- `content_margin` - For icons, the [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) specifies the dimensions.",
+            "The button to enable case-sensitive mode in the Find, Find in Files and Replace panels.\n\n### Properties\n\n- `content_margin` - For icons, the [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) specifies the dimensions.",
+            "The button to enable whole-word mode in the Find, Find in Files and Replace panels.\n\n### Properties\n\n- `content_margin` - For icons, the [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) specifies the dimensions.",
+            "The button to enable search wrapping when using the Find and Replace panels.\n\n### Properties\n\n- `content_margin` - For icons, the [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) specifies the dimensions.",
+            "The button to only search in the selection when using the Find and Replace panels.\n\n### Properties\n\n- `content_margin` - For icons, the [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) specifies the dimensions.",
+            "The button to enable highlighting all matches in the Find and Replace panels.\n\n### Properties\n\n- `content_margin` - For icons, the [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) specifies the dimensions.",
+            "The button to enable preserve-case mode when using the Replace panel.\n\n### Properties\n\n- `content_margin` - For icons, the [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) specifies the dimensions.",
+            "The button to show context around matches when using the Find in Files panel.\n\n### Properties\n\n- `content_margin` - For icons, the [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) specifies the dimensions.",
+            "The button to display results in a buffer, instead of an output panel, when using the Find in Files panel.\n\n### Properties\n\n- `content_margin` - For icons, the [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) specifies the dimensions.",
+            "The button to toggle using `.gitignore` to filter in the Find in Files panel.\n\n### Properties\n\n- `content_margin` - For icons, the [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) specifies the dimensions.",
+            "Labels are shown in the Find, Replace, Find in Files and Input panels. Additionally, labels are used in the Update window, on textual buttons and for the text in the `status_container`.\n\n*Targeting specific labels can be accomplished by using the `\"parents\"` key.*\n\n### Properties\n\n- [font properties](https://www.sublimetext.com/docs/themes.html#font-properties)",
+            "The title label is used in the About window.\n\n### Properties\n\n- [font properties](https://www.sublimetext.com/docs/themes.html#font-properties)",
+            "Tool tips shown when hovering over tabs and buttons.\n\n### Properties\n\n- `content_margin` - The [margin](https://www.sublimetext.com/docs/themes.html#padding-margins) around the tool tip text.",
+            "Text shown in a tool tip.\n\n### Properties\n\n- [font properties](https://www.sublimetext.com/docs/themes.html#font-properties)",
+            "[*undocumented*](https://github.com/sublimehq/sublime_text/issues/5497)",
+            "*undocumented*",
+            "*undocumented*",
+            "*undocumented*"
+          ]
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "markdownDescription": "Each rule object contains a `\"class\"` key used to match to an [element](https://www.sublimetext.com/docs/themes.html#elements)."
+    },
+    "attributes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "markdownDescription": "`\"attributes\"` are set by Sublime Text, and indicate the state of user interaction, or other information about the nature of an element. The value is an array of strings. Examples include `\"hover\"`, `\"pressed\"` and `\"dirty\"`."
+    },
+    "float": {
+      "anyOf": [
+        {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        {
+          "type": "object",
+          "properties": {
+            "target": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "markdownDescription": "A float value from `0.0` to `1.0` that controls the destination value.\n\nExample: `1.0`"
+            },
+            "speed": {
+              "type": "number",
+              "minimum": 1,
+              "markdownDescription": "A float value of `1.0` or greater that controls the relative length of time the animation takes.\n\nExample: `1.5`"
+            },
+            "interpolation": {
+              "enum": ["linear", "smoothstep"],
+              "markdownDescription": "An optional string that allow specifying the use of *smoothstep* function instead of the default *linear* function.\n\nDefault: `\"linear\"`\n\nExample: `\"smoothstep\"`"
+            }
+          },
+          "required": ["target", "speed"],
+          "additionalProperties": false
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "margin": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "color": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            }
+          ],
+          "items": false
+        },
+        {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          ],
+          "items": false
+        },
+        {
+          "type": "array",
+          "prefixItems": [
+            {
+              "const": "hsl"
+            },
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            }
+          ],
+          "items": false
+        },
+        {
+          "type": "array",
+          "prefixItems": [
+            {
+              "const": "hsl"
+            },
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          ],
+          "items": false
+        },
+        {
+          "type": "array",
+          "prefixItems": [
+            {
+              "enum": ["foreground", "background", "accent"]
+            },
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          ],
+          "items": false
+        },
+        {
+          "type": "array",
+          "prefixItems": [
+            {
+              "enum": ["foreground", "background", "accent"]
+            },
+            {
+              "const": "grayscale"
+            },
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            }
+          ],
+          "items": false
+        },
+        {
+          "type": "array",
+          "prefixItems": [
+            {
+              "enum": ["foreground", "background", "accent"]
+            },
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          ],
+          "items": false
+        },
+        {
+          "type": "array",
+          "prefixItems": [
+            {
+              "enum": ["foreground", "background", "accent"]
+            },
+            {
+              "const": "hsl"
+            },
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          ],
+          "items": false
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  }
 }
