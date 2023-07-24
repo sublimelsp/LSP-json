@@ -12,7 +12,7 @@
   },
   "main": "./out/node/jsonServerMain",
   "dependencies": {
-    "@vscode/l10n": "^0.0.14",
+    "@vscode/l10n": "^0.0.16",
     "jsonc-parser": "^3.2.0",
     "request-light": "^0.7.0",
     "vscode-json-languageservice": "^5.3.5",
