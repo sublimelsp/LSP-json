@@ -262,6 +262,12 @@
           ],
           "default": "dotted"
         },
+        "ruler_width": {
+          "markdownDescription": "Controls how wide ruler lines are drawn. Accepts fractional values.",
+          "type": "number",
+          "default": 1.0,
+          "minimum": 0
+        },
         "spell_check": {
           "markdownDescription": "Set to true to turn spell checking on by default.",
           "type": "boolean",
@@ -944,6 +950,11 @@
           "markdownDescription": "The number of context lines to show for each result.",
           "type": "integer",
           "default": 2
+        },
+        "find_in_files_context_characters": {
+          "markdownDescription": "The number of characters within the line surrounding each result to display beyond which text is omitted. A value of 0 will remove any limit.",
+          "type": "integer",
+          "default": 300
         },
         "find_in_files_suppress_errors": {
           "markdownDescription": "Error messages from failing to open and search files will be suppressed from results.",
