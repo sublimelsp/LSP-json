@@ -11,6 +11,7 @@ const validation_1 = require("./utils/validation");
 const vscode_json_languageservice_1 = require("vscode-json-languageservice");
 const languageModelCache_1 = require("./languageModelCache");
 const vscode_uri_1 = require("vscode-uri");
+const l10n = require("@vscode/l10n");
 var SchemaAssociationNotification;
 (function (SchemaAssociationNotification) {
     SchemaAssociationNotification.type = new vscode_languageserver_1.NotificationType('json/schemaAssociations');
@@ -124,7 +125,7 @@ function startServer(connection, runtime) {
         const capabilities = {
             textDocumentSync: vscode_languageserver_1.TextDocumentSyncKind.Incremental,
             completionProvider: clientSnippetSupport ? {
-                resolveProvider: false,
+                resolveProvider: false, // turn off resolving as the current language service doesn't do anything on resolve. Also fixes #91747
                 triggerCharacters: ['"', ':']
             } : undefined,
             hoverProvider: true,
@@ -139,7 +140,8 @@ function startServer(connection, runtime) {
                 documentSelector: null,
                 interFileDependencies: false,
                 workspaceDiagnostics: false
-            }
+            },
+            codeActionProvider: true
         };
         return { capabilities };
     });
@@ -329,6 +331,20 @@ function startServer(connection, runtime) {
             }
             return [];
         }, [], `Error while computing document symbols for ${documentSymbolParams.textDocument.uri}`, token);
+    });
+    connection.onCodeAction((codeActionParams, token) => {
+        return (0, runner_1.runSafeAsync)(runtime, async () => {
+            const document = documents.get(codeActionParams.textDocument.uri);
+            if (document) {
+                const sortCodeAction = vscode_languageserver_1.CodeAction.create('Sort JSON', vscode_languageserver_1.CodeActionKind.Source.concat('.sort', '.json'));
+                sortCodeAction.command = {
+                    command: 'json.sort',
+                    title: l10n.t('Sort JSON')
+                };
+                return [sortCodeAction];
+            }
+            return [];
+        }, [], `Error while computing code actions for ${codeActionParams.textDocument.uri}`, token);
     });
     function onFormat(textDocument, range, options) {
         options.keepLines = keepLinesEnabled;
