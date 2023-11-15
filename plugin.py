@@ -1,7 +1,7 @@
 from .schema_store import StoreListener, SchemaStore
 from LSP.plugin import DottedDict
 from LSP.plugin import Notification
-from LSP.plugin.core.typing import Any, Callable, cast, Dict, List, Optional, Tuple
+from LSP.plugin.core.typing import Any, Callable, cast, Dict, List, Mapping, Optional, Tuple
 from lsp_utils import ApiWrapperInterface
 from lsp_utils import request_handler
 from lsp_utils import NpmClientHandler
@@ -71,6 +71,17 @@ class LspJSONPlugin(NpmClientHandler, StoreListener):
             text_document = params['textDocument']
             if any((pattern.search(text_document['uri']) for pattern in self._jsonc_patterns)):
                 text_document['languageId'] = 'jsonc'
+
+    def on_pre_server_command(self, command: Mapping[str, Any], done_callback: Callable[[], None]) -> bool:
+        if command['command'] == 'json.sort':
+            session = self.weaksession()
+            if session:
+                view = session.window.active_view()
+                if view:
+                    view.run_command('lsp_json_sort_document')
+            done_callback()
+            return True
+        return False
 
     # --- StoreListener ------------------------------------------------------------------------------------------------
 
