@@ -1,17 +1,24 @@
 #!/usr/bin/env python3
 
+from json import dumps
+from typing import TypedDict, List, NotRequired
 import os
 import re
 import requests
 
-from json import dumps
-
 DIRECTORY = os.path.dirname(__file__)
-RE_YAML = re.compile(r'\.ya?ml$')
+RE_EXCLUDED_EXT = re.compile(r'\.(?:ya?ml|toml)$')
+
+Schema = TypedDict('Schema', {
+    'name': str,
+    'url': str,
+    'description': str,
+    'fileMatch': NotRequired[List[str]]
+})
 
 
 def main():
-    schemas = requests.get('http://schemastore.org/api/json/catalog.json').json()['schemas']
+    schemas: List[Schema] = requests.get('https://schemastore.org/api/json/catalog.json').json()['schemas']
     schema_list = []
     for schema in schemas:
         file_match = schema.get('fileMatch')
@@ -19,7 +26,7 @@ def main():
         if not file_match:
             schema_list.append({'uri': url})
         if file_match:
-            file_match = list(filter(lambda pattern: not RE_YAML.search(pattern), schema['fileMatch']))
+            file_match = list(filter(lambda pattern: not RE_EXCLUDED_EXT.search(pattern), file_match))
             file_match = list(filter(lambda match: not is_ignored(match), file_match))
         if file_match:
             file_match = list(map(to_absolute_pattern, file_match))
@@ -31,7 +38,7 @@ def main():
 
 def is_ignored(file_match: str):
     ignored_schemas = [
-        "messages.json"  # fixes: https://github.com/sublimelsp/LSP-json/issues/109
+        'messages.json'  # fixes: https://github.com/sublimelsp/LSP-json/issues/109
     ]
     return file_match in ignored_schemas
 
