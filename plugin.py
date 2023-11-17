@@ -31,8 +31,8 @@ class LspJSONPlugin(NpmClientHandler, StoreListener):
     _schema_store = SchemaStore()
 
     @classmethod
-    def minimum_node_version(cls) -> Tuple[int, int, int]:
-        return (14, 0, 0)
+    def required_node_version(cls) -> str:
+        return '>=18'
 
     @classmethod
     def cleanup(cls) -> None:
