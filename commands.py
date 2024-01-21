@@ -1,13 +1,13 @@
+from LSP.plugin import apply_text_edits
 from LSP.plugin import LspTextCommand
 from LSP.plugin import Request
-from LSP.plugin.core.edit import parse_text_edit
+from LSP.plugin import uri_from_view
 from LSP.plugin.core.protocol import DocumentUri
 from LSP.plugin.core.protocol import Error
 from LSP.plugin.core.protocol import FormattingOptions
 from LSP.plugin.core.protocol import TextEdit
 from LSP.plugin.core.typing import List, TypedDict, Union
 from LSP.plugin.core.views import formatting_options
-from LSP.plugin.core.views import uri_from_view
 import sublime
 
 
@@ -36,5 +36,4 @@ class LspJsonSortDocument(LspTextCommand):
         if isinstance(response, Error):
             sublime.message_dialog(str(response))
             return
-        edits = [parse_text_edit(change) for change in response]
-        self.view.run_command('lsp_apply_document_edit', {'changes': edits})
+        apply_text_edits(self.view, response)
