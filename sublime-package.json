@@ -112,7 +112,7 @@
                         "properties": {
                           "fileMatch": {
                             "type": "array",
-                            "markdownDescription": "An array of file patterns to match against when resolving JSON files to schemas. `*` and '**' can be used as a wildcard. Exclusion patterns can also be defined and start with '!'. A file matches when there is at least one matching pattern and the last matching pattern is not an exclusion pattern.",
+                            "markdownDescription": "An array of file patterns to match against when resolving JSON files to schemas. `*` and `**` can be used as a wildcard. Exclusion patterns can also be defined and start with `!`. A file matches when there is at least one matching pattern and the last matching pattern is not an exclusion pattern.",
                             "items": {
                               "type": "string",
                               "default": "/myfile.json",
@@ -122,7 +122,7 @@
                           },
                           "uri": {
                             "type": "string",
-                            "description": "A URL or a file path to a schema. Can be a relative path (starting with './') when defined in project settings and in that case will be resolved relative to the first project folder."
+                            "description": "A URL or a file path to a schema. Can be a relative path (starting with `./`) when defined in a project settings and in that case will be resolved relative to the first project folder."
                           }
                         },
                         "required": [
