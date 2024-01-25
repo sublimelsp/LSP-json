@@ -40,6 +40,21 @@ The JSON-Language-Server implements a color provider that adds color decorators 
 
 To load manually created schemas, add those to `userSchemas` configuration in the settings file. See more information in the comments there.
 
+The custom schema entry needs to look like:
+
+```json
+{
+  "fileMatch": [
+    "/my-file.json"
+  ],
+  "uri": "./my-file-schema.json",
+}
+```
+
+The `fileMatch` is an array of file patterns to match against when resolving JSON files to schemas. `*` and `**` can be used as a wildcard. Exclusion patterns can also be defined and start with `!`. A file matches when there is at least one matching pattern and the last matching pattern is not an exclusion pattern.
+
+The `uri` is a URI or a file path to a schema. Can be a relative path (starting with `./`) when defined in a project settings and in that case will be resolved relative to the first project folder.
+
 ### Schemas contributed by Packages
 
 Sublime Text packages can provide schemas for its own settings, or contribute to global ST settings or other configuration files (for example `*.sublime-project` files).

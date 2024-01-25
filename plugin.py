@@ -1,7 +1,8 @@
 from .schema_store import StoreListener, SchemaStore
 from LSP.plugin import DottedDict
+from LSP.plugin import filename_to_uri
 from LSP.plugin import Notification
-from LSP.plugin.core.typing import Any, Callable, cast, Dict, List, Mapping, Optional, Tuple
+from LSP.plugin.core.typing import Any, Callable, cast, Dict, List, Mapping, Optional, Tuple, TypedDict
 from lsp_utils import ApiWrapperInterface
 from lsp_utils import request_handler
 from lsp_utils import NpmClientHandler
@@ -9,6 +10,12 @@ from os import path
 import re
 import sublime
 import sublime_plugin
+
+
+Schema = TypedDict('Schema', {
+    'fileMatch': List[str],
+    'uri': str,
+}, total=True)
 
 
 def plugin_loaded():
@@ -41,15 +48,30 @@ class LspJSONPlugin(NpmClientHandler, StoreListener):
 
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         self._api = None  # type: Optional[ApiWrapperInterface]
-        self._user_schemas = []  # type: List[Dict]
+        self._user_schemas = []  # type: List[Schema]
         self._jsonc_patterns = []  # type: List[re.Pattern]
         super().__init__(*args, **kwargs)
 
     def on_settings_changed(self, settings: DottedDict) -> None:
-        self._user_schemas = settings.get('userSchemas') or []
-        self._jsonc_patterns = list(map(self.create_pattern_regexp, settings.get('jsonc.patterns') or []))
+        self._user_schemas = self._resolve_file_paths(cast(List[Schema], settings.get('userSchemas')) or [])
+        self._jsonc_patterns = list(map(self._create_pattern_regexp, settings.get('jsonc.patterns') or []))
+        self._schema_store.load_schemas_async()
 
-    def create_pattern_regexp(self, pattern: str) -> 're.Pattern':
+    def _resolve_file_paths(self, schemas: List[Schema]) -> List[Schema]:
+        session = self.weaksession()
+        if not session:
+            return schemas
+        folders = session.get_workspace_folders()
+        if not folders:
+            return schemas
+        for schema in schemas:
+            # Filesystem paths are resolved relative to the first workspace folder.
+            if schema['uri'].startswith(('.', '/')):
+                absolute_path = path.normpath(path.join(folders[0].path, schema['uri']))
+                schema['uri'] = filename_to_uri(absolute_path)
+        return schemas
+
+    def _create_pattern_regexp(self, pattern: str) -> 're.Pattern':
         # This matches handling of patterns in vscode-json-languageservice.
         escaped = re.sub(r'[\-\\\{\}\+\?\|\^\$\.\,\[\]\(\)\#\s]', r'\\\g<0>', pattern)
         escaped = re.sub(r'[\*]', r'.*', escaped)
@@ -58,7 +80,6 @@ class LspJSONPlugin(NpmClientHandler, StoreListener):
     def on_ready(self, api: ApiWrapperInterface) -> None:
         self._api = api
         self._schema_store.add_listener(self)
-        self._schema_store.load_schemas_async()
 
     @request_handler('vscode/content')
     def handle_vscode_content(self, params: Tuple[str], respond: Callable[[Any], None]) -> None:
