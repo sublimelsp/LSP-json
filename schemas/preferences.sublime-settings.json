@@ -229,9 +229,8 @@
                 "type": "array",
                 "uniqueItems": true,
                 "minItems": 2,
-                "maxItems": 2,
-                "items": {
-                  "oneOf": [
+                "maxItems": 3,
+                "items": [
                     {
                       "type": "integer"
                     },
@@ -243,9 +242,11 @@
                         "Drawn as a stippled line",
                         "Drawn as a solid line"
                       ]
+                    },
+                    {
+                      "type": "number"
                     }
-                  ]
-                }
+                ]
               }
             ]
           },
