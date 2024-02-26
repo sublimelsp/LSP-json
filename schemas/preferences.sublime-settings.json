@@ -217,7 +217,7 @@
           "default": "auto"
         },
         "rulers": {
-          "markdownDescription": "Columns in which to display vertical rulers.\n\nAs of ST 4133 column and style (see `ruler_style`) can be paired.\n\ne.g.: `\"rulers\": [[80, \"solid\"], [100, \"dotted\"]]`",
+          "markdownDescription": "Columns in which to display vertical rulers. Each entry may also be a\n\nlist of the column, the ruler style and optionally the ruler width, for\n\nexample: `[[80, \"solid\", 2], 78, [90, \"dotted\"]]`",
           "type": "array",
           "uniqueItems": true,
           "items": {
