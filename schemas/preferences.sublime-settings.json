@@ -217,7 +217,7 @@
           "default": "auto"
         },
         "rulers": {
-          "markdownDescription": "Columns in which to display vertical rulers. Each entry may also be a\n\nlist of the column, the ruler style and optionally the ruler width, for\n\nexample: `[[80, \"solid\", 2], 78, [90, \"dotted\"]]`",
+          "markdownDescription": "Columns in which to display vertical rulers. Each entry may also be a list of the column, the ruler style and optionally the ruler width, for example: `[[80, \"solid\", 2], 78, [90, \"dotted\"]]`",
           "type": "array",
           "uniqueItems": true,
           "items": {
