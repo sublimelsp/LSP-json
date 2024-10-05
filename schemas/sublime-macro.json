@@ -21,7 +21,7 @@
         "markdownDescription": "The name of the command to execute."
       },
       "args": {
-        "type": "object",
+        "type": ["object", "null"],
         "markdownDescription": "Arguments to pass to the command."
       }
     }
