@@ -1179,7 +1179,7 @@
         },
         "shell_environment": {
           "markdownDescription": "Mac only. If the user's default shell should be invoked to obtain the user's customized environment variables. May be a boolean, or a string of the path the shell to invoke. Sublime Text must be restarted for this to take effect.",
-          "type": "boolean",
+          "type": ["boolean", "string"],
           "default": true
         },
         "reload_file_on_change": {
