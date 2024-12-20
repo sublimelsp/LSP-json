@@ -38,7 +38,7 @@
     "fileMatch": [
       "/.aiproj.json"
     ],
-    "uri": "https://json.schemastore.org/aiproj-1.3.json"
+    "uri": "https://json.schemastore.org/aiproj-1.4.json"
   },
   {
     "fileMatch": [
@@ -207,6 +207,13 @@
   },
   {
     "fileMatch": [
+      "/biome.json",
+      "/biome.jsonc"
+    ],
+    "uri": "https://biomejs.dev/schemas/latest/schema.json"
+  },
+  {
+    "fileMatch": [
       "/cv.json",
       "/*.cv.json"
     ],
@@ -218,6 +225,13 @@
       "/*.codify.json"
     ],
     "uri": "https://raw.githubusercontent.com/codifyCLI/codify-schemas/main/src/schemastore/codify-schema.json"
+  },
+  {
+    "fileMatch": [
+      "/cloudcannon.config.json",
+      "/*.cloudcannon.config.json"
+    ],
+    "uri": "https://github.com/cloudcannon/configuration-types/releases/latest/download/cloudcannon-config.schema.json"
   },
   {
     "fileMatch": [
@@ -408,6 +422,13 @@
       "/cache-warmup.json"
     ],
     "uri": "https://raw.githubusercontent.com/eliashaeussler/cache-warmup/main/res/cache-warmup-config.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/cannonfile.json",
+      "/*.cannonfile.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/usecannon/cannon/main/packages/lsp/src/schema.json"
   },
   {
     "uri": "https://carafe.fm/schema/draft-02/bundle.schema.json"
@@ -915,13 +936,20 @@
     "fileMatch": [
       "/app.json"
     ],
-    "uri": "https://json.schemastore.org/expo-46.0.0.json"
+    "uri": "https://json.schemastore.org/expo-52.0.0.json"
   },
   {
     "fileMatch": [
       "/eas.json"
     ],
     "uri": "https://raw.githubusercontent.com/expo/eas-cli/main/packages/eas-json/schema/eas.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/*.easyvcr",
+      "/**/cassettes/*.json"
+    ],
+    "uri": "https://json.schemastore.org/easyvcr-net.json"
   },
   {
     "fileMatch": [
@@ -1248,7 +1276,7 @@
       "/jsonCustom.json",
       "/jsonTab.json"
     ],
-    "uri": "https://raw.githubusercontent.com/ioBroker/adapter-react-v5/main/schemas/jsonConfig.json"
+    "uri": "https://raw.githubusercontent.com/ioBroker/ioBroker.admin/master/packages/jsonConfig/schemas/jsonConfig.json"
   },
   {
     "fileMatch": [
@@ -1471,6 +1499,12 @@
       "/*.lsdl.json"
     ],
     "uri": "https://json.schemastore.org/lsdlschema.json"
+  },
+  {
+    "fileMatch": [
+      "/.luaurc"
+    ],
+    "uri": "https://json.schemastore.org/luaurc.json"
   },
   {
     "fileMatch": [
@@ -1726,6 +1760,9 @@
     "uri": "https://json.schemastore.org/nuget-project.json"
   },
   {
+    "uri": "https://json.schemastore.org/nuejs-site.json"
+  },
+  {
     "fileMatch": [
       "/nswag.json"
     ],
@@ -1749,6 +1786,12 @@
       "/ocelot.json"
     ],
     "uri": "https://json.schemastore.org/ocelot.json"
+  },
+  {
+    "fileMatch": [
+      "/okteto.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/okteto/okteto/refs/heads/master/schema.json"
   },
   {
     "fileMatch": [
@@ -1870,6 +1913,9 @@
       "/plagiarize-me.json"
     ],
     "uri": "https://json.schemastore.org/plagiarize-me.json"
+  },
+  {
+    "uri": "https://raw.githubusercontent.com/nwithan8/plex-prerolls/main/.schema/config.schema.json"
   },
   {
     "fileMatch": [
@@ -2585,7 +2631,7 @@
     "fileMatch": [
       "/*.vtesttree.json"
     ],
-    "uri": "https://json.schemastore.org/vtesttree-schema.json"
+    "uri": "https://json.schemastore.org/vtesttree-schema-v2.3.0.json"
   },
   {
     "fileMatch": [
@@ -2651,6 +2697,13 @@
       "/*.ckan"
     ],
     "uri": "https://raw.githubusercontent.com/KSP-CKAN/CKAN/master/CKAN.schema"
+  },
+  {
+    "fileMatch": [
+      "/*.netkan",
+      "/*.frozen"
+    ],
+    "uri": "https://raw.githubusercontent.com/KSP-CKAN/CKAN/master/NetKAN.schema"
   },
   {
     "uri": "https://json-schema.org/draft-04/schema"
@@ -2760,6 +2813,9 @@
       "/.httpmock.json"
     ],
     "uri": "https://json.schemastore.org/httpmockrc.json"
+  },
+  {
+    "uri": "https://nitro.margelo.com/nitro.schema.json"
   },
   {
     "fileMatch": [
@@ -3311,5 +3367,29 @@
       "/ccmod.json"
     ],
     "uri": "https://raw.githubusercontent.com/CCDirectLink/CCModDB/refs/heads/master/ccmod-json-schema.json"
+  },
+  {
+    "fileMatch": [
+      "/*.bitmovin.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/bitmovin/bitmovin-api-sdk-examples/main/bitmovin-encoding-template.json"
+  },
+  {
+    "fileMatch": [
+      "/dtool-dataset.json"
+    ],
+    "uri": "https://json.schemastore.org/dtool-dataset-metadata-1.0.json"
+  },
+  {
+    "fileMatch": [
+      "/**/environments/cha-template.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/gerardorodriguezdev/chamaleon/refs/heads/master/schemas/template-schema.json"
+  },
+  {
+    "fileMatch": [
+      "/**/environments/*-cha.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/gerardorodriguezdev/chamaleon/refs/heads/master/schemas/environment-schema.json"
   }
 ]
