@@ -45,7 +45,7 @@
 			"/.ember-cli",
 			"/.vscode/*.json",
 			"/babel.config.json",
-			"bun.lock",
+			"/bun.lock",
 		],
 		"userSchemas": [
 			// {
