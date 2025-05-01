@@ -1102,6 +1102,11 @@
           "type": "boolean",
           "default": true
         },
+        "sidebar_on_right": {
+          "markdownDescription": "Move the sidebar on the right side.",
+          "type": "boolean",
+          "default": false
+        },
         "show_git_status_in_status_bar": {
           "markdownDescription": "Display the git status in the status bar, requires the `show_git_status` setting to be enabled.",
           "type": "boolean",
@@ -1192,6 +1197,11 @@
           "type": "boolean",
           "default": false
         },
+        "reload_file_in_background": {
+          "markdownDescription": "Whether to reload files when Sublime Text is not in focus.",
+          "type": "boolean",
+          "default": false
+        },
         "close_deleted_files": {
           "markdownDescription": "When reopening Sublime Text close saved files that have been deleted from the filesystem (unsaved files will not be closed). If this setting is `false` no files will be closed, instead they will be restored as empty files.\nThis is useful when working from an unstable networked file system where tabs would be lost if the connection wasn't active.",
           "type": "boolean",
@@ -1219,6 +1229,11 @@
         },
         "close_windows_when_empty": {
           "markdownDescription": "Set to true to close windows as soon as the last file is closed, unless there's a folder open within the window. On Mac, this value is overridden in the platform specific settings, so you'll need to place this line in your user settings to override it. Set to true on Mac.",
+          "type": "boolean",
+          "default": false
+        },
+        "set_unsaved_view_name_for_syntax": {
+          "markdownDescription": "Enables the `set_unsaved_view_name` command. Default's to `false`, except it is enabled in syntax-specific settings for plain text, markdown and similar.",
           "type": "boolean",
           "default": false
         },
