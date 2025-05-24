@@ -26,6 +26,11 @@
           "pattern": "^.+\\.((sublime|hidden)-color-scheme|tmTheme)$",
           "default": "Mariana.sublime-color-scheme"
         },
+        "disable_plugin_host_3.3": {
+          "markdownDescription": "If enabled, causes all plugins to run under 3.8.",
+          "type": "boolean",
+          "default": false
+        },
         "font_face": {
           "markdownDescription": "Font face of the text area.\n`font_face` is overridden in the platform specific settings file, for example, \"Preferences (Linux).sublime-settings\".\n Because of this, setting it here will have no effect: you must set it in your User File Preferences.",
           "type": "string",
@@ -33,6 +38,11 @@
         },
         "font_size": {
           "markdownDescription": "Point size of the font used in the text area.\n`font_size` is overridden in the platform specific settings file, for example, \"Preferences (Linux).sublime-settings\".\n Because of this, setting it here will have no effect: you must set it in your User File Preferences.",
+          "type": "number",
+          "default": 10
+        },
+        "default_font_size": {
+          "markdownDescription": "The font size set when using \"Reset Size\"",
           "type": "number",
           "default": 10
         },
