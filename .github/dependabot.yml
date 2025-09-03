@@ -1,9 +1,0 @@
-version: 2
-updates:
-  - package-ecosystem: "npm"
-    directory: "/language-server"
-    allow:
-      - dependency-type: production
-    schedule:
-      interval: "daily"
-    versioning-strategy: increase
