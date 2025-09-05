@@ -3,15 +3,48 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || (function () {
+    var ownKeys = function(o) {
+        ownKeys = Object.getOwnPropertyNames || function (o) {
+            var ar = [];
+            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
+            return ar;
+        };
+        return ownKeys(o);
+    };
+    return function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
+        __setModuleDefault(result, mod);
+        return result;
+    };
+})();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.startServer = void 0;
+exports.startServer = startServer;
 const vscode_languageserver_1 = require("vscode-languageserver");
 const runner_1 = require("./utils/runner");
 const validation_1 = require("./utils/validation");
 const vscode_json_languageservice_1 = require("vscode-json-languageservice");
 const languageModelCache_1 = require("./languageModelCache");
 const vscode_uri_1 = require("vscode-uri");
-const l10n = require("@vscode/l10n");
+const l10n = __importStar(require("@vscode/l10n"));
 var SchemaAssociationNotification;
 (function (SchemaAssociationNotification) {
     SchemaAssociationNotification.type = new vscode_languageserver_1.NotificationType('json/schemaAssociations');
@@ -32,6 +65,10 @@ var LanguageStatusRequest;
 (function (LanguageStatusRequest) {
     LanguageStatusRequest.type = new vscode_languageserver_1.RequestType('json/languageStatus');
 })(LanguageStatusRequest || (LanguageStatusRequest = {}));
+var ValidateContentRequest;
+(function (ValidateContentRequest) {
+    ValidateContentRequest.type = new vscode_languageserver_1.RequestType('json/validateContent');
+})(ValidateContentRequest || (ValidateContentRequest = {}));
 var DocumentSortingRequest;
 (function (DocumentSortingRequest) {
     DocumentSortingRequest.type = new vscode_languageserver_1.RequestType('json/sort');
@@ -42,6 +79,7 @@ const workspaceContext = {
         return vscode_uri_1.Utils.resolvePath(vscode_uri_1.URI.parse(base), relativePath).toString();
     }
 };
+const sortCodeActionKind = vscode_languageserver_1.CodeActionKind.Source.concat('.sort', '.json');
 function startServer(connection, runtime) {
     function getSchemaRequestService(handledSchemas = ['https', 'http', 'file']) {
         const builtInHandlers = {};
@@ -141,7 +179,9 @@ function startServer(connection, runtime) {
                 interFileDependencies: false,
                 workspaceDiagnostics: false
             },
-            codeActionProvider: true
+            codeActionProvider: {
+                codeActionKinds: [sortCodeActionKind]
+            }
         };
         return { capabilities };
     });
@@ -213,6 +253,12 @@ function startServer(connection, runtime) {
         }
         return [];
     });
+    connection.onRequest(ValidateContentRequest.type, async ({ schemaUri, content }) => {
+        const docURI = 'vscode://schemas/temp/' + new Date().getTime();
+        const document = vscode_json_languageservice_1.TextDocument.create(docURI, 'json', 1, content);
+        updateConfiguration([{ uri: schemaUri, fileMatch: [docURI] }]);
+        return await validateTextDocument(document);
+    });
     connection.onRequest(LanguageStatusRequest.type, async (uri) => {
         const document = documents.get(uri);
         if (document) {
@@ -232,7 +278,7 @@ function startServer(connection, runtime) {
         }
         return [];
     });
-    function updateConfiguration() {
+    function updateConfiguration(extraSchemas) {
         const languageSettings = {
             validate: validateEnabled,
             allowComments: true,
@@ -263,6 +309,9 @@ function startServer(connection, runtime) {
                     languageSettings.schemas.push({ uri, fileMatch: schema.fileMatch, schema: schema.schema, folderUri: schema.folderUri });
                 }
             });
+        }
+        if (extraSchemas) {
+            languageSettings.schemas.push(...extraSchemas);
         }
         languageService.configure(languageSettings);
         diagnosticsSupport?.requestRefresh();
@@ -336,7 +385,7 @@ function startServer(connection, runtime) {
         return (0, runner_1.runSafeAsync)(runtime, async () => {
             const document = documents.get(codeActionParams.textDocument.uri);
             if (document) {
-                const sortCodeAction = vscode_languageserver_1.CodeAction.create('Sort JSON', vscode_languageserver_1.CodeActionKind.Source.concat('.sort', '.json'));
+                const sortCodeAction = vscode_languageserver_1.CodeAction.create('Sort JSON', sortCodeActionKind);
                 sortCodeAction.command = {
                     command: 'json.sort',
                     title: l10n.t('Sort JSON')
@@ -419,7 +468,6 @@ function startServer(connection, runtime) {
     // Listen on the connection
     connection.listen();
 }
-exports.startServer = startServer;
 function getFullRange(document) {
     return vscode_json_languageservice_1.Range.create(vscode_json_languageservice_1.Position.create(0, 0), document.positionAt(document.getText().length));
 }

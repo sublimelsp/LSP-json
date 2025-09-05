@@ -4,7 +4,8 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.registerDiagnosticsPullSupport = exports.registerDiagnosticsPushSupport = void 0;
+exports.registerDiagnosticsPushSupport = registerDiagnosticsPushSupport;
+exports.registerDiagnosticsPullSupport = registerDiagnosticsPullSupport;
 const vscode_languageserver_1 = require("vscode-languageserver");
 const runner_1 = require("./runner");
 function registerDiagnosticsPushSupport(documents, connection, runtime, validate) {
@@ -60,7 +61,6 @@ function registerDiagnosticsPushSupport(documents, connection, runtime, validate
         }
     };
 }
-exports.registerDiagnosticsPushSupport = registerDiagnosticsPushSupport;
 function registerDiagnosticsPullSupport(documents, connection, runtime, validate) {
     function newDocumentDiagnosticReport(diagnostics) {
         return {
@@ -87,5 +87,4 @@ function registerDiagnosticsPullSupport(documents, connection, runtime, validate
         }
     };
 }
-exports.registerDiagnosticsPullSupport = registerDiagnosticsPullSupport;
 //# sourceMappingURL=validation.js.map
