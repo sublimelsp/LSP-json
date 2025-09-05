@@ -4,7 +4,8 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.convertSimple2RegExpPattern = exports.endsWith = void 0;
+exports.endsWith = endsWith;
+exports.convertSimple2RegExpPattern = convertSimple2RegExpPattern;
 /**
  * Determines if haystack ends with needle.
  */
@@ -20,9 +21,7 @@ function endsWith(haystack, needle) {
         return false;
     }
 }
-exports.endsWith = endsWith;
 function convertSimple2RegExpPattern(pattern) {
     return pattern.replace(/[\-\\\{\}\+\?\|\^\$\.\,\[\]\(\)\#\s]/g, '\\$&').replace(/[\*]/g, '.*');
 }
-exports.convertSimple2RegExpPattern = convertSimple2RegExpPattern;
 //# sourceMappingURL=strings.js.map
