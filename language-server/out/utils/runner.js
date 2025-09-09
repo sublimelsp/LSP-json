@@ -4,7 +4,9 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.runSafe = exports.runSafeAsync = exports.formatError = void 0;
+exports.formatError = formatError;
+exports.runSafeAsync = runSafeAsync;
+exports.runSafe = runSafe;
 const vscode_languageserver_1 = require("vscode-languageserver");
 function formatError(message, err) {
     if (err instanceof Error) {
@@ -19,7 +21,6 @@ function formatError(message, err) {
     }
     return message;
 }
-exports.formatError = formatError;
 function runSafeAsync(runtime, func, errorVal, errorMessage, token) {
     return new Promise((resolve) => {
         runtime.timer.setImmediate(() => {
@@ -42,7 +43,6 @@ function runSafeAsync(runtime, func, errorVal, errorMessage, token) {
         });
     });
 }
-exports.runSafeAsync = runSafeAsync;
 function runSafe(runtime, func, errorVal, errorMessage, token) {
     return new Promise((resolve) => {
         runtime.timer.setImmediate(() => {
@@ -68,7 +68,6 @@ function runSafe(runtime, func, errorVal, errorMessage, token) {
         });
     });
 }
-exports.runSafe = runSafe;
 function cancelValue() {
     console.log('cancelled');
     return new vscode_languageserver_1.ResponseError(vscode_languageserver_1.LSPErrorCodes.RequestCancelled, 'Request cancelled');

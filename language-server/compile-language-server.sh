@@ -9,8 +9,7 @@ CLONED_REPO_DIR="${REPO_DIR}/temp"
 SRC_SERVER_DIR="${CLONED_REPO_DIR}/extensions/json-language-features/server/"
 
 echo "Your node version: $(node --version || echo '<missing>')"
-echo "Your yarn version: $(yarn --version || echo '<missing>')"
-read -rp "You need at least version 16 of Node and yarn installed (npm i -g yarn). Exit the script if it doesn't match requirements. Otherwise press enter."
+read -rp "You need at least version 22 of Node. Exit the script if it doesn't match requirements. Otherwise press enter."
 
 # -------- #
 # clean up #
@@ -50,7 +49,7 @@ popd || exit
 pushd "${CLONED_REPO_DIR}" || exit
 
 echo 'Installing dependencies...'
-yarn
+npm i
 
 popd || exit
 
@@ -61,7 +60,7 @@ popd || exit
 pushd "${SRC_SERVER_DIR}" || exit
 
 echo 'Compiling server...'
-yarn compile
+npm run compile
 
 popd || exit
 
@@ -83,7 +82,7 @@ rm -rf "${CLONED_REPO_DIR}"
 pushd "${REPO_DIR}" || exit
 
 echo 'Updating the lock file...'
-npm i --production
+npm i --omit=dev --lockfile-version=2
 rm -rf node_modules
 
 popd || exit
