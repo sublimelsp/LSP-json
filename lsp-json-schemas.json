@@ -10,6 +10,12 @@
   },
   {
     "fileMatch": [
+      "/*.app.json"
+    ],
+    "uri": "https://app-protocol.org/schema/app-1.0.json"
+  },
+  {
+    "fileMatch": [
       "/grpc_api_gateway.json",
       "/*_gateway.json",
       "/*_openapi.json"
@@ -640,6 +646,12 @@
       "/.clawjectrc.json"
     ],
     "uri": "https://raw.githubusercontent.com/clawject/clawject/main/packages/core/src/config/schema.json"
+  },
+  {
+    "fileMatch": [
+      "/**/.claude/keybindings.json"
+    ],
+    "uri": "https://www.schemastore.org/claude-code-keybindings.json"
   },
   {
     "fileMatch": [
@@ -2501,6 +2513,9 @@
   },
   {
     "uri": "https://docs.renovatebot.com/renovate-global-schema.json"
+  },
+  {
+    "uri": "https://docs.renovatebot.com/renovate-inherited-schema.json"
   },
   {
     "fileMatch": [
