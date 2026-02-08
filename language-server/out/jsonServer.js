@@ -61,6 +61,10 @@ var ForceValidateRequest;
 (function (ForceValidateRequest) {
     ForceValidateRequest.type = new vscode_languageserver_1.RequestType('json/validate');
 })(ForceValidateRequest || (ForceValidateRequest = {}));
+var ForceValidateAllRequest;
+(function (ForceValidateAllRequest) {
+    ForceValidateAllRequest.type = new vscode_languageserver_1.RequestType('json/validateAll');
+})(ForceValidateAllRequest || (ForceValidateAllRequest = {}));
 var LanguageStatusRequest;
 (function (LanguageStatusRequest) {
     LanguageStatusRequest.type = new vscode_languageserver_1.RequestType('json/languageStatus');
@@ -99,8 +103,8 @@ function startServer(connection, runtime) {
             }
             return connection.sendRequest(VSCodeContentRequest.type, uri).then(responseText => {
                 return responseText;
-            }, error => {
-                return Promise.reject(error.message);
+            }, (error) => {
+                return Promise.reject(error);
             });
         };
     }
@@ -245,6 +249,9 @@ function startServer(connection, runtime) {
         }
     });
     // Retry schema validation on all open documents
+    connection.onRequest(ForceValidateAllRequest.type, async () => {
+        diagnosticsSupport?.requestRefresh();
+    });
     connection.onRequest(ForceValidateRequest.type, async (uri) => {
         const document = documents.get(uri);
         if (document) {
@@ -327,11 +334,11 @@ function startServer(connection, runtime) {
     connection.onDidChangeWatchedFiles((change) => {
         // Monitored files have changed in VSCode
         let hasChanges = false;
-        change.changes.forEach(c => {
+        for (const c of change.changes) {
             if (languageService.resetSchema(c.uri)) {
                 hasChanges = true;
             }
-        });
+        }
         if (hasChanges) {
             diagnosticsSupport?.requestRefresh();
         }
