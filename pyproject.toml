@@ -1,0 +1,7 @@
+[tool.pyright]
+pythonVersion = '3.8'
+
+[tool.ruff]
+preview = true
+line-length = 120
+target-version = 'py38'
