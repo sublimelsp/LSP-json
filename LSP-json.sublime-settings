@@ -46,7 +46,7 @@
 			"/.vscode/*.json",
 			"/babel.config.json",
 			"/bun.lock",
-			".sublime-*"
+			"*.sublime-*"
 		],
 		"userSchemas": [
 			// {
