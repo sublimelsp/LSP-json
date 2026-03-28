@@ -159,10 +159,10 @@ class SchemaStore:
                 self._register_schemas([{'fileMatch': file_patterns, 'uri': schema_uri}])
 
     @overload
-    def _parse_schema(self, resource: ResourcePath, kind: Literal['list']) -> list[SchemaEntry] | None: ...
+    def _parse_schema(self, resource: ResourcePath, _kind: Literal['list']) -> list[SchemaEntry] | None: ...
     @overload
-    def _parse_schema(self, resource: ResourcePath, kind: Literal['dict']) -> SublimePackageSchema | None: ...
-    def _parse_schema(self, resource: ResourcePath, kind: str) -> object | None:
+    def _parse_schema(self, resource: ResourcePath, _kind: Literal['dict']) -> SublimePackageSchema | None: ...
+    def _parse_schema(self, resource: ResourcePath, _kind: str) -> object | None:
         try:
             return sublime.decode_value(resource.read_text())
         except ValueError:
