@@ -6,9 +6,10 @@ from .schema_store import StoreListener
 from LSP.plugin import DottedDict
 from LSP.plugin import filename_to_uri
 from LSP.plugin import Notification
+from LSP.plugin import Promise
+from LSP.plugin import request_handler
 from lsp_utils import ApiWrapperInterface
 from lsp_utils import NpmClientHandler
-from lsp_utils import request_handler
 from pathlib import Path
 from typing import Any
 from typing import cast
@@ -83,8 +84,8 @@ class LspJSONPlugin(NpmClientHandler, StoreListener):
         self._schema_store.add_listener(self)
 
     @request_handler('vscode/content')
-    def handle_vscode_content(self, params: tuple[str], respond: Callable[[Any], None]) -> None:
-        respond(self._schema_store.get_schema_for_uri(params[0]))
+    def handle_vscode_content(self, params: tuple[str]) -> Promise[str | None]:
+        return Promise.resolve(self._schema_store.get_schema_for_uri(params[0]))
 
     @override
     def on_pre_send_notification_async(self, notification: Notification[Any]) -> None:
