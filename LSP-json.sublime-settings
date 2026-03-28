@@ -19,7 +19,7 @@
 			"triggerCharacters": true
 		}
 	},
-	"initializationOptions": {
+	"initialization_options": {
 		"customCapabilities.rangeFormatting.editLimit": 1000,
 		"handledSchemaProtocols": ["https", "http", "file"],
 		"provideFormatter": true,
