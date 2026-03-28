@@ -193,6 +193,10 @@ function startServer(connection, runtime) {
     let schemaAssociations = undefined;
     let formatterRegistrations = null;
     let validateEnabled = true;
+    let commentsSeverity = undefined;
+    let trailingCommasSeverity = undefined;
+    let schemaValidationSeverity = undefined;
+    let schemaRequestSeverity = undefined;
     let keepLinesEnabled = false;
     // The settings have changed. Is sent on server activation as well.
     connection.onDidChangeConfiguration((change) => {
@@ -200,6 +204,10 @@ function startServer(connection, runtime) {
         runtime.configureHttpRequests?.(settings?.http?.proxy, !!settings.http?.proxyStrictSSL);
         jsonConfigurationSettings = settings.json?.schemas;
         validateEnabled = !!settings.json?.validate?.enable;
+        commentsSeverity = settings.json?.validate?.comments;
+        trailingCommasSeverity = settings.json?.validate?.trailingCommas;
+        schemaValidationSeverity = settings.json?.validate?.schemaValidation;
+        schemaRequestSeverity = settings.json?.validate?.schemaRequest;
         keepLinesEnabled = settings.json?.keepLines?.enable || false;
         updateConfiguration();
         const sanitizeLimitSetting = (settingValue) => Math.trunc(Math.max(settingValue, 0));
@@ -328,7 +336,12 @@ function startServer(connection, runtime) {
             return []; // ignore empty documents
         }
         const jsonDocument = getJSONDocument(textDocument);
-        const documentSettings = textDocument.languageId === 'jsonc' ? { comments: 'ignore', trailingCommas: 'warning' } : { comments: 'error', trailingCommas: 'error' };
+        const documentSettings = {
+            comments: commentsSeverity ?? (textDocument.languageId === 'jsonc' ? 'ignore' : 'error'),
+            trailingCommas: trailingCommasSeverity ?? (textDocument.languageId === 'jsonc' ? 'warning' : 'error'),
+            schemaValidation: schemaValidationSeverity,
+            schemaRequest: schemaRequestSeverity
+        };
         return await languageService.doValidation(textDocument, jsonDocument, documentSettings);
     }
     connection.onDidChangeWatchedFiles((change) => {
