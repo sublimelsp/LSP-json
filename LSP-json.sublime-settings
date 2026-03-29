@@ -26,6 +26,16 @@
 	},
 	"settings": {
 		"json.validate.enable": true,
+		// Diagnostics severity for comments validation. When `null` then decide automatically based on whether file
+		// is using JSONC (`ignore`) or JSON (`error`) schema.
+		"json.validate.comments": null,
+		// Diagnostics severity for trailing commas validation. When `null` then decide automatically based on whether
+		// file is using JSONC (`warning`) or JSON (`error`) schema.
+		"json.validate.trailingCommas": null,
+		// Diagnostics severity for schema validation.
+		"json.validate.schemaValidation": "warning",
+		// Diagnostics severity for schema validation requests.
+		"json.validate.schemaRequest": "warning",
 		"json.format.enable": true,
 		"json.resultLimit": 5000,
 		"json.jsonFoldingLimit": 5000,

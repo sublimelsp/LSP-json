@@ -66,6 +66,44 @@
                       "default": true,
                       "description": "Enable/disable JSON validation."
                     },
+                    "json.validate.comments": {
+                      "enum": [
+                        null,
+                        "ignore",
+                        "warning",
+                        "error"
+                      ],
+                      "default": null,
+                      "markdownDescription": "Diagnostics severity for comments validation. When `null` then decide automatically based on whether file is using JSONC (`ignore`) or JSON (`error`) schema."
+                    },
+                    "json.validate.trailingCommas": {
+                      "enum": [
+                        null,
+                        "ignore",
+                        "warning",
+                        "error"
+                      ],
+                      "default": null,
+                      "markdownDescription": "Diagnostics severity for trailing commas validation. When `null` then decide automatically based on whether file is using JSONC (`warning`) or JSON (`error`) schema."
+                    },
+                    "json.validate.schemaValidation": {
+                      "enum": [
+                        "ignore",
+                        "warning",
+                        "error"
+                      ],
+                      "default": "warning",
+                      "description": "Diagnostics severity for schema validation."
+                    },
+                    "json.validate.schemaRequest": {
+                      "enum": [
+                        "ignore",
+                        "warning",
+                        "error"
+                      ],
+                      "default": "warning",
+                      "description": "Diagnostics severity for schema validation requests."
+                    },
                     "json.format.enable": {
                       "type": "boolean",
                       "default": true,
