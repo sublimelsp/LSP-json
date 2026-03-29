@@ -1,12 +1,26 @@
 [
   {
     "fileMatch": [
+      "/**/.hol/skill.json",
+      "/**/hol/skill.json",
+      "/hol-skill.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/hashgraph-online/skill-publish/main/schemas/skill.schema.json"
+  },
+  {
+    "fileMatch": [
       "/.release-hub.json",
       "/.release-hub.config.json",
       "/release-hub.json",
       "/release-hub.config.json"
     ],
     "uri": "https://raw.githubusercontent.com/teneplaysofficial/release-hub/main/schema/release-hub.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/releasekit.config.json"
+    ],
+    "uri": "https://goosewobbler.github.io/releasekit/schema.json"
   },
   {
     "fileMatch": [
@@ -59,13 +73,19 @@
     "fileMatch": [
       "/abc-inventory-module-data-*.json"
     ],
-    "uri": "https://www.schemastore.org/abc-inventory-module-data-5.1.0.json"
+    "uri": "https://www.schemastore.org/abc-inventory-module-data-5.2.0.json"
+  },
+  {
+    "fileMatch": [
+      "/abc-clinical-demand-forecast-*.json"
+    ],
+    "uri": "https://www.schemastore.org/abc-clinical-demand-forecast-1.0.0.json"
   },
   {
     "fileMatch": [
       "/abc-supply-plan-*.json"
     ],
-    "uri": "https://www.schemastore.org/abc-supply-plan-11.2.0.json"
+    "uri": "https://www.schemastore.org/abc-supply-plan-11.4.0.json"
   },
   {
     "fileMatch": [
@@ -292,6 +312,12 @@
   },
   {
     "fileMatch": [
+      "/barba-cv.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/Eurobotics-Association/barba-cv/main/schema/barba-cv.schema.json"
+  },
+  {
+    "fileMatch": [
       "/biome.json",
       "/biome.jsonc"
     ],
@@ -438,6 +464,12 @@
       "/.backportrc.json"
     ],
     "uri": "https://www.schemastore.org/backportrc.json"
+  },
+  {
+    "fileMatch": [
+      "/basedpyrightconfig.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/DetachHead/basedpyright/refs/heads/main/packages/vscode-pyright/schemas/pyrightconfig.schema.json"
   },
   {
     "fileMatch": [
@@ -987,6 +1019,9 @@
     "uri": "https://www.schemastore.org/dockerd.json"
   },
   {
+    "uri": "https://www.schemastore.org/docker-extension-metadata.json"
+  },
+  {
     "fileMatch": [
       "/docker-bake.json",
       "/docker-bake.override.json"
@@ -1005,6 +1040,12 @@
       "/docfx.json"
     ],
     "uri": "https://www.schemastore.org/docfx.json"
+  },
+  {
+    "fileMatch": [
+      "/.docs-mcp.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/speakeasy-api/docs-mcp/refs/heads/main/schemas/docs-mcp.schema.json"
   },
   {
     "fileMatch": [
@@ -1097,6 +1138,13 @@
       "/ecosystem.config.json"
     ],
     "uri": "https://www.schemastore.org/pm2-ecosystem.json"
+  },
+  {
+    "fileMatch": [
+      "/**/eca/config.json",
+      "/**/.eca/config.json"
+    ],
+    "uri": "https://eca.dev/config.json"
   },
   {
     "uri": "https://raw.githubusercontent.com/weaveworks/eksctl/main/pkg/apis/eksctl.io/v1alpha5/assets/schema.json"
@@ -1220,6 +1268,12 @@
       "/*_FiQuS.json5"
     ],
     "uri": "https://gitlab.cern.ch/steam/fiqus/-/raw/master/docs/schema.json"
+  },
+  {
+    "fileMatch": [
+      "/**/*.flatpak.json"
+    ],
+    "uri": "https://www.schemastore.org/flatpak-manifest.json"
   },
   {
     "uri": "https://www.schemastore.org/foundryvtt-base-package-manifest.json"
@@ -1617,7 +1671,7 @@
     "fileMatch": [
       "/jreleaser.json"
     ],
-    "uri": "https://www.schemastore.org/jreleaser-1.22.0.json"
+    "uri": "https://www.schemastore.org/jreleaser-1.23.0.json"
   },
   {
     "fileMatch": [
@@ -1974,6 +2028,13 @@
   },
   {
     "fileMatch": [
+      "/mockd.json",
+      "/.mockd.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/getmockd/mockd/main/schema/mockd.schema.json"
+  },
+  {
+    "fileMatch": [
       "/monoweave.config.json",
       "/monoweave.config.jsonc",
       "/monoweave.config.json5"
@@ -2258,6 +2319,9 @@
       "/pattern.json"
     ],
     "uri": "https://www.schemastore.org/pattern.json"
+  },
+  {
+    "uri": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/partial-pixi.json"
   },
   {
     "fileMatch": [
@@ -2935,6 +2999,12 @@
       "/tsup.config.json"
     ],
     "uri": "https://cdn.jsdelivr.net/npm/tsup/schema.json"
+  },
+  {
+    "fileMatch": [
+      "/twee-ts.config.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/twee-ts.config.json"
   },
   {
     "fileMatch": [
@@ -4037,7 +4107,7 @@
     "uri": "https://www.schemastore.org/evolving-resolutive-process-notation-1.0.json"
   },
   {
-    "uri": "https://www.schemastore.org/aio-wasm-graph-config-1.0.0.json"
+    "uri": "https://www.schemastore.org/aio-wasm-graph-config-1.1.0.json"
   },
   {
     "uri": "https://raw.githubusercontent.com/redhat-developer/vscode-tekton/refs/heads/main/scheme/tekton.dev/v1_Task.json"
@@ -4088,9 +4158,66 @@
     "uri": "https://raw.githubusercontent.com/warpstreamlabs/bento/refs/heads/main/resources/schemastore/bento.json"
   },
   {
+    "fileMatch": [
+      "/*.bmml"
+    ],
+    "uri": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/bmml.json"
+  },
+  {
     "uri": "https://raw.githubusercontent.com/espanso/espanso/refs/heads/dev/schemas/match.schema.json"
   },
   {
     "uri": "https://raw.githubusercontent.com/espanso/espanso/refs/heads/dev/schemas/config.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/pitcms.json",
+      "/pitcms.jsonc"
+    ],
+    "uri": "https://pitcms.net/schema/pitcms.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/bricks.json"
+    ],
+    "uri": "https://api.bluebricks.co/docs/schemas/latest/bricks.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/mail-servers-config.json",
+      "/mail-servers-config.jsonc",
+      "/mail-servers-config.json5",
+      "/*.mail-servers-config.json",
+      "/*.mail-servers-config.jsonc",
+      "/*.mail-servers-config.json5",
+      "/**/mail-servers-config.json",
+      "/**/mail-servers-config.jsonc",
+      "/**/mail-servers-config.json5"
+    ],
+    "uri": "https://www.schemastore.org/mail-servers-config.json"
+  },
+  {
+    "fileMatch": [
+      "/**/.oxfmtrc.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/oxc-project/oxc/refs/heads/main/npm/oxfmt/configuration_schema.json"
+  },
+  {
+    "fileMatch": [
+      "/**/.oxlintrc.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/oxc-project/oxc/refs/heads/main/npm/oxlint/configuration_schema.json"
+  },
+  {
+    "fileMatch": [
+      "/**/.cursor/environment.json"
+    ],
+    "uri": "https://cursor.com/schemas/environment.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/**/agentcore/agentcore.json"
+    ],
+    "uri": "https://schema.agentcore.aws.dev/v1/agentcore.json"
   }
 ]
