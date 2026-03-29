@@ -154,13 +154,13 @@
                             "items": {
                               "type": "string",
                               "default": "/myfile.json",
-                              "markdownDescription": "A file pattern that can contain '*' and '**' to match against when resolving JSON files to schemas. When beginning with '!', it defines an exclusion pattern."
+                              "markdownDescription": "A file pattern that can contain `*` and `**` to match against when resolving JSON files to schemas. When beginning with `!`, it defines an exclusion pattern."
                             },
                             "minItems": 1,
                           },
                           "uri": {
                             "type": "string",
-                            "description": "A URL or a file path to a schema. Can be a relative path (starting with `./`) when defined in a project settings and in that case will be resolved relative to the first project folder."
+                            "markdownDescription": "A URL or a file path to a schema. Can be a relative path (starting with `./`) when defined in a project settings and in that case will be resolved relative to the first project folder."
                           }
                         },
                         "required": [
