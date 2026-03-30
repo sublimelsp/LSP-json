@@ -66,6 +66,44 @@
                       "default": true,
                       "description": "Enable/disable JSON validation."
                     },
+                    "json.validate.comments": {
+                      "enum": [
+                        null,
+                        "ignore",
+                        "warning",
+                        "error"
+                      ],
+                      "default": null,
+                      "markdownDescription": "Diagnostics severity for comments validation. When `null` then decide automatically based on whether file is using JSONC (`ignore`) or JSON (`error`) schema."
+                    },
+                    "json.validate.trailingCommas": {
+                      "enum": [
+                        null,
+                        "ignore",
+                        "warning",
+                        "error"
+                      ],
+                      "default": null,
+                      "markdownDescription": "Diagnostics severity for trailing commas validation. When `null` then decide automatically based on whether file is using JSONC (`warning`) or JSON (`error`) schema."
+                    },
+                    "json.validate.schemaValidation": {
+                      "enum": [
+                        "ignore",
+                        "warning",
+                        "error"
+                      ],
+                      "default": "warning",
+                      "description": "Diagnostics severity for schema validation."
+                    },
+                    "json.validate.schemaRequest": {
+                      "enum": [
+                        "ignore",
+                        "warning",
+                        "error"
+                      ],
+                      "default": "warning",
+                      "description": "Diagnostics severity for schema validation requests."
+                    },
                     "json.format.enable": {
                       "type": "boolean",
                       "default": true,
@@ -116,13 +154,13 @@
                             "items": {
                               "type": "string",
                               "default": "/myfile.json",
-                              "markdownDescription": "A file pattern that can contain '*' and '**' to match against when resolving JSON files to schemas. When beginning with '!', it defines an exclusion pattern."
+                              "markdownDescription": "A file pattern that can contain `*` and `**` to match against when resolving JSON files to schemas. When beginning with `!`, it defines an exclusion pattern."
                             },
                             "minItems": 1,
                           },
                           "uri": {
                             "type": "string",
-                            "description": "A URL or a file path to a schema. Can be a relative path (starting with `./`) when defined in a project settings and in that case will be resolved relative to the first project folder."
+                            "markdownDescription": "A URL or a file path to a schema. Can be a relative path (starting with `./`) when defined in a project settings and in that case will be resolved relative to the first project folder."
                           }
                         },
                         "required": [
