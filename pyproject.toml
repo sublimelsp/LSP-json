@@ -2,7 +2,6 @@
 pythonVersion = '3.8'
 reportAny = "none"
 reportExplicitAny = "none"
-reportImplicitOverride = "none"
 reportIncompatibleMethodOverride = "none"
 reportMissingModuleSource = "none"
 reportUnannotatedClassAttribute = "none"
@@ -22,6 +21,38 @@ indent-style = "space"
 skip-magic-trailing-comma = false
 # Automatically detect the appropriate line ending.
 line-ending = "auto"
+
+[tool.ruff.lint]
+# Enable preview rules.
+preview = true
+# Allow fix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+select = ["ALL"]
+ignore = [
+    "ANN401",  # https://docs.astral.sh/ruff/rules/any-type/
+    "BLE001",  # https://docs.astral.sh/ruff/rules/blind-except/
+    "CPY001",  # https://docs.astral.sh/ruff/rules/missing-copyright-notice/
+    "C901",  # https://docs.astral.sh/ruff/rules/complex-structure/
+    "D100",  # https://docs.astral.sh/ruff/rules/undocumented-public-module/
+    "D101",  # https://docs.astral.sh/ruff/rules/undocumented-public-class/
+    "D102",  # https://docs.astral.sh/ruff/rules/undocumented-public-method/
+    "D103",  # https://docs.astral.sh/ruff/rules/undocumented-public-function/
+    "D104",  # https://docs.astral.sh/ruff/rules/undocumented-public-package/
+    "D107",  # https://docs.astral.sh/ruff/rules/undocumented-public-init/
+    "D203",
+    "D212",
+    "DOC201",  # https://docs.astral.sh/ruff/rules/docstring-missing-returns/
+    "DOC501",  # https://docs.astral.sh/ruff/rules/docstring-missing-exception/
+    "PLC0415",  # https://docs.astral.sh/ruff/rules/import-outside-top-level/
+    "PLR0912",  # https://docs.astral.sh/ruff/rules/too-many-branches/
+    "PLR0913",  # https://docs.astral.sh/ruff/rules/too-many-arguments/
+    "PLR0915",  # https://docs.astral.sh/ruff/rules/too-many-statements/
+    "PLR1702",  # https://docs.astral.sh/ruff/rules/too-many-nested-blocks/
+    "PLR6301",  # https://docs.astral.sh/ruff/rules/no-self-use/
+    "Q000",  # https://docs.astral.sh/ruff/rules/bad-quotes-inline-string/#bad-quotes-inline-string-q000
+    "TID252",  # https://docs.astral.sh/ruff/rules/relative-imports/
+    "TRY002",  # https://docs.astral.sh/ruff/rules/raise-vanilla-class/
+]
 
 [tool.ruff.lint.isort]
 case-sensitive = false

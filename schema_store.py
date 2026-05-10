@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from abc import ABCMeta
+from abc import ABC
 from abc import abstractmethod
 from pathlib import Path
 from sublime_lib import ResourcePath
@@ -13,6 +13,7 @@ from typing_extensions import NotRequired
 from typing_extensions import TypeAlias
 from urllib.parse import quote
 from weakref import WeakSet
+import contextlib
 import sublime
 
 PACKAGE_NAME = str(__package__)
@@ -40,7 +41,7 @@ class ContributionSettingsSchema(TypedDict):
     schema: Schema
 
 
-class StoreListener(metaclass=ABCMeta):
+class StoreListener(ABC):
 
     @abstractmethod
     def on_store_changed_async(self, schemas: list[SchemaEntry]) -> None:
@@ -52,13 +53,16 @@ class SchemaStore:
         self._listeners: WeakSet[StoreListener] = WeakSet()
         self._schema_list: list[SchemaEntry] = []
         self._schema_uri_to_content: dict[str, str] = {}
-        self._schemas_loaded: bool = False
-        self._watched_settings: list[sublime.Settings] = []
+        self._initialized: bool = False
+
+    def initialize(self) -> None:
+        if self._initialized:
+            return
+        self._initialized = True
+        self.reload_schemas()
 
     def add_listener(self, listener: StoreListener) -> None:
         self._listeners.add(listener)
-        if self._schemas_loaded:
-            sublime.set_timeout_async(lambda: listener.on_store_changed_async(self._schema_list))
 
     def get_schema_for_uri(self, uri: str) -> str | None:
         if uri in self._schema_uri_to_content:
@@ -69,24 +73,11 @@ class SchemaStore:
             if domain == 'schemas':
                 # Internal schema - 1:1 schema path to file path mapping.
                 schema_path = f'Packages/{PACKAGE_NAME}/{schema_path}.json'
-                return sublime.encode_value(sublime.decode_value(ResourcePath(schema_path).read_text()), pretty=False)
+                return sublime.encode_value(sublime.decode_value(ResourcePath(schema_path).read_text()))
         print(f'{PACKAGE_NAME}: Unknown schema URI "{uri}"')
         return None
 
-    def cleanup(self) -> None:
-        for settings in self._watched_settings:
-            settings.clear_on_change(PACKAGE_NAME)
-
-    def load_schemas_async(self) -> None:
-        if self._schemas_loaded:
-            return
-        settings = sublime.load_settings('sublime-package.json')
-        settings.add_on_change(PACKAGE_NAME, lambda: sublime.set_timeout_async(self._collect_schemas_async))
-        self._watched_settings.append(settings)
-        self._schemas_loaded = True
-        self._collect_schemas_async()
-
-    def _collect_schemas_async(self) -> None:
+    def reload_schemas(self) -> None:
         self._schema_list = []
         self._schema_uri_to_content = {}
         self._load_bundled_schemas()
@@ -95,17 +86,23 @@ class SchemaStore:
         self._load_syntax_schemas(global_preferences_schemas)
         self._on_schemas_changed()
 
+    def _on_schemas_changed(self) -> None:
+        for listener in self._listeners:
+            listener.on_store_changed_async(self._schema_list)
+
     def _load_bundled_schemas(self) -> None:
         for schema in ['lsp-json-schemas_extra.json', 'lsp-json-schemas.json']:
-            resource_path = f'Packages/{PACKAGE_NAME}/{schema}'
-            if schema_list := self._parse_schema(ResourcePath(resource_path), 'list'):
+            if schema_list := self._parse_schema(ResourcePath(f'Packages/{PACKAGE_NAME}/{schema}'), 'list'):
                 self._register_schemas(schema_list)
 
     def _load_package_schemas(self) -> list[Schema]:
         global_preferences_schemas: list[Schema] = []
         for resource in ResourcePath.glob_resources('sublime-package.json'):
-            if (schema := self._parse_schema(resource, 'dict')) and (contributions := schema.get('contributions')) and \
-                    (settings := contributions.get('settings')):
+            if (
+                (schema := self._parse_schema(resource, 'dict'))
+                and (contributions := schema.get('contributions'))
+                and (settings := contributions.get('settings'))
+            ):
                 for s in settings:
                     i = len(self._schema_uri_to_content)
                     if schema_content := s.get('schema'):
@@ -113,16 +110,16 @@ class SchemaStore:
                         self._schema_uri_to_content[uri] = sublime.encode_value(schema_content, pretty=False)
                         file_patterns = s.get('file_patterns', [])
                         self._register_schemas([{'fileMatch': file_patterns, 'uri': uri}])
-                        for pattern in file_patterns:
-                            if pattern == '/Preferences.sublime-settings':
-                                global_preferences_schemas.append(schema_content)
+                        global_preferences_schemas.extend(
+                            schema_content for pattern in file_patterns if pattern == '/Preferences.sublime-settings'
+                        )
         return global_preferences_schemas
 
     def _generate_project_settings_schemas(self, global_preferences_schemas: list[Schema]) -> None:
         """Inject schemas mapped to /Preferences.json into the "settings" object in *.sublime.project schemas."""
         for i, schema in enumerate(global_preferences_schemas):
             schema_uri = f'sublime://auto-generated/sublime-project/{i}'
-            schema_content = {
+            schema_content: dict[str, Any] = {
                 '$schema': 'http://json-schema.org/draft-07/schema#',
                 '$id': schema_uri,
                 'allowComments': True,
@@ -138,10 +135,8 @@ class SchemaStore:
     def _load_syntax_schemas(self, global_preferences_schemas: list[Schema]) -> None:
         """Discover all available syntaxes and maps their file names to schema."""
         syntaxes = []
-        try:
+        with contextlib.suppress(AttributeError):
             syntaxes = sublime.list_syntaxes()
-        except AttributeError:
-            pass
         if file_patterns := [f'/{Path(s.path).stem}.sublime-settings' for s in syntaxes]:
             self._register_schemas([{'fileMatch': file_patterns, 'uri': 'sublime://schemas/syntax.sublime-settings'}])
         if global_preferences_schemas:
@@ -174,7 +169,3 @@ class SchemaStore:
             if file_matches := schema.get('fileMatch'):
                 schema['fileMatch'] = [quote(fm, safe="/*!") for fm in file_matches]
             self._schema_list.append(schema)
-
-    def _on_schemas_changed(self) -> None:
-        for listener in self._listeners:
-            listener.on_store_changed_async(self._schema_list)
