@@ -1,90 +1,54 @@
-"use strict";
 /*---------------------------------------------------------------------------------------------
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || (function () {
-    var ownKeys = function(o) {
-        ownKeys = Object.getOwnPropertyNames || function (o) {
-            var ar = [];
-            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
-            return ar;
-        };
-        return ownKeys(o);
-    };
-    return function (mod) {
-        if (mod && mod.__esModule) return mod;
-        var result = {};
-        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
-        __setModuleDefault(result, mod);
-        return result;
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.startServer = startServer;
-const vscode_languageserver_1 = require("vscode-languageserver");
-const runner_1 = require("./utils/runner");
-const validation_1 = require("./utils/validation");
-const vscode_json_languageservice_1 = require("vscode-json-languageservice");
-const languageModelCache_1 = require("./languageModelCache");
-const vscode_uri_1 = require("vscode-uri");
-const l10n = __importStar(require("@vscode/l10n"));
+import { TextDocuments, NotificationType, RequestType, DocumentRangeFormattingRequest, TextDocumentSyncKind, TextEdit, DocumentFormattingRequest, CodeAction, CodeActionKind } from 'vscode-languageserver';
+import { runSafe, runSafeAsync } from './utils/runner.js';
+import { registerDiagnosticsPullSupport, registerDiagnosticsPushSupport } from './utils/validation.js';
+import { TextDocument, getLanguageService, ClientCapabilities, Range, Position } from 'vscode-json-languageservice';
+import { getLanguageModelCache } from './languageModelCache.js';
+import { Utils, URI } from 'vscode-uri';
+import * as l10n from '@vscode/l10n';
 var SchemaAssociationNotification;
 (function (SchemaAssociationNotification) {
-    SchemaAssociationNotification.type = new vscode_languageserver_1.NotificationType('json/schemaAssociations');
+    SchemaAssociationNotification.type = new NotificationType('json/schemaAssociations');
 })(SchemaAssociationNotification || (SchemaAssociationNotification = {}));
 var VSCodeContentRequest;
 (function (VSCodeContentRequest) {
-    VSCodeContentRequest.type = new vscode_languageserver_1.RequestType('vscode/content');
+    VSCodeContentRequest.type = new RequestType('vscode/content');
 })(VSCodeContentRequest || (VSCodeContentRequest = {}));
 var SchemaContentChangeNotification;
 (function (SchemaContentChangeNotification) {
-    SchemaContentChangeNotification.type = new vscode_languageserver_1.NotificationType('json/schemaContent');
+    SchemaContentChangeNotification.type = new NotificationType('json/schemaContent');
 })(SchemaContentChangeNotification || (SchemaContentChangeNotification = {}));
 var ForceValidateRequest;
 (function (ForceValidateRequest) {
-    ForceValidateRequest.type = new vscode_languageserver_1.RequestType('json/validate');
+    ForceValidateRequest.type = new RequestType('json/validate');
 })(ForceValidateRequest || (ForceValidateRequest = {}));
 var ForceValidateAllRequest;
 (function (ForceValidateAllRequest) {
-    ForceValidateAllRequest.type = new vscode_languageserver_1.RequestType('json/validateAll');
+    ForceValidateAllRequest.type = new RequestType('json/validateAll');
 })(ForceValidateAllRequest || (ForceValidateAllRequest = {}));
 var LanguageStatusRequest;
 (function (LanguageStatusRequest) {
-    LanguageStatusRequest.type = new vscode_languageserver_1.RequestType('json/languageStatus');
+    LanguageStatusRequest.type = new RequestType('json/languageStatus');
 })(LanguageStatusRequest || (LanguageStatusRequest = {}));
 var ValidateContentRequest;
 (function (ValidateContentRequest) {
-    ValidateContentRequest.type = new vscode_languageserver_1.RequestType('json/validateContent');
+    ValidateContentRequest.type = new RequestType('json/validateContent');
 })(ValidateContentRequest || (ValidateContentRequest = {}));
 var DocumentSortingRequest;
 (function (DocumentSortingRequest) {
-    DocumentSortingRequest.type = new vscode_languageserver_1.RequestType('json/sort');
+    DocumentSortingRequest.type = new RequestType('json/sort');
 })(DocumentSortingRequest || (DocumentSortingRequest = {}));
 const workspaceContext = {
     resolveRelativePath: (relativePath, resource) => {
         const base = resource.substring(0, resource.lastIndexOf('/') + 1);
-        return vscode_uri_1.Utils.resolvePath(vscode_uri_1.URI.parse(base), relativePath).toString();
+        return Utils.resolvePath(URI.parse(base), relativePath).toString();
     }
 };
-const sortCodeActionKind = vscode_languageserver_1.CodeActionKind.Source.concat('.sort', '.json');
-function startServer(connection, runtime) {
+const sortCodeActionKind = CodeActionKind.Source.concat('.sort', '.json');
+export function startServer(connection, runtime) {
     function getSchemaRequestService(handledSchemas = ['https', 'http', 'file']) {
         const builtInHandlers = {};
         for (const protocol of handledSchemas) {
@@ -109,13 +73,13 @@ function startServer(connection, runtime) {
         };
     }
     // create the JSON language service
-    let languageService = (0, vscode_json_languageservice_1.getLanguageService)({
+    let languageService = getLanguageService({
         workspaceContext,
         contributions: [],
-        clientCapabilities: vscode_json_languageservice_1.ClientCapabilities.LATEST
+        clientCapabilities: ClientCapabilities.LATEST
     });
     // Create a text document manager.
-    const documents = new vscode_languageserver_1.TextDocuments(vscode_json_languageservice_1.TextDocument);
+    const documents = new TextDocuments(TextDocument);
     // Make the text document manager listen on the connection
     // for open, change and close text document events
     documents.listen(connection);
@@ -135,7 +99,7 @@ function startServer(connection, runtime) {
     connection.onInitialize((params) => {
         const initializationOptions = params.initializationOptions || {};
         const handledProtocols = initializationOptions?.handledSchemaProtocols;
-        languageService = (0, vscode_json_languageservice_1.getLanguageService)({
+        languageService = getLanguageService({
             schemaRequestService: getSchemaRequestService(handledProtocols),
             workspaceContext,
             contributions: [],
@@ -159,13 +123,13 @@ function startServer(connection, runtime) {
         formatterMaxNumberOfEdits = initializationOptions.customCapabilities?.rangeFormatting?.editLimit || Number.MAX_VALUE;
         const supportsDiagnosticPull = getClientCapability('textDocument.diagnostic', undefined);
         if (supportsDiagnosticPull === undefined) {
-            diagnosticsSupport = (0, validation_1.registerDiagnosticsPushSupport)(documents, connection, runtime, validateTextDocument);
+            diagnosticsSupport = registerDiagnosticsPushSupport(documents, connection, runtime, validateTextDocument);
         }
         else {
-            diagnosticsSupport = (0, validation_1.registerDiagnosticsPullSupport)(documents, connection, runtime, validateTextDocument);
+            diagnosticsSupport = registerDiagnosticsPullSupport(documents, connection, runtime, validateTextDocument);
         }
         const capabilities = {
-            textDocumentSync: vscode_languageserver_1.TextDocumentSyncKind.Incremental,
+            textDocumentSync: TextDocumentSyncKind.Incremental,
             completionProvider: clientSnippetSupport ? {
                 resolveProvider: false, // turn off resolving as the current language service doesn't do anything on resolve. Also fixes #91747
                 triggerCharacters: ['"', ':']
@@ -223,8 +187,8 @@ function startServer(connection, runtime) {
                 if (!formatterRegistrations) {
                     const documentSelector = [{ language: 'json' }, { language: 'jsonc' }];
                     formatterRegistrations = [
-                        connection.client.register(vscode_languageserver_1.DocumentRangeFormattingRequest.type, { documentSelector }),
-                        connection.client.register(vscode_languageserver_1.DocumentFormattingRequest.type, { documentSelector })
+                        connection.client.register(DocumentRangeFormattingRequest.type, { documentSelector }),
+                        connection.client.register(DocumentFormattingRequest.type, { documentSelector })
                     ];
                 }
             }
@@ -270,7 +234,7 @@ function startServer(connection, runtime) {
     });
     connection.onRequest(ValidateContentRequest.type, async ({ schemaUri, content }) => {
         const docURI = 'vscode://schemas/temp/' + new Date().getTime();
-        const document = vscode_json_languageservice_1.TextDocument.create(docURI, 'json', 1, content);
+        const document = TextDocument.create(docURI, 'json', 1, content);
         updateConfiguration([{ uri: schemaUri, fileMatch: [docURI] }]);
         return await validateTextDocument(document);
     });
@@ -356,7 +320,7 @@ function startServer(connection, runtime) {
             diagnosticsSupport?.requestRefresh();
         }
     });
-    const jsonDocuments = (0, languageModelCache_1.getLanguageModelCache)(10, 60, document => languageService.parseJSONDocument(document));
+    const jsonDocuments = getLanguageModelCache(10, 60, document => languageService.parseJSONDocument(document));
     documents.onDidClose(e => {
         jsonDocuments.onDocumentRemoved(e.document);
     });
@@ -367,7 +331,7 @@ function startServer(connection, runtime) {
         return jsonDocuments.get(document);
     }
     connection.onCompletion((textDocumentPosition, token) => {
-        return (0, runner_1.runSafeAsync)(runtime, async () => {
+        return runSafeAsync(runtime, async () => {
             const document = documents.get(textDocumentPosition.textDocument.uri);
             if (document) {
                 const jsonDocument = getJSONDocument(document);
@@ -377,7 +341,7 @@ function startServer(connection, runtime) {
         }, null, `Error while computing completions for ${textDocumentPosition.textDocument.uri}`, token);
     });
     connection.onHover((textDocumentPositionParams, token) => {
-        return (0, runner_1.runSafeAsync)(runtime, async () => {
+        return runSafeAsync(runtime, async () => {
             const document = documents.get(textDocumentPositionParams.textDocument.uri);
             if (document) {
                 const jsonDocument = getJSONDocument(document);
@@ -387,7 +351,7 @@ function startServer(connection, runtime) {
         }, null, `Error while computing hover for ${textDocumentPositionParams.textDocument.uri}`, token);
     });
     connection.onDocumentSymbol((documentSymbolParams, token) => {
-        return (0, runner_1.runSafe)(runtime, () => {
+        return runSafe(runtime, () => {
             const document = documents.get(documentSymbolParams.textDocument.uri);
             if (document) {
                 const jsonDocument = getJSONDocument(document);
@@ -402,10 +366,10 @@ function startServer(connection, runtime) {
         }, [], `Error while computing document symbols for ${documentSymbolParams.textDocument.uri}`, token);
     });
     connection.onCodeAction((codeActionParams, token) => {
-        return (0, runner_1.runSafeAsync)(runtime, async () => {
+        return runSafeAsync(runtime, async () => {
             const document = documents.get(codeActionParams.textDocument.uri);
             if (document) {
-                const sortCodeAction = vscode_languageserver_1.CodeAction.create('Sort JSON', sortCodeActionKind);
+                const sortCodeAction = CodeAction.create('Sort JSON', sortCodeActionKind);
                 sortCodeAction.command = {
                     command: 'json.sort',
                     title: l10n.t('Sort JSON')
@@ -421,21 +385,21 @@ function startServer(connection, runtime) {
         if (document) {
             const edits = languageService.format(document, range ?? getFullRange(document), options);
             if (edits.length > formatterMaxNumberOfEdits) {
-                const newText = vscode_json_languageservice_1.TextDocument.applyEdits(document, edits);
-                return [vscode_languageserver_1.TextEdit.replace(getFullRange(document), newText)];
+                const newText = TextDocument.applyEdits(document, edits);
+                return [TextEdit.replace(getFullRange(document), newText)];
             }
             return edits;
         }
         return [];
     }
     connection.onDocumentRangeFormatting((formatParams, token) => {
-        return (0, runner_1.runSafe)(runtime, () => onFormat(formatParams.textDocument, formatParams.range, formatParams.options), [], `Error while formatting range for ${formatParams.textDocument.uri}`, token);
+        return runSafe(runtime, () => onFormat(formatParams.textDocument, formatParams.range, formatParams.options), [], `Error while formatting range for ${formatParams.textDocument.uri}`, token);
     });
     connection.onDocumentFormatting((formatParams, token) => {
-        return (0, runner_1.runSafe)(runtime, () => onFormat(formatParams.textDocument, undefined, formatParams.options), [], `Error while formatting ${formatParams.textDocument.uri}`, token);
+        return runSafe(runtime, () => onFormat(formatParams.textDocument, undefined, formatParams.options), [], `Error while formatting ${formatParams.textDocument.uri}`, token);
     });
     connection.onDocumentColor((params, token) => {
-        return (0, runner_1.runSafeAsync)(runtime, async () => {
+        return runSafeAsync(runtime, async () => {
             const document = documents.get(params.textDocument.uri);
             if (document) {
                 const jsonDocument = getJSONDocument(document);
@@ -446,7 +410,7 @@ function startServer(connection, runtime) {
         }, [], `Error while computing document colors for ${params.textDocument.uri}`, token);
     });
     connection.onColorPresentation((params, token) => {
-        return (0, runner_1.runSafe)(runtime, () => {
+        return runSafe(runtime, () => {
             const document = documents.get(params.textDocument.uri);
             if (document) {
                 const jsonDocument = getJSONDocument(document);
@@ -456,7 +420,7 @@ function startServer(connection, runtime) {
         }, [], `Error while computing color presentations for ${params.textDocument.uri}`, token);
     });
     connection.onFoldingRanges((params, token) => {
-        return (0, runner_1.runSafe)(runtime, () => {
+        return runSafe(runtime, () => {
             const document = documents.get(params.textDocument.uri);
             if (document) {
                 const rangeLimit = document.languageId === 'jsonc' ? jsoncFoldingRangeLimit : jsonFoldingRangeLimit;
@@ -466,7 +430,7 @@ function startServer(connection, runtime) {
         }, null, `Error while computing folding ranges for ${params.textDocument.uri}`, token);
     });
     connection.onSelectionRanges((params, token) => {
-        return (0, runner_1.runSafe)(runtime, () => {
+        return runSafe(runtime, () => {
             const document = documents.get(params.textDocument.uri);
             if (document) {
                 const jsonDocument = getJSONDocument(document);
@@ -476,7 +440,7 @@ function startServer(connection, runtime) {
         }, [], `Error while computing selection ranges for ${params.textDocument.uri}`, token);
     });
     connection.onDocumentLinks((params, token) => {
-        return (0, runner_1.runSafeAsync)(runtime, async () => {
+        return runSafeAsync(runtime, async () => {
             const document = documents.get(params.textDocument.uri);
             if (document) {
                 const jsonDocument = getJSONDocument(document);
@@ -489,6 +453,6 @@ function startServer(connection, runtime) {
     connection.listen();
 }
 function getFullRange(document) {
-    return vscode_json_languageservice_1.Range.create(vscode_json_languageservice_1.Position.create(0, 0), document.positionAt(document.getText().length));
+    return Range.create(Position.create(0, 0), document.positionAt(document.getText().length));
 }
 //# sourceMappingURL=jsonServer.js.map
