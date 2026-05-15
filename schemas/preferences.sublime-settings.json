@@ -5,6 +5,8 @@
   "allowComments": true,
   "allowTrailingCommas": true,
   "type": "object",
+  // This can be used for highlighting settings that are not yet added to schema.
+  // "unevaluatedProperties": false,
   "definitions": {
     "EditorSettings": {
       "properties": {
@@ -1101,7 +1103,7 @@
           "default": "Default Dark.sublime-theme"
         },
         "themed_title_bar": {
-          "description": "Adaptive theme only: controls if a custom or default title bar is used",
+          "description": "Adaptive theme only: controls if a custom or default title bar is used. Note that on Windows, the hamburger menu is used whenever this is enabled and the adaptive theme is in use.",
           "type": "boolean",
           "default": true
         },
@@ -1116,7 +1118,8 @@
             "",
             "",
             "Provides the tab style from Sublime Text 3, but is only compatible with the Default and Adaptive themes, and will not support new features like inactive pane dimming."
-          ]
+          ],
+          "default": "rounded"
         },
         "inactive_sheet_dimming": {
           "description": "If inactive sheets should have their background slightly modified to make input focus more obvious.",
@@ -1162,7 +1165,7 @@
         "adaptive_dividers": {
           "markdownDescription": "Draws divider lines between sections of the UI when using the Adaptive theme.",
           "type": "boolean",
-          "default": true
+          "default": false
         },
         "popup_shadows": {
           "markdownDescription": "Draw shadows under popup windows.",
@@ -1177,6 +1180,20 @@
             "disabled"
           ],
           "default": "system"
+        },
+        "click_through": {
+          "markdownDescription": "Mac only. Controls whether clicks on a non-focused windows are passed through to the window.",
+          "enum": [
+            "always",
+            "never",
+            "native"
+          ],
+          "markdownEnumDescriptions": [
+            "Will click-through on all elements.",
+            "Will never click-through. Clicking will only focus the window.",
+            "Follows platform conventions, buttons are clicked-through but text selection isn't."
+          ],
+          "default": "always"
         },
         "overlay_scroll_bars": {
           "markdownDescription": "Control overlay scroll bars",
@@ -1238,8 +1255,7 @@
           "default": true
         },
         "show_line_column": {
-          "markdownDescription": "Show Line, Column in the status bar in full length, compact or completely hidden.\n\nValid values are \"enabled\", \"compact\" and \"disabled\"",
-          "type": "string",
+          "markdownDescription": "Show Line, Column in the status bar in full length, compact or completely hidden.",
           "enum": [
             "enabled",
             "compact",
@@ -1253,16 +1269,20 @@
           "default": true
         },
         "ui_scale": {
-          "markdownDescription": "Magnifies the entire user interface. Sublime Text must be restarted for this to take effect.\n1.0 is normal scale, 0.0 allows for auto-detection based on text scale with older Linux configurations that don't fully support GTK display scaling.",
+          "markdownDescription": "Magnifies the entire user interface. Sublime Text must be restarted for this to take effect.\n`1.0` is normal scale, `0.0` allows for auto-detection based on text scale with older Linux configurations that don't fully support GTK display scaling.",
           "type": "number",
           "minimum": 0.0,
           "default": 0.0
         },
         "hardware_acceleration": {
-          "markdownDescription": "Enables hardware accelerated rendering.\n This moves rendering to your GPU, allowing for faster rendering at higher resolutions. Changing this setting requires an application restart to take effect.\n- \"none\": Performs CPU rendering.\n- \"opengl\": Uses OpenGL for rendering. Minimum required version is 4.1\n\nOn Mac, this value is overridden in the platform specific settings.",
+          "markdownDescription": "Enables hardware accelerated rendering.\nThis moves rendering to your GPU, allowing for faster rendering at higher resolutions. Changing this setting requires an application restart to take effect.\n\nOn Mac, this value is overridden in the platform specific settings.",
           "enum": [
             "none",
             "opengl"
+          ],
+          "markdownEnumDescriptions": [
+            "Performs CPU rendering.",
+            "Uses OpenGL for rendering. Minimum required version is `4.1`."
           ],
           "default": "none"
         },
@@ -1411,6 +1431,14 @@
           ],
           "default": ""
         },
+        "terminal_command": {
+          "markdownDescription": "Shell command used to open a terminal emulator at a specified location. If left empty Sublime Text will attempt to open the default terminal emulator. The associated menu items can be disabled by setting this to `null`.\n\nExamples:\n - `\"git-bash.exe --cd=\\\"$dir\\\"\"`\n - `\"alacritty --working-directory \\\"$dir\\\"\"`",
+          "type": [
+            "null",
+            "string"
+          ],
+          "default": ""
+        },
         "preview_on_click": {
           "markdownDescription": "Preview file contents when clicking on a file in the side bar.\nDouble clicking or editing the preview will open the file and assign it a tab.",
           "type": [
@@ -1445,7 +1473,9 @@
             ".svn",
             ".git",
             ".hg",
-            "CVS"
+            "CVS",
+            ".Trash",
+            ".Trash-*"
           ]
         },
         "file_exclude_patterns": {
@@ -1471,6 +1501,8 @@
             "*.pdb",
             "*.idb",
             ".DS_Store",
+            ".directory",
+            "desktop.ini",
             "*.class",
             "*.psd",
             "*.db",
@@ -1497,6 +1529,27 @@
             "*.swf",
             "*.jar",
             "*.zip"
+          ]
+        },
+        "image_file_patterns": {
+          "markdownDescription": "Files that will be opened as an image rather than a text file. Files can still be opened as either text or an image vie the File menu.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "*.jpeg",
+            "*.jpg",
+            "*.gif",
+            "*.png",
+            "*.ico",
+            "*.bmp",
+            "*.tga",
+            "*.psd",
+            "*.ppm",
+            "*.pgm",
+            "*.webp",
+            "*.hdr"
           ]
         },
         "index_files": {
@@ -1606,12 +1659,12 @@
           "default": ""
         },
         "reveal_menu": {
-          "markdownDescription": "Whether the menu should be shown (if it's hidden) when <kbd>alt</kbd> is pressed on Windows & Linux.\n\n This doesn't effect auto hiding or toggling the menu from the command palette",
+          "markdownDescription": "Whether the menu should be shown (if it's hidden) when <kbd>alt</kbd> is pressed on Windows & Linux.\n\nThis doesn't effect auto hiding or toggling the menu from the command palette",
           "type": "boolean",
           "default": true
         },
         "syntax_detection_size_limit": {
-          "markdownDescription": "The maximum file size (in bytes) after which syntax highlighting will be disabled for files and will be shown as plain text.",
+          "markdownDescription": "The maximum file size (in bytes) after which syntax highlighting will be disabled for files and will be shown as plain text. Set to `0` to always perform syntax detection. ",
           "type": "integer",
           "default": 16777216
         },
@@ -1644,6 +1697,17 @@
           "markdownDescription": "Whether Goto Anything should exclude files ignored by git.",
           "type": "boolean",
           "default": false
+        },
+        "goto_anything_file_preview": {
+          "markdownDescription": "Preview file contents in Goto Anything.",
+          "type": "boolean",
+          "default": true
+        },
+        "io_workers": {
+          "markdownDescription": "Set the number of threads to use for background file operations. Increasing this can result in faster folder loading when using networked filesystems like NFS and SSHFS. The default and minimum is `2`. This requires a restart to take effect..",
+          "type": "integer",
+          "minimum": 2,
+          "default": 2
         }
       }
     }
