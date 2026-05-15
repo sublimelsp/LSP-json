@@ -43,7 +43,7 @@ class LspJSONPlugin(LspPlugin, StoreListener):
         self._jsonc_patterns: list[re.Pattern[str]] = []
 
     @override
-    def on_initialize_async(self) -> None:
+    def on_initialized_async(self) -> None:
         self.schema_store.add_listener(self)
         self.schema_store.initialize()
 
