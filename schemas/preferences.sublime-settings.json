@@ -208,7 +208,11 @@
         "fold_style": {
           "markdownDescription": "The style of code folding to use.",
           "type": "string",
-          "enum": ["auto", "force_indentation", "scope_only"],
+          "enum": [
+            "auto",
+            "force_indentation",
+            "scope_only"
+          ],
           "markdownEnumDescriptions": [
             "Use whatever the default is for the syntax in use",
             "Always use indentation-based code folding",
@@ -218,7 +222,11 @@
         },
         "mini_diff": {
           "markdownDescription": "Indicate modified lines in the gutter.",
-          "enum": [true, false, "auto"],
+          "enum": [
+            true,
+            false,
+            "auto"
+          ],
           "markdownEnumDescriptions": [
             "Enable modified line indicators on all files.",
             "Disable modified line indicators.",
@@ -241,21 +249,25 @@
                 "minItems": 2,
                 "maxItems": 3,
                 "items": [
-                    {
-                      "type": "integer"
-                    },
-                    {
-                      "type": "string",
-                      "enum": ["dotted", "stippled", "solid"],
-                      "markdownEnumDescriptions": [
-                        "Drawn as a dotted line",
-                        "Drawn as a stippled line",
-                        "Drawn as a solid line"
-                      ]
-                    },
-                    {
-                      "type": "number"
-                    }
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string",
+                    "enum": [
+                      "dotted",
+                      "stippled",
+                      "solid"
+                    ],
+                    "markdownEnumDescriptions": [
+                      "Drawn as a dotted line",
+                      "Drawn as a stippled line",
+                      "Drawn as a solid line"
+                    ]
+                  },
+                  {
+                    "type": "number"
+                  }
                 ]
               }
             ]
@@ -265,7 +277,11 @@
         "ruler_style": {
           "markdownDescription": "Controls how ruler lines are drawn.\n\n_requires: ST 4133+_",
           "type": "string",
-          "enum": ["dotted", "stippled", "solid"],
+          "enum": [
+            "dotted",
+            "stippled",
+            "solid"
+          ],
           "markdownEnumDescriptions": [
             "Drawn as a dotted line",
             "Drawn as a stippled line",
@@ -326,7 +342,11 @@
         },
         "word_wrap": {
           "markdownDescription": "Disables horizontal scrolling if enabled.",
-          "enum": [true, false, "auto"],
+          "enum": [
+            true,
+            false,
+            "auto"
+          ],
           "markdownEnumDescriptions": [
             "Enable word wrap.",
             "Disable word wrap.",
@@ -373,7 +393,9 @@
             },
             {
               "type": "array",
-              "items": { "type": "string" },
+              "items": {
+                "type": "string"
+              },
               "default": []
             }
           ]
@@ -623,17 +645,27 @@
                   "Draw spaces everywhere that does not match the indentation style."
                 ]
               },
-              "default": ["selection"]
+              "default": [
+                "selection"
+              ]
             },
             {
               "type": "string",
-              "enum": ["none", "selection", "all"]
+              "enum": [
+                "none",
+                "selection",
+                "all"
+              ]
             }
           ]
         },
         "draw_unicode_white_space": {
           "description": "Controls how non-ascii white space is drawn.",
-          "enum": ["none", "punctuation", "all"],
+          "enum": [
+            "none",
+            "punctuation",
+            "all"
+          ],
           "enumDescriptions": [
             "Draw unicode white space verbatim, eg. hiding zero-width spaces.",
             "Draw codepoints of unicode white space defined as punctuation. This includes NBSP, but excludes the CJK Ideographic Space.",
@@ -648,7 +680,10 @@
         },
         "control_character_style": {
           "markdownDescription": "Control characters (or white space if enabled) can be drawn as either hex or using their abbreviation.",
-          "enum": ["hex", "names"],
+          "enum": [
+            "hex",
+            "names"
+          ],
           "markdownEnumDescriptions": [
             "Draw characters using their hex encoding, ie. `<0xA0>`",
             "Draw characters using their abbreviation, ie. `<NBSP>`"
@@ -690,12 +725,18 @@
               "Draw solid vertical lines instead of dotted."
             ]
           },
-          "default": ["draw_normal"]
+          "default": [
+            "draw_normal"
+          ]
         },
         "trim_trailing_white_space_on_save": {
           "markdownDescription": "Controls where trailing white space is removed on save.\n\n - `\"none\"`: Do not remove any trailing white space on save.\n - `\"all\"`: Remove all trailing white space on save.\n - `\"not_on_caret\"`: Only remove white space that won't affect the caret.",
           "type": "string",
-          "enum": ["all", "none", "not_on_caret"],
+          "enum": [
+            "all",
+            "none",
+            "not_on_caret"
+          ],
           "enumDescriptions": [
             "Remove all trailing white space on save.",
             "Do not remove any trailing white space on save.",
@@ -721,12 +762,20 @@
         "fallback_encoding": {
           "markdownDescription": "The encoding to use when the encoding can't be determined automatically. ASCII, UTF-8 and UTF-16 encodings will be automatically detected.",
           "type": "string",
-          "examples": ["ASCII", "UTF-8", "UTF-16"]
+          "examples": [
+            "ASCII",
+            "UTF-8",
+            "UTF-16"
+          ]
         },
         "default_encoding": {
           "markdownDescription": "Encoding used when saving new files, and files opened with an undefined encoding (e.g., plain ascii files). If a file is opened with a specific encoding (either detected or given explicitly), this setting will be ignored, and the file will be saved with the encoding it was opened with.",
           "type": "string",
-          "examples": ["ASCII", "UTF-8", "UTF-16"],
+          "examples": [
+            "ASCII",
+            "UTF-8",
+            "UTF-16"
+          ],
           "default": "UTF-8"
         },
         "enable_hexadecimal_encoding": {
@@ -736,7 +785,11 @@
         },
         "default_line_ending": {
           "markdownDescription": "Determines what character(s) are used to terminate each line in new files.\nValid values are `\"system\"` (whatever the OS uses), `\"windows\"` (CRLF) and `\"unix\"` (LF only).",
-          "enum": ["system", "windows", "unix"],
+          "enum": [
+            "system",
+            "windows",
+            "unix"
+          ],
           "enumDescriptions": [
             "whatever the OS uses",
             "CRLF",
@@ -781,15 +834,30 @@
             "type": "object",
             "additionalProperties": false,
             "properties": {
-              "selector": {"type": "string"},
-              "characters": {"type": "string"},
-              "rhs_empty": {"type": "boolean", "default": false}
+              "selector": {
+                "type": "string"
+              },
+              "characters": {
+                "type": "string"
+              },
+              "rhs_empty": {
+                "type": "boolean",
+                "default": false
+              }
             },
-            "required": ["selector"]
+            "required": [
+              "selector"
+            ]
           },
           "default": [
-            {"selector": "text.html, text.xml", "characters": "<"},
-            {"selector": "punctuation.accessor", "rhs_empty": true}
+            {
+              "selector": "text.html, text.xml",
+              "characters": "<"
+            },
+            {
+              "selector": "punctuation.accessor",
+              "rhs_empty": true
+            }
           ]
         },
         "auto_complete_commit_on_tab": {
@@ -819,7 +887,11 @@
         },
         "auto_complete_preserve_order": {
           "markdownDescription": "Controls how the auto complete results are reordered when typing.",
-          "enum": ["none", "some", "strict"],
+          "enum": [
+            "none",
+            "some",
+            "strict"
+          ],
           "enumDescriptions": [
             "Fully reorder the results according to how well the completion matches the typed text.",
             "Partially reorder the results, taking into account how well the completion matches whats typed, and likelihood of the completion.",
@@ -859,7 +931,11 @@
         },
         "ignored_snippets": {
           "markdownDescription": "A list of wildcard patterns specifying which snippet files to ignore. For example, to ignore all the default C++ snippets, set this to `[\"C++/*\"]`",
-          "examples": [["C++/*"]],
+          "examples": [
+            [
+              "C++/*"
+            ]
+          ],
           "type": "array",
           "uniqueItems": true,
           "items": {
@@ -918,7 +994,12 @@
         },
         "auto_find_in_selection": {
           "markdownDescription": "Enable or disable the \"Find in Selection\" flag in the \"Find\" and/or the \"Replace\" panel.",
-          "enum": [false, true, "find_only", "replace_only"],
+          "enum": [
+            false,
+            true,
+            "find_only",
+            "replace_only"
+          ],
           "enumDescriptions": [
             "Do not enable the \"Find in Selection\" flag automatically when multiple lines of text are selected for the \"Find\" panel and \"Replace\" panel.",
             "Enable the \"Find in Selection\" flag automatically when multiple lines of text are selected for the \"Find\" panel and \"Replace\" panel..",
@@ -996,7 +1077,9 @@
     }
   },
   "allOf": [
-    {"$ref": "#/definitions/EditorSettings"},
+    {
+      "$ref": "#/definitions/EditorSettings"
+    },
     {
       "properties": {
         "theme": {
@@ -1024,7 +1107,11 @@
         },
         "file_tab_style": {
           "description": "Controls the style of file tabs for the Default, Default Dark, and Adaptive themes.",
-          "enum": ["rounded", "square", "angled"],
+          "enum": [
+            "rounded",
+            "square",
+            "angled"
+          ],
           "enumDescriptions": [
             "",
             "",
@@ -1084,12 +1171,20 @@
         },
         "native_tabs": {
           "markdownDescription": "Mac only. Controls use of macOS tabs in 10.12 and newer.\nEach native tab contains an entire project, thus allowing multiple projects in a single window.",
-          "enum": ["system", "preferred", "disabled"],
+          "enum": [
+            "system",
+            "preferred",
+            "disabled"
+          ],
           "default": "system"
         },
         "overlay_scroll_bars": {
           "markdownDescription": "Control overlay scroll bars",
-          "enum": ["system", "enabled", "disabled"],
+          "enum": [
+            "system",
+            "enabled",
+            "disabled"
+          ],
           "default": "system"
         },
         "enable_tab_scrolling": {
@@ -1145,7 +1240,11 @@
         "show_line_column": {
           "markdownDescription": "Show Line, Column in the status bar in full length, compact or completely hidden.\n\nValid values are \"enabled\", \"compact\" and \"disabled\"",
           "type": "string",
-          "enum": ["enabled", "compact", "disabled"],
+          "enum": [
+            "enabled",
+            "compact",
+            "disabled"
+          ],
           "default": "enabled"
         },
         "show_spelling_errors": {
@@ -1161,14 +1260,21 @@
         },
         "hardware_acceleration": {
           "markdownDescription": "Enables hardware accelerated rendering.\n This moves rendering to your GPU, allowing for faster rendering at higher resolutions. Changing this setting requires an application restart to take effect.\n- \"none\": Performs CPU rendering.\n- \"opengl\": Uses OpenGL for rendering. Minimum required version is 4.1\n\nOn Mac, this value is overridden in the platform specific settings.",
-          "enum": ["none", "opengl"],
+          "enum": [
+            "none",
+            "opengl"
+          ],
           "default": "none"
         },
         "hot_exit": {
           "markdownDescription": "Exiting the application with hot_exit enabled will cause it to close immediately without prompting. Unsaved modifications and open files will be preserved and restored when next starting.\n\nClosing a window with an associated project will also close the window without prompting, preserving unsaved changes in the workspace file alongside the project.\n\nHot exit has different modes to choose from:\n- \"always\": Always perform a hot exit when the application exits. This includes when the last window is closed on relevant platforms.\n- \"only_on_quit\": Only perform a hot exit when the application is asked to exit, not when the last window is closed. This setting is only used on Windows and Linux.\n- \"disabled\": Disable hot exit.",
           "oneOf": [
             {
-              "enum": ["always", "only_on_quit", "disabled"],
+              "enum": [
+                "always",
+                "only_on_quit",
+                "disabled"
+              ],
               "markdownEnumDescriptions": [
                 "Always perform a hot exit when the application exits. This includes when the last window is closed on relevant platforms.",
                 "Only perform a hot exit when the application is asked to exit, not when the last window is closed. This setting is only used on Windows and Linux.",
@@ -1194,7 +1300,10 @@
         },
         "shell_environment": {
           "markdownDescription": "Mac only. If the user's default shell should be invoked to obtain the user's customized environment variables. May be a boolean, or a string of the path the shell to invoke. Sublime Text must be restarted for this to take effect.",
-          "type": ["boolean", "string"],
+          "type": [
+            "boolean",
+            "string"
+          ],
           "default": true
         },
         "reload_file_on_change": {
@@ -1219,7 +1328,11 @@
         },
         "open_files_in_new_window": {
           "markdownDescription": "When files are opened from a file explorer or from the command line, this controls whether a new window is created or not.",
-          "enum": ["never", "always", "finder_only"],
+          "enum": [
+            "never",
+            "always",
+            "finder_only"
+          ],
           "markdownEnumDescriptions": [
             "Never open a new window unless no window is open.",
             "Always open files in a new window.",
@@ -1284,18 +1397,31 @@
         },
         "git_diff_target": {
           "markdownDescription": "This setting determines whether tracked Git files should be diffed against the index or HEAD.",
-          "enum": ["index", "head"],
+          "enum": [
+            "index",
+            "head"
+          ],
           "default": "index"
         },
         "sublime_merge_path": {
           "markdownDescription": "The path to the Sublime Merge executable. This should only be set if Sublime Merge is not installed in a standard location, such as when using a portable install. Set to `null` to hide Sublime Merge integrations.",
-          "type": ["null", "string"],
+          "type": [
+            "null",
+            "string"
+          ],
           "default": ""
         },
         "preview_on_click": {
           "markdownDescription": "Preview file contents when clicking on a file in the side bar.\nDouble clicking or editing the preview will open the file and assign it a tab.",
-          "type": ["boolean", "string"],
-          "enum": [false, true, "only_left"],
+          "type": [
+            "boolean",
+            "string"
+          ],
+          "enum": [
+            false,
+            true,
+            "only_left"
+          ],
           "default": true
         },
         "select_across_groups": {
@@ -1312,20 +1438,66 @@
         "folder_exclude_patterns": {
           "markdownDescription": "Controls which folders are not listed in the side bar.\nThese can also be set on a per-project basis.",
           "type": "array",
-          "items": {"type": "string"},
-          "default": [".svn", ".git", ".hg", "CVS"]
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            ".svn",
+            ".git",
+            ".hg",
+            "CVS"
+          ]
         },
         "file_exclude_patterns": {
           "markdownDescription": "Controls which files are not listed in the side bar.\nThese can also be set on a per-project basis.",
           "type": "array",
-          "items": {"type": "string"},
-          "default": ["*.pyc", "*.pyo", "*.exe", "*.dll", "*.obj","*.o", "*.a", "*.lib", "*.so", "*.dylib", "*.ncb", "*.sdf", "*.suo", "*.pdb", "*.idb", ".DS_Store", "*.class", "*.psd", "*.db", "*.sublime-workspace"]
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "*.pyc",
+            "*.pyo",
+            "*.exe",
+            "*.dll",
+            "*.obj",
+            "*.o",
+            "*.a",
+            "*.lib",
+            "*.so",
+            "*.dylib",
+            "*.ncb",
+            "*.sdf",
+            "*.suo",
+            "*.pdb",
+            "*.idb",
+            ".DS_Store",
+            "*.class",
+            "*.psd",
+            "*.db",
+            "*.sublime-workspace"
+          ]
         },
         "binary_file_patterns": {
           "markdownDescription": "These files will still show up in the side bar, but won't be included in Goto Anything or Find in Files.",
           "type": "array",
-          "items": {"type": "string"},
-          "default": ["*.jpg", "*.jpeg", "*.png", "*.gif", "*.ttf", "*.tga", "*.dds", "*.ico", "*.eot", "*.pdf", "*.swf", "*.jar", "*.zip"]
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "*.jpg",
+            "*.jpeg",
+            "*.png",
+            "*.gif",
+            "*.ttf",
+            "*.tga",
+            "*.dds",
+            "*.ico",
+            "*.eot",
+            "*.pdf",
+            "*.swf",
+            "*.jar",
+            "*.zip"
+          ]
         },
         "index_files": {
           "markdownDescription": "File indexing parses all files in the side bar, and builds an index of their symbols. This is required for Goto Definition to work.",
@@ -1350,8 +1522,12 @@
         "index_exclude_patterns": {
           "markdownDescription": "Indicates which files won't be indexed.",
           "type": "array",
-          "items": {"type": "string"},
-          "default": ["*.log"]
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "*.log"
+          ]
         },
         "update_check": {
           "markdownDescription": "Check for updates when the application is started.\n\n**This can only be disabled if Sublime Text is registered.**",
@@ -1381,8 +1557,12 @@
         "ignored_packages": {
           "markdownDescription": "List any packages to ignore here.\nWhen removing entries from this list, a restart may be required if the package contains plugins.",
           "type": "array",
-          "items": {"type": "string"},
-          "default": ["Vintage"]
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "Vintage"
+          ]
         },
         "default_extension": {
           "markdownDescription": "**Unlisted.** Sets the default extension in the OS Save dialog when an untitled file is saved.",
