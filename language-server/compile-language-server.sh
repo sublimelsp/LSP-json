@@ -15,20 +15,20 @@ read -rp "You need at least version 22 of Node. Exit the script if it doesn't ma
 # clean up #
 # -------- #
 
-pushd "${REPO_DIR}" || exit
+pushd "${REPO_DIR}" > /dev/null || exit
 
 rm -rf out package-lock.json package.json update-info.log
 
-popd || exit
+popd > /dev/null || exit
 
 
 # ---------------- #
 # clone repo       #
 # ---------------- #
 
-pushd "${REPO_DIR}" || exit
+pushd "${REPO_DIR}" > /dev/null || exit
 
-echo 'Enter commit SHA, branch or tag (for example 2.1.0) to build'
+echo 'Enter commit SHA, branch or tag (for example 2.1.0) from the https://github.com/microsoft/vscode repo to build:'
 read -rp 'SHA, branch or tag (default: main): ' ref
 
 if [ "${ref}" = "" ]; then
@@ -40,35 +40,35 @@ git clone ${GITHUB_REPO_URL} --branch ${ref} --single-branch "${CLONED_REPO_DIR}
 current_sha=$( git rev-parse HEAD )
 printf "ref: %s\n%s\n" "$ref" "$current_sha" > update-info.log
 
-popd || exit
+popd > /dev/null || exit
 
 # ------------ #
 # prepare deps #
 # ------------ #
 
-pushd "${CLONED_REPO_DIR}" || exit
+pushd "${CLONED_REPO_DIR}" > /dev/null || exit
 
 echo 'Installing dependencies...'
 npm i
 
-popd || exit
+popd > /dev/null || exit
 
 # ------- #
 # compile #
 # ------- #
 
-pushd "${SRC_SERVER_DIR}" || exit
+pushd "${SRC_SERVER_DIR}" > /dev/null || exit
 
 echo 'Compiling server...'
 npm run compile
 
-popd || exit
+popd > /dev/null || exit
 
 # -------------------- #
 # collect output files #
 # -------------------- #
 
-pushd "${SRC_SERVER_DIR}" || exit
+pushd "${SRC_SERVER_DIR}" > /dev/null || exit
 
 echo 'Copying and cleaning up files...'
 find ./out -name "*.map" -delete
@@ -79,10 +79,10 @@ rm -rf "${CLONED_REPO_DIR}"
 # Update lock file #
 # ---------------- #
 
-pushd "${REPO_DIR}" || exit
+pushd "${REPO_DIR}" > /dev/null || exit
 
 echo 'Updating the lock file...'
 npm i --omit=dev --lockfile-version=2
 rm -rf node_modules
 
-popd || exit
+popd > /dev/null || exit

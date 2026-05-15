@@ -1,14 +1,10 @@
-"use strict";
 /*---------------------------------------------------------------------------------------------
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.registerDiagnosticsPushSupport = registerDiagnosticsPushSupport;
-exports.registerDiagnosticsPullSupport = registerDiagnosticsPullSupport;
-const vscode_languageserver_1 = require("vscode-languageserver");
-const runner_1 = require("./runner");
-function registerDiagnosticsPushSupport(documents, connection, runtime, validate) {
+import { DocumentDiagnosticReportKind } from 'vscode-languageserver';
+import { formatError, runSafeAsync } from './runner.js';
+export function registerDiagnosticsPushSupport(documents, connection, runtime, validate) {
     const pendingValidationRequests = {};
     const validationDelayMs = 500;
     const disposables = [];
@@ -41,7 +37,7 @@ function registerDiagnosticsPushSupport(documents, connection, runtime, validate
                     delete pendingValidationRequests[textDocument.uri];
                 }
                 catch (e) {
-                    connection.console.error((0, runner_1.formatError)(`Error while validating ${textDocument.uri}`, e));
+                    connection.console.error(formatError(`Error while validating ${textDocument.uri}`, e));
                 }
             }
         }, validationDelayMs);
@@ -61,15 +57,15 @@ function registerDiagnosticsPushSupport(documents, connection, runtime, validate
         }
     };
 }
-function registerDiagnosticsPullSupport(documents, connection, runtime, validate) {
+export function registerDiagnosticsPullSupport(documents, connection, runtime, validate) {
     function newDocumentDiagnosticReport(diagnostics) {
         return {
-            kind: vscode_languageserver_1.DocumentDiagnosticReportKind.Full,
+            kind: DocumentDiagnosticReportKind.Full,
             items: diagnostics
         };
     }
     const registration = connection.languages.diagnostics.on(async (params, token) => {
-        return (0, runner_1.runSafeAsync)(runtime, async () => {
+        return runSafeAsync(runtime, async () => {
             const document = documents.get(params.textDocument.uri);
             if (document) {
                 return newDocumentDiagnosticReport(await validate(document));
