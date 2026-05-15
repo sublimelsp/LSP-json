@@ -1664,7 +1664,7 @@
           "default": true
         },
         "syntax_detection_size_limit": {
-          "markdownDescription": "The maximum file size (in bytes) after which syntax highlighting will be disabled for files and will be shown as plain text. Set to 0 to always perform syntax detection. ",
+          "markdownDescription": "The maximum file size (in bytes) after which syntax highlighting will be disabled for files and will be shown as plain text. Set to `0` to always perform syntax detection. ",
           "type": "integer",
           "default": 16777216
         },
