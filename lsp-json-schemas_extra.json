@@ -51,10 +51,6 @@
     "uri": "sublime://schemas/vscode-base"
   },
   {
-    "fileMatch": ["/package.json"],
-    "uri": "sublime://schemas/package-json-eslint"
-  },
-  {
     "fileMatch": [
       "/Preferences.sublime-settings",
       "/Preferences (Linux).sublime-settings",
