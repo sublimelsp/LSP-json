@@ -46,6 +46,7 @@
                 "type": "string",
                 "description": "Condition that must evaluate to true for the binding to be active.",
                 "enum": [
+                  "auto_complete_primed",
                   "auto_complete_visible",
                   "eol_selector",
                   "following_text",
@@ -74,6 +75,7 @@
                 ],
                 "enumDescriptions": [
                   "If the auto complete dropdown is visible",
+                  "If mini auto complete or auto complete dropdown are visible or asynchronous query is active",
                   "A selector to match the scope name at the end of the current line",
                   "The text after the selection",
                   "If the selection is a field in a snippet where a subsequent field exists",
