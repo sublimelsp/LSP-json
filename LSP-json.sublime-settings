@@ -1,6 +1,4 @@
 {
-	// Open "Preferences: LSP Utils Settings" from the Command Palette to customize the Node runtime.
-	"command": ["${node_bin}", "${server_path}", "--stdio"],
 	"schemes": [
 		// regular files
 		"file",
@@ -68,5 +66,13 @@
 			// }
 		],
 	},
+	// The path to the server binary used to start the language server.
+	// Use `auto` for the package to manage (install/update) the server automatically.
+	// NOTE: Change this instead of directly updating `command` - the `${server_path}` variable is dynamically resolved
+	// based on this setting.
+	// WARNING: Override at your own risk - using a custom binary can cause compatibility issues with server settings.
+	"server_path": "auto",
+	// Open "Preferences: LSP Utils Settings" from the Command Palette to customize the Node runtime.
+	"command": ["${node_bin}", "${server_path}", "--stdio"],
 	"selector": "source.json"
 }
