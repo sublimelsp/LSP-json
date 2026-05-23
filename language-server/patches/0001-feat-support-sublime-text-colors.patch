@@ -1,6 +1,6 @@
-From 5c483dfc8bfc74e9cfdc296747816cd4a572be17 Mon Sep 17 00:00:00 2001
+From 33d43b4b6725170b5718df394cfa17e003dd90cc Mon Sep 17 00:00:00 2001
 From: Rafal Chlodnicki <rchl2k@gmail.com>
-Date: Sun, 8 Feb 2026 17:13:58 +0100
+Date: Sat, 23 May 2026 11:50:31 +0200
 Subject: [PATCH] feat: support sublime text colors
 
 ---
@@ -9,15 +9,15 @@ Subject: [PATCH] feat: support sublime text colors
  2 files changed, 122 insertions(+), 3 deletions(-)
 
 diff --git a/src/services/jsonDocumentSymbols.ts b/src/services/jsonDocumentSymbols.ts
-index e3b752c..1ceb772 100644
+index 7494124..aa1e0a5 100644
 --- a/src/services/jsonDocumentSymbols.ts
 +++ b/src/services/jsonDocumentSymbols.ts
 @@ -5,7 +5,7 @@
  
- import * as Parser from '../parser/jsonParser';
- import * as Strings from '../utils/strings';
--import { colorFromHex } from '../utils/colors';
-+import { tryParseColor } from '../utils/colors';
+ import * as Parser from '../parser/jsonParser.js';
+ import * as Strings from '../utils/strings.js';
+-import { colorFromHex } from '../utils/colors.js';
++import { tryParseColor } from '../utils/colors.js';
  import * as l10n from '@vscode/l10n';
  
  import {
@@ -31,7 +31,7 @@ index e3b752c..1ceb772 100644
  								const range = getRange(document, s.node);
  								result.push({ color, range });
 diff --git a/src/utils/colors.ts b/src/utils/colors.ts
-index 1d71060..3c4adef 100644
+index 3513930..1691205 100644
 --- a/src/utils/colors.ts
 +++ b/src/utils/colors.ts
 @@ -71,4 +71,123 @@ export function colorFrom256RGB(red: number, green: number, blue: number, alpha:

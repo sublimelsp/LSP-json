@@ -1,0 +1,40 @@
+From d0795281e439626e1c7925830e028218711d66c3 Mon Sep 17 00:00:00 2001
+From: Rafal Chlodnicki <rchl2k@gmail.com>
+Date: Sat, 23 May 2026 12:02:50 +0200
+Subject: [PATCH] feat: expose default value in hover
+
+---
+ src/services/jsonHover.ts | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/services/jsonHover.ts b/src/services/jsonHover.ts
+index c29d7fc..a4c0f8c 100644
+--- a/src/services/jsonHover.ts
++++ b/src/services/jsonHover.ts
+@@ -67,11 +67,13 @@ export class JSONHover {
+ 			let title: string | undefined = undefined;
+ 			let markdownDescription: string | undefined = undefined;
+ 			let markdownEnumValueDescription: string | undefined = undefined, enumValue: string | undefined = undefined;
++			let defaultValue: any = undefined;
+ 
+ 			const matchingSchemas = doc.getMatchingSchemas(schema.schema, node.offset).filter((s) => s.node === node && !s.inverted).map((s) => s.schema);
+ 			for (const schema of matchingSchemas) {
+ 				title = title || schema.title;
+ 				markdownDescription = markdownDescription || schema.markdownDescription || toMarkdown(schema.description);
++				defaultValue = schema.default;
+ 				if (schema.enum) {
+ 					const idx = schema.enum.indexOf(Parser.getNodeValue(node));
+ 					if (schema.markdownEnumDescriptions) {
+@@ -104,6 +106,9 @@ export class JSONHover {
+ 				}
+ 				result += `\`${toMarkdownCodeBlock(enumValue!)}\`: ${markdownEnumValueDescription}`;
+ 			}
++			if (defaultValue !== undefined) {
++				result += `\n\n---\n\nDefault value: \`${JSON.stringify(defaultValue)}\``;
++			}
+ 			return createHover([result]);
+ 		});
+ 	}
+-- 
+2.50.1 (Apple Git-155)
+
