@@ -1,12 +1,35 @@
 [
   {
     "fileMatch": [
+      "/.revola.json",
+      "/.revola.config.json",
+      "/revola.json",
+      "/revola.config.json"
+    ],
+    "uri": "https://www.schemastore.org/revola.json"
+  },
+  {
+    "fileMatch": [
+      "/**/.hol/skill.json",
+      "/**/hol/skill.json",
+      "/hol-skill.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/hashgraph-online/skill-publish/main/schemas/skill.schema.json"
+  },
+  {
+    "fileMatch": [
       "/.release-hub.json",
       "/.release-hub.config.json",
       "/release-hub.json",
       "/release-hub.config.json"
     ],
     "uri": "https://raw.githubusercontent.com/teneplaysofficial/release-hub/main/schema/release-hub.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/releasekit.config.json"
+    ],
+    "uri": "https://goosewobbler.github.io/releasekit/schema.json"
   },
   {
     "fileMatch": [
@@ -59,13 +82,19 @@
     "fileMatch": [
       "/abc-inventory-module-data-*.json"
     ],
-    "uri": "https://www.schemastore.org/abc-inventory-module-data-5.1.0.json"
+    "uri": "https://www.schemastore.org/abc-inventory-module-data-5.2.0.json"
+  },
+  {
+    "fileMatch": [
+      "/abc-clinical-demand-forecast-*.json"
+    ],
+    "uri": "https://www.schemastore.org/abc-clinical-demand-forecast-4.0.0.json"
   },
   {
     "fileMatch": [
       "/abc-supply-plan-*.json"
     ],
-    "uri": "https://www.schemastore.org/abc-supply-plan-11.2.0.json"
+    "uri": "https://www.schemastore.org/abc-supply-plan-13.0.0.json"
   },
   {
     "fileMatch": [
@@ -292,10 +321,23 @@
   },
   {
     "fileMatch": [
+      "/barba-cv.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/Eurobotics-Association/barba-cv/main/schema/barba-cv.schema.json"
+  },
+  {
+    "fileMatch": [
       "/biome.json",
       "/biome.jsonc"
     ],
     "uri": "https://biomejs.dev/schemas/latest/schema.json"
+  },
+  {
+    "fileMatch": [
+      "/*.bpod-fsm.json",
+      "/bpod-fsm.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/int-brain-lab/bpod-core/main/.schema/statemachine.json"
   },
   {
     "fileMatch": [
@@ -402,6 +444,12 @@
   },
   {
     "fileMatch": [
+      "/fence.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/Use-Tusk/fence/refs/heads/main/docs/schema/fence.schema.json"
+  },
+  {
+    "fileMatch": [
       "/manifest.json"
     ],
     "uri": "https://www.schemastore.org/foxx-manifest.json"
@@ -438,6 +486,12 @@
       "/.backportrc.json"
     ],
     "uri": "https://www.schemastore.org/backportrc.json"
+  },
+  {
+    "fileMatch": [
+      "/basedpyrightconfig.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/DetachHead/basedpyright/refs/heads/main/packages/vscode-pyright/schemas/pyrightconfig.schema.json"
   },
   {
     "fileMatch": [
@@ -516,6 +570,12 @@
   },
   {
     "uri": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/partial-black.json"
+  },
+  {
+    "uri": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/partial-fastapi.json"
+  },
+  {
+    "uri": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/partial-scheduled.json"
   },
   {
     "fileMatch": [
@@ -652,6 +712,18 @@
       "/**/.claude/keybindings.json"
     ],
     "uri": "https://www.schemastore.org/claude-code-keybindings.json"
+  },
+  {
+    "fileMatch": [
+      "/**/.claude-plugin/plugin.json"
+    ],
+    "uri": "https://www.schemastore.org/claude-code-plugin-manifest.json"
+  },
+  {
+    "fileMatch": [
+      "/**/.claude-plugin/marketplace.json"
+    ],
+    "uri": "https://www.schemastore.org/claude-code-marketplace.json"
   },
   {
     "fileMatch": [
@@ -987,6 +1059,9 @@
     "uri": "https://www.schemastore.org/dockerd.json"
   },
   {
+    "uri": "https://www.schemastore.org/docker-extension-metadata.json"
+  },
+  {
     "fileMatch": [
       "/docker-bake.json",
       "/docker-bake.override.json"
@@ -1005,6 +1080,12 @@
       "/docfx.json"
     ],
     "uri": "https://www.schemastore.org/docfx.json"
+  },
+  {
+    "fileMatch": [
+      "/.docs-mcp.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/speakeasy-api/docs-mcp/refs/heads/main/schemas/docs-mcp.schema.json"
   },
   {
     "fileMatch": [
@@ -1099,10 +1180,24 @@
     "uri": "https://www.schemastore.org/pm2-ecosystem.json"
   },
   {
+    "fileMatch": [
+      "/**/eca/config.json",
+      "/**/.eca/config.json"
+    ],
+    "uri": "https://eca.dev/config.json"
+  },
+  {
     "uri": "https://raw.githubusercontent.com/weaveworks/eksctl/main/pkg/apis/eksctl.io/v1alpha5/assets/schema.json"
   },
   {
     "uri": "https://enterprisecontract.dev/enterprise-contract-controller/schema/policy_spec.json"
+  },
+  {
+    "fileMatch": [
+      "/envilder.json",
+      "/envilder.*.json"
+    ],
+    "uri": "https://envilder.com/schema/map-file.v1.json"
   },
   {
     "fileMatch": [
@@ -1163,9 +1258,6 @@
     "uri": "https://raw.githubusercontent.com/EveryVoiceTTS/everyvoice/main/everyvoice/.schema/everyvoice-text-to-wav-0.3.json"
   },
   {
-    "fileMatch": [
-      "/app.json"
-    ],
     "uri": "https://www.schemastore.org/expo-53.0.0.json"
   },
   {
@@ -1173,6 +1265,12 @@
       "/eas.json"
     ],
     "uri": "https://raw.githubusercontent.com/expo/eas-cli/main/packages/eas-json/schema/eas.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/expoot-app.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/shirakaba/expoot/main/packages/expoot/schemas/expoot-app.schema.json"
   },
   {
     "fileMatch": [
@@ -1220,6 +1318,12 @@
       "/*_FiQuS.json5"
     ],
     "uri": "https://gitlab.cern.ch/steam/fiqus/-/raw/master/docs/schema.json"
+  },
+  {
+    "fileMatch": [
+      "/**/*.flatpak.json"
+    ],
+    "uri": "https://www.schemastore.org/flatpak-manifest.json"
   },
   {
     "uri": "https://www.schemastore.org/foundryvtt-base-package-manifest.json"
@@ -1462,7 +1566,7 @@
       "/hazelcast*.json",
       "/hz-*.json"
     ],
-    "uri": "https://hazelcast.com/schema/config/hazelcast-config-5.6.json"
+    "uri": "https://hazelcast.com/schema/config/hazelcast-config-5.7.json"
   },
   {
     "fileMatch": [
@@ -1617,7 +1721,7 @@
     "fileMatch": [
       "/jreleaser.json"
     ],
-    "uri": "https://www.schemastore.org/jreleaser-1.22.0.json"
+    "uri": "https://www.schemastore.org/jreleaser-1.24.0.json"
   },
   {
     "fileMatch": [
@@ -1726,6 +1830,14 @@
       "/keto.json"
     ],
     "uri": "https://raw.githubusercontent.com/ory/keto/master/.schema/version.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/ku-*.json",
+      "/knowledge-unit.json",
+      "/**/ku/*.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/knowledge-unit.json"
   },
   {
     "fileMatch": [
@@ -1966,11 +2078,32 @@
   },
   {
     "fileMatch": [
+      "/**/.moduleassembler/moduleproject.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/ModuleAssembler/ModuleAssembler-Schema/refs/tags/v1.0.0/schema/moduleassembler.schema.json"
+  },
+  {
+    "fileMatch": [
       "/*.mlos.jsonc",
       "/*.mlos.json5",
       "/*.mlos.json"
     ],
     "uri": "https://raw.githubusercontent.com/microsoft/MLOS/main/mlos_bench/mlos_bench/config/schemas/mlos-bench-config-schema.json"
+  },
+  {
+    "fileMatch": [
+      "/mockd.json",
+      "/.mockd.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/getmockd/mockd/main/schema/mockd.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/mockserverInitialization.json",
+      "/*mockserver*Initialization.json",
+      "/mockserver*.json"
+    ],
+    "uri": "https://www.mock-server.com/schema/expectations.json"
   },
   {
     "fileMatch": [
@@ -2249,6 +2382,12 @@
   },
   {
     "fileMatch": [
+      "/*.pactspec.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/pactspec.json"
+  },
+  {
+    "fileMatch": [
       "/submol*.json"
     ],
     "uri": "https://www.schemastore.org/pgap_yaml_input_reader.json"
@@ -2258,6 +2397,9 @@
       "/pattern.json"
     ],
     "uri": "https://www.schemastore.org/pattern.json"
+  },
+  {
+    "uri": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/partial-pixi.json"
   },
   {
     "fileMatch": [
@@ -2477,6 +2619,18 @@
       "/.remarkrc.json"
     ],
     "uri": "https://www.schemastore.org/remarkrc.json"
+  },
+  {
+    "fileMatch": [
+      "/reposets.config.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/spencerbeggs/reposets/main/package/schemas/reposets.config.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/reposets.credentials.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/spencerbeggs/reposets/main/package/schemas/reposets.credentials.schema.json"
   },
   {
     "fileMatch": [
@@ -2938,6 +3092,12 @@
   },
   {
     "fileMatch": [
+      "/twee-ts.config.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/twee-ts.config.json"
+  },
+  {
+    "fileMatch": [
       "/typewiz.json"
     ],
     "uri": "https://www.schemastore.org/typewiz.json"
@@ -3156,6 +3316,9 @@
     "uri": "https://www.unpkg.com/wrangler/config-schema.json"
   },
   {
+    "uri": "https://docs.xenforo.com/schema/addon.schema.json"
+  },
+  {
     "uri": "https://json-stat.org/format/schema/2.0/"
   },
   {
@@ -3337,6 +3500,12 @@
       "/*.tokenlist.json"
     ],
     "uri": "https://uniswap.org/tokenlist.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/.yamlfmt"
+    ],
+    "uri": "https://www.schemastore.org/yamlfmt.json"
   },
   {
     "fileMatch": [
@@ -4037,7 +4206,7 @@
     "uri": "https://www.schemastore.org/evolving-resolutive-process-notation-1.0.json"
   },
   {
-    "uri": "https://www.schemastore.org/aio-wasm-graph-config-1.0.0.json"
+    "uri": "https://www.schemastore.org/aio-wasm-graph-config-1.1.0.json"
   },
   {
     "uri": "https://raw.githubusercontent.com/redhat-developer/vscode-tekton/refs/heads/main/scheme/tekton.dev/v1_Task.json"
@@ -4088,9 +4257,111 @@
     "uri": "https://raw.githubusercontent.com/warpstreamlabs/bento/refs/heads/main/resources/schemastore/bento.json"
   },
   {
+    "fileMatch": [
+      "/*.bmml"
+    ],
+    "uri": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/bmml.json"
+  },
+  {
     "uri": "https://raw.githubusercontent.com/espanso/espanso/refs/heads/dev/schemas/match.schema.json"
   },
   {
     "uri": "https://raw.githubusercontent.com/espanso/espanso/refs/heads/dev/schemas/config.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/pitcms.json",
+      "/pitcms.jsonc"
+    ],
+    "uri": "https://pitcms.net/schema/pitcms.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/bricks.json"
+    ],
+    "uri": "https://api.bluebricks.co/docs/schemas/latest/bricks.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/mail-servers-config.json",
+      "/mail-servers-config.jsonc",
+      "/mail-servers-config.json5",
+      "/*.mail-servers-config.json",
+      "/*.mail-servers-config.jsonc",
+      "/*.mail-servers-config.json5",
+      "/**/mail-servers-config.json",
+      "/**/mail-servers-config.jsonc",
+      "/**/mail-servers-config.json5"
+    ],
+    "uri": "https://www.schemastore.org/mail-servers-config.json"
+  },
+  {
+    "fileMatch": [
+      "/**/.oxfmtrc.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/oxc-project/oxc/refs/heads/main/npm/oxfmt/configuration_schema.json"
+  },
+  {
+    "fileMatch": [
+      "/**/.oxlintrc.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/oxc-project/oxc/refs/heads/main/npm/oxlint/configuration_schema.json"
+  },
+  {
+    "fileMatch": [
+      "/**/.cursor/environment.json"
+    ],
+    "uri": "https://cursor.com/schemas/environment.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/**/.agents/permissions.json",
+      "/**/.agents/permissions.local.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/Mearman/agent-permissions/main/agent-permissions.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/**/agentcore/agentcore.json"
+    ],
+    "uri": "https://schema.agentcore.aws.dev/v1/agentcore.json"
+  },
+  {
+    "uri": "https://www.schemastore.org/ethereum-erc721.json"
+  },
+  {
+    "uri": "https://www.schemastore.org/ethereum-erc1155.json"
+  },
+  {
+    "fileMatch": [
+      "/**/.qwen/settings.json"
+    ],
+    "uri": "https://www.schemastore.org/qwen-code-settings.json"
+  },
+  {
+    "fileMatch": [
+      "/*.raid.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/8bitAlex/raid/main/schemas/raid-profile.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/raid.json"
+    ],
+    "uri": "https://raw.githubusercontent.com/8bitAlex/raid/main/schemas/raid-repo.schema.json"
+  },
+  {
+    "fileMatch": [
+      "/*.envelope.json",
+      "/team.envelope.json"
+    ],
+    "uri": "https://schema.openenvelope.org/team/v1.json"
+  },
+  {
+    "fileMatch": [
+      "/*.memnex.json",
+      "/meeting-output.json"
+    ],
+    "uri": "https://memnex.org/schema/v0.2/meeting-output.schema.json"
   }
 ]

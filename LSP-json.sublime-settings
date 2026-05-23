@@ -1,6 +1,4 @@
 {
-	// Open "Preferences: LSP Utils Settings" from the Command Palette to customize the Node runtime.
-	"command": ["${node_bin}", "${server_path}", "--stdio"],
 	"schemes": [
 		// regular files
 		"file",
@@ -19,13 +17,23 @@
 			"triggerCharacters": true
 		}
 	},
-	"initializationOptions": {
+	"initialization_options": {
 		"customCapabilities.rangeFormatting.editLimit": 1000,
 		"handledSchemaProtocols": ["https", "http", "file"],
 		"provideFormatter": true,
 	},
 	"settings": {
 		"json.validate.enable": true,
+		// Diagnostics severity for comments validation. When `null` then decide automatically based on whether file
+		// is using JSONC (`ignore`) or JSON (`error`) schema.
+		"json.validate.comments": null,
+		// Diagnostics severity for trailing commas validation. When `null` then decide automatically based on whether
+		// file is using JSONC (`warning`) or JSON (`error`) schema.
+		"json.validate.trailingCommas": null,
+		// Diagnostics severity for schema validation.
+		"json.validate.schemaValidation": "warning",
+		// Diagnostics severity for schema validation requests.
+		"json.validate.schemaRequest": "warning",
 		"json.format.enable": true,
 		"json.resultLimit": 5000,
 		"json.jsonFoldingLimit": 5000,
@@ -58,5 +66,13 @@
 			// }
 		],
 	},
+	// The path to the server binary used to start the language server.
+	// Use `auto` for the package to manage (install/update) the server automatically.
+	// NOTE: Change this instead of directly updating `command` - the `${server_path}` variable is dynamically resolved
+	// based on this setting.
+	// WARNING: Override at your own risk - using a custom binary can cause compatibility issues with server settings.
+	"server_path": "auto",
+	// Open "Preferences: LSP Utils Settings" from the Command Palette to customize the Node runtime.
+	"command": ["${node_bin}", "${server_path}", "--stdio"],
 	"selector": "source.json"
 }

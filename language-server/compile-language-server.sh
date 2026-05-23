@@ -16,19 +16,19 @@ read -rp "You need at least version 22 of Node. Exit the script if it doesn't ma
 # clean up #
 # -------- #
 
-pushd "${REPO_DIR}" || exit
+pushd "${REPO_DIR}" > /dev/null || exit
 
 rm -rf out package-lock.json package.json update-info.log *.tgz "${CLONED_VSCODE_DIR}" "${CLONED_JSON_SERVICE_DIR}"
 
-popd || exit
+popd > /dev/null || exit
 
 # ------------ #
 # clone vscode #
 # ------------ #
 
-pushd "${REPO_DIR}" || exit
+pushd "${REPO_DIR}" > /dev/null || exit
 
-echo 'Enter commit SHA, branch or tag (for example 2.1.0) to build'
+echo 'Enter commit SHA, branch or tag (for example 2.1.0) from the https://github.com/microsoft/vscode repo to build:'
 read -rp 'SHA, branch or tag (default: main): ' ref
 
 if [ "${ref}" = "" ]; then
@@ -40,24 +40,24 @@ git clone ${VSCODE_REPO_URL} --branch ${ref} --single-branch "${CLONED_VSCODE_DI
 current_sha=$( git rev-parse HEAD )
 printf "ref: %s\n%s\n" "$ref" "$current_sha" > update-info.log
 
-popd || exit
+popd > /dev/null || exit
 
 # ------------ #
 # prepare deps #
 # ------------ #
 
-pushd "${CLONED_VSCODE_DIR}" || exit
+pushd "${CLONED_VSCODE_DIR}" > /dev/null || exit
 
 echo 'Installing dependencies...'
 npm i
 
-popd || exit
+popd > /dev/null || exit
 
 # ------- #
 # compile #
 # ------- #
 
-pushd "${SRC_SERVER_DIR}" || exit
+pushd "${SRC_SERVER_DIR}" > /dev/null || exit
 
 # Get exact version of vscode-json-languageservice
 json_service_version=$(npm ls --json --depth=0 vscode-json-languageservice | jq '.dependencies["vscode-json-languageservice"].version' --raw-output) || exit
@@ -65,37 +65,37 @@ json_service_version=$(npm ls --json --depth=0 vscode-json-languageservice | jq 
 echo 'Compiling server...'
 npm run compile
 
-popd || exit
+popd > /dev/null || exit
 
 # -------------------- #
 # collect output files #
 # -------------------- #
 
-pushd "${SRC_SERVER_DIR}" || exit
+pushd "${SRC_SERVER_DIR}" > /dev/null || exit
 
 echo 'Copying and cleaning up files...'
 find ./out -name "*.map" -delete
 cp -r out package.json README.md "${REPO_DIR}"
 rm -rf "${CLONED_VSCODE_DIR}"
 
-popd || exit
+popd > /dev/null  || exit
 
 # ------------------ #
 # clone json service #
 # ------------------ #
 
-pushd "${REPO_DIR}" || exit
+pushd "${REPO_DIR}" > /dev/null  || exit
 
 echo "Cloning ${JSON_SERVICE_REPO_URL}"
 git clone ${JSON_SERVICE_REPO_URL} --branch "v${json_service_version}" --single-branch "${CLONED_JSON_SERVICE_DIR}" || echo "Repo already cloned. Continuing..."
 
-popd || exit
+popd > /dev/null  || exit
 
 # -------------------- #
 # prepare json service #
 # -------------------- #
 
-pushd "${CLONED_JSON_SERVICE_DIR}" || exit
+pushd "${CLONED_JSON_SERVICE_DIR}" > /dev/null  || exit
 
 # Add support for sublime colors (implementation in https://github.com/rchl/vscode-json-languageservice/tree/feat/st-colors)
 git apply "${REPO_DIR}/0001-feat-support-sublime-text-colors.patch" || exit
@@ -105,13 +105,13 @@ npm i || exit
 pack_output=$(npm --silent --foreground-scripts=false pack --json --no-color --pack-destination "${REPO_DIR}" || exit)
 archive_name=$(echo "$pack_output" | jq '.[0].filename' --raw-output) || exit
 
-popd || exit
+popd > /dev/null  || exit
 
 # -------------------------------- #
 # override json service dependency #
 # -------------------------------- #
 
-pushd "${REPO_DIR}" || exit
+pushd "${REPO_DIR}" > /dev/null  || exit
 
 rm -rf "${CLONED_JSON_SERVICE_DIR}"
 
@@ -119,16 +119,16 @@ rm -rf "${CLONED_JSON_SERVICE_DIR}"
 jq ".dependencies[\"vscode-json-languageservice\"] = \"file:${archive_name}\"" package.json > temp.json || exit
 mv temp.json package.json || exit
 
-popd || exit
+popd > /dev/null  || exit
 
 # ---------------- #
 # Update lock file #
 # ---------------- #
 
-pushd "${REPO_DIR}" || exit
+pushd "${REPO_DIR}" > /dev/null || exit
 
 echo 'Updating the lock file...'
 npm i --omit=dev --lockfile-version=2
 rm -rf node_modules
 
-popd || exit
+popd > /dev/null || exit

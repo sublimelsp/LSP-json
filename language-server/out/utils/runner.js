@@ -1,14 +1,9 @@
-"use strict";
 /*---------------------------------------------------------------------------------------------
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.formatError = formatError;
-exports.runSafeAsync = runSafeAsync;
-exports.runSafe = runSafe;
-const vscode_languageserver_1 = require("vscode-languageserver");
-function formatError(message, err) {
+import { ResponseError, LSPErrorCodes } from 'vscode-languageserver';
+export function formatError(message, err) {
     if (err instanceof Error) {
         const error = err;
         return `${message}: ${error.message}\n${error.stack}`;
@@ -21,7 +16,7 @@ function formatError(message, err) {
     }
     return message;
 }
-function runSafeAsync(runtime, func, errorVal, errorMessage, token) {
+export function runSafeAsync(runtime, func, errorVal, errorMessage, token) {
     return new Promise((resolve) => {
         runtime.timer.setImmediate(() => {
             if (token.isCancellationRequested) {
@@ -43,7 +38,7 @@ function runSafeAsync(runtime, func, errorVal, errorMessage, token) {
         });
     });
 }
-function runSafe(runtime, func, errorVal, errorMessage, token) {
+export function runSafe(runtime, func, errorVal, errorMessage, token) {
     return new Promise((resolve) => {
         runtime.timer.setImmediate(() => {
             if (token.isCancellationRequested) {
@@ -69,7 +64,6 @@ function runSafe(runtime, func, errorVal, errorMessage, token) {
     });
 }
 function cancelValue() {
-    console.log('cancelled');
-    return new vscode_languageserver_1.ResponseError(vscode_languageserver_1.LSPErrorCodes.RequestCancelled, 'Request cancelled');
+    return new ResponseError(LSPErrorCodes.RequestCancelled, 'Request cancelled');
 }
 //# sourceMappingURL=runner.js.map
