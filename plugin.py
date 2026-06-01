@@ -12,13 +12,19 @@ from LSP.plugin import Notification
 from LSP.plugin import OnPreStartContext
 from LSP.plugin import Promise
 from LSP.plugin import request_handler
+from LSP.plugin import uri_handler
 from lsp_utils import NodeManager
 from pathlib import Path
 from sublime_lib import ResourcePath
 from typing import Any
 from typing import final
+from typing import TYPE_CHECKING
 from typing_extensions import override
 import re
+
+if TYPE_CHECKING:
+    from LSP.protocol import DocumentUri
+    import sublime
 
 
 @final
@@ -76,6 +82,11 @@ class LspJSONPlugin(LspPlugin, StoreListener):
     def on_json_sort(self, _: list[None] | None) -> Promise[None]:
         if (session := self.weaksession()) and (view := session.window.active_view()):
             view.run_command('lsp_json_sort_document')
+        return Promise.resolve(None)
+
+    @uri_handler('json-schema')
+    def handle_json_schema_uri(self, uri: DocumentUri, _flags: sublime.NewFileFlags) -> Promise[sublime.Sheet | None]:
+        print(f'LSP-json: Unhandled URI: {uri}')  # noqa: T201
         return Promise.resolve(None)
 
     # --- StoreListener ------------------------------------------------------------------------------------------------
