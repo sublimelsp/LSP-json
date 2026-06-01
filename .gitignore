@@ -1,4 +1,5 @@
 .DS_Store
 node_modules
 .mypy_cache
-temp/
+/language-server/vscode-json-languageservice/
+/language-server/vscode/
