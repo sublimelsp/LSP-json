@@ -11,7 +11,6 @@ from typing import TYPE_CHECKING
 from typing import TypedDict
 from typing_extensions import override
 import sublime
-import sublime_plugin
 
 if TYPE_CHECKING:
     from LSP.protocol import DocumentUri
@@ -44,13 +43,3 @@ class LspJsonSortDocument(LspTextCommand):
             sublime.message_dialog(str(response))
             return
         apply_text_edits(self.view, response)
-
-
-@final
-class LspJsonAutoCompleteCommand(sublime_plugin.TextCommand):
-
-    @override
-    def run(self, _: sublime.Edit) -> None:
-        self.view.run_command("insert_snippet", {"contents": '"$0"'})
-        # Do auto-complete one tick later, otherwise LSP is not up-to-date with the incremental text sync.
-        sublime.set_timeout(lambda: self.view.run_command("auto_complete"))
