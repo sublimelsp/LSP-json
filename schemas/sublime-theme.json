@@ -21,7 +21,24 @@
         "variables": {
           "type": "object",
           "additionalProperties": {
-            "type": ["string", "number", "boolean", "array", "object"]
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "color"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "array"
+              },
+              {
+                "type": "object"
+              }
+            ]
           },
           "markdownDescription": "Reusable variables may be defined by a JSON object under the top-level key `\"variables\"`. Variable names are strings, however the value may be a string, number, boolean, array or object. Using a variable requires specifying a string in the format `var(example_variable_name`.\n\nVariables may be used as the value for any [properties](https://www.sublimetext.com/docs/themes.html#properties), but the variable must be the entire value, it may not be embedded within another variable. The only exception to this rule is that variables may be used as the base color for the CSS `color()` mod function."
         }
@@ -505,7 +522,8 @@
     "color": {
       "anyOf": [
         {
-          "type": "string"
+          "type": "string",
+          "format": "color"
         },
         {
           "type": "array",
