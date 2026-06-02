@@ -108,6 +108,8 @@ mv temp.json package.json || exit
 echo "Patching ${VSCODE_JSON_LANGUAGESERVICE_NAME}..."
 npx patch-package --error-on-fail "${VSCODE_JSON_LANGUAGESERVICE_NAME}" || exit
 
+npm i || exit
+
 popd > /dev/null || exit
 
 # -------- #

@@ -20,6 +20,33 @@ index 422e8be..d41660e 100644
                              if (color) {
                                  const range = getRange(document, s.node);
                                  result.push({ color, range });
+diff --git a/node_modules/vscode-json-languageservice/lib/esm/services/jsonHover.js b/node_modules/vscode-json-languageservice/lib/esm/services/jsonHover.js
+index 9774d3f..6e9ef45 100644
+--- a/node_modules/vscode-json-languageservice/lib/esm/services/jsonHover.js
++++ b/node_modules/vscode-json-languageservice/lib/esm/services/jsonHover.js
+@@ -50,10 +50,12 @@ export class JSONHover {
+             let title = undefined;
+             let markdownDescription = undefined;
+             let markdownEnumValueDescription = undefined, enumValue = undefined;
++            let defaultValue = undefined;
+             const matchingSchemas = doc.getMatchingSchemas(schema.schema, node.offset).filter((s) => s.node === node && !s.inverted).map((s) => s.schema);
+             for (const schema of matchingSchemas) {
+                 title = title || schema.title;
+                 markdownDescription = markdownDescription || schema.markdownDescription || toMarkdown(schema.description);
++                defaultValue = schema.default;
+                 if (schema.enum) {
+                     const idx = schema.enum.indexOf(Parser.getNodeValue(node));
+                     if (schema.markdownEnumDescriptions) {
+@@ -86,6 +88,9 @@ export class JSONHover {
+                 }
+                 result += `\`${toMarkdownCodeBlock(enumValue)}\`: ${markdownEnumValueDescription}`;
+             }
++            if (defaultValue !== undefined) {
++                result += `\n\n---\n\nDefault value: \`${JSON.stringify(defaultValue)}\``;
++            }
+             return createHover([result]);
+         });
+     }
 diff --git a/node_modules/vscode-json-languageservice/lib/esm/utils/colors.js b/node_modules/vscode-json-languageservice/lib/esm/utils/colors.js
 index 291657b..683fe89 100644
 --- a/node_modules/vscode-json-languageservice/lib/esm/utils/colors.js
