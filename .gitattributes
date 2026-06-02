@@ -8,5 +8,6 @@ tests/ export-ignore
 tox.ini export-ignore
 unittesting.json export-ignore
 
+language-server/source-patches/ export-ignore
 language-server/compile-language-server.sh export-ignore
 language-server/update-info.log export-ignore
