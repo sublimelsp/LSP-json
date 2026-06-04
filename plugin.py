@@ -29,6 +29,7 @@ if TYPE_CHECKING:
 
 @final
 class LspJSONPlugin(LspPlugin, StoreListener):
+    use_asyncio = True
     schema_store = SchemaStore()
 
     @classmethod
@@ -49,9 +50,9 @@ class LspJSONPlugin(LspPlugin, StoreListener):
         self._jsonc_patterns: list[re.Pattern[str]] = []
 
     @override
-    def on_initialized_async(self) -> None:
+    async def on_initialized(self) -> None:
         self.schema_store.add_listener(self)
-        self.schema_store.initialize()
+        await self.schema_store.initialize()
 
     @override
     def on_pre_send_notification_async(self, notification: ClientNotification) -> None:
@@ -65,7 +66,7 @@ class LspJSONPlugin(LspPlugin, StoreListener):
             new_patterns = list(map(self._create_pattern_regexp, jsonc_patterns))
             if self._jsonc_patterns != new_patterns:
                 self._jsonc_patterns = new_patterns
-                self.schema_store.reload_schemas()
+                session.create_task(self.schema_store.reload_schemas())
             return
 
     def _create_pattern_regexp(self, pattern: str) -> re.Pattern[str]:
@@ -92,7 +93,7 @@ class LspJSONPlugin(LspPlugin, StoreListener):
     # --- StoreListener ------------------------------------------------------------------------------------------------
 
     @override
-    def on_store_changed_async(self, schemas: list[SchemaEntry]) -> None:
+    async def on_store_changed(self, schemas: list[SchemaEntry]) -> None:
         if session := self.weaksession():
             user_schemas: list[SchemaEntry] = deepcopy(session.config.settings.get('userSchemas') or [])
             if folders := session.get_workspace_folders():
@@ -101,7 +102,7 @@ class LspJSONPlugin(LspPlugin, StoreListener):
                     if schema['uri'].startswith(('.', '/')):
                         absolute_path = Path(folders[0].path, schema['uri'])
                         schema['uri'] = filename_to_uri(str(absolute_path))
-            session.send_notification(Notification('json/schemaAssociations', [schemas + user_schemas]))
+            await session.notify(Notification('json/schemaAssociations', [schemas + user_schemas]))
 
 
 def plugin_loaded() -> None:
