@@ -40,7 +40,7 @@ class LspJSONPlugin(LspPlugin, StoreListener):
             cls.plugin_storage_path,
             ResourcePath('Packages', package_name, 'language-server'),
             Path('out', 'node', 'jsonServerMain.js'),
-            '>=18',
+            node_version_requirement='>=18',
         )
 
     @override
