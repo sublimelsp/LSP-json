@@ -29,7 +29,6 @@ if TYPE_CHECKING:
 
 @final
 class LspJSONPlugin(LspPlugin, StoreListener):
-    use_asyncio = True
     schema_store = SchemaStore()
 
     @classmethod
