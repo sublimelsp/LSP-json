@@ -55,7 +55,7 @@ class LspJSONPlugin(LspPlugin, StoreListener):
         await self.schema_store.initialize()
 
     @override
-    def on_pre_send_notification_async(self, notification: ClientNotification) -> None:
+    async def on_pre_send_notification(self, notification: ClientNotification) -> None:
         if notification['method'] == 'textDocument/didOpen':
             text_document = notification['params']['textDocument']
             if any(pattern.search(text_document['uri']) for pattern in self._jsonc_patterns):
@@ -66,7 +66,7 @@ class LspJSONPlugin(LspPlugin, StoreListener):
             new_patterns = list(map(self._create_pattern_regexp, jsonc_patterns))
             if self._jsonc_patterns != new_patterns:
                 self._jsonc_patterns = new_patterns
-                session.create_task(self.schema_store.reload_schemas())
+                await self.schema_store.reload_schemas()
             return
 
     def _create_pattern_regexp(self, pattern: str) -> re.Pattern[str]:
