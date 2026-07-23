@@ -8,7 +8,7 @@ CLONED_VSCODE_DIR="${SERVER_DIR}/temp"
 SRC_SERVER_DIR="${CLONED_VSCODE_DIR}/extensions/json-language-features/server/"
 
 echo "Your node version: $(node --version || echo '<missing>')"
-read -rp "You need at least version 22 of Node. Exit the script if it doesn't match requirements. Otherwise press enter."
+read -rp "You need at least version 24.18.0 of Node. Exit the script if it doesn't match requirements. Otherwise press enter."
 
 # -------- #
 # clean up #
