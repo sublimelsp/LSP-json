@@ -9,7 +9,7 @@ from typing_extensions import NotRequired
 import re
 import requests
 
-DIRECTORY = Path(__file__).parent
+DIRECTORY = Path(__file__).parent.resolve()
 RE_EXCLUDED_EXT = re.compile(r'\.(?:ya?ml|toml)$')
 
 
@@ -34,7 +34,7 @@ def main() -> None:
         if file_match:
             file_match = list(map(to_absolute_pattern, file_match))
             schema_list.append({'fileMatch': file_match, 'uri': url})
-    Path(DIRECTORY.parent, 'lsp-json-schemas.json').write_text(dumps(schema_list, indent=2), encoding='utf-8')
+    (DIRECTORY.parent / 'lsp-json-schemas.json').write_text(dumps(schema_list, indent=2), encoding='utf-8')
 
 
 def is_ignored(file_match: str) -> bool:

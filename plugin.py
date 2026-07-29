@@ -94,14 +94,14 @@ class LspJSONPlugin(LspPlugin, StoreListener):
     @override
     async def on_store_changed(self, schemas: list[SchemaEntry]) -> None:
         if session := self.weaksession():
-            user_schemas: list[SchemaEntry] = deepcopy(session.config.settings.get('userSchemas') or [])
+            all_schemas: list[SchemaEntry] = schemas + deepcopy(session.config.settings.get('userSchemas') or [])
             if folders := session.get_workspace_folders():
-                for schema in schemas:
+                for schema in all_schemas:
                     # Filesystem paths are resolved relative to the first workspace folder.
                     if schema['uri'].startswith(('.', '/')):
                         absolute_path = Path(folders[0].path, schema['uri'])
                         schema['uri'] = filename_to_uri(str(absolute_path))
-            await session.notify(Notification('json/schemaAssociations', [schemas + user_schemas]))
+            await session.notify(Notification('json/schemaAssociations', [all_schemas]))
 
 
 def plugin_loaded() -> None:
