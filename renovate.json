@@ -5,5 +5,8 @@
   ],
   "npm": {
     "enabled": false
+  },
+  "nvm": {
+    "enabled": false
   }
 }
