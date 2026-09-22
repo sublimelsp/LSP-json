@@ -8,7 +8,7 @@
   "properties": {
     "icons": {
       "type": "object",
-      "description": "An object where the key represents the file extensions and value the path to the .png file.",
+      "markdownDescription": "An object where the key represents the file extension and the value the path to the `.png` file, without the `.png` extension. The file should be located either at the top level of a package, or inside the `icons` folder.",
       "additionalProperties": {
         "type": "string",
         "description": "The name of the .png file (located at the top level or in the 'icons' folder of a package) without the .png extension."
