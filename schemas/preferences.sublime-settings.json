@@ -1102,6 +1102,21 @@
           "pattern": "^.*\\.sublime-theme$",
           "default": "Default Dark.sublime-theme"
         },
+        "file_icon_theme": {
+          "markdownDescription": "The file icon theme controls which icons are used for files in the side-bar. This can either be a single or multiple file icon themes. Sublime Text does not come with any file icon themes.",
+          "default": [],
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "string",
+            }
+          ]
+        },
         "themed_title_bar": {
           "description": "Adaptive theme only: controls if a custom or default title bar is used. Note that on Windows, the hamburger menu is used whenever this is enabled and the adaptive theme is in use.",
           "type": "boolean",

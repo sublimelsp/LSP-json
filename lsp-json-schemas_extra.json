@@ -19,6 +19,10 @@
     "uri": "sublime://schemas/sublime-completions"
   },
   {
+    "fileMatch": ["/*.sublime-file-icons"],
+    "uri": "sublime://schemas/sublime-file-icons"
+  },
+  {
     "fileMatch": ["/*.sublime-keymap"],
     "uri": "sublime://schemas/sublime-keymap"
   },
