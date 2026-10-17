@@ -1,13 +1,15 @@
 .dependabot export-ignore
+/.gitattributes export-ignore
 .github/ export-ignore
+/.gitignore export-ignore
 codecov.yml export-ignore
+language-server/compile-language-server.sh export-ignore
+language-server/source-patches/ export-ignore
+language-server/update-info.log export-ignore
+/pyproject.toml export-ignore
 pyrightconfig.json export-ignore
 renovate.json export-ignore
 scripts/ export-ignore
 tests/ export-ignore
 tox.ini export-ignore
 unittesting.json export-ignore
-
-language-server/source-patches/ export-ignore
-language-server/compile-language-server.sh export-ignore
-language-server/update-info.log export-ignore
