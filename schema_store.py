@@ -44,7 +44,7 @@ class ContributionSettingsSchema(TypedDict):
 class StoreListener(ABC):
 
     @abstractmethod
-    def on_store_changed_async(self, schemas: list[SchemaEntry]) -> None:
+    async def on_store_changed(self, schemas: list[SchemaEntry]) -> None:
         pass
 
 
@@ -55,11 +55,11 @@ class SchemaStore:
         self._schema_uri_to_content: dict[str, str] = {}
         self._initialized: bool = False
 
-    def initialize(self) -> None:
+    async def initialize(self) -> None:
         if self._initialized:
             return
         self._initialized = True
-        self.reload_schemas()
+        await self.reload_schemas()
 
     def add_listener(self, listener: StoreListener) -> None:
         self._listeners.add(listener)
@@ -77,18 +77,18 @@ class SchemaStore:
         print(f'{PACKAGE_NAME}: Unknown schema URI "{uri}"')
         return None
 
-    def reload_schemas(self) -> None:
+    async def reload_schemas(self) -> None:
         self._schema_list = []
         self._schema_uri_to_content = {}
         self._load_bundled_schemas()
         global_preferences_schemas = self._load_package_schemas()
         self._generate_project_settings_schemas(global_preferences_schemas)
         self._load_syntax_schemas(global_preferences_schemas)
-        self._on_schemas_changed()
+        await self._on_schemas_changed()
 
-    def _on_schemas_changed(self) -> None:
+    async def _on_schemas_changed(self) -> None:
         for listener in self._listeners:
-            listener.on_store_changed_async(self._schema_list)
+            await listener.on_store_changed(self._schema_list)
 
     def _load_bundled_schemas(self) -> None:
         for schema in ['lsp-json-schemas_extra.json', 'lsp-json-schemas.json']:
