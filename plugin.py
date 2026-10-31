@@ -10,7 +10,6 @@ from LSP.plugin import filename_to_uri
 from LSP.plugin import LspPlugin
 from LSP.plugin import Notification
 from LSP.plugin import OnPreStartContext
-from LSP.plugin import Promise
 from LSP.plugin import request_handler
 from LSP.plugin import uri_handler
 from lsp_utils import NodeManager
@@ -76,19 +75,18 @@ class LspJSONPlugin(LspPlugin, StoreListener):
         return re.compile(escaped + '$')
 
     @request_handler('vscode/content')
-    def handle_vscode_content(self, params: tuple[str]) -> Promise[str | None]:
-        return Promise.resolve(self.schema_store.get_schema_for_uri(params[0]))
+    async def handle_vscode_content(self, params: tuple[str]) -> str | None:
+        return self.schema_store.get_schema_for_uri(params[0])
 
     @command_handler('json.sort')
-    def on_json_sort(self, _: list[None] | None) -> Promise[None]:
+    async def on_json_sort(self, _: list[None] | None) -> None:
         if (session := self.weaksession()) and (view := session.window.active_view()):
             view.run_command('lsp_json_sort_document')
-        return Promise.resolve(None)
 
     @uri_handler('json-schema')
-    def handle_json_schema_uri(self, uri: DocumentUri, _flags: sublime.NewFileFlags) -> Promise[sublime.Sheet | None]:
-        print(f'LSP-json: Unhandled URI: {uri}')  # noqa: T201
-        return Promise.resolve(None)
+    async def handle_json_schema_uri(self, uri: DocumentUri, _flags: sublime.NewFileFlags) -> sublime.Sheet | None:
+        print(f'LSP-json: Unhandled URI: {uri}')  # ruff: ignore[print]
+        return None
 
     # --- StoreListener ------------------------------------------------------------------------------------------------
 
