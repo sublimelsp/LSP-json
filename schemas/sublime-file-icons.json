@@ -1,0 +1,19 @@
+{
+  "$schema": "sublime://schemas/sublime-base",
+  "$id": "sublime://schemas/sublime-file-icons",
+  "title": "Sublime Text Icons",
+  "allowComments": true,
+  "allowTrailingCommas": true,
+  "type": "object",
+  "properties": {
+    "icons": {
+      "type": "object",
+      "markdownDescription": "An object where the key represents the file extension and the value the path to the `.png` file, without the `.png` extension. The file should be located either at the top level of a package, or inside the `icons` folder.",
+      "additionalProperties": {
+        "type": "string",
+        "markdownDescription": "The name of the `.png` file (located at the top level of a package or in the `icons` folder) without the `.png` extension."
+      }
+    }
+  },
+  "additionalProperties": false
+}

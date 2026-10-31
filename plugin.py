@@ -20,6 +20,7 @@ from typing import Any
 from typing import final
 from typing import TYPE_CHECKING
 from typing_extensions import override
+from urllib.parse import quote
 import re
 
 if TYPE_CHECKING:
@@ -94,7 +95,16 @@ class LspJSONPlugin(LspPlugin, StoreListener):
     @override
     async def on_store_changed(self, schemas: list[SchemaEntry]) -> None:
         if session := self.weaksession():
-            all_schemas: list[SchemaEntry] = schemas + deepcopy(session.config.settings.get('userSchemas') or [])
+            user_schemas: list[SchemaEntry] = deepcopy(session.config.settings.get('userSchemas') or [])
+            # The server combines all matching schemas, so a user pattern must remove the same bundled pattern
+            # for the user schema to replace the bundled one. Bundled patterns are URL-quoted by the store.
+            user_patterns = {quote(fm, safe='/*!') for s in user_schemas for fm in s.get('fileMatch', [])}
+            store_schemas = deepcopy(schemas)
+            if user_patterns:
+                for schema in store_schemas:
+                    if file_match := schema.get('fileMatch'):
+                        schema['fileMatch'] = [fm for fm in file_match if fm not in user_patterns]
+            all_schemas = store_schemas + user_schemas
             if folders := session.get_workspace_folders():
                 for schema in all_schemas:
                     # Filesystem paths are resolved relative to the first workspace folder.
