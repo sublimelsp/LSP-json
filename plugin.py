@@ -10,6 +10,7 @@ from LSP.plugin import filename_to_uri
 from LSP.plugin import LspPlugin
 from LSP.plugin import Notification
 from LSP.plugin import OnPreStartContext
+from LSP.plugin import Promise
 from LSP.plugin import request_handler
 from LSP.plugin import uri_handler
 from lsp_utils import NodeManager
@@ -49,12 +50,12 @@ class LspJSONPlugin(LspPlugin, StoreListener):
         self._jsonc_patterns: list[re.Pattern[str]] = []
 
     @override
-    async def on_initialized(self) -> None:
+    def on_initialized_async(self) -> None:
         self.schema_store.add_listener(self)
-        await self.schema_store.initialize()
+        self.schema_store.initialize()
 
     @override
-    async def on_pre_send_notification(self, notification: ClientNotification) -> None:
+    def on_pre_send_notification_async(self, notification: ClientNotification) -> None:
         if notification['method'] == 'textDocument/didOpen':
             text_document = notification['params']['textDocument']
             if any(pattern.search(text_document['uri']) for pattern in self._jsonc_patterns):
@@ -65,7 +66,7 @@ class LspJSONPlugin(LspPlugin, StoreListener):
             new_patterns = list(map(self._create_pattern_regexp, jsonc_patterns))
             if self._jsonc_patterns != new_patterns:
                 self._jsonc_patterns = new_patterns
-                await self.schema_store.reload_schemas()
+                self.schema_store.reload_schemas()
             return
 
     def _create_pattern_regexp(self, pattern: str) -> re.Pattern[str]:
@@ -75,23 +76,24 @@ class LspJSONPlugin(LspPlugin, StoreListener):
         return re.compile(escaped + '$')
 
     @request_handler('vscode/content')
-    async def handle_vscode_content(self, params: tuple[str]) -> str | None:
-        return self.schema_store.get_schema_for_uri(params[0])
+    def handle_vscode_content(self, params: tuple[str]) -> Promise[str | None]:
+        return Promise.resolve(self.schema_store.get_schema_for_uri(params[0]))
 
     @command_handler('json.sort')
-    async def on_json_sort(self, _: list[None] | None) -> None:
+    def on_json_sort(self, _: list[None] | None) -> Promise[None]:
         if (session := self.weaksession()) and (view := session.window.active_view()):
             view.run_command('lsp_json_sort_document')
+        return Promise.resolve(None)
 
     @uri_handler('json-schema')
-    async def handle_json_schema_uri(self, uri: DocumentUri, _flags: sublime.NewFileFlags) -> sublime.Sheet | None:
-        print(f'LSP-json: Unhandled URI: {uri}')  # ruff: ignore[print]
-        return None
+    def handle_json_schema_uri(self, uri: DocumentUri, _flags: sublime.NewFileFlags) -> Promise[sublime.Sheet | None]:
+        print(f'LSP-json: Unhandled URI: {uri}')  # noqa: T201
+        return Promise.resolve(None)
 
     # --- StoreListener ------------------------------------------------------------------------------------------------
 
     @override
-    async def on_store_changed(self, schemas: list[SchemaEntry]) -> None:
+    def on_store_changed_async(self, schemas: list[SchemaEntry]) -> None:
         if session := self.weaksession():
             user_schemas: list[SchemaEntry] = deepcopy(session.config.settings.get('userSchemas') or [])
             # The server combines all matching schemas, so a user pattern must remove the same bundled pattern
@@ -109,7 +111,7 @@ class LspJSONPlugin(LspPlugin, StoreListener):
                     if schema['uri'].startswith(('.', '/')):
                         absolute_path = Path(folders[0].path, schema['uri'])
                         schema['uri'] = filename_to_uri(str(absolute_path))
-            await session.notify(Notification('json/schemaAssociations', [all_schemas]))
+            session.send_notification(Notification('json/schemaAssociations', [all_schemas]))
 
 
 def plugin_loaded() -> None:
