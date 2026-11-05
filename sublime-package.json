@@ -222,6 +222,23 @@
           }
         }
       },
+      {
+        "file_patterns": [
+          "/LSP.sublime-settings",
+          "/Preferences.sublime-settings"
+        ],
+        "schema": {
+          "properties": {
+            "lsp_code_actions_on_save": {
+              "properties": {
+                "source.sort.json": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
     ]
   }
 }
